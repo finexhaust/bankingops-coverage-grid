@@ -1,0 +1,38 @@
+{
+  "cell_id": "cp_isda_curve_input_completeness",
+  "division_key": "market_risk_management",
+  "job_function": "market risk manager / risk analytics (daily VaR and model-output validation)",
+  "control_point": "The ISDA standard yield-curve and credit-curve set required by a scheduled risk or valuation batch is complete and sourced from the authorised curve publisher before the batch runs; a missing or unsourced curve blocks the run rather than being back-filled, and the block is cleared by market risk with valuation-control sign-off.",
+  "citations": [
+    {
+      "source_name": "ISDA CDS Standard Model (open-source model and documentation, administered by S&P Global)",
+      "url": "https://www.cdsmodel.com/",
+      "clause": "Standard model documentation; ISDA standard rate curves as required inputs",
+      "accessed": "2026-11-03"
+    },
+    {
+      "source_name": "Basel Framework MAR31, Internal models approach: model requirements",
+      "url": "https://www.bis.org/basel_framework/chapter/MAR/31.htm",
+      "clause": "MAR31 qualitative standards: data inputs, model documentation and independent validation",
+      "accessed": "2026-11-03"
+    },
+    {
+      "source_name": "BCBS d457, Minimum capital requirements for market risk (January 2019)",
+      "url": "https://www.bis.org/bcbs/publ/d457.pdf",
+      "clause": "Internal models approach, general criteria and qualitative standards",
+      "accessed": "2026-11-03"
+    }
+  ],
+  "consequence_anchor": {
+    "failure_class": "reconciliation_remediation",
+    "public_source": "Basel Framework MAR31/MAR33 internal-model standards: risk measures produced from incomplete or unvalidated market-data inputs must be re-run, reconciled and reported to supervisors, and repeated input failures bear on model eligibility",
+    "magnitude_band": "qualitative: re-run and reconciliation of the affected risk batch, delayed daily risk reporting, supervisory model-eligibility exposure; no fixed public tariff"
+  },
+  "commonality_rationale": "Every institution computing market or counterparty risk on CDS and rates positions consumes the ISDA standard curve set as a published external input, and every internal-model framework requires complete, sourced inputs before a risk measure is produced; the control is identical across firms because the curve publisher and the model standards are public.",
+  "status": "PROPOSED",
+  "methods": {
+    "generated_by": "claude-fable-5-1 (assistant-drafted from public sources)",
+    "generated_on": "2026-11-03",
+    "curated_by": null
+  }
+}
