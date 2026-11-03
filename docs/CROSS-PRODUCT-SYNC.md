@@ -1,4 +1,32 @@
-# Cross-product sync status — BOCG / evals / Ficta Meridian
+# Cross-product context sync — BOCG / FinExhaust / Ficta Meridian
+
+Updated: 2026-11-03. The earlier access blocker below is historical.
+
+The proposed financial-work context is pinned independently from released
+coverage and evaluation evidence:
+
+- Context v0.1.0, commit `f1dae918deec1842a908ffa4df0a001f804c749c`.
+- 48 retained division keys, five proposed parent domains, nine optional
+  capabilities. No catalogue IDs or evidence mappings were retired or promoted.
+- FinExhaust commit `f1fcbb6b` integrates the context into new refinery
+  preparations, the Workbench reference panel, archive/PDF metadata, Harbor
+  exports and both public websites' shared manifests.
+- The common reference is presented at
+  [FinExhaust BOCG](https://finexhaust.com/bocg/#financial-work).
+- Public context bytes and their pin are published under
+  `/manifests/financial-work-context.json` and
+  `/manifests/financial-work-context-pin.json` on both finexhaust.com and
+  fictameridian.com. `/manifests/site-build.json` identifies the current build.
+- `scripts/sync_bocg_context.py` and the daily public-release workflow keep
+  these projections aligned. The release manifest and context pin remain
+  separate: historical evidence is not rebound by context publication.
+
+This is an owner-requested, model-assisted context proposal. It does not claim
+independent panel consensus, additional benchmark coverage, new SME approval
+or a new model evaluation. BankingEnv/cleanroom execution records retain their
+original inputs and versions.
+
+## Historical status — 17 October
 
 Checked: 2026-10-17T02:45Z (UTC)  
 Owner signal: **PROCEED** received — Finexhaust still **not** on Cursor App selected-repos (agent re-probed: 404).
