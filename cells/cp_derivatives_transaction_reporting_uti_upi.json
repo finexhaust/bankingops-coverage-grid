@@ -1,6 +1,14 @@
 {
   "cell_id": "cp_derivatives_transaction_reporting_uti_upi",
-  "division_key": "regulatory_transaction_reporting",
+  "division_key": "regulatory_reporting_conduct_compliance",
+  "division_key_history": [
+    {
+      "division_key": "regulatory_transaction_reporting",
+      "taxonomy_run": "live-run-20260826",
+      "superseded_on": "2026-11-03",
+      "note": "Taxonomy regeneration of 2026-10-19 merged regulatory transaction reporting into regulatory_reporting_conduct_compliance, which carries 'prepare emir trade report' and 'prepare mifir transaction report' in the released catalogue."
+    }
+  ],
   "job_function": "regulatory transaction reporting operations - UTI/UPI lifecycle",
   "control_point": "OTC derivative transaction reports are submitted with a valid Unique Transaction Identifier (UTI) and, where required, an ISO 4914 Unique Product Identifier (UPI), and are pair-matched or reconciled with the counterparty report; the control point is the generation, validation and pairing of identifiers before the applicable trade-repository deadline.",
   "citations": [

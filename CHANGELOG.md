@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+- Re-bind control-point cells to the 2026-10-19 taxonomy (`live-run-20261019`):
+  - Twelve cells named division keys retired by the regeneration
+    (`collateral_margin_management`, `regulatory_transaction_reporting`,
+    `client_lifecycle_kyc`, `post_trade_settlement`). Each is re-bound to the nearest
+    admitted key and keeps its prior binding in a new optional
+    `division_key_history` field (key, run, date, reason).
+  - Add SPEC-03 invariant S3-I7 ADMITTED_KEY_BOUND and gate S3-G5: a non-RETIRED
+    cell must name a key in the matrix of the run selected by
+    `reference/taxonomy-source.json`. Previously a stale key passed every gate
+    because only CURATED cells are checked by the catalogue builder.
+  - Update the derivatives documentation vocabulary gap and `docs/isda-overlap.md`
+    for the regenerated taxonomy. No cell content, citation or status changed.
+
 ## v0.6.3 — 2026-10-17
 
 - Meridian-facing public-eval observatory + cleanroom companion pin:

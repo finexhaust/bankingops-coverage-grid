@@ -1,6 +1,14 @@
 {
   "cell_id": "cp_aana_umr_scope",
-  "division_key": "collateral_margin_management",
+  "division_key": "repo_secfin_collateral",
+  "division_key_history": [
+    {
+      "division_key": "collateral_margin_management",
+      "taxonomy_run": "live-run-20260826",
+      "superseded_on": "2026-11-03",
+      "note": "Taxonomy regeneration of 2026-10-19 (live-run-20261019) admitted no standalone collateral/margin key; repo_secfin_collateral carries 'collateral management' and 'meet or dispute margin call' in the released catalogue and is the nearest admitted key for bilateral uncleared margin."
+    }
+  ],
   "job_function": "collateral management / margin operations analyst (UMR scope determination)",
   "control_point": "AANA is computed and documented each compliance period to determine UMR in-scope status.",
   "citations": [

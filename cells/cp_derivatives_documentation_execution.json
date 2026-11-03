@@ -1,6 +1,14 @@
 {
   "cell_id": "cp_derivatives_documentation_execution",
-  "division_key": "client_lifecycle_kyc",
+  "division_key": "trade_lifecycle_operations",
+  "division_key_history": [
+    {
+      "division_key": "client_lifecycle_kyc",
+      "taxonomy_run": "live-run-20260826",
+      "superseded_on": "2026-11-03",
+      "note": "Taxonomy regeneration of 2026-10-19 admitted no client lifecycle, KYC or trading-documentation key. trade_lifecycle_operations is the nearest admitted key for legal-agreement term capture; the vocabulary gap is recorded in common-semantic-profile.yaml."
+    }
+  ],
   "job_function": "client lifecycle management - trading documentation control",
   "control_point": "Derivatives trading documentation, including ISDA Master Agreement, Credit Support Annex, GMRA and GMSLA and adherence to ISDA protocols, is executed, captured and verified before trades are booked; the control point is the existence of a valid, executed legal framework with the counterparty and any required protocol adherence.",
   "citations": [
