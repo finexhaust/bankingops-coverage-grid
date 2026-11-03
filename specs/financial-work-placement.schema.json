@@ -1,0 +1,122 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "context_binding",
+    "subject_kind",
+    "subject_ref",
+    "area_touchpoints",
+    "capability_touchpoints"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bocg.financial-work-placement/v1"
+    },
+    "context_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "context_sha256"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "subject_kind": {
+      "enum": [
+        "benchmark",
+        "task",
+        "trace",
+        "episode",
+        "corpus"
+      ]
+    },
+    "subject_ref": {
+      "type": "string",
+      "pattern": "^subject-[0-9a-f]{12,64}$"
+    },
+    "area_touchpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "division_key",
+          "mapping_status",
+          "evidence_refs"
+        ],
+        "properties": {
+          "division_key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mapping_status": {
+            "enum": [
+              "PROPOSED",
+              "PENDING",
+              "RATIFIED_MAPPING",
+              "QUALIFIED_MAPPING",
+              "REJECTED_MAPPING",
+              "DEFERRED_MAPPING"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    },
+    "capability_touchpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "capability_ref",
+          "mapping_status",
+          "evidence_refs"
+        ],
+        "properties": {
+          "capability_ref": {
+            "type": "string",
+            "pattern": "^capability:[a-z_]+$"
+          },
+          "mapping_status": {
+            "enum": [
+              "PROPOSED",
+              "PENDING",
+              "RATIFIED_MAPPING",
+              "QUALIFIED_MAPPING",
+              "REJECTED_MAPPING",
+              "DEFERRED_MAPPING"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/thefazzer/bankingops-coverage-grid/blob/main/specs/financial-work-placement.schema.json",
+  "title": "Consumer-owned optional BOCG context placement",
+  "description": "An optional sidecar to an existing pinned evidence surface; no source text or personal identifiers. Empty area/capability lists and unresolved areas remain valid. Context does not adjudicate the source claims or increase evidence depth."
+}

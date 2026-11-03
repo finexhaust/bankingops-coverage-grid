@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- Add SPEC-10 financial-work context 0.1.0 (PROPOSED): five parent domains,
+  nine optional capability descriptors, 48 retained area keys across the two
+  public taxonomy generations, source hashes and an optional consumer sidecar.
+  Context is distinct from coverage; no task admission rule or new evidence
+  promotion is introduced. Existing division/function/task/control-point IDs,
+  public benchmark rulings and source catalogues remain unchanged.
+- Extend common semantics to profile 0.5.0 and include the context artifacts,
+  builder and source matrices in release manifests. No tests, gate suites,
+  fresh model calls or independent adjudication were run for this extension.
+
 ## v0.6.3 — 2026-10-17
 
 - Meridian-facing public-eval observatory + cleanroom companion pin:

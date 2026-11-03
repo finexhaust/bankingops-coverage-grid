@@ -1,6 +1,6 @@
 profile:
   id: bocg-common-semantics
-  version: 0.4.0
+  version: 0.5.0
   status: PROPOSED
   title: BankingOps common semantic profile
   description: >-
@@ -12,7 +12,7 @@ profile:
     - SPEC-01 admitted division keys
     - post-hoc coverage claims described by SPEC-01 I10 and SPEC-03 I5
   scope:
-    floor: banking_operations_division
+    floor: institutional_finance_context
     ceiling: control_point
     occurrence_claims_permitted: false
     institution_specific_workflow_permitted: false
@@ -23,6 +23,23 @@ profile:
     - EmailDiscourseBlock
     - FiveFamilyAssessment
     - InstitutionSpecificProcedure
+
+financial_work_context:
+  specification: specs/SPEC-10-financial-work-context.md
+  catalogue: reference/financial-work-context.v1.json
+  version: 0.1.0
+  status: PROPOSED
+  root: domain:institutional_finance
+  concept_type: "http://www.w3.org/2004/02/skos/core#Concept"
+  hierarchy: "http://www.w3.org/2004/02/skos/core#broader"
+  cross_axis_association: "http://www.w3.org/2004/02/skos/core#related"
+  derivation: "http://www.w3.org/ns/prov#wasDerivedFrom"
+  existing_division_identifiers_retained: true
+  historical_snapshot_bindings_retained: true
+  context_placement_is_coverage: false
+  missing_in_current_generation_means_retired: false
+  capabilities_optional_and_unordered: true
+  occurrence_claims_permitted: false
 
 mapping_policy:
   mapping_is_not_identity: true
