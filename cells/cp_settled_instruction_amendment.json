@@ -1,6 +1,14 @@
 {
   "cell_id": "cp_settled_instruction_amendment",
-  "division_key": "post_trade_settlement",
+  "division_key": "clearing_settlement_custody",
+  "division_key_history": [
+    {
+      "division_key": "post_trade_settlement",
+      "taxonomy_run": "live-run-20260826",
+      "superseded_on": "2026-11-03",
+      "note": "Taxonomy regeneration of 2026-10-19 admitted clearing_settlement_custody as the settlement division; post_trade_settlement is not an admitted key of that run."
+    }
+  ],
   "job_function": "settlement operations - instruction lifecycle management",
   "control_point": "Amendment or cancellation of settlement instructions after matching is governed by CSD rules requiring bilateral consent, and settlement fails accrue cash penalties under the CSDR settlement discipline regime; the control is the boundary between amendable and penalty-bearing states of an instruction.",
   "citations": [

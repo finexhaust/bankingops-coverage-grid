@@ -1,6 +1,6 @@
 profile:
   id: bocg-common-semantics
-  version: 0.4.0
+  version: 0.5.0
   status: PROPOSED
   title: BankingOps common semantic profile
   description: >-
@@ -12,7 +12,7 @@ profile:
     - SPEC-01 admitted division keys
     - post-hoc coverage claims described by SPEC-01 I10 and SPEC-03 I5
   scope:
-    floor: banking_operations_division
+    floor: institutional_finance_context
     ceiling: control_point
     occurrence_claims_permitted: false
     institution_specific_workflow_permitted: false
@@ -23,6 +23,23 @@ profile:
     - EmailDiscourseBlock
     - FiveFamilyAssessment
     - InstitutionSpecificProcedure
+
+financial_work_context:
+  specification: specs/SPEC-10-financial-work-context.md
+  catalogue: reference/financial-work-context.v1.json
+  version: 0.1.0
+  status: PROPOSED
+  root: domain:institutional_finance
+  concept_type: "http://www.w3.org/2004/02/skos/core#Concept"
+  hierarchy: "http://www.w3.org/2004/02/skos/core#broader"
+  cross_axis_association: "http://www.w3.org/2004/02/skos/core#related"
+  derivation: "http://www.w3.org/ns/prov#wasDerivedFrom"
+  existing_division_identifiers_retained: true
+  historical_snapshot_bindings_retained: true
+  context_placement_is_coverage: false
+  missing_in_current_generation_means_retired: false
+  capabilities_optional_and_unordered: true
+  occurrence_claims_permitted: false
 
 mapping_policy:
   mapping_is_not_identity: true
@@ -300,7 +317,7 @@ role_semantics:
 candidate_vocabulary_gaps:
   non_normative: true
   candidates:
-    - margin/financing terms governance (calculation-basis and terms changes); nearest existing key collateral_margin_management
+    - margin/financing terms governance (calculation-basis and terms changes); nearest existing key repo_secfin_collateral (collateral_margin_management was retired by the 2026-10-19 regeneration)
     - equity-financing hierarchy (equity trading -> equity financing -> prime brokerage -> equity swaps / securities financing); guards against collapsing "swaps" into fx_trading/rates_trading ("has a rates feature" is not "is rates")
     - basket structures of single-stock swaps (aggregation concept; name left open)
     - cross-currency funding basis (funding index = benchmark/reference rate)
@@ -309,5 +326,5 @@ candidate_vocabulary_gaps:
     # adherence) is currently grouped under client_lifecycle_kyc, which had no
     # model support in the live run. A distinct division key may be warranted
     # once corroboration shows it is named independently by multiple models.
-    - derivatives_documentation_control (ISDA Master, credit support and securities financing documentation execution, protocol adherence and repapering); nearest existing key client_lifecycle_kyc
-    - derivatives trading documentation control (ISDA Master / CSA / GMRA / GMSLA execution and term capture; protocol adherence; netting-opinion coverage); nearest existing key client_lifecycle_kyc; name left open
+    - derivatives_documentation_control (ISDA Master, credit support and securities financing documentation execution, protocol adherence and repapering); no admitted key in live-run-20261019 (client_lifecycle_kyc was retired); cell cp_derivatives_documentation_execution is re-bound to trade_lifecycle_operations as the nearest admitted key for legal-agreement term capture
+    - derivatives trading documentation control (ISDA Master / CSA / GMRA / GMSLA execution and term capture; protocol adherence; netting-opinion coverage); no admitted key in live-run-20261019; name left open

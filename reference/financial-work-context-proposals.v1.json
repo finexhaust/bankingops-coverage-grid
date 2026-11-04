@@ -1,0 +1,519 @@
+{
+  "schema": "bocg.financial-work-context-proposals/v1",
+  "version": "0.1.0",
+  "status": "PROPOSED",
+  "method": {
+    "basis": "owner_requested_model_assisted_context_proposal",
+    "public_inputs_only": true,
+    "consumer_corpus_used": false,
+    "seller_coverage_used": false,
+    "benchmark_positions_used": false,
+    "independent_model_consensus_run": false,
+    "independent_adjudication": false,
+    "read_as": "A proposed public context extension. It is not an independent LLMAJ or consensus result. The authoring agent had project context; only public BOCG definitions are derivation inputs.",
+    "future_elicitation": "Any new consensus claim uses a separately frozen unseeded protocol. These context labels are not examples inserted into the existing SPEC-01 prompt."
+  },
+  "semantics": {
+    "concept_type": "skos:Concept",
+    "hierarchy": "skos:broader",
+    "cross_axis_association": "skos:related",
+    "sources": "prov:wasDerivedFrom",
+    "standards": [
+      {
+        "id": "skos",
+        "url": "https://www.w3.org/TR/skos-reference/"
+      },
+      {
+        "id": "prov",
+        "url": "https://www.w3.org/TR/prov-o/"
+      }
+    ],
+    "context_is_coverage": false,
+    "placement_is_identity": false,
+    "parent_inherits_coverage": false,
+    "capabilities_are_mandatory": false,
+    "capabilities_are_ordered": false,
+    "missing_area_is_retired": false,
+    "capability_mapping_from_area_alone": false
+  },
+  "snapshots": [
+    {
+      "id": "generation_20260826",
+      "role": "historical_generation",
+      "path": "live-run-20260826/matrix.json",
+      "binding_note": "The 42-area generation used by the retained v0.6.2 public-eval overlay.",
+      "source_status": "PROVISIONAL"
+    },
+    {
+      "id": "generation_20261019",
+      "role": "current_generation",
+      "path": "live-run-20261019/matrix.json",
+      "binding_note": "The 25-area generation underlying the v0.7.0 operating catalogue.",
+      "source_status": "PROVISIONAL_LIMITED_PANEL"
+    }
+  ],
+  "domains": [
+    {
+      "reference_id": "domain:institutional_finance",
+      "code": "F",
+      "label": "Institutional finance and capital markets",
+      "definition": "The shared financial-work context of the public BOCG areas retained across taxonomy generations. Retail banking, household insurance and other unrepresented activities are not asserted to be exhaustively covered.",
+      "broader": null,
+      "status": "PROPOSED"
+    },
+    {
+      "reference_id": "domain:advisory_origination",
+      "code": "A",
+      "label": "Advisory and origination",
+      "definition": "Work that advises on, structures or originates corporate transactions and capital raising.",
+      "broader": "domain:institutional_finance",
+      "status": "PROPOSED"
+    },
+    {
+      "reference_id": "domain:investment_management",
+      "code": "I",
+      "label": "Investment management",
+      "definition": "Work that allocates, manages or executes institutional investment portfolios.",
+      "broader": "domain:institutional_finance",
+      "status": "PROPOSED"
+    },
+    {
+      "reference_id": "domain:markets_financing",
+      "code": "M",
+      "label": "Markets and financing",
+      "definition": "Work that trades, makes markets, structures market products or provides client financing.",
+      "broader": "domain:institutional_finance",
+      "status": "PROPOSED"
+    },
+    {
+      "reference_id": "domain:operations_servicing",
+      "code": "O",
+      "label": "Operations and servicing",
+      "definition": "Work that processes, clears, settles, safeguards or services transactions and assets.",
+      "broader": "domain:institutional_finance",
+      "status": "PROPOSED"
+    },
+    {
+      "reference_id": "domain:risk_control",
+      "code": "C",
+      "label": "Risk and control",
+      "definition": "Work that assesses exposure, values or verifies positions, manages controls or fulfils reporting and conduct obligations.",
+      "broader": "domain:institutional_finance",
+      "status": "PROPOSED"
+    }
+  ],
+  "capabilities": [
+    {
+      "reference_id": "capability:interpret",
+      "label": "Interpret",
+      "definition": "Read evidence, identify relevant facts and distinguish statements from conclusions.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:analyse",
+      "label": "Analyse",
+      "definition": "Compare alternatives, calculate or explain financial implications under stated assumptions.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:reconcile",
+      "label": "Reconcile",
+      "definition": "Compare records or representations and account for agreement, mismatch and unresolved differences.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:decide",
+      "label": "Decide",
+      "definition": "Choose or defer an action using evidence, constraints and authority.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:authorise",
+      "label": "Authorise",
+      "definition": "Determine or obtain the authority needed for an action; distinguish requests from approval.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:execute",
+      "label": "Execute",
+      "definition": "Carry out or specify an operational action and distinguish intention from execution.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:escalate",
+      "label": "Escalate",
+      "definition": "Route an exception or decision to the appropriate role with the relevant evidence and urgency.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:verify",
+      "label": "Verify",
+      "definition": "Inspect evidence for an asserted state or outcome while preserving uncertainty about completion.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:challenge_falsify",
+      "label": "Challenge / falsify",
+      "definition": "Seek or use counter-evidence to challenge a claim, proposed explanation or assumed success.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    }
+  ],
+  "area_placements": {
+    "capital_markets_origination_combined": {
+      "label": "capital markets origination combined",
+      "domains": [
+        "domain:advisory_origination"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "dcm_origination": {
+      "label": "dcm origination",
+      "domains": [
+        "domain:advisory_origination"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "ecm_origination": {
+      "label": "ecm origination",
+      "domains": [
+        "domain:advisory_origination"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "leveraged_finance_loan_capital_markets": {
+      "label": "leveraged finance loan capital markets",
+      "domains": [
+        "domain:advisory_origination"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "ma_advisory": {
+      "label": "ma advisory",
+      "domains": [
+        "domain:advisory_origination"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "municipal_public_finance": {
+      "label": "municipal public finance",
+      "domains": [
+        "domain:advisory_origination"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "global_banking_financing": {
+      "label": "global banking financing",
+      "domains": [
+        "domain:advisory_origination",
+        "domain:markets_financing"
+      ],
+      "basis": "The public combined label spans banking/origination and financing; both contextual parents remain proposed."
+    },
+    "global_financing_capital_markets": {
+      "label": "global financing capital markets",
+      "domains": [
+        "domain:advisory_origination",
+        "domain:markets_financing"
+      ],
+      "basis": "The public combined label spans banking/origination and financing; both contextual parents remain proposed."
+    },
+    "buyside_ldi_overlay": {
+      "label": "buyside ldi overlay",
+      "domains": [
+        "domain:investment_management"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "buyside_portfolio_management": {
+      "label": "buyside portfolio management",
+      "domains": [
+        "domain:investment_management"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "buyside_trading_execution": {
+      "label": "buyside trading execution",
+      "domains": [
+        "domain:investment_management"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "commodities_trading": {
+      "label": "commodities trading",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "credit_trading": {
+      "label": "credit trading",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "cross_asset_structuring": {
+      "label": "cross asset structuring",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "electronic_execution": {
+      "label": "electronic execution",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "em_trading": {
+      "label": "em trading",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "equities_trading": {
+      "label": "equities trading",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "equity_derivatives_structured": {
+      "label": "equity derivatives structured",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "ficc_combined": {
+      "label": "ficc combined",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "fx_trading": {
+      "label": "fx trading",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "institutional_sales_coverage": {
+      "label": "institutional sales coverage",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "macro_combined_rates_fx_em": {
+      "label": "macro combined rates fx em",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "prime_brokerage_financing": {
+      "label": "prime brokerage financing",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "rates_trading": {
+      "label": "rates trading",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "repo_secfin_collateral": {
+      "label": "repo secfin collateral",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "securitised_products": {
+      "label": "securitised products",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "sellside_research": {
+      "label": "sellside research",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "treasury_balance_sheet_funding": {
+      "label": "treasury balance sheet funding",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "fx_cross_asset_combined": {
+      "label": "fx cross asset combined",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "rates_fx_combined": {
+      "label": "rates fx combined",
+      "domains": [
+        "domain:markets_financing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "buyside_investment_operations": {
+      "label": "buyside investment operations",
+      "domains": [
+        "domain:operations_servicing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "client_lifecycle_kyc": {
+      "label": "client lifecycle kyc",
+      "domains": [
+        "domain:operations_servicing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "commodities_physical_operations": {
+      "label": "commodities physical operations",
+      "domains": [
+        "domain:operations_servicing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "custody_asset_servicing": {
+      "label": "custody asset servicing",
+      "domains": [
+        "domain:operations_servicing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "listed_derivatives_client_clearing": {
+      "label": "listed derivatives client clearing",
+      "domains": [
+        "domain:operations_servicing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "trade_lifecycle_operations": {
+      "label": "trade lifecycle operations",
+      "domains": [
+        "domain:operations_servicing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "clearing_settlement_custody": {
+      "label": "clearing settlement custody",
+      "domains": [
+        "domain:operations_servicing"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "buyside_investment_compliance": {
+      "label": "buyside investment compliance",
+      "domains": [
+        "domain:risk_control"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "buyside_performance_risk_reporting": {
+      "label": "buyside performance risk reporting",
+      "domains": [
+        "domain:risk_control"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "collateral_margin_management": {
+      "label": "collateral margin management",
+      "domains": [
+        "domain:risk_control"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "market_risk_management": {
+      "label": "market risk management",
+      "domains": [
+        "domain:risk_control"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "market_risk_valuation_control": {
+      "label": "market risk valuation control",
+      "domains": [
+        "domain:risk_control"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "model_risk_management": {
+      "label": "model risk management",
+      "domains": [
+        "domain:risk_control"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "product_control_ipv": {
+      "label": "product control ipv",
+      "domains": [
+        "domain:risk_control"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "regulatory_transaction_reporting": {
+      "label": "regulatory transaction reporting",
+      "domains": [
+        "domain:risk_control"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "trade_surveillance": {
+      "label": "trade surveillance",
+      "domains": [
+        "domain:risk_control"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "xva_counterparty_risk": {
+      "label": "xva counterparty risk",
+      "domains": [
+        "domain:risk_control"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    },
+    "regulatory_reporting_conduct_compliance": {
+      "label": "regulatory reporting conduct compliance",
+      "domains": [
+        "domain:risk_control"
+      ],
+      "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+    }
+  }
+}

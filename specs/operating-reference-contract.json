@@ -1,6 +1,14 @@
 {
   "schema": "bocg.operating-reference-contract/v1",
   "version": "1.0.0",
+  "optional_context": {
+    "catalogue_path": "reference/financial-work-context.v1.json",
+    "version": "0.1.0",
+    "status": "PROPOSED",
+    "placement_schema_path": "specs/financial-work-placement.schema.json",
+    "changes_reference_kinds": false,
+    "promotes_evidence": false
+  },
   "catalogue_path": "reference/operating-catalogue.v1.json",
   "register_schema_path": "specs/operating-unit-register.schema.json",
   "scope": {

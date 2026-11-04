@@ -29,6 +29,23 @@ The benchmark that sits in the seller's own cell is the **PB-Ops Eval**; it is d
 
 ## Current generation: v0.7.0
 
+### Financial-work context (proposed extension)
+
+[SPEC-10](specs/SPEC-10-financial-work-context.md) widens BOCG's reference model
+with a shared institutional-finance root, five proposed domains and nine
+optional capability descriptors. The [context catalogue](reference/financial-work-context.v1.json)
+retains all 48 distinct area keys across the historical 42-area and current
+25-area generations, including historical-only M&A. It preserves each source
+binding; absence from a later run never silently retires an area. The context
+is a model-assisted proposal over public definitions, not an independently
+elicited or adjudicated result. It contains no corpus or benchmark placement.
+Run `python3 tools/build_financial_work_context.py --resolve ma_advisory`
+to see the contextual parents and retained bindings. Contextual proximity does
+not establish comparable task difficulty or coverage. No tests or model calls
+are involved in building the context catalogue.
+
+### Taxonomy generation
+
 The [19 October run](live-run-20261019/README.md) uses current provider models,
 retains transport and quota failures, and links the frozen prompts, model lists,
 roles and seat-cost claims. Only two families meet the three-valid-sample rule;
