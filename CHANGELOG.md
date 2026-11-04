@@ -1,24 +1,42 @@
 # Release changes
 
-## v0.8.0 — 2026-11-04
+## Unreleased
 
-- Re-bind the ISDA control-point cells to the 2026-10-19 taxonomy, add gate S3-G5
-  ADMITTED_KEY_GATE and the `division_key_history` cell field (#43).
-- Corroboration ledger `live-run-20261019/corroboration.csv`: agent-verify the 31 A1
-  regulatory anchors of the six ISDA-adjacent areas against source (eCFR point-in-time
+- Corroboration ledger `live-run-20261019/corroboration.csv`: `claude-fable-5-1`
+  (agent) checked the 31 A1 regulatory anchors of the six ISDA-adjacent areas against source (eCFR point-in-time
   2026-10-29, EU Publications Office Cellar OJ texts, FINRA, BIS, Cornell LII for 7 U.S.C.
   § 2). 24 VERIFIED, 4 PARTIAL, 3 REFUTED (17 CFR 23.494 does not exist; 17 CFR 1.33 does
   not govern swap dealer registration; MiFIR Art. 27 is reference data, not best
-  execution). Summary and grid rebuilt; G6 still fails because A2–A4 remain UNVERIFIED (#45).
+  execution). A subsequent OpenAI GPT-6 Astra Pro agent check against primary
+  sources refuted nine additional occurrences of these incorrect citations and
+  corrected two PARTIAL EMIR Article 39 notes without upgrading their status.
+  Ledger totals: 24 VERIFIED, 4 PARTIAL, 12 REFUTED, 251 UNVERIFIED. Summary and
+  grid rebuilt; no division is fully corroborated and G6 still fails (#45).
+  The generation gate suite was executed on 2026-11-04; the report records
+  G1–G5/G7–G9 PASS and G6/G10 FAIL after the companion G9 repair carries the
+  recorded eligibility policy into replay and checks both matrix artifacts.
+  These changes do not declare a tagged release.
+- Repair provenance validation: resolve historical overlays and scenario pins
+  through verified offline snapshots of the published v0.6.2 and v0.6.3
+  manifests. Check historical denominators and every identifier against the
+  pinned release; reject control-point paint, malformed manifests, unknown
+  pins and altered artifacts. Preserve the existing 42/1/41 overlay unchanged.
+- Validate each cell history key against its named taxonomy matrix. Record the
+  original `post_trade_settlement` binding explicitly as UNADMITTED; it was an
+  erroneous historical binding, not a division retired by regeneration.
+- Fix G9 replay to carry the frozen exclusions policy and verify both matrix
+  CSV and JSON. The October matrix reproduces exactly; generation evidence,
+  model eligibility and admission outcomes are unchanged.
 - Add PROPOSED cell `cp_isda_curve_input_completeness` under `market_risk_management`:
   the ISDA standard curve set required by a scheduled risk batch is complete and
   sourced before the batch runs (ISDA CDS Standard Model; Basel Framework MAR31;
   BCBS d457). Gives the FinExhaust ISDA curve replay a published cell to pin
   (#44).
 - Re-bind control-point cells to the 2026-10-19 taxonomy (`live-run-20261019`):
-  - Twelve cells named division keys retired by the regeneration
+  - Eleven cells named division keys absent from the regenerated matrix
     (`collateral_margin_management`, `regulatory_transaction_reporting`,
-    `client_lifecycle_kyc`, `post_trade_settlement`). Each is re-bound to the nearest
+    `client_lifecycle_kyc`); a twelfth carried the previously unadmitted
+    `post_trade_settlement` binding. Each is re-bound to the nearest
     admitted key and keeps its prior binding in a new optional
     `division_key_history` field (key, run, date, reason).
   - Add SPEC-03 invariant S3-I7 ADMITTED_KEY_BOUND and gate S3-G5: a non-RETIRED

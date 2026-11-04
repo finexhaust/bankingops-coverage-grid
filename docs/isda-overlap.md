@@ -199,12 +199,18 @@ cells were bound to are not admitted by it. On 2026-11-03 the cells were re-boun
 the nearest admitted key and the prior binding recorded in each cell's
 `division_key_history`; gate S3-G5 now fails any cell bound to a non-admitted key.
 
-| Retired key (2026-08-26) | Re-bound to (2026-10-19) | Cells |
+| Previous cell binding | Re-bound to (2026-10-19) | Cells |
 |---|---|---|
 | `collateral_margin_management` | `repo_secfin_collateral` | AANA/UMR scope, CSA VM timeline, SIMM IM dispute, SIMM IM reconciliation, UMR IM segregation |
 | `regulatory_transaction_reporting` | `regulatory_reporting_conduct_compliance` | CFTC Part 43, EMIR Refit UTI pairing, UTI/UPI reporting, MiFIR Art 26 T+1, reporting error remediation |
 | `client_lifecycle_kyc` | `trade_lifecycle_operations` | derivatives documentation execution |
 | `post_trade_settlement` | `clearing_settlement_custody` | settled instruction amendment |
+
+The first three previous keys occur in the August matrix. The fourth,
+`post_trade_settlement`, was never admitted there: it was an erroneous cell
+binding. Its history now records `admission_status: UNADMITTED` explicitly.
+S3-G5 checks each historical membership claim against its named matrix; this
+correction preserves the original error without treating it as an admitted key.
 
 Two consequences for the ISDA overlap:
 
@@ -219,10 +225,14 @@ Two consequences for the ISDA overlap:
   SPEC-01, not an author's assertion.
 
 G6 remains unsatisfied for both runs, so every statement in this note is
-structural, not corroborated consensus. On 2026-11-04 the 31 A1 regulatory anchors
-of the six ISDA-adjacent `live-run-20261019` keys were agent-verified against
-source (24 VERIFIED, 4 PARTIAL, 3 REFUTED; see `live-run-20261019/README.md`).
-A2 to A4 anchors and the 2026-08-26 run remain UNVERIFIED.
+structural, not corroborated consensus. On 2026-11-04 `claude-fable-5-1` (agent)
+checked 31 A1 regulatory anchors of the six ISDA-adjacent `live-run-20261019`
+keys against source: 24 VERIFIED, 4 PARTIAL, 3 REFUTED. A subsequent OpenAI
+GPT-6 Astra Pro agent check refuted nine additional occurrences of the same
+incorrect citations, giving 24 VERIFIED, 4 PARTIAL, 12 REFUTED and 251
+UNVERIFIED rows overall. Two EMIR Article 39 notes were corrected; both remain
+PARTIAL. See the [follow-up record](corroboration-follow-up-2026-11-04.md).
+All A2 to A4 anchors and the 2026-08-26 run remain UNVERIFIED.
 
 ## Cell added 2026-11-03
 

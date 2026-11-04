@@ -43,7 +43,10 @@ S3-I7 ADMITTED_KEY_BOUND      a cell's division_key MUST be a key admitted by th
                               named in reference/taxonomy-source.json. When a regeneration
                               retires a key, the cell is re-bound to the nearest admitted key
                               and the prior binding is kept in division_key_history (key,
-                              run, date, reason). RETIRED cells are exempt. Enforced by S3-G5.
+                              run, date, reason). A mistaken former binding is explicitly
+                              UNADMITTED, with a correction note; it never becomes an admitted
+                              reference. RETIRED cells are exempt from current-key admission.
+                              Enforced by S3-G5.
 ```
 
 ## 2. CELL SCHEMA
@@ -63,5 +66,10 @@ S3-G4 CONFORMANCE_GATE  CONFORMANCE.md parses; every row EVIDENCED/PARTIAL/NOT M
                         removed relative to the committed baseline row count.
 S3-G5 ADMITTED_KEY_GATE every non-RETIRED cell's division_key appears in the matrix.csv of the
                         run named by reference/taxonomy-source.json; every division_key_history
-                        entry names an existing run directory and differs from the current key.
+                        entry names a repository-local live-run-YYYYMMDD directory, its key
+                        differs from the current key, and its admission_status agrees with
+                        that run's well-formed matrix.csv: ADMITTED (the default) requires
+                        membership; UNADMITTED requires absence and records an explained
+                        correction of an erroneous former binding. Missing/malformed evidence and unavailable schema
+                        validation fail closed; paths must remain within the repository.
 ```

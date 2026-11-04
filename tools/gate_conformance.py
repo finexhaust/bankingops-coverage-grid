@@ -2,6 +2,7 @@
 """SPEC-03 runnable gates: S3-G1..G4. Exit non-zero on any failure."""
 from __future__ import annotations
 
+import csv
 import json
 import re
 import sys
@@ -19,37 +20,88 @@ def fail(msg: str) -> None:
     FAILURES.append(msg)
 
 
-def _admitted_division_keys() -> tuple[set[str] | None, str]:
-    """S3-G5: the division keys admitted by the taxonomy run the catalogue is built from."""
-    source_path = ROOT / "reference/taxonomy-source.json"
-    try:
-        run_dir = json.loads(source_path.read_text()).get("run_dir", "")
-        rows = (ROOT / run_dir / "matrix.csv").read_text(encoding="utf-8").splitlines()
-    except (OSError, ValueError):
-        fail("S3-G5 taxonomy source or its matrix.csv is unreadable")
+def _admitted_division_keys(
+    run_dir: str | None = None, *, context: str = "taxonomy source"
+) -> tuple[set[str] | None, str]:
+    """S3-G5: read admitted keys from the named, repository-local taxonomy run."""
+    if run_dir is None:
+        try:
+            source = json.loads((ROOT / "reference/taxonomy-source.json").read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            fail(f"S3-G5 {context}: taxonomy source is unreadable ({exc})")
+            return None, ""
+        if not isinstance(source, dict):
+            fail(f"S3-G5 {context}: taxonomy source must be a JSON object")
+            return None, ""
+        run_dir = source.get("run_dir")
+    if not isinstance(run_dir, str) or not re.fullmatch(r"live-run-[0-9]{8}", run_dir):
+        fail(f"S3-G5 {context}: taxonomy run must be a repository-local live-run-YYYYMMDD directory")
         return None, ""
-    keys = {line.split(",", 1)[0].strip() for line in rows[1:] if line.strip()}
+    try:
+        root = ROOT.resolve(strict=True)
+        run = (ROOT / run_dir).resolve(strict=True)
+        if not run.is_relative_to(root):
+            raise ValueError("taxonomy run resolves outside the repository")
+        if not run.is_dir():
+            raise ValueError("unknown taxonomy run directory")
+        matrix_path = (run / "matrix.csv").resolve(strict=True)
+        if not matrix_path.is_relative_to(run):
+            raise ValueError("matrix.csv resolves outside its taxonomy run")
+        with matrix_path.open(encoding="utf-8", newline="") as handle:
+            rows = csv.DictReader(handle, strict=True)
+            fields = rows.fieldnames or []
+            if len(fields) != len(set(fields)) or not {"division_key", "model_support", "tier"} <= set(fields):
+                raise ValueError("matrix.csv has missing or duplicate header fields")
+            keys: set[str] = set()
+            for index, row in enumerate(rows, 2):
+                if None in row or any(value is None for value in row.values()):
+                    raise ValueError(f"matrix.csv row {index} has the wrong number of fields")
+                key = row["division_key"]
+                if not re.fullmatch(r"[a-z0-9_]+", key) or key in keys:
+                    raise ValueError(f"matrix.csv row {index} has an invalid or duplicate division_key")
+                if not row["model_support"].isdigit() or row["tier"] not in {"WEAK", "MODERATE", "STRONG"}:
+                    raise ValueError(f"matrix.csv row {index} has invalid admission metadata")
+                keys.add(key)
+        if not keys:
+            raise ValueError("matrix.csv contains no admitted division keys")
+    except FileNotFoundError as exc:
+        fail(f"S3-G5 {context}: unknown taxonomy run or missing matrix.csv ({exc})")
+        return None, ""
+    except (OSError, ValueError, csv.Error, RuntimeError) as exc:
+        fail(f"S3-G5 {context}: taxonomy run or matrix.csv is invalid ({exc})")
+        return None, ""
     return keys, run_dir
 
 
 def gate_cells() -> None:
     """S3-G1 citations, S3-G2 consequence anchors, schema validity, S3-G5 admitted keys."""
-    schema = json.loads((ROOT / "specs/control-point-cell.schema.json").read_text())
     try:
         import jsonschema
-        validator = jsonschema.Draft202012Validator(schema)
     except ImportError:
-        validator = None
+        fail("S3-G1 jsonschema is required to validate control-point cells")
+        return
+    try:
+        schema = json.loads((ROOT / "specs/control-point-cell.schema.json").read_text(encoding="utf-8"))
+        jsonschema.Draft202012Validator.check_schema(schema)
+        validator = jsonschema.Draft202012Validator(schema, format_checker=jsonschema.FormatChecker())
+    except (OSError, ValueError, jsonschema.exceptions.SchemaError) as exc:
+        fail(f"S3-G1 control-point schema is unreadable or invalid ({str(exc)[:120]})")
+        return
     admitted, run_dir = _admitted_division_keys()
     for path in sorted((ROOT / "cells").glob("*.json")):
         try:
-            cell = json.loads(path.read_text())
-        except json.JSONDecodeError as exc:
-            fail(f"S3-G1 {path.name}: invalid JSON ({exc})")
+            cell = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            fail(f"S3-G1 {path.name}: unreadable or invalid JSON ({exc})")
             continue
-        if validator:
-            for err in validator.iter_errors(cell):
-                fail(f"S3-G1 {path.name}: schema: {err.message[:120]}")
+        if not isinstance(cell, dict):
+            fail(f"S3-G1 {path.name}: cell must be a JSON object")
+            continue
+        schema_errors = list(validator.iter_errors(cell))
+        for err in schema_errors:
+            fail(f"S3-G1 {path.name}: schema: {err.message[:120]}")
+        if schema_errors:
+            continue
         for i, cit in enumerate(cell.get("citations") or []):
             if not str(cit.get("url", "")).startswith("http"):
                 fail(f"S3-G1 {path.name}: citation {i} has no URL")
@@ -63,10 +115,24 @@ def gate_cells() -> None:
             if admitted is not None and key not in admitted:
                 fail(f"S3-G5 {path.name}: division_key {key!r} is not admitted in {run_dir}")
         for i, hist in enumerate(cell.get("division_key_history") or []):
-            if not (ROOT / str(hist.get("taxonomy_run", ""))).is_dir():
-                fail(f"S3-G5 {path.name}: history {i} names unknown taxonomy run")
             if hist.get("division_key") == cell.get("division_key"):
                 fail(f"S3-G5 {path.name}: history {i} repeats the current division_key")
+            historical, history_run = _admitted_division_keys(
+                hist["taxonomy_run"], context=f"{path.name}: history {i}"
+            )
+            if historical is not None:
+                was_admitted = hist["division_key"] in historical
+                claimed_admitted = hist.get("admission_status", "ADMITTED") == "ADMITTED"
+                if claimed_admitted and not was_admitted:
+                    fail(
+                        f"S3-G5 {path.name}: history {i} division_key {hist['division_key']!r} "
+                        f"is not admitted in {history_run}"
+                    )
+                elif not claimed_admitted and was_admitted:
+                    fail(
+                        f"S3-G5 {path.name}: history {i} claims UNADMITTED but division_key "
+                        f"{hist['division_key']!r} is admitted in {history_run}"
+                    )
 
 
 def gate_deny() -> None:
@@ -308,54 +374,59 @@ def gate_insight_construction() -> None:
 
 def gate_compliance_scenarios() -> None:
     """S7: replayable compliance scenarios are schema-valid, pinned and lifecycle-safe."""
+    try:
+        import jsonschema
+        from release_snapshots import (
+            ReleaseSnapshotError, load_release_artifact, load_release_manifest,
+            read_json_object, required_format_checker, validate_manifest,
+        )
+    except ImportError as exc:
+        fail(f"S7-G1 required validation dependency is unavailable: {exc}")
+        return
     schema_path = ROOT / "specs/compliance-scenario.schema.json"
     fixture_path = ROOT / "specs/fixtures/compliance-scenario-synthetic.json"
     manifest_path = ROOT / "bocg-release-manifest.json"
     try:
-        schema = json.loads(schema_path.read_text())
-        fixture = json.loads(fixture_path.read_text())
-    except (OSError, json.JSONDecodeError) as exc:
+        schema = read_json_object(schema_path)
+        fixture = read_json_object(fixture_path)
+        format_checker = required_format_checker()
+    except (OSError, UnicodeError, ValueError) as exc:
         fail(f"S7-G1 compliance-scenario artifacts unreadable: {exc}")
         return
-    # Release manifests are GitHub Release assets and may be absent from source checkouts.
-    manifest = None
-    if manifest_path.is_file():
-        try:
-            manifest = json.loads(manifest_path.read_text())
-        except (OSError, json.JSONDecodeError) as exc:
-            fail(f"S7-G1 release manifest is unreadable: {exc}")
-            return
-    try:
-        import jsonschema
-        validator = jsonschema.Draft202012Validator(schema)
-    except ImportError:
-        validator = None
-    if validator:
-        for err in validator.iter_errors(fixture):
+    errors = list(jsonschema.Draft202012Validator(
+        schema, format_checker=format_checker
+    ).iter_errors(fixture))
+    if errors:
+        for err in errors:
             fail(f"S7-G1 fixture schema: {err.message[:120]}")
-    pinned_sha256 = fixture.get("manifest_sha256")
-    # The manifest's self-digest (manifest_sha256) is the authoritative release
-    # pin. The fixture may pin the current manifest or any prior released manifest.
-    allowed = {manifest.get("manifest_sha256")} if manifest else set()
-    import subprocess
-    for depth in range(1, 10):
-        result = subprocess.run(
-            ["git", "show", f"HEAD~{depth}:bocg-release-manifest.json"],
-            cwd=ROOT, capture_output=True,
-        )
-        if result.returncode != 0:
-            break
+        return
+    # An absent embedded manifest is normal in a source checkout. A present
+    # malformed manifest is never absence, and a pin must always resolve to a
+    # verified snapshot (or an explicitly digest-pinned local manifest).
+    if manifest_path.exists():
         try:
-            prior_manifest = json.loads(result.stdout)
-        except json.JSONDecodeError:
-            continue
-        allowed.add(prior_manifest.get("manifest_sha256"))
-    if allowed and pinned_sha256 not in allowed:
-        fail("S7-G2 fixture manifest pin is not the current or a released manifest")
-    cell_id = fixture.get("cell_id")
-    cell_path = ROOT / "cells" / f"{cell_id}.json"
-    if not cell_path.is_file():
-        fail(f"S7-G2 referenced cell {cell_id} is not published")
+            validate_manifest(read_json_object(manifest_path), root=ROOT)
+        except (OSError, UnicodeError, ValueError) as exc:
+            fail(f"S7-G5 local release manifest is invalid: {exc}")
+            return
+    pinned_sha256 = fixture["manifest_sha256"]
+    try:
+        load_release_manifest(ROOT, manifest_sha256=pinned_sha256)
+        cell_id = fixture["cell_id"]
+        cell = json.loads(load_release_artifact(
+            ROOT, f"cells/{cell_id}.json", manifest_sha256=pinned_sha256
+        ))
+        if not isinstance(cell, dict) or cell.get("cell_id") != cell_id:
+            raise ReleaseSnapshotError("referenced cell identity differs from its release artifact")
+        catalogue = json.loads(load_release_artifact(
+            ROOT, "reference/operating-catalogue.v1.json", manifest_sha256=pinned_sha256
+        ))
+        if not any(d.get("kind") == "task" and d.get("reference_id") == fixture["task_ref"]
+                   for d in catalogue.get("definitions", [])):
+            raise ReleaseSnapshotError("task_ref is not a task in the pinned release")
+    except (ReleaseSnapshotError, ValueError, TypeError, AttributeError) as exc:
+        fail(f"S7-G2 scenario release binding is invalid: {exc}")
+        return
     expected = fixture.get("expected_verdict") or {}
     if expected.get("directive_may_satisfy_execution") is not False:
         fail("S7-G3 expected_verdict must fail closed: directive never satisfies execution")
@@ -365,16 +436,6 @@ def gate_compliance_scenarios() -> None:
     controls = set((fixture.get("controls") or {}).get("five_families_checks") or [])
     if not {"NEGATIVE_CONTROL", "EVIDENCE_ABLATION"} <= controls:
         fail("S7-G4 controls must include NEGATIVE_CONTROL and EVIDENCE_ABLATION")
-    try:
-        import jsonschema
-        manifest_schema = json.loads((ROOT / "specs/bocg-release-manifest.schema.json").read_text())
-        if manifest is not None:
-            for error in jsonschema.Draft202012Validator(
-                manifest_schema, format_checker=jsonschema.FormatChecker()
-            ).iter_errors(manifest):
-                fail(f"S7-G5 pinned manifest is not schema-valid: {error.message[:120]}")
-    except ImportError:
-        pass
 
 
 def gate_scenario_run_ledger() -> None:
