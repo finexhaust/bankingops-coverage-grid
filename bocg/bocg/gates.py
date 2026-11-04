@@ -5,6 +5,7 @@ derived files, so a silently edited artifact is caught.
 """
 from __future__ import annotations
 
+import json
 import tempfile
 from pathlib import Path
 from typing import Callable
@@ -14,7 +15,7 @@ from .corroborate import _check_columns, validate_ledger
 from .matrix import build_matrix
 from .prompt import find_forbidden, find_self_assessment, load_frozen
 from .run import Panel, load_runs, run_panel
-from .util import BocgError, Workspace, read_csv, read_json, sha256_file, sha256_text, utc_now_iso, write_json
+from .util import BocgError, Workspace, read_csv, read_json, sha256_bytes, sha256_file, sha256_text, utc_now_iso, write_json
 from .validate import admission, assess, order_check, parse_json
 
 GateResult = dict
@@ -278,12 +279,45 @@ def g8_self_assess(ws: Workspace) -> GateResult:
 
 
 def g9_repro(ws: Workspace) -> GateResult:
-    if not ws.matrix_csv.exists() or not ws.run_meta.exists():
-        return _res("G9", "REPRO_GATE", False, {"error": "matrix.csv or run_meta.json missing"})
+    if not ws.matrix_csv.exists() or not ws.matrix_json.exists() or not ws.run_meta.exists():
+        return _res("G9", "REPRO_GATE", False, {"error": "matrix.csv, matrix.json or run_meta.json missing"})
     meta = read_json(ws.run_meta)
     fixtures = Path(meta["fixtures_dir"]) if meta.get("fixtures_dir") else ws.runs_dir(meta["prompt_sha8"])
     if not fixtures.is_dir():
         return _res("G9", "REPRO_GATE", False, {"error": f"replay source missing: {fixtures}"})
+    exclusions_bytes = None
+    consensus_policy = None
+    exclusions_path = ws.root / "exclusions.json"
+    try:
+        original_matrix = read_json(ws.matrix_json)
+        if not isinstance(original_matrix, dict):
+            raise ValueError("matrix.json must be a JSON object")
+        if exclusions_path.exists():
+            exclusions_bytes = exclusions_path.read_bytes()
+            exclusions = json.loads(exclusions_bytes)
+            if not isinstance(exclusions, dict) or exclusions.get("prompt_sha8") != meta["prompt_sha8"]:
+                raise ValueError("exclusions.json must be an object bound to this run's prompt_sha8")
+            consensus_policy = exclusions.get("consensus_policy")
+            if consensus_policy not in (None, "eligible-models/v1"):
+                raise ValueError("exclusions.json has an unsupported consensus_policy")
+            rows = exclusions.get("excluded")
+            if not isinstance(rows, list):
+                raise ValueError("exclusions.json excluded must be an array")
+            known_models = {record["model_id"] for record in load_runs(ws)}
+            excluded_models = set()
+            for row in rows:
+                if not isinstance(row, dict):
+                    raise ValueError("exclusions.json entries must be objects")
+                model = row.get("model_id")
+                if not isinstance(model, str) or model not in known_models or model in excluded_models:
+                    raise ValueError("exclusions.json names an unknown or duplicate model")
+                if not isinstance(row.get("reason"), str) or not row["reason"].strip():
+                    raise ValueError("exclusions.json requires a reason for each excluded model")
+                excluded_models.add(model)
+        if original_matrix.get("consensus_policy") != consensus_policy:
+            raise ValueError("exclusions.json consensus policy differs from the recorded matrix")
+    except (OSError, ValueError, BocgError) as exc:
+        return _res("G9", "REPRO_GATE", False, {"error": f"replay policy invalid: {exc}"})
     from .matrix import write_matrix
     from .normalise import normalise_runs
     panel_d = meta["panel"]
@@ -295,13 +329,23 @@ def g9_repro(ws: Workspace) -> GateResult:
         tws = Workspace(td)
         quiet = lambda *a, **k: None  # noqa: E731
         run_panel(tws, panel, fixtures_dir=fixtures, echo=quiet)
+        if exclusions_bytes is not None:
+            # Replay the frozen policy byte-for-byte, including legacy policy absence.
+            # Never add or modify exclusions in the source workspace to obtain a pass.
+            (tws.root / "exclusions.json").write_bytes(exclusions_bytes)
         normalise_runs(tws, aliases_path=ws.aliases_yaml, echo=quiet)
-        write_matrix(tws, echo=quiet)
+        replay_matrix = write_matrix(tws, echo=quiet)
         replay = tws.matrix_csv.read_bytes()
     original = ws.matrix_csv.read_bytes()
-    ok = replay == original
-    return _res("G9", "REPRO_GATE", ok, {"replay_source": str(fixtures), "matrix_sha256_original": sha256_text(original.decode()),
-                                         "matrix_sha256_replay": sha256_text(replay.decode()), "byte_identical": ok})
+    byte_identical = replay == original
+    matrix_json_matches = replay_matrix == original_matrix
+    return _res("G9", "REPRO_GATE", byte_identical and matrix_json_matches, {
+        "replay_source": str(fixtures), "consensus_policy": consensus_policy,
+        "exclusions_sha256": sha256_bytes(exclusions_bytes) if exclusions_bytes is not None else None,
+        "matrix_sha256_original": sha256_text(original.decode()),
+        "matrix_sha256_replay": sha256_text(replay.decode()), "byte_identical": byte_identical,
+        "matrix_json_matches": matrix_json_matches,
+    })
 
 
 def g10_panel(ws: Workspace) -> GateResult:

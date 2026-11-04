@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "BankingOps Coverage Grid (BOCG): model-consensus taxonomy elicitation pipeline (SPEC-01)"
 requires-python = ">=3.11"
 dependencies = [
-    "jsonschema>=4.17",
+    "jsonschema[format-nongpl]>=4.17",
     "pyyaml>=6.0",
     "click>=8.1",
     "httpx>=0.24",

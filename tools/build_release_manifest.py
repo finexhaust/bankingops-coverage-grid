@@ -15,6 +15,8 @@ REPOSITORY = "thefazzer/bankingops-coverage-grid"
 SCHEMA_ID = "bankingops-coverage-grid.release-manifest.v1"
 SEMANTIC_PROFILE = Path("specs/common-semantic-profile.yaml")
 STATIC_ARTIFACTS = {
+    "tools/release_snapshots.py": "release-snapshot-verifier",
+    "reference/release-snapshots/README.md": "release-snapshot-provenance",
     "specs/SPEC-10-financial-work-context.md": "proposed-context-specification",
     "specs/financial-work-context.schema.json": "json-schema",
     "specs/financial-work-placement.schema.json": "json-schema",
@@ -152,6 +154,9 @@ def build_manifest(
         raise ValueError("task concepts are stale")
 
     artifact_roles = dict(STATIC_ARTIFACTS)
+    from release_snapshots import verified_archive_paths
+    for relative in verified_archive_paths(root):
+        artifact_roles[relative] = "historical-release-evidence"
     from build_financial_work_context import build_context, OUTPUT as CONTEXT_PATH
     context = build_context(root)
     if json.loads((root / CONTEXT_PATH).read_text()) != context:
