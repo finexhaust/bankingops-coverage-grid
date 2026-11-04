@@ -5,7 +5,7 @@ consensus (rather than from one person's assertion), and a toolkit that makes pr
 derived corpus machine-verifiable by a party who never sees the source material.
 
 `live-run-20261019/` is the current regeneration: 25 business areas from two eligible model families, with every attempt retained. The four-vendor requirement is not met; this release is provisional. The earlier five-vendor run remains in `live-run-20260826/`.
-It is **provisional** — the anchor-corroboration gate has not been satisfied. See that folder's README.
+It is **provisional** — the anchor-corroboration gate has not been satisfied. On 2026-11-04, `claude-fable-5-1` (agent) checked 31 regulatory (A1) anchors for the six ISDA-adjacent areas: 24 VERIFIED, 4 PARTIAL, 3 REFUTED. A subsequent OpenAI GPT-6 Astra Pro agent source check refuted nine further occurrences of the same incorrect citations. The ledger now contains 24 VERIFIED, 4 PARTIAL, 12 REFUTED and 251 UNVERIFIED rows; no division is fully corroborated. See the [corroboration follow-up](docs/corroboration-follow-up-2026-11-04.md).
 
 The grid is a model-consensus prior, not a validated map. `docs/downstream-evidence.md` records how its division keys
 have been exercised by a preregistered downstream evaluation lane; those results are calibration evidence from a private
@@ -16,7 +16,7 @@ does not claim validated consensus.
 
 | Artifact | Spec | Package | CLI | Tests |
 |---|---|---|---|---|
-| **BankingOps Coverage Grid (BOCG)** — model-consensus taxonomy of capital-markets operational divisions, anchored + corroborated, with runnable gates | `specs/SPEC-01-coverage-grid-elicitation.md` | `bocg/` | `bocg` | 93 passing |
+| **BankingOps Coverage Grid (BOCG)** — model-consensus taxonomy of capital-markets operational divisions, with an anchor ledger and runnable corroboration gates | `specs/SPEC-01-coverage-grid-elicitation.md` | `bocg/` | `bocg` | 237 passing |
 | **Lineage Attestation Toolkit (LAT)** — span commitments, per-atom lineage classes, salted canaries, sealed holdout, buyer/examiner verification, runnable gates | `specs/SPEC-02-lineage-attestation.md` | `lat/` | `lat` | 70 passing |
 | **Common semantic profile** — standards-backed meanings for existing division, function, control-point, evidence and coverage fields; explicitly stops above institution workflow | `specs/SPEC-04-common-semantic-profile.md` | `specs/common-semantic-profile.yaml` | `python3 tools/gate_conformance.py` | conformance gate |
 | **Insight-construction profile** — portable Atom, Trace, Episode, institutional speech-act and adjudication definitions; definitions only, never institution instances | `specs/SPEC-05-insight-construction.md` | `specs/insight-construction-profile.yaml` | `python3 tools/gate_conformance.py` | lifecycle + rubric gates |
@@ -49,12 +49,17 @@ are involved in building the context catalogue.
 The [19 October run](live-run-20261019/README.md) uses current provider models,
 retains transport and quota failures, and links the frozen prompts, model lists,
 roles and seat-cost claims. Only two families meet the three-valid-sample rule;
-G10 is not met. All external anchors and seat claims remain unverified (G6).
+G10 is not met. G6 is not met: the current ledger has 24 A1 anchors VERIFIED,
+4 PARTIAL and 12 REFUTED. The other 101 A1 anchors, all 89 A2 filings, all 36 A3
+market-size claims and all 25 A4 seat claims remain UNVERIFIED.
 Aliases and task concepts have no human review. Public-eval overlays retain
 historical catalogue bindings and do not describe this new release's coverage.
-No tests or gate suites were run for this regeneration. The authoritative
-content-addressed manifest is the GitHub release asset; an embedded manifest
-cannot name its own future commit.
+The generation gates were executed on 2026-11-04: G1–G5 and G7–G9 passed;
+G6 and G10 failed. G9 now carries the recorded eligibility policy into replay
+and reproduces both matrix artifacts. The [report](live-run-20261019/gates_report.json)
+contains the executed evidence; passing software checks do not satisfy the
+remaining generation gates. The authoritative content-addressed manifest is
+the GitHub release asset; an embedded manifest cannot name its own future commit.
 
 ## Operating reference contract — v0.4.0
 

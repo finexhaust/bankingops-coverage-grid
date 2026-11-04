@@ -2,74 +2,349 @@
   "all_pass": false,
   "gates": [
     {
+      "evidence": {
+        "forbidden_hits_prompt": [],
+        "forbidden_hits_system": [],
+        "prompt_sha256_actual": "efd90b74d2fcab8c65ae39a245d93ef837376b8b7f3b7fc8a51ad3f5f48b149f",
+        "prompt_sha256_published": "efd90b74d2fcab8c65ae39a245d93ef837376b8b7f3b7fc8a51ad3f5f48b149f",
+        "runs_checked": 18,
+        "runs_with_other_prompt_sha": []
+      },
       "id": "G1",
-      "status": "NOT_RUN",
-      "evidence": {
-        "basis": "Gate suite not run, as requested; production response normalization and admission were applied."
-      }
+      "name": "CONTAMINATION_GATE",
+      "status": "PASS"
     },
     {
+      "evidence": {
+        "invalid_marked": 6,
+        "invalid_unmarked": [],
+        "responses": 18,
+        "schema_valid": 12,
+        "sha256_mismatch": []
+      },
       "id": "G2",
-      "status": "NOT_RUN",
-      "evidence": {
-        "basis": "Gate suite not run, as requested; production response normalization and admission were applied."
-      }
+      "name": "SCHEMA_GATE",
+      "status": "PASS"
     },
     {
+      "evidence": {
+        "normalised_present": true,
+        "responses_checked": 12,
+        "violations": []
+      },
       "id": "G3",
-      "status": "NOT_RUN",
-      "evidence": {
-        "basis": "Gate suite not run, as requested; production response normalization and admission were applied."
-      }
+      "name": "ORDER_GATE",
+      "status": "PASS"
     },
     {
+      "evidence": {
+        "responses_checked": 12,
+        "violations": []
+      },
       "id": "G4",
-      "status": "NOT_RUN",
-      "evidence": {
-        "basis": "Gate suite not run, as requested; production response normalization and admission were applied."
-      }
+      "name": "REJECTION_GATE",
+      "status": "PASS"
     },
     {
+      "evidence": {
+        "arith_mismatch": [],
+        "divisions_recomputed": 134,
+        "self_placement_overridden": [],
+        "stale": [],
+        "threshold_usd": 200000.0
+      },
       "id": "G5",
-      "status": "NOT_RUN",
-      "evidence": {
-        "basis": "Gate suite not run, as requested; production response normalization and admission were applied."
-      }
+      "name": "ADMISSION_GATE",
+      "status": "PASS"
     },
     {
+      "evidence": {
+        "admitted_divisions": 25,
+        "failing": {
+          "buyside_portfolio_management": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 17,
+            "verified_types": 0
+          },
+          "buyside_trading_execution": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 3,
+            "verified_types": 0
+          },
+          "clearing_settlement_custody": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 2,
+            "verified_types": 1
+          },
+          "commodities_trading": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 22,
+            "verified_types": 0
+          },
+          "credit_trading": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 14,
+            "verified_types": 1
+          },
+          "dcm_origination": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 7,
+            "verified_types": 0
+          },
+          "ecm_origination": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 6,
+            "verified_types": 0
+          },
+          "em_trading": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 9,
+            "verified_types": 0
+          },
+          "equities_trading": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 20,
+            "verified_types": 0
+          },
+          "equity_derivatives_structured": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 18,
+            "verified_types": 0
+          },
+          "fx_cross_asset_combined": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 5,
+            "verified_types": 0
+          },
+          "fx_trading": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 19,
+            "verified_types": 0
+          },
+          "global_banking_financing": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 3,
+            "verified_types": 0
+          },
+          "global_financing_capital_markets": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 4,
+            "verified_types": 0
+          },
+          "leveraged_finance_loan_capital_markets": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 7,
+            "verified_types": 0
+          },
+          "listed_derivatives_client_clearing": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 4,
+            "verified_types": 1
+          },
+          "market_risk_management": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 9,
+            "verified_types": 0
+          },
+          "prime_brokerage_financing": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 21,
+            "verified_types": 0
+          },
+          "rates_fx_combined": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 4,
+            "verified_types": 0
+          },
+          "rates_trading": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 22,
+            "verified_types": 0
+          },
+          "regulatory_reporting_conduct_compliance": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 3,
+            "verified_types": 1
+          },
+          "repo_secfin_collateral": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 5,
+            "verified_types": 1
+          },
+          "securitised_products": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 20,
+            "verified_types": 0
+          },
+          "sellside_research": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 5,
+            "verified_types": 0
+          },
+          "trade_lifecycle_operations": {
+            "a4_status": "UNVERIFIED",
+            "missing_rows": [],
+            "unverified_count": 2,
+            "verified_types": 1
+          }
+        },
+        "ledger_problems": [],
+        "ledger_rows": 291,
+        "rejected_post_corroboration": []
+      },
       "id": "G6",
-      "status": "FAIL",
-      "evidence": {
-        "basis": "All corroboration rows are UNVERIFIED"
-      }
+      "name": "CORROBORATION_GATE",
+      "status": "FAIL"
     },
     {
+      "evidence": {
+        "alias_entries": 62,
+        "aliases_sha256_actual": "442985978ad8d1b76c1a69c241e6797ec81ccba463e7ff6b753535aeeb408398",
+        "aliases_sha256_published": "442985978ad8d1b76c1a69c241e6797ec81ccba463e7ff6b753535aeeb408398",
+        "auto_generated": true,
+        "keys_without_alias": [],
+        "matrix_aliases_sha256": "442985978ad8d1b76c1a69c241e6797ec81ccba463e7ff6b753535aeeb408398"
+      },
       "id": "G7",
-      "status": "NOT_RUN",
-      "evidence": {
-        "basis": "Gate suite not run, as requested; production response normalization and admission were applied."
-      }
+      "name": "ALIAS_GATE",
+      "status": "PASS"
     },
     {
+      "evidence": {
+        "prompt_hits": [],
+        "responses_checked": 18,
+        "responses_invalidated": [],
+        "violations_not_marked_invalid": []
+      },
       "id": "G8",
-      "status": "NOT_RUN",
-      "evidence": {
-        "basis": "Gate suite not run, as requested; production response normalization and admission were applied."
-      }
+      "name": "SELF_ASSESS_GATE",
+      "status": "PASS"
     },
     {
+      "evidence": {
+        "byte_identical": true,
+        "consensus_policy": "eligible-models/v1",
+        "exclusions_sha256": "e138d168097fbe5aa653de7c1b790f47aa0e4b6139b9f84b8ff7d4f730d5a7a6",
+        "matrix_json_matches": true,
+        "matrix_sha256_original": "b6d24730a28f50759847034d5b106ec4aee63196af534c41aaeb867049f842f5",
+        "matrix_sha256_replay": "b6d24730a28f50759847034d5b106ec4aee63196af534c41aaeb867049f842f5",
+        "replay_source": "live-run-20261019/runs/efd90b74"
+      },
       "id": "G9",
-      "status": "NOT_RUN",
-      "evidence": {
-        "basis": "Gate suite not run, as requested; production response normalization and admission were applied."
-      }
+      "name": "REPRO_GATE",
+      "status": "PASS"
     },
     {
-      "id": "G10",
-      "status": "FAIL",
       "evidence": {
-        "basis": "Only two independent model families have three valid samples"
-      }
+        "excluded": {
+          "glm-5.3": {
+            "model_id": "glm-5.3",
+            "of": 3,
+            "reason": "All three slots failed with empty SSE or interrupted transfer. No response content was available.",
+            "valid": 0,
+            "vendor": "zhipu"
+          },
+          "gpt-6-astra": {
+            "model_id": "gpt-6-astra",
+            "of": 3,
+            "reason": "All three slots failed with credit_balance_exhausted; a second configured account also failed. Exact failed receipts are retained. No response content was available.",
+            "valid": 0,
+            "vendor": "openai"
+          },
+          "kimi-k3": {
+            "model_id": "kimi-k3",
+            "of": 3,
+            "reason": "One of three responses puts the division name before its anchors (I5 ORDER_VIOLATION). Two valid samples do not meet the three-valid-sample eligibility rule. No content retry or repaired field ordering was applied.",
+            "valid": 2,
+            "vendor": "moonshot"
+          },
+          "mimo-v2.6-pro": {
+            "model_id": "mimo-v2.6-pro",
+            "of": 3,
+            "reason": "Two of three responses put the division name before its anchors (I5 ORDER_VIOLATION). One valid sample does not meet the three-valid-sample eligibility rule. No content retry or repaired field ordering was applied.",
+            "valid": 1,
+            "vendor": "xiaomi"
+          }
+        },
+        "invalid_exclusions": [],
+        "missing_params": [],
+        "models": {
+          "deepseek-flash": {
+            "k": 3,
+            "valid": 3,
+            "vendor": "deepseek"
+          },
+          "glm-5.3": {
+            "k": 3,
+            "valid": 0,
+            "vendor": "zhipu"
+          },
+          "gpt-6-astra": {
+            "k": 3,
+            "valid": 0,
+            "vendor": "openai"
+          },
+          "kimi-k3": {
+            "k": 3,
+            "valid": 2,
+            "vendor": "moonshot"
+          },
+          "mimo-v2.6-pro": {
+            "k": 3,
+            "valid": 1,
+            "vendor": "xiaomi"
+          },
+          "qwen-3.8-27b": {
+            "k": 3,
+            "valid": 3,
+            "vendor": "qwen"
+          }
+        },
+        "models_under_3_samples": {},
+        "models_under_3_valid": {},
+        "not_cold": [],
+        "vendors_declared": [
+          "deepseek",
+          "moonshot",
+          "openai",
+          "qwen",
+          "xiaomi",
+          "zhipu"
+        ],
+        "vendors_with_3plus_valid": [
+          "deepseek",
+          "qwen"
+        ]
+      },
+      "id": "G10",
+      "name": "PANEL_GATE",
+      "status": "FAIL"
     }
-  ]
+  ],
+  "prompt_sha8": "efd90b74",
+  "ts_utc": "2026-11-04T04:45:14.959535Z"
 }

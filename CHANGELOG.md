@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+- Corroboration ledger `live-run-20261019/corroboration.csv`: `claude-fable-5-1`
+  (agent) checked the 31 A1 regulatory anchors of the six ISDA-adjacent areas against source (eCFR point-in-time
+  2026-10-29, EU Publications Office Cellar OJ texts, FINRA, BIS, Cornell LII for 7 U.S.C.
+  § 2). 24 VERIFIED, 4 PARTIAL, 3 REFUTED (17 CFR 23.494 does not exist; 17 CFR 1.33 does
+  not govern swap dealer registration; MiFIR Art. 27 is reference data, not best
+  execution). A subsequent OpenAI GPT-6 Astra Pro agent check against primary
+  sources refuted nine additional occurrences of these incorrect citations and
+  corrected two PARTIAL EMIR Article 39 notes without upgrading their status.
+  Ledger totals: 24 VERIFIED, 4 PARTIAL, 12 REFUTED, 251 UNVERIFIED. Summary and
+  grid rebuilt; no division is fully corroborated and G6 still fails (#45).
+  The generation gate suite was executed on 2026-11-04; the report records
+  G1–G5/G7–G9 PASS and G6/G10 FAIL after the companion G9 repair carries the
+  recorded eligibility policy into replay and checks both matrix artifacts.
+  These changes do not declare a tagged release.
 - Repair provenance validation: resolve historical overlays and scenario pins
   through verified offline snapshots of the published v0.6.2 and v0.6.3
   manifests. Check historical denominators and every identifier against the
@@ -19,9 +33,10 @@
   BCBS d457). Gives the FinExhaust ISDA curve replay a published cell to pin
   (#44).
 - Re-bind control-point cells to the 2026-10-19 taxonomy (`live-run-20261019`):
-  - Twelve cells named division keys retired by the regeneration
+  - Eleven cells named division keys absent from the regenerated matrix
     (`collateral_margin_management`, `regulatory_transaction_reporting`,
-    `client_lifecycle_kyc`, `post_trade_settlement`). Each is re-bound to the nearest
+    `client_lifecycle_kyc`); a twelfth carried the previously unadmitted
+    `post_trade_settlement` binding. Each is re-bound to the nearest
     admitted key and keeps its prior binding in a new optional
     `division_key_history` field (key, run, date, reason).
   - Add SPEC-03 invariant S3-I7 ADMITTED_KEY_BOUND and gate S3-G5: a non-RETIRED
