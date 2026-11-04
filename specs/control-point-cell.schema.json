@@ -135,7 +135,7 @@
     "division_key_history": {
       "type": "array",
       "minItems": 1,
-      "description": "Prior SPEC-01 division keys this cell was bound to before a taxonomy regeneration retired them; newest last. Never a workflow or institution claim.",
+      "description": "Prior division bindings, newest last. A historical erroneous binding is explicitly UNADMITTED and never becomes an admitted reference. Never a workflow or institution claim.",
       "items": {
         "type": "object",
         "required": [
@@ -148,7 +148,12 @@
         "properties": {
           "division_key": {
             "type": "string",
-            "description": "the key as admitted in taxonomy_run"
+            "description": "the original binding key; admission_status must agree with its membership in taxonomy_run"
+          },
+          "admission_status": {
+            "enum": ["ADMITTED", "UNADMITTED"],
+            "default": "ADMITTED",
+            "description": "Omission means ADMITTED. UNADMITTED records an erroneous former binding whose key is absent from taxonomy_run; the note must explain the correction."
           },
           "taxonomy_run": {
             "type": "string",

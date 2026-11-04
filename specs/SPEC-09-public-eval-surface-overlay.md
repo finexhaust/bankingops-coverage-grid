@@ -49,6 +49,14 @@ division < function_concept < task_concept < terminal_task < control_point
 Identifiers must exist in the pinned release (catalogue, task-concepts, cells).
 Rows never cross a division.
 
+Historical and current overlays follow the same release-verification rule.
+The declared tag resolves through `reference/release-snapshots/index.json` to
+the original published manifest and verified artifact bytes. The admitted
+division set, review labels and matrix tiers are recomputed from that release;
+the overlay's own stored rollup is not an authority for its denominator.
+Unknown pins or altered artifacts fail. Control-point paint is prohibited for
+every release, including historical bindings.
+
 ## 2. What may paint
 
 Only rows that satisfy **all** of:

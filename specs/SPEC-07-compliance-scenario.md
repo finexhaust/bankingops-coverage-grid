@@ -44,3 +44,11 @@ proprietary oracles are consumer-owned and MUST NOT be published here.
 Run `python3 tools/gate_conformance.py`; the S7 gate validates that the
 synthetic fixture parses, matches the schema, pins a known manifest hash, and
 honours the lifecycle non-interference rules from SPEC-05.
+
+Historical manifest pins resolve through the verified offline archive at
+`reference/release-snapshots/index.json`. A source checkout may omit an embedded
+manifest; it must still resolve the fixture's exact pin. A present malformed
+manifest, unknown pin, missing snapshot or changed artifact fails validation.
+The cell and terminal task are checked against the same pinned release, never
+silently against the current catalogue. An explicit digest may also select a
+valid local manifest whose referenced artifact bytes match its hashes.

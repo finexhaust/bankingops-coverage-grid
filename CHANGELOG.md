@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+- Repair provenance validation: resolve historical overlays and scenario pins
+  through verified offline snapshots of the published v0.6.2 and v0.6.3
+  manifests. Check historical denominators and every identifier against the
+  pinned release; reject control-point paint, malformed manifests, unknown
+  pins and altered artifacts. Preserve the existing 42/1/41 overlay unchanged.
+- Validate each cell history key against its named taxonomy matrix. Record the
+  original `post_trade_settlement` binding explicitly as UNADMITTED; it was an
+  erroneous historical binding, not a division retired by regeneration.
+- Fix G9 replay to carry the frozen exclusions policy and verify both matrix
+  CSV and JSON. The October matrix reproduces exactly; generation evidence,
+  model eligibility and admission outcomes are unchanged.
 - Add PROPOSED cell `cp_isda_curve_input_completeness` under `market_risk_management`:
   the ISDA standard curve set required by a scheduled risk batch is complete and
   sourced before the batch runs (ISDA CDS Standard Model; Basel Framework MAR31;

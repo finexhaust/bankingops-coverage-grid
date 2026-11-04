@@ -7,6 +7,8 @@ import pytest
 from bocg.corroborate import corroborate
 from bocg.gates import GATES, run_gates
 from bocg.grid import write_grid
+from bocg.matrix import write_matrix
+from bocg.normalise import normalise_runs
 from bocg.util import BocgError, read_json, sha256_file, sha256_text, write_json
 from conftest import FIXTURES, QUIET
 
@@ -259,6 +261,80 @@ def test_g9_replays_from_runs_dir_when_no_fixtures(ws_matrix):
     write_json(ws_matrix.run_meta, meta)
     r = gate(ws_matrix, "G9")
     assert r["status"] == "PASS" and r["evidence"]["replay_source"].endswith(meta["prompt_sha8"])
+
+
+def _eligible_policy(ws):
+    policy = {
+        "prompt_sha8": read_json(ws.run_meta)["prompt_sha8"],
+        "consensus_policy": "eligible-models/v1",
+        "excluded": [{"model_id": "delta-decomposer-4", "reason": "Synthetic replay-policy fixture."}],
+    }
+    write_json(ws.root / "exclusions.json", policy)
+    normalise_runs(ws, echo=QUIET)
+    write_matrix(ws, echo=QUIET)
+    return policy
+
+
+def test_g9_replays_frozen_eligible_policy_without_changing_source_artifacts(ws_matrix):
+    baseline = ws_matrix.matrix_csv.read_bytes()
+    _eligible_policy(ws_matrix)
+    assert ws_matrix.matrix_csv.read_bytes() != baseline  # The exclusion actually changes the matrix.
+    before = {p.relative_to(ws_matrix.root): p.read_bytes() for p in ws_matrix.root.rglob("*") if p.is_file()}
+    r = gate(ws_matrix, "G9")
+    assert r["status"] == "PASS" and r["evidence"]["byte_identical"]
+    assert r["evidence"]["matrix_json_matches"]
+    assert r["evidence"]["consensus_policy"] == "eligible-models/v1"
+    assert r["evidence"]["exclusions_sha256"] == sha256_file(ws_matrix.root / "exclusions.json")
+    after = {p.relative_to(ws_matrix.root): p.read_bytes() for p in ws_matrix.root.rglob("*") if p.is_file()}
+    assert after == before
+
+
+def test_g9_preserves_legacy_policy_semantics(ws_matrix):
+    write_json(ws_matrix.root / "exclusions.json", {
+        "prompt_sha8": read_json(ws_matrix.run_meta)["prompt_sha8"],
+        "excluded": [{"model_id": "delta-decomposer-4", "reason": "Legacy panel exclusion, not a denominator policy."}],
+    })
+    r = gate(ws_matrix, "G9")
+    assert r["status"] == "PASS" and r["evidence"]["consensus_policy"] is None
+
+
+@pytest.mark.parametrize("mutation", [
+    lambda p: p.update(consensus_policy="eligible-models/v2"),
+    lambda p: p.update(prompt_sha8="00000000"),
+    lambda p: p.update(excluded=None),
+    lambda p: p.update(excluded=[None]),
+    lambda p: p["excluded"].append(dict(p["excluded"][0])),
+    lambda p: p["excluded"][0].update(reason=""),
+    lambda p: p["excluded"][0].update(model_id="unrecorded-model"),
+])
+def test_g9_rejects_malformed_or_unbound_policy(ws_matrix, mutation):
+    policy = _eligible_policy(ws_matrix)
+    mutation(policy)
+    write_json(ws_matrix.root / "exclusions.json", policy)
+    r = gate(ws_matrix, "G9")
+    assert r["status"] == "FAIL" and "replay policy invalid" in r["evidence"]["error"]
+
+
+@pytest.mark.parametrize("document", ["null", "[]", "{broken"])
+def test_g9_rejects_non_object_or_invalid_policy_json(ws_matrix, document):
+    _eligible_policy(ws_matrix)
+    (ws_matrix.root / "exclusions.json").write_text(document)
+    assert gate(ws_matrix, "G9")["status"] == "FAIL"
+
+
+def test_g9_rejects_missing_policy_used_by_the_recorded_matrix(ws_matrix):
+    _eligible_policy(ws_matrix)
+    (ws_matrix.root / "exclusions.json").unlink()
+    r = gate(ws_matrix, "G9")
+    assert r["status"] == "FAIL" and "differs from the recorded matrix" in r["evidence"]["error"]
+
+
+def test_g9_rejects_changed_eligible_model_set(ws_matrix):
+    policy = _eligible_policy(ws_matrix)
+    policy["excluded"][0]["model_id"] = "alpha-lm-1.0"
+    write_json(ws_matrix.root / "exclusions.json", policy)
+    r = gate(ws_matrix, "G9")
+    assert r["status"] == "FAIL" and not r["evidence"]["matrix_json_matches"]
 
 
 # ---------------------------------------------------------------- G10
