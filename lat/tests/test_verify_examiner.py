@@ -23,7 +23,7 @@ def _ev(r, cid):
     return next(c["evidence"] for c in r["checks"] if c["id"] == cid)
 
 
-def test_honest_examiner_full_and_sampled(honest, examiner_key, tmp_path):
+def test_honest_examiner_full_and_sampled(honest, examiner_key, tmp_path, monkeypatch):
     gaz = honest["ws"].gazetteer()
     r = examine(honest["pkg"], honest["vault"], sample=None, seed=1, gazetteer=gaz, examiner_key=examiner_key,
                 out_dir=tmp_path, examiner_id="counsel-examiner")
@@ -42,11 +42,13 @@ def test_honest_examiner_full_and_sampled(honest, examiner_key, tmp_path):
     for blessing in ("fully compliant", "safe to use", "guarantee", "certif"):
         assert blessing not in md.lower()
     assert r["statement"].startswith("On ") and f"seed 1" in r["statement"] and "package PKG1" in r["statement"]
-    # seeded sample is deterministic
+    # Hold report time constant when comparing deterministic seeded sampling.
+    monkeypatch.setattr("lat.verify.utc_now", lambda: "2026-11-04T00:00:00Z")
     r1 = examine(honest["pkg"], honest["vault"], sample=20, seed=42, gazetteer=gaz, examiner_key=examiner_key, out_dir=tmp_path / "a")
     r2 = examine(honest["pkg"], honest["vault"], sample=20, seed=42, gazetteer=gaz, examiner_key=examiner_key, out_dir=tmp_path / "b")
     assert _ev(r1, "E2")["sample"] == 20 and json.loads((tmp_path / "a" / "report.json").read_text())["sample"] == 20
-    assert r1["statement"].split(":", 2)[2] == r2["statement"].split(":", 2)[2]
+    assert _ev(r1, "E2") == _ev(r2, "E2")
+    assert r1["statement"] == r2["statement"]
 
 
 class MislabellingDetector:
