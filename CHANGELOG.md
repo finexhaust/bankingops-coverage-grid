@@ -1,7 +1,9 @@
 # Release changes
 
-## Unreleased
+## v0.8.0 — 2026-11-04
 
+- Re-bind the ISDA control-point cells to the 2026-10-19 taxonomy, add gate S3-G5
+  ADMITTED_KEY_GATE and the `division_key_history` cell field (#43).
 - Corroboration ledger `live-run-20261019/corroboration.csv`: agent-verify the 31 A1
   regulatory anchors of the six ISDA-adjacent areas against source (eCFR point-in-time
   2026-10-29, EU Publications Office Cellar OJ texts, FINRA, BIS, Cornell LII for 7 U.S.C.
