@@ -39,6 +39,11 @@ S3-I5 SOLUTION_NEUTRAL        no cell references any benchmark, environment, pro
                               coverage-map files (SPEC-01 I10 pattern), one per claimant.
 S3-I6 CURATED_OR_ABSENT       a generated cell not yet practitioner-reviewed is status:PROPOSED
                               and excluded from release bundles. Only status:CURATED ships.
+S3-I7 ADMITTED_KEY_BOUND      a cell's division_key MUST be a key admitted by the taxonomy run
+                              named in reference/taxonomy-source.json. When a regeneration
+                              retires a key, the cell is re-bound to the nearest admitted key
+                              and the prior binding is kept in division_key_history (key,
+                              run, date, reason). RETIRED cells are exempt. Enforced by S3-G5.
 ```
 
 ## 2. CELL SCHEMA
@@ -56,4 +61,7 @@ S3-G2 CONSEQUENCE_GATE  every cell's consequence_anchor names a public source; m
 S3-G3 DENY_GATE         forbidden-token scan over all cell files and this spec.
 S3-G4 CONFORMANCE_GATE  CONFORMANCE.md parses; every row EVIDENCED/PARTIAL/NOT MET; no row
                         removed relative to the committed baseline row count.
+S3-G5 ADMITTED_KEY_GATE every non-RETIRED cell's division_key appears in the matrix.csv of the
+                        run named by reference/taxonomy-source.json; every division_key_history
+                        entry names an existing run directory and differs from the current key.
 ```

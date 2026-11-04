@@ -317,7 +317,7 @@ role_semantics:
 candidate_vocabulary_gaps:
   non_normative: true
   candidates:
-    - margin/financing terms governance (calculation-basis and terms changes); nearest existing key collateral_margin_management
+    - margin/financing terms governance (calculation-basis and terms changes); nearest existing key repo_secfin_collateral (collateral_margin_management was retired by the 2026-10-19 regeneration)
     - equity-financing hierarchy (equity trading -> equity financing -> prime brokerage -> equity swaps / securities financing); guards against collapsing "swaps" into fx_trading/rates_trading ("has a rates feature" is not "is rates")
     - basket structures of single-stock swaps (aggregation concept; name left open)
     - cross-currency funding basis (funding index = benchmark/reference rate)
@@ -326,5 +326,5 @@ candidate_vocabulary_gaps:
     # adherence) is currently grouped under client_lifecycle_kyc, which had no
     # model support in the live run. A distinct division key may be warranted
     # once corroboration shows it is named independently by multiple models.
-    - derivatives_documentation_control (ISDA Master, credit support and securities financing documentation execution, protocol adherence and repapering); nearest existing key client_lifecycle_kyc
-    - derivatives trading documentation control (ISDA Master / CSA / GMRA / GMSLA execution and term capture; protocol adherence; netting-opinion coverage); nearest existing key client_lifecycle_kyc; name left open
+    - derivatives_documentation_control (ISDA Master, credit support and securities financing documentation execution, protocol adherence and repapering); no admitted key in live-run-20261019 (client_lifecycle_kyc was retired); cell cp_derivatives_documentation_execution is re-bound to trade_lifecycle_operations as the nearest admitted key for legal-agreement term capture
+    - derivatives trading documentation control (ISDA Master / CSA / GMRA / GMSLA execution and term capture; protocol adherence; netting-opinion coverage); no admitted key in live-run-20261019; name left open

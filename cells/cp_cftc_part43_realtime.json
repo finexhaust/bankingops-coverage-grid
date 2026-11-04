@@ -1,6 +1,14 @@
 {
   "cell_id": "cp_cftc_part43_realtime",
-  "division_key": "regulatory_transaction_reporting",
+  "division_key": "regulatory_reporting_conduct_compliance",
+  "division_key_history": [
+    {
+      "division_key": "regulatory_transaction_reporting",
+      "taxonomy_run": "live-run-20260826",
+      "superseded_on": "2026-11-03",
+      "note": "Taxonomy regeneration of 2026-10-19 merged regulatory transaction reporting into regulatory_reporting_conduct_compliance, which carries 'prepare emir trade report' and 'prepare mifir transaction report' in the released catalogue."
+    }
+  ],
   "job_function": "regulatory transaction reporting operations",
   "control_point": "Real-time public reports of swap transactions are disseminated within the CFTC Part 43 deadline with correct block and cap treatment.",
   "citations": [

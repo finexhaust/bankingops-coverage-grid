@@ -19,14 +19,28 @@ def fail(msg: str) -> None:
     FAILURES.append(msg)
 
 
+def _admitted_division_keys() -> tuple[set[str] | None, str]:
+    """S3-G5: the division keys admitted by the taxonomy run the catalogue is built from."""
+    source_path = ROOT / "reference/taxonomy-source.json"
+    try:
+        run_dir = json.loads(source_path.read_text()).get("run_dir", "")
+        rows = (ROOT / run_dir / "matrix.csv").read_text(encoding="utf-8").splitlines()
+    except (OSError, ValueError):
+        fail("S3-G5 taxonomy source or its matrix.csv is unreadable")
+        return None, ""
+    keys = {line.split(",", 1)[0].strip() for line in rows[1:] if line.strip()}
+    return keys, run_dir
+
+
 def gate_cells() -> None:
-    """S3-G1 citations, S3-G2 consequence anchors, schema validity."""
+    """S3-G1 citations, S3-G2 consequence anchors, schema validity, S3-G5 admitted keys."""
     schema = json.loads((ROOT / "specs/control-point-cell.schema.json").read_text())
     try:
         import jsonschema
         validator = jsonschema.Draft202012Validator(schema)
     except ImportError:
         validator = None
+    admitted, run_dir = _admitted_division_keys()
     for path in sorted((ROOT / "cells").glob("*.json")):
         try:
             cell = json.loads(path.read_text())
@@ -44,6 +58,15 @@ def gate_cells() -> None:
             fail(f"S3-G2 {path.name}: consequence anchor lacks public_source")
         if re.search(r"\d+\.\d{3,}", str(anchor.get("magnitude_band", ""))):
             fail(f"S3-G2 {path.name}: magnitude_band has invented precision")
+        if cell.get("status") != "RETIRED":
+            key = cell.get("division_key")
+            if admitted is not None and key not in admitted:
+                fail(f"S3-G5 {path.name}: division_key {key!r} is not admitted in {run_dir}")
+        for i, hist in enumerate(cell.get("division_key_history") or []):
+            if not (ROOT / str(hist.get("taxonomy_run", ""))).is_dir():
+                fail(f"S3-G5 {path.name}: history {i} names unknown taxonomy run")
+            if hist.get("division_key") == cell.get("division_key"):
+                fail(f"S3-G5 {path.name}: history {i} repeats the current division_key")
 
 
 def gate_deny() -> None:

@@ -188,3 +188,35 @@ The overlap is diagonal, not one-to-one. ISDA's trade layer crosses
 legal-agreement layer is most visible in `collateral_margin_management`,
 `repo_secfin_collateral` and `xva_counterparty_risk`. The report layer appears
 mainly as market-size anchors, not as a division.
+
+## Regeneration of 2026-10-19 and cell re-binding
+
+The counts above (42 keys, 1,025 definitions, 77 ISDA-adjacent definitions) describe
+`live-run-20260826`. On 2026-10-19 the taxonomy was regenerated (`live-run-20261019`,
+25 business areas, two eligible model families, status PROVISIONAL_LIMITED_PANEL) and
+`reference/taxonomy-source.json` now points at that run. Four division keys the ISDA
+cells were bound to are not admitted by it. On 2026-11-03 the cells were re-bound to
+the nearest admitted key and the prior binding recorded in each cell's
+`division_key_history`; gate S3-G5 now fails any cell bound to a non-admitted key.
+
+| Retired key (2026-08-26) | Re-bound to (2026-10-19) | Cells |
+|---|---|---|
+| `collateral_margin_management` | `repo_secfin_collateral` | AANA/UMR scope, CSA VM timeline, SIMM IM dispute, SIMM IM reconciliation, UMR IM segregation |
+| `regulatory_transaction_reporting` | `regulatory_reporting_conduct_compliance` | CFTC Part 43, EMIR Refit UTI pairing, UTI/UPI reporting, MiFIR Art 26 T+1, reporting error remediation |
+| `client_lifecycle_kyc` | `trade_lifecycle_operations` | derivatives documentation execution |
+| `post_trade_settlement` | `clearing_settlement_custody` | settled instruction amendment |
+
+Two consequences for the ISDA overlap:
+
+- The regenerated taxonomy has **no** standalone key for bilateral collateral and
+  margin, for regulatory transaction reporting, or for trading documentation control.
+  The ISDA-native controls now sit inside broader financing, compliance and
+  lifecycle divisions. This is a vocabulary observation about a two-model panel, not a
+  finding that those functions are absent in institutions.
+- The derivatives documentation vocabulary gap recorded in
+  `specs/common-semantic-profile.yaml` has widened: its previous nearest key is
+  gone. It remains non-normative; a new key requires a re-elicitation run under
+  SPEC-01, not an author's assertion.
+
+G6 remains unsatisfied for both runs (all corroboration rows UNVERIFIED), so every
+statement in this note is structural, not corroborated consensus.
