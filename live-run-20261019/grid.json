@@ -104,7 +104,7 @@
     {
       "addressable_seat_cost_median": 202500.0,
       "anchors_verified": {
-        "A1": 0,
+        "A1": 1,
         "A2": 0,
         "A3": 0,
         "A4": false
@@ -162,7 +162,7 @@
     {
       "addressable_seat_cost_median": 232500.0,
       "anchors_verified": {
-        "A1": 0,
+        "A1": 9,
         "A2": 0,
         "A3": 0,
         "A4": false
@@ -485,7 +485,7 @@
     {
       "addressable_seat_cost_median": 218500.0,
       "anchors_verified": {
-        "A1": 0,
+        "A1": 4,
         "A2": 0,
         "A3": 0,
         "A4": false
@@ -633,7 +633,7 @@
     {
       "addressable_seat_cost_median": 243750.0,
       "anchors_verified": {
-        "A1": 0,
+        "A1": 2,
         "A2": 0,
         "A3": 0,
         "A4": false
@@ -663,7 +663,7 @@
     {
       "addressable_seat_cost_median": 270000.0,
       "anchors_verified": {
-        "A1": 0,
+        "A1": 6,
         "A2": 0,
         "A3": 0,
         "A4": false
@@ -750,7 +750,7 @@
     {
       "addressable_seat_cost_median": 212500.0,
       "anchors_verified": {
-        "A1": 0,
+        "A1": 2,
         "A2": 0,
         "A3": 0,
         "A4": false

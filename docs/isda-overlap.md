@@ -218,8 +218,11 @@ Two consequences for the ISDA overlap:
   gone. It remains non-normative; a new key requires a re-elicitation run under
   SPEC-01, not an author's assertion.
 
-G6 remains unsatisfied for both runs (all corroboration rows UNVERIFIED), so every
-statement in this note is structural, not corroborated consensus.
+G6 remains unsatisfied for both runs, so every statement in this note is
+structural, not corroborated consensus. On 2026-11-04 the 31 A1 regulatory anchors
+of the six ISDA-adjacent `live-run-20261019` keys were agent-verified against
+source (24 VERIFIED, 4 PARTIAL, 3 REFUTED; see `live-run-20261019/README.md`).
+A2 to A4 anchors and the 2026-08-26 run remain UNVERIFIED.
 
 ## Cell added 2026-11-03
 

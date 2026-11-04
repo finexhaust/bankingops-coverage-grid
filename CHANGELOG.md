@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Corroboration ledger `live-run-20261019/corroboration.csv`: agent-verify the 31 A1
+  regulatory anchors of the six ISDA-adjacent areas against source (eCFR point-in-time
+  2026-10-29, EU Publications Office Cellar OJ texts, FINRA, BIS, Cornell LII for 7 U.S.C.
+  § 2). 24 VERIFIED, 4 PARTIAL, 3 REFUTED (17 CFR 23.494 does not exist; 17 CFR 1.33 does
+  not govern swap dealer registration; MiFIR Art. 27 is reference data, not best
+  execution). Summary and grid rebuilt; G6 still fails because A2–A4 remain UNVERIFIED (#45).
 - Add PROPOSED cell `cp_isda_curve_input_completeness` under `market_risk_management`:
   the ISDA standard curve set required by a scheduled risk batch is complete and
   sourced before the batch runs (ISDA CDS Standard Model; Basel Framework MAR31;

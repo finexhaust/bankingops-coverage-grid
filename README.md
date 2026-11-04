@@ -5,7 +5,7 @@ consensus (rather than from one person's assertion), and a toolkit that makes pr
 derived corpus machine-verifiable by a party who never sees the source material.
 
 `live-run-20261019/` is the current regeneration: 25 business areas from two eligible model families, with every attempt retained. The four-vendor requirement is not met; this release is provisional. The earlier five-vendor run remains in `live-run-20260826/`.
-It is **provisional** — the anchor-corroboration gate has not been satisfied. See that folder's README.
+It is **provisional** — the anchor-corroboration gate has not been satisfied. 31 regulatory (A1) anchors for the six ISDA-adjacent areas were agent-verified against source on 2026-11-04; filings, market-size and seat-cost anchors remain unverified. See that folder's README.
 
 The grid is a model-consensus prior, not a validated map. `docs/downstream-evidence.md` records how its division keys
 have been exercised by a preregistered downstream evaluation lane; those results are calibration evidence from a private
@@ -49,7 +49,7 @@ are involved in building the context catalogue.
 The [19 October run](live-run-20261019/README.md) uses current provider models,
 retains transport and quota failures, and links the frozen prompts, model lists,
 roles and seat-cost claims. Only two families meet the three-valid-sample rule;
-G10 is not met. All external anchors and seat claims remain unverified (G6).
+G10 is not met. G6 is not met: 24 A1 anchors are VERIFIED and 3 REFUTED after the 2026-11-04 agent pass on the ISDA-adjacent areas; all other anchors and all seat claims remain unverified.
 Aliases and task concepts have no human review. Public-eval overlays retain
 historical catalogue bindings and do not describe this new release's coverage.
 No tests or gate suites were run for this regeneration. The authoritative

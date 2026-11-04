@@ -81,7 +81,7 @@
     "clearing_settlement_custody": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
-        "A1": 0,
+        "A1": 1,
         "A2": 0,
         "A3": 0,
         "A4": false
@@ -89,10 +89,10 @@
       "counts": {
         "A1": {
           "MISSING": 0,
-          "PARTIAL": 0,
+          "PARTIAL": 1,
           "REFUTED": 0,
-          "UNVERIFIED": 2,
-          "VERIFIED": 0
+          "UNVERIFIED": 0,
+          "VERIFIED": 1
         },
         "A2": {
           "MISSING": 0,
@@ -114,8 +114,8 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 4,
-      "verified_types": 0
+      "unverified_count": 2,
+      "verified_types": 1
     },
     "commodities_trading": {
       "a4_status": "UNVERIFIED",
@@ -159,7 +159,7 @@
     "credit_trading": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
-        "A1": 0,
+        "A1": 9,
         "A2": 0,
         "A3": 0,
         "A4": false
@@ -167,10 +167,10 @@
       "counts": {
         "A1": {
           "MISSING": 0,
-          "PARTIAL": 0,
-          "REFUTED": 0,
-          "UNVERIFIED": 13,
-          "VERIFIED": 0
+          "PARTIAL": 1,
+          "REFUTED": 3,
+          "UNVERIFIED": 0,
+          "VERIFIED": 9
         },
         "A2": {
           "MISSING": 0,
@@ -190,10 +190,14 @@
       "missing_rows": [],
       "non_refuted_types": 3,
       "publishable": false,
-      "refuted": [],
+      "refuted": [
+        "CFTC Swap Clearing Rules | US | 17 CFR 23.494",
+        "CFTC Swap Dealer Registration | US | 17 CFR 1.33",
+        "MiFID II best execution | European Union | Regulation (EU) No 600/2014, Article 27"
+      ],
       "rejected_post_corroboration": false,
-      "unverified_count": 27,
-      "verified_types": 0
+      "unverified_count": 14,
+      "verified_types": 1
     },
     "dcm_origination": {
       "a4_status": "UNVERIFIED",
@@ -588,7 +592,7 @@
     "listed_derivatives_client_clearing": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
-        "A1": 0,
+        "A1": 4,
         "A2": 0,
         "A3": 0,
         "A4": false
@@ -598,8 +602,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 4,
-          "VERIFIED": 0
+          "UNVERIFIED": 0,
+          "VERIFIED": 4
         },
         "A2": {
           "MISSING": 0,
@@ -621,8 +625,8 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 8,
-      "verified_types": 0
+      "unverified_count": 4,
+      "verified_types": 1
     },
     "market_risk_management": {
       "a4_status": "UNVERIFIED",
@@ -783,7 +787,7 @@
     "regulatory_reporting_conduct_compliance": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
-        "A1": 0,
+        "A1": 2,
         "A2": 0,
         "A3": 0,
         "A4": false
@@ -791,10 +795,10 @@
       "counts": {
         "A1": {
           "MISSING": 0,
-          "PARTIAL": 0,
+          "PARTIAL": 1,
           "REFUTED": 0,
-          "UNVERIFIED": 3,
-          "VERIFIED": 0
+          "UNVERIFIED": 0,
+          "VERIFIED": 2
         },
         "A2": {
           "MISSING": 0,
@@ -816,13 +820,13 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 6,
-      "verified_types": 0
+      "unverified_count": 3,
+      "verified_types": 1
     },
     "repo_secfin_collateral": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
-        "A1": 0,
+        "A1": 6,
         "A2": 0,
         "A3": 0,
         "A4": false
@@ -832,8 +836,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 6,
-          "VERIFIED": 0
+          "UNVERIFIED": 0,
+          "VERIFIED": 6
         },
         "A2": {
           "MISSING": 0,
@@ -855,8 +859,8 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 11,
-      "verified_types": 0
+      "unverified_count": 5,
+      "verified_types": 1
     },
     "securitised_products": {
       "a4_status": "UNVERIFIED",
@@ -939,7 +943,7 @@
     "trade_lifecycle_operations": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
-        "A1": 0,
+        "A1": 2,
         "A2": 0,
         "A3": 0,
         "A4": false
@@ -947,10 +951,10 @@
       "counts": {
         "A1": {
           "MISSING": 0,
-          "PARTIAL": 0,
+          "PARTIAL": 1,
           "REFUTED": 0,
-          "UNVERIFIED": 3,
-          "VERIFIED": 0
+          "UNVERIFIED": 0,
+          "VERIFIED": 2
         },
         "A2": {
           "MISSING": 0,
@@ -972,12 +976,12 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 5,
-      "verified_types": 0
+      "unverified_count": 2,
+      "verified_types": 1
     }
   },
   "ledger_rows": 291,
-  "ledger_source": "live-run-20261019/corroboration.csv",
+  "ledger_source": "../live-run-20261019/corroboration.csv",
   "problems": [],
-  "ts_utc": "2026-10-19T00:19:23.532283Z"
+  "ts_utc": "2026-11-04T00:28:08.029915Z"
 }
