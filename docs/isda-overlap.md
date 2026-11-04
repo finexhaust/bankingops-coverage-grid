@@ -220,3 +220,10 @@ Two consequences for the ISDA overlap:
 
 G6 remains unsatisfied for both runs (all corroboration rows UNVERIFIED), so every
 statement in this note is structural, not corroborated consensus.
+
+## Cell added 2026-11-03
+
+`cp_isda_curve_input_completeness` (`market_risk_management`) covers the one
+deterministic SPEC-07 scenario that exists outside this repository: a risk batch
+that cannot run because an ISDA standard curve is missing, with the open-source
+ISDA CDS Standard Model as oracle. See #44.

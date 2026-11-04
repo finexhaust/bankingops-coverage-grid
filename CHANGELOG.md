@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Add PROPOSED cell `cp_isda_curve_input_completeness` under `market_risk_management`:
+  the ISDA standard curve set required by a scheduled risk batch is complete and
+  sourced before the batch runs (ISDA CDS Standard Model; Basel Framework MAR31;
+  BCBS d457). Gives the FinExhaust ISDA curve replay a published cell to pin
+  (#44).
 - Re-bind control-point cells to the 2026-10-19 taxonomy (`live-run-20261019`):
   - Twelve cells named division keys retired by the regeneration
     (`collateral_margin_management`, `regulatory_transaction_reporting`,
