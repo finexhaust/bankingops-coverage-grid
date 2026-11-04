@@ -1,0 +1,1923 @@
+{
+  "schema": "bocg.financial-work-context/v1",
+  "version": "0.1.0",
+  "status": "PROPOSED",
+  "root_ref": "domain:institutional_finance",
+  "public_definitions_only": true,
+  "institution_instances": false,
+  "method": {
+    "basis": "owner_requested_model_assisted_context_proposal",
+    "public_inputs_only": true,
+    "consumer_corpus_used": false,
+    "seller_coverage_used": false,
+    "benchmark_positions_used": false,
+    "independent_model_consensus_run": false,
+    "independent_adjudication": false,
+    "read_as": "A proposed public context extension. It is not an independent LLMAJ or consensus result. The authoring agent had project context; only public BOCG definitions are derivation inputs.",
+    "future_elicitation": "Any new consensus claim uses a separately frozen unseeded protocol. These context labels are not examples inserted into the existing SPEC-01 prompt."
+  },
+  "semantics": {
+    "concept_type": "skos:Concept",
+    "hierarchy": "skos:broader",
+    "cross_axis_association": "skos:related",
+    "sources": "prov:wasDerivedFrom",
+    "standards": [
+      {
+        "id": "skos",
+        "url": "https://www.w3.org/TR/skos-reference/"
+      },
+      {
+        "id": "prov",
+        "url": "https://www.w3.org/TR/prov-o/"
+      }
+    ],
+    "context_is_coverage": false,
+    "placement_is_identity": false,
+    "parent_inherits_coverage": false,
+    "capabilities_are_mandatory": false,
+    "capabilities_are_ordered": false,
+    "missing_area_is_retired": false,
+    "capability_mapping_from_area_alone": false
+  },
+  "sources": [
+    {
+      "path": "reference/financial-work-context-proposals.v1.json",
+      "sha256": "66f417511be4bb0b8e53e292d546672bdba94c6a7a9aa315fa1739532ffc5eb6"
+    },
+    {
+      "path": "live-run-20260826/matrix.json",
+      "sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d"
+    },
+    {
+      "path": "live-run-20261019/matrix.json",
+      "sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "generation_20260826",
+      "role": "historical_generation",
+      "path": "live-run-20260826/matrix.json",
+      "binding_note": "The 42-area generation used by the retained v0.6.2 public-eval overlay.",
+      "source_status": "PROVISIONAL",
+      "sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+      "area_count": 42
+    },
+    {
+      "id": "generation_20261019",
+      "role": "current_generation",
+      "path": "live-run-20261019/matrix.json",
+      "binding_note": "The 25-area generation underlying the v0.7.0 operating catalogue.",
+      "source_status": "PROVISIONAL_LIMITED_PANEL",
+      "sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+      "area_count": 25
+    }
+  ],
+  "domains": [
+    {
+      "reference_id": "domain:institutional_finance",
+      "code": "F",
+      "label": "Institutional finance and capital markets",
+      "definition": "The shared financial-work context of the public BOCG areas retained across taxonomy generations. Retail banking, household insurance and other unrepresented activities are not asserted to be exhaustively covered.",
+      "broader": null,
+      "status": "PROPOSED"
+    },
+    {
+      "reference_id": "domain:advisory_origination",
+      "code": "A",
+      "label": "Advisory and origination",
+      "definition": "Work that advises on, structures or originates corporate transactions and capital raising.",
+      "broader": "domain:institutional_finance",
+      "status": "PROPOSED"
+    },
+    {
+      "reference_id": "domain:investment_management",
+      "code": "I",
+      "label": "Investment management",
+      "definition": "Work that allocates, manages or executes institutional investment portfolios.",
+      "broader": "domain:institutional_finance",
+      "status": "PROPOSED"
+    },
+    {
+      "reference_id": "domain:markets_financing",
+      "code": "M",
+      "label": "Markets and financing",
+      "definition": "Work that trades, makes markets, structures market products or provides client financing.",
+      "broader": "domain:institutional_finance",
+      "status": "PROPOSED"
+    },
+    {
+      "reference_id": "domain:operations_servicing",
+      "code": "O",
+      "label": "Operations and servicing",
+      "definition": "Work that processes, clears, settles, safeguards or services transactions and assets.",
+      "broader": "domain:institutional_finance",
+      "status": "PROPOSED"
+    },
+    {
+      "reference_id": "domain:risk_control",
+      "code": "C",
+      "label": "Risk and control",
+      "definition": "Work that assesses exposure, values or verifies positions, manages controls or fulfils reporting and conduct obligations.",
+      "broader": "domain:institutional_finance",
+      "status": "PROPOSED"
+    }
+  ],
+  "capabilities": [
+    {
+      "reference_id": "capability:interpret",
+      "label": "Interpret",
+      "definition": "Read evidence, identify relevant facts and distinguish statements from conclusions.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:analyse",
+      "label": "Analyse",
+      "definition": "Compare alternatives, calculate or explain financial implications under stated assumptions.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:reconcile",
+      "label": "Reconcile",
+      "definition": "Compare records or representations and account for agreement, mismatch and unresolved differences.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:decide",
+      "label": "Decide",
+      "definition": "Choose or defer an action using evidence, constraints and authority.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:authorise",
+      "label": "Authorise",
+      "definition": "Determine or obtain the authority needed for an action; distinguish requests from approval.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:execute",
+      "label": "Execute",
+      "definition": "Carry out or specify an operational action and distinguish intention from execution.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:escalate",
+      "label": "Escalate",
+      "definition": "Route an exception or decision to the appropriate role with the relevant evidence and urgency.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:verify",
+      "label": "Verify",
+      "definition": "Inspect evidence for an asserted state or outcome while preserving uncertainty about completion.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    },
+    {
+      "reference_id": "capability:challenge_falsify",
+      "label": "Challenge / falsify",
+      "definition": "Seek or use counter-evidence to challenge a claim, proposed explanation or assumed success.",
+      "status": "PROPOSED",
+      "ordered_stage": false,
+      "mandatory": false
+    }
+  ],
+  "areas": [
+    {
+      "reference_id": "division:buyside_investment_compliance",
+      "division_key": "buyside_investment_compliance",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Buy-side investment compliance and guideline monitoring"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "buyside investment compliance",
+      "domain_links": [
+        {
+          "reference_id": "domain:risk_control",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:buyside_investment_operations",
+      "division_key": "buyside_investment_operations",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Buy-side Investment Operations, Fund Accounting Oversight and Valuation",
+          "Buy-side investment operations, accounting and risk support"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "buyside investment operations",
+      "domain_links": [
+        {
+          "reference_id": "domain:operations_servicing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:buyside_ldi_overlay",
+      "division_key": "buyside_ldi_overlay",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Pension and insurance derivatives overlay / LDI hedging desk"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "buyside ldi overlay",
+      "domain_links": [
+        {
+          "reference_id": "domain:investment_management",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:buyside_performance_risk_reporting",
+      "division_key": "buyside_performance_risk_reporting",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Buy-side performance measurement, attribution and investment risk reporting"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "buyside performance risk reporting",
+      "domain_links": [
+        {
+          "reference_id": "domain:risk_control",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:buyside_portfolio_management",
+      "division_key": "buyside_portfolio_management",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Buy-side portfolio construction & risk",
+          "Buy-side portfolio construction and investment management",
+          "Buy-side portfolio management and investment analysis",
+          "Buy-side: hedge fund portfolio management & trading",
+          "Buy-side: long-only institutional portfolio management",
+          "Index and ETF portfolio management (buy-side)",
+          "Institutional portfolio management and order generation"
+        ],
+        "generation_20261019": [
+          "Asset Management",
+          "Asset Management & Buy-side Portfolio Management",
+          "Asset Management Buy-Side Counterpart",
+          "Buy-Side Institutional Asset Management / Portfolio Management"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "buyside portfolio management",
+      "domain_links": [
+        {
+          "reference_id": "domain:investment_management",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:buyside_trading_execution",
+      "division_key": "buyside_trading_execution",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Asset-manager execution trading desk (buy-side dealing)",
+          "Buy-Side Dealing Desk & Best Execution Oversight",
+          "Buy-side Central Dealing and Execution Desk",
+          "Buy-side Dealing Desk (Execution) and Execution Analytics",
+          "Buy-side dealing & execution desk",
+          "Buy-side execution trading (asset management dealing desk)",
+          "Buy-side trading and dealer execution",
+          "Buy-side trading and dealer execution management",
+          "Buy-side trading and execution",
+          "Buy-side: execution & dealing desk",
+          "Hedge fund execution and portfolio trading desk"
+        ],
+        "generation_20261019": [
+          "Buy-Side Asset Management Execution Desk"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "buyside trading execution",
+      "domain_links": [
+        {
+          "reference_id": "domain:investment_management",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:capital_markets_origination_combined",
+      "division_key": "capital_markets_origination_combined",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Capital-markets origination and syndication",
+          "Equity and Debt Capital Markets Origination and Syndicate",
+          "Equity and debt capital-markets origination and syndicate",
+          "Primary markets origination & syndication",
+          "Primary markets syndicate (debt and equity capital markets)"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "capital markets origination combined",
+      "domain_links": [
+        {
+          "reference_id": "domain:advisory_origination",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:clearing_settlement_custody",
+      "division_key": "clearing_settlement_custody",
+      "labels_by_snapshot": {
+        "generation_20261019": [
+          "Clearing, Settlement & Custody"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "clearing settlement custody",
+      "domain_links": [
+        {
+          "reference_id": "domain:operations_servicing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:client_lifecycle_kyc",
+      "division_key": "client_lifecycle_kyc",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Client Lifecycle Management, KYC and Trading Documentation Control"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "client lifecycle kyc",
+      "domain_links": [
+        {
+          "reference_id": "domain:operations_servicing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:collateral_margin_management",
+      "division_key": "collateral_margin_management",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Collateral Management & Margin Operations",
+          "Collateral and Margin Management",
+          "Collateral and Margin Operations",
+          "Collateral management and margining (OTC, cleared, SFT)"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "collateral margin management",
+      "domain_links": [
+        {
+          "reference_id": "domain:risk_control",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:commodities_physical_operations",
+      "division_key": "commodities_physical_operations",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Commodities Trading and Physical Operations"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "commodities physical operations",
+      "domain_links": [
+        {
+          "reference_id": "domain:operations_servicing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:commodities_trading",
+      "division_key": "commodities_trading",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Commodities",
+          "Commodities Markets",
+          "Commodities Trading",
+          "Commodities Trading (energy, metals, power & gas)",
+          "Commodities markets",
+          "Commodities sales and trading",
+          "Commodities sales, trading and structuring",
+          "Commodities trading",
+          "Commodities trading & market making",
+          "Commodities trading (energy, metals, agriculture)"
+        ],
+        "generation_20261019": [
+          "Commodities & Energy Sales & Trading",
+          "Commodities Sales & Trading",
+          "Commodities Trading and Financing",
+          "Commodities Trading and Sales",
+          "Global Markets Commodities Sales & Trading"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "commodities trading",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:credit_trading",
+      "division_key": "credit_trading",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Corporate credit trading (bonds & CDS)",
+          "Credit Markets",
+          "Credit Trading",
+          "Credit Trading (Cash Credit and Credit Derivatives)",
+          "Credit Trading (cash credit and credit derivatives market making)",
+          "Credit Trading and Market Making",
+          "Credit markets",
+          "Credit sales and trading",
+          "Credit trading & market making",
+          "Credit trading (IG/HY corporates, CDS, distressed)",
+          "Credit trading (investment grade, high yield and credit derivatives)"
+        ],
+        "generation_20261019": [
+          "Credit & High Yield Sales & Trading",
+          "Credit Sales & Trading",
+          "Credit Trading and Market Making",
+          "Credit Trading and Sales",
+          "Global Markets Credit Sales & Trading"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "credit trading",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:cross_asset_structuring",
+      "division_key": "cross_asset_structuring",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Cross-asset structuring and quantitative solutions",
+          "Derivatives Structuring and Cross-Asset Solutions",
+          "Structuring and Cross-Asset Solutions"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "cross asset structuring",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:custody_asset_servicing",
+      "division_key": "custody_asset_servicing",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Custody, Depositary & Asset Servicing (buy-side counterpart)",
+          "Custody, Depositary and Asset Servicing (Securities Services)"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "custody asset servicing",
+      "domain_links": [
+        {
+          "reference_id": "domain:operations_servicing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:dcm_origination",
+      "division_key": "dcm_origination",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Debt Capital Markets Origination & Syndicate",
+          "Debt Capital Markets Origination and Syndicate",
+          "Debt Capital Markets and Syndicate",
+          "Debt capital markets (IG/HY bond origination)",
+          "Debt capital markets and syndicate"
+        ],
+        "generation_20261019": [
+          "Debt Capital Markets Origination"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "dcm origination",
+      "domain_links": [
+        {
+          "reference_id": "domain:advisory_origination",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:ecm_origination",
+      "division_key": "ecm_origination",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Equity Capital Markets Origination & Syndicate",
+          "Equity Capital Markets Origination and Syndicate",
+          "Equity Capital Markets and Syndicate",
+          "Equity capital markets (IPO & follow-on origination)",
+          "Equity capital markets and syndicate"
+        ],
+        "generation_20261019": [
+          "Equity Capital Markets Origination"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "ecm origination",
+      "domain_links": [
+        {
+          "reference_id": "domain:advisory_origination",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:electronic_execution",
+      "division_key": "electronic_execution",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Electronic and Algorithmic Execution",
+          "Electronic execution and algorithmic trading (cross-asset)",
+          "Electronic trading & algorithmic market making"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "electronic execution",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:em_trading",
+      "division_key": "em_trading",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Emerging Markets",
+          "Emerging Markets Trading",
+          "Emerging markets macro trading",
+          "Emerging markets trading (local rates, EM FX, EM credit)",
+          "Emerging markets trading (local rates, FX, credit)"
+        ],
+        "generation_20261019": [
+          "Emerging Markets Cross-Product Trading",
+          "Emerging Markets Trading"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "em trading",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:equities_trading",
+      "division_key": "equities_trading",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Cash Equities Execution & Electronic Trading",
+          "Cash Equities Execution and Electronic Trading",
+          "Cash equities & agency execution",
+          "Cash equities execution (agency, program and block trading)",
+          "Cash equities execution and program trading",
+          "Equities Markets",
+          "Equities Sales & Trading",
+          "Equities Trading",
+          "Equities Trading and Derivatives",
+          "Equities markets",
+          "Equities sales, execution and derivatives trading",
+          "Equities sales, trading and electronic execution",
+          "Equities trading & market making"
+        ],
+        "generation_20261019": [
+          "Cash Equities Sales & Trading",
+          "Equities Cash Execution and Sales Trading",
+          "Equities Sales & Trading",
+          "Equity Cash Trading and Market Making",
+          "Global Markets Equities Sales & Trading"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "equities trading",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:equity_derivatives_structured",
+      "division_key": "equity_derivatives_structured",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Equity Derivatives & Structured Products",
+          "Equity Derivatives and Structured Products",
+          "Equity derivatives & structured products",
+          "Equity derivatives and structured equity products",
+          "Equity derivatives and structured products trading"
+        ],
+        "generation_20261019": [
+          "Equities & Derivatives Sales & Trading",
+          "Equity Derivatives & Structured Products",
+          "Equity Derivatives Trading and Structuring",
+          "Equity Derivatives and Structured Products"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "equity derivatives structured",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:ficc_combined",
+      "division_key": "ficc_combined",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "FICC Sales & Trading"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "ficc combined",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:fx_cross_asset_combined",
+      "division_key": "fx_cross_asset_combined",
+      "labels_by_snapshot": {
+        "generation_20261019": [
+          "FX & Cross-Asset Sales & Trading"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "fx cross asset combined",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:fx_trading",
+      "division_key": "fx_trading",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "FX & Derivatives Market Making",
+          "FX Trading",
+          "FX and Currencies Trading (voice and electronic)",
+          "FX trading & market making",
+          "FX trading (spot, forwards, NDFs, options)",
+          "Foreign Exchange",
+          "Foreign Exchange Trading (spot, forwards, options, eFX)",
+          "Foreign Exchange Trading and Electronic FX Market Making",
+          "Foreign exchange trading",
+          "Foreign exchange trading (spot, forwards, NDFs, FX swaps)",
+          "Foreign-exchange sales and trading"
+        ],
+        "generation_20261019": [
+          "FX Sales & Trading",
+          "FX Trading and Market Making",
+          "FX Trading and Sales"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "fx trading",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:global_banking_financing",
+      "division_key": "global_banking_financing",
+      "labels_by_snapshot": {
+        "generation_20261019": [
+          "Global Banking & Financing"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "global banking financing",
+      "domain_links": [
+        {
+          "reference_id": "domain:advisory_origination",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "The public combined label spans banking/origination and financing; both contextual parents remain proposed."
+        },
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "The public combined label spans banking/origination and financing; both contextual parents remain proposed."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:global_financing_capital_markets",
+      "division_key": "global_financing_capital_markets",
+      "labels_by_snapshot": {
+        "generation_20261019": [
+          "Global Financing & Capital Markets"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "global financing capital markets",
+      "domain_links": [
+        {
+          "reference_id": "domain:advisory_origination",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "The public combined label spans banking/origination and financing; both contextual parents remain proposed."
+        },
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "The public combined label spans banking/origination and financing; both contextual parents remain proposed."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:institutional_sales_coverage",
+      "division_key": "institutional_sales_coverage",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Institutional Sales and Client Coverage",
+          "Markets Sales and Client Coverage"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "institutional sales coverage",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:leveraged_finance_loan_capital_markets",
+      "division_key": "leveraged_finance_loan_capital_markets",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Leveraged finance & syndicated loan capital markets"
+        ],
+        "generation_20261019": [
+          "Leveraged Finance & Syndicated Loans"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "leveraged finance loan capital markets",
+      "domain_links": [
+        {
+          "reference_id": "domain:advisory_origination",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:listed_derivatives_client_clearing",
+      "division_key": "listed_derivatives_client_clearing",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Listed Derivatives Clearing & Client Clearing (FCM)",
+          "Listed Derivatives and OTC Client Clearing (FCM)",
+          "Listed Derivatives and OTC Client Clearing (FCM/Clearing Broker)",
+          "Listed derivatives clearing & execution (FCM)",
+          "Listed derivatives clearing and FCM client clearing",
+          "Listed derivatives execution and clearing (FCM)"
+        ],
+        "generation_20261019": [
+          "Listed Derivatives Execution and Clearing",
+          "Listed and OTC Clearing"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "listed derivatives client clearing",
+      "domain_links": [
+        {
+          "reference_id": "domain:operations_servicing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:ma_advisory",
+      "division_key": "ma_advisory",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Mergers, acquisitions and strategic advisory"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "ma advisory",
+      "domain_links": [
+        {
+          "reference_id": "domain:advisory_origination",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:macro_combined_rates_fx_em",
+      "division_key": "macro_combined_rates_fx_em",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "FX & Emerging Markets Sales & Trading",
+          "FX and Emerging Markets",
+          "Foreign exchange and emerging-markets macro",
+          "Macro rates, FX and emerging-markets sales and trading"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "macro combined rates fx em",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:market_risk_management",
+      "division_key": "market_risk_management",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Market Risk Management & Market Risk Capital (FRTB)",
+          "Market Risk Management (Trading Book)",
+          "Market Risk Management and FRTB Capital",
+          "Market risk management for trading books"
+        ],
+        "generation_20261019": [
+          "Global Markets Market Risk Control",
+          "Market Risk & Control",
+          "Market Risk & Middle Office"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "market risk management",
+      "domain_links": [
+        {
+          "reference_id": "domain:risk_control",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:market_risk_valuation_control",
+      "division_key": "market_risk_valuation_control",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Market risk, product control and valuation control",
+          "Market risk, valuation control and XVA",
+          "Market risk, valuation control and product control",
+          "Valuation control, product control & model risk"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "market risk valuation control",
+      "domain_links": [
+        {
+          "reference_id": "domain:risk_control",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:model_risk_management",
+      "division_key": "model_risk_management",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Model Risk Management and Model Validation (Traded Risk)"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "model risk management",
+      "domain_links": [
+        {
+          "reference_id": "domain:risk_control",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:municipal_public_finance",
+      "division_key": "municipal_public_finance",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Municipal securities trading and underwriting (US public finance)"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "municipal public finance",
+      "domain_links": [
+        {
+          "reference_id": "domain:advisory_origination",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:prime_brokerage_financing",
+      "division_key": "prime_brokerage_financing",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Equities Prime Brokerage",
+          "Prime Brokerage & Equity Financing",
+          "Prime Brokerage & Securities Lending",
+          "Prime Brokerage and Client Financing",
+          "Prime Brokerage and Securities Financing",
+          "Prime Brokerage and Securities Lending",
+          "Prime Brokerage, Delta One and Financing",
+          "Prime brokerage & hedge fund financing",
+          "Prime brokerage and equity financing",
+          "Prime brokerage and portfolio financing",
+          "Prime brokerage and securities financing",
+          "Prime services & securities financing (repo, stock loan, margin)",
+          "Prime services and secured financing",
+          "Prime services and securities lending (prime brokerage)",
+          "Securities Financing and Prime Brokerage"
+        ],
+        "generation_20261019": [
+          "Global Markets Financing & Prime Brokerage",
+          "Prime Brokerage & Client Finance",
+          "Prime Brokerage & Financing",
+          "Prime Brokerage & Securities Lending",
+          "Prime Brokerage and Prime Services",
+          "Prime Brokerage and Securities Lending"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "prime brokerage financing",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:product_control_ipv",
+      "division_key": "product_control_ipv",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Product Control & Independent Valuation Control",
+          "Product Control and Independent Price Verification",
+          "Product control and valuation control (independent price verification)"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "product control ipv",
+      "domain_links": [
+        {
+          "reference_id": "domain:risk_control",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:rates_fx_combined",
+      "division_key": "rates_fx_combined",
+      "labels_by_snapshot": {
+        "generation_20261019": [
+          "Global Markets Rates & FX Sales & Trading"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "rates fx combined",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:rates_trading",
+      "division_key": "rates_trading",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "FICC Rates Sales & Trading",
+          "G10 Rates Trading and Market Making",
+          "G10 rates & interest rate derivatives market making",
+          "G10 rates and government bond trading",
+          "G10 rates flow trading (government bonds and interest rate derivatives)",
+          "Rates Sales & Trading (government bonds, swaps, short-end)",
+          "Rates Trading",
+          "Rates Trading and Market Making",
+          "Rates and Linear Derivatives Trading",
+          "Rates and Macro Market-Making",
+          "Rates markets",
+          "Rates sales and trading",
+          "Rates trading & market making"
+        ],
+        "generation_20261019": [
+          "Rates & Fixed Income Sales & Trading",
+          "Rates Sales & Trading",
+          "Rates Trading and Market Making",
+          "Rates Trading and Sales"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "rates trading",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:regulatory_reporting_conduct_compliance",
+      "division_key": "regulatory_reporting_conduct_compliance",
+      "labels_by_snapshot": {
+        "generation_20261019": [
+          "Regulatory Reporting & Market Conduct Compliance"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "regulatory reporting conduct compliance",
+      "domain_links": [
+        {
+          "reference_id": "domain:risk_control",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:regulatory_transaction_reporting",
+      "division_key": "regulatory_transaction_reporting",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Regulatory Trade & Transaction Reporting Operations",
+          "Regulatory Transaction Reporting Operations",
+          "Regulatory Transaction and Trade Reporting"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "regulatory transaction reporting",
+      "domain_links": [
+        {
+          "reference_id": "domain:risk_control",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:repo_secfin_collateral",
+      "division_key": "repo_secfin_collateral",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Financing: repo & securities lending",
+          "Repo and secured financing",
+          "Repo and secured funding trading (securities financing transactions)",
+          "Repo, Secured Funding and Collateral Trading",
+          "Repo, securities lending and collateral financing",
+          "Securities Financing, Repo & Secured Funding"
+        ],
+        "generation_20261019": [
+          "Repo and Collateral Financing",
+          "Repo, Securities Lending and Financing",
+          "Securities Finance"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "repo secfin collateral",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:securitised_products",
+      "division_key": "securitised_products",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Securitised Products & Mortgage Trading",
+          "Securitised Products Trading",
+          "Securitised Products Trading and Structuring",
+          "Securitised Products and Structured Credit",
+          "Securitised Products and Structured Finance",
+          "Securitised products and structured credit",
+          "Securitised products trading & origination (MBS/ABS/CLO)",
+          "Securitised products trading and structuring (MBS, ABS, CLO)",
+          "Securitised-products origination and trading",
+          "Securitized products trading and origination",
+          "Securitized-products origination and trading"
+        ],
+        "generation_20261019": [
+          "Global Markets Structured Products & Securitized",
+          "Securitised Products & Structured Finance",
+          "Securitised Products Trading",
+          "Securitised Products Trading and Structuring",
+          "Structured Finance & Securitized",
+          "Structured Finance & Securitized Products"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "securitised products",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:sellside_research",
+      "division_key": "sellside_research",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Institutional research and strategy",
+          "Investment Research (equity and credit)",
+          "Sell-Side Research",
+          "Sell-side research and strategy"
+        ],
+        "generation_20261019": [
+          "Equity Research"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "sellside research",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:trade_lifecycle_operations",
+      "division_key": "trade_lifecycle_operations",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Clearing & Post-Trade Operations",
+          "Clearing and Post-Trade Services",
+          "Clearing and Settlement Operations",
+          "Derivatives trade lifecycle, confirmations and regulatory transaction reporting",
+          "Global Markets Clearing & Post-Trade Operations",
+          "Markets post-trade operations",
+          "Markets trade support, confirmations, settlement and reporting",
+          "Trade Operations, Confirmations and Settlement",
+          "Trade Support and Middle Office (Confirmations and Lifecycle)"
+        ],
+        "generation_20261019": [
+          "Trade Operations & Settlement"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        },
+        {
+          "snapshot_id": "generation_20261019",
+          "matrix_sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f",
+          "source_status": "PROVISIONAL_LIMITED_PANEL"
+        }
+      ],
+      "label": "trade lifecycle operations",
+      "domain_links": [
+        {
+          "reference_id": "domain:operations_servicing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "present",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:trade_surveillance",
+      "division_key": "trade_surveillance",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Trade Surveillance and Market Conduct Monitoring",
+          "Trade Surveillance and Markets Compliance"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "trade surveillance",
+      "domain_links": [
+        {
+          "reference_id": "domain:risk_control",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:treasury_balance_sheet_funding",
+      "division_key": "treasury_balance_sheet_funding",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Markets treasury & balance-sheet funding"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "treasury balance sheet funding",
+      "domain_links": [
+        {
+          "reference_id": "domain:markets_financing",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    },
+    {
+      "reference_id": "division:xva_counterparty_risk",
+      "division_key": "xva_counterparty_risk",
+      "labels_by_snapshot": {
+        "generation_20260826": [
+          "Counterparty Credit Risk & XVA",
+          "Counterparty analytics, margin & XVA",
+          "Counterparty credit risk management (derivatives and SFTs)",
+          "XVA & central valuation-adjustment desk",
+          "XVA / central valuation adjustments desk",
+          "XVA and Counterparty Exposure Management Desk",
+          "XVA and Counterparty Portfolio Management",
+          "XVA and Counterparty Risk Pricing"
+        ]
+      },
+      "snapshot_bindings": [
+        {
+          "snapshot_id": "generation_20260826",
+          "matrix_sha256": "6825d4c51428e7f0ebfac0c6b75bf237b3a6f09766071a50f468cfa0d800538d",
+          "source_status": "PROVISIONAL"
+        }
+      ],
+      "label": "xva counterparty risk",
+      "domain_links": [
+        {
+          "reference_id": "domain:risk_control",
+          "relation": "skos:broader",
+          "status": "PROPOSED",
+          "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
+        }
+      ],
+      "context_status": "PROPOSED",
+      "current_presence": "historical_only",
+      "absence_means_retired": false
+    }
+  ],
+  "counts": {
+    "areas": 48,
+    "domains": 5,
+    "capabilities": 9,
+    "current_areas": 25,
+    "historical_only_areas": 23,
+    "unplaced_areas": 0
+  },
+  "context_sha256": "90a1e542b21a369fbbad41cdd43e1cd0a3a8baebd5daee8536d6f572af63da8c"
+}

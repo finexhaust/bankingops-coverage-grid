@@ -15,6 +15,12 @@ REPOSITORY = "thefazzer/bankingops-coverage-grid"
 SCHEMA_ID = "bankingops-coverage-grid.release-manifest.v1"
 SEMANTIC_PROFILE = Path("specs/common-semantic-profile.yaml")
 STATIC_ARTIFACTS = {
+    "specs/SPEC-10-financial-work-context.md": "proposed-context-specification",
+    "specs/financial-work-context.schema.json": "json-schema",
+    "specs/financial-work-placement.schema.json": "json-schema",
+    "reference/financial-work-context-proposals.v1.json": "proposed-context-definitions",
+    "reference/financial-work-context.v1.json": "financial-work-context-catalogue",
+    "tools/build_financial_work_context.py": "context-catalogue-builder",
     "CONFORMANCE.md": "conformance-record",
     "docs/isda-overlap.md": "documentation",
     "specs/SPEC-06-operating-reference.md": "normative-specification",
@@ -146,6 +152,12 @@ def build_manifest(
         raise ValueError("task concepts are stale")
 
     artifact_roles = dict(STATIC_ARTIFACTS)
+    from build_financial_work_context import build_context, OUTPUT as CONTEXT_PATH
+    context = build_context(root)
+    if json.loads((root / CONTEXT_PATH).read_text()) != context:
+        raise ValueError("financial-work context catalogue is stale")
+    for source in context["sources"]:
+        artifact_roles.setdefault(source["path"], "context-taxonomy-source")
     if (root / 'reference/taxonomy-source.json').exists():
         artifact_roles['reference/taxonomy-source.json'] = 'taxonomy-source'
     if (root / run_dir / 'generation-receipt.json').exists():

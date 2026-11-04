@@ -17,6 +17,12 @@ control-point schema, or an occurrence ontology.
 The machine-readable profile is normative. This document states its boundary
 and interpretation rules.
 
+SPEC-10 adds a proposed institutional-finance context above these definitions
+and an optional capability axis across them. Profile 0.5.0 retains all existing
+reference identifiers and the control-point ceiling. The added context is
+labelled PROPOSED and carries its own version/digest; it neither creates
+occurrences nor promotes existing evidence mappings.
+
 ## 1. Reuse rather than recreation
 
 - `division_key` remains the admitted SPEC-01 key. The profile classifies it as
@@ -66,7 +72,8 @@ procedures.
 The distinction is intentional:
 
 ```text
-BOCG public layer: division -> function -> control point
+BOCG public layer: proposed domain context -> division -> function -> control point
+                   optional capability descriptors across areas
 consumer layer:    evidence occurrences, workflow, adjudication, implementation
 ```
 
