@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- SPEC-10 financial-work context 0.1.1 (PROPOSED): the display label of area
+  `repo_secfin_collateral` reads "repo, securities finance and collateral"
+  instead of the abbreviated "repo secfin collateral". The division key,
+  reference ID, placement, domain links, snapshot bindings and every other
+  area are unchanged; only the label, version and digests move.
 - Corroboration ledger `live-run-20261019/corroboration.csv`: `claude-fable-5-1`
   (agent) checked the 31 A1 regulatory anchors of the six ISDA-adjacent areas against source (eCFR point-in-time
   2026-10-29, EU Publications Office Cellar OJ texts, FINRA, BIS, Cornell LII for 7 U.S.C.

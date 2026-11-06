@@ -1,6 +1,6 @@
 {
   "schema": "bocg.financial-work-context/v1",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "status": "PROPOSED",
   "root_ref": "domain:institutional_finance",
   "public_definitions_only": true,
@@ -42,7 +42,7 @@
   "sources": [
     {
       "path": "reference/financial-work-context-proposals.v1.json",
-      "sha256": "66f417511be4bb0b8e53e292d546672bdba94c6a7a9aa315fa1739532ffc5eb6"
+      "sha256": "2524a61a8205f37f3fefe3d10867902eb0a00a62f5ed9e403ec40daa4770fa0e"
     },
     {
       "path": "live-run-20260826/matrix.json",
@@ -1671,7 +1671,7 @@
           "source_status": "PROVISIONAL_LIMITED_PANEL"
         }
       ],
-      "label": "repo secfin collateral",
+      "label": "repo, securities finance and collateral",
       "domain_links": [
         {
           "reference_id": "domain:markets_financing",
@@ -1919,5 +1919,5 @@
     "historical_only_areas": 23,
     "unplaced_areas": 0
   },
-  "context_sha256": "90a1e542b21a369fbbad41cdd43e1cd0a3a8baebd5daee8536d6f572af63da8c"
+  "context_sha256": "22bb470bab173d23aac1a18a6fb1eb06830be13f75de7da3a47d872efd5e40db"
 }

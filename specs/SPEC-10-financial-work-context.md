@@ -1,6 +1,6 @@
 # SPEC-10 — Financial-work context
 
-Version 0.1.0. Status: **PROPOSED**. This extends BOCG's public reference model;
+Version 0.1.1. Status: **PROPOSED**. This extends BOCG's public reference model;
 it does not constitute a new independently elicited or ratified coverage grid.
 
 ## Purpose
