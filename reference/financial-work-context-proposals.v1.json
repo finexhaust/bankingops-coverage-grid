@@ -1,6 +1,6 @@
 {
   "schema": "bocg.financial-work-context-proposals/v1",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "status": "PROPOSED",
   "method": {
     "basis": "owner_requested_model_assisted_context_proposal",
@@ -348,7 +348,7 @@
       "basis": "Proposed contextual grouping of the existing public area name and its recorded aliases; no occurrence or competence is inferred."
     },
     "repo_secfin_collateral": {
-      "label": "repo secfin collateral",
+      "label": "repo, securities finance and collateral",
       "domains": [
         "domain:markets_financing"
       ],
