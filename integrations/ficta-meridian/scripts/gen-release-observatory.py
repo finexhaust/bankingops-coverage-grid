@@ -4,7 +4,7 @@
 APPLY into Finexhaust as ficta-meridian-site/scripts/gen-release-observatory.py
 
 Extensions vs prior Finexhaust build:
-  - Emit cleanroom_eval companion pin (version 1.2.0) into latest.json
+  - Emit cleanroom_eval companion pin (version 2.1.0) into latest.json
   - Emit public_eval block from BOCG public-eval-observatory (or rebuild from
     ledger + companion pin when observatory artifact is absent on older tags)
   - Include SPEC-08/09 + public-eval + task-concept contracts in the public set
@@ -94,11 +94,11 @@ def _rebuild_public_eval(artifact_root: Path) -> dict:
         if pin_path.is_file()
         else {
             "repository": "thefazzer/cleanroom-eval",
-            "version": "1.2.0",
-            "commit_sha": "d01e56e35dd13143a7d3af364b43d59f286a3c50",
-            "release_tag": "v1.2.0",
+            "version": "2.1.0",
+            "commit_sha": "11f6640cfa252a9c84b0e3095dea445aabe4ce74",
+            "release_tag": "v2.1.0",
             "release_status": "github_release_published",
-            "bocg_companion_tag": "v0.6.2",
+            "bocg_companion_tag": "v0.8.0",
             "url": "https://github.com/thefazzer/cleanroom-eval",
             "notes": "fallback pin embedded in Meridian generator",
         }

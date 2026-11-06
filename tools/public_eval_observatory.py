@@ -27,6 +27,7 @@ INVENTORY_PATH = ROOT / "reference/public-eval-inventory.v1.yaml"
 OUT_PATH = ROOT / "reference/public-eval-observatory.v1.json"
 SCHEMA_PATH = ROOT / "specs/public-eval-observatory.schema.json"
 CLEANROOM_PIN_PATH = ROOT / "reference/cleanroom-eval-companion.v1.json"
+EXPECTED_CLEANROOM_VERSION = "2.1.0"
 
 SCHEMA = "bocg.public-eval-observatory/v1"
 PAINT = {"QUALIFIED_MAPPING", "RATIFIED_MAPPING"}
@@ -61,8 +62,8 @@ def load_cleanroom_pin() -> dict:
     pin = json.loads(CLEANROOM_PIN_PATH.read_text(encoding="utf-8"))
     if pin.get("schema") != "bocg.cleanroom-eval-companion/v1":
         raise ValueError("cleanroom companion pin schema drift")
-    if pin.get("version") != "1.2.0":
-        raise ValueError("cleanroom companion pin must be 1.2.0 for this observatory")
+    if pin.get("version") != EXPECTED_CLEANROOM_VERSION:
+        raise ValueError(f"cleanroom companion pin must be {EXPECTED_CLEANROOM_VERSION} for this observatory")
     return pin
 
 

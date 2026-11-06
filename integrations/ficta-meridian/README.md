@@ -2,7 +2,7 @@
 
 Closes the Meridian functional gaps that BOCG alone cannot publish:
 
-1. Pin **cleanroom-eval 1.2.0** in `manifests/latest.json` (`cleanroom_eval`) and the Lab footer.
+1. Pin **cleanroom-eval 2.1.0** in `manifests/latest.json` (`cleanroom_eval`) and the Lab footer.
 2. Surface live LLMAJ empty-intersection outcomes for **Mercor / Rogo / BankerToolBench** (`public_eval`).
 
 BOCG source of truth (on `main`):
@@ -11,8 +11,10 @@ BOCG source of truth (on `main`):
 - `reference/public-eval-observatory.v1.json`
 - `tools/public_eval_observatory.py` (S9-G6)
 
-cleanroom-eval **v1.2.0** is already released:
-https://github.com/thefazzer/cleanroom-eval/releases/tag/v1.2.0
+cleanroom-eval **v2.1.0** is released (marked Latest; BankingEnv runtime 2.1,
+dataset 3.1):
+https://github.com/thefazzer/cleanroom-eval/releases/tag/v2.1.0
+(The pin moved from 1.2.0 to 2.1.0 in BOCG v0.8.0.)
 
 ## One-shot apply (from Finexhaust repo root)
 
