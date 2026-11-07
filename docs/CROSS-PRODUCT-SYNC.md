@@ -1,6 +1,16 @@
 # Cross-product context sync — BOCG / FinExhaust / Ficta Meridian
 
-Updated: 2026-11-03. The earlier access blocker below is historical.
+Updated: 2026-11-06. The earlier access blocker below is historical.
+
+## Current pins (BOCG v0.8.0)
+
+| Surface | Pin |
+|---|---|
+| cleanroom-eval | `v2.1.0` (commit `11f6640`), BankingEnv runtime 2.1, dataset 3.1, in `reference/cleanroom-eval-companion.v1.json` |
+| Observatory | `reference/public-eval-observatory.v1.json` regenerated for the 2.1.0 pin; the four LLMAJ cases and their `paint_eligible: false` outcomes are unchanged |
+| Lab footer (once Meridian refreshes) | `thefazzer/cleanroom-eval · 2.1.0` |
+
+The 17 October tables below record the earlier 1.2.0 pin and are kept as history.
 
 The proposed financial-work context is pinned independently from released
 coverage and evaluation evidence:

@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## v0.8.0 — 2026-11-06
+
+- Re-pin the cleanroom-eval companion from 1.2.0 to **2.1.0** (GitHub Release
+  v2.1.0, commit `11f6640`, BankingEnv runtime 2.1 with document-grounded
+  dataset 3.1). `reference/cleanroom-eval-companion.v1.json`, the observatory
+  version check in `tools/public_eval_observatory.py`, the regenerated
+  `reference/public-eval-observatory.v1.json` (S9-G6 passes) and the Ficta
+  Meridian fallback pin and seed move together. The four LLMAJ cases and
+  their `paint_eligible: false` outcomes are unchanged; only the cleanroom
+  fields and the observatory digest move.
 - SPEC-10 financial-work context 0.1.1 (PROPOSED): the display label of area
   `repo_secfin_collateral` reads "repo, securities finance and collateral"
   instead of the abbreviated "repo secfin collateral". The division key,
@@ -20,7 +30,6 @@
   The generation gate suite was executed on 2026-11-04; the report records
   G1–G5/G7–G9 PASS and G6/G10 FAIL after the companion G9 repair carries the
   recorded eligibility policy into replay and checks both matrix artifacts.
-  These changes do not declare a tagged release.
 - Repair provenance validation: resolve historical overlays and scenario pins
   through verified offline snapshots of the published v0.6.2 and v0.6.3
   manifests. Check historical denominators and every identifier against the
@@ -59,6 +68,26 @@
 - Extend common semantics to profile 0.5.0 and include the context artifacts,
   builder and source matrices in release manifests. No tests, gate suites,
   fresh model calls or independent adjudication were run for this extension.
+
+## v0.7.0 — 2026-10-19
+
+Recorded from the published v0.7.0 release notes; this entry was missing
+from the changelog when v0.7.0 was tagged.
+
+- Fresh 19 October 2026 generation (`live-run-20261019`) with frozen prompts,
+  provider model listings and every response, retry and failure retained.
+- 25 business areas, 48 role concepts, 180 task concepts. DeepSeek V4.1 Flash
+  and Qwen 3.8 27B each supplied three valid samples. Only two of the required
+  four independent vendors qualified, so G10 is not met. Kimi and MiMo had
+  field-order violations, GLM had transport failures and OpenAI credit was
+  exhausted. All 291 external anchor and seat-cost rows remained UNVERIFIED
+  (G6). Aliases and task concepts are provisional, with no human review.
+- An explicit eligible-model policy excludes failed or partial families from
+  agreement denominators and seat pools while keeping every attempted-model
+  column and receipt. Earlier evaluations and human rulings keep their
+  historical bindings.
+- The release manifest pins the release commit (`06284f0`) and all artifacts.
+  No tests or gate suites were run for the release.
 
 ## v0.6.3 — 2026-10-17
 
