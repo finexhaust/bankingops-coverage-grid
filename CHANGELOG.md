@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+## v0.8.1 — 2026-11-07
+
+- Re-pin the cleanroom-eval companion from 2.1.0 to **2.1.1** (GitHub Release
+  v2.1.1, commit `74c5e3b`). 2.1.1 changes no code path and no case: it
+  corrects `banking_v3.__version__`, which 2.1.0 shipped as "2.0.0", and the
+  dataset stays 3.1. `reference/cleanroom-eval-companion.v1.json`, the
+  observatory version check in `tools/public_eval_observatory.py`, the
+  regenerated `reference/public-eval-observatory.v1.json` (S9-G6 passes) and
+  the Ficta Meridian fallback pin and seed move together. The four LLMAJ cases
+  and their `paint_eligible: false` outcomes are unchanged; only the cleanroom
+  fields and the observatory digest move.
+- Add a manually run release workflow (`.github/workflows/release.yml`) that
+  tags a commit on main, builds and attaches `bocg-release-manifest.json`, and
+  publishes the GitHub release. v0.8.1 is the first release cut with it.
+
 ## v0.8.0 — 2026-11-06
 
 - Re-pin the cleanroom-eval companion from 1.2.0 to **2.1.0** (GitHub Release

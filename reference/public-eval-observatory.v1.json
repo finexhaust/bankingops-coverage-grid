@@ -7,13 +7,13 @@
   "prereg_sha256": "dfcc901848f814fc078891590ecce94e288bd39e968baa42968df280a9ef9441",
   "cleanroom_eval": {
     "repository": "thefazzer/cleanroom-eval",
-    "version": "2.1.0",
-    "commit_sha": "11f6640cfa252a9c84b0e3095dea445aabe4ce74",
-    "release_tag": "v2.1.0",
+    "version": "2.1.1",
+    "commit_sha": "74c5e3b94e642d808db4d5c7b599850580af1c29",
+    "release_tag": "v2.1.1",
     "release_status": "github_release_published",
-    "bocg_companion_tag": "v0.8.0",
+    "bocg_companion_tag": "v0.8.1",
     "url": "https://github.com/thefazzer/cleanroom-eval",
-    "notes": "cleanroom-eval 2.1.0 GitHub Release v2.1.0 published 2026-11-03, marked Latest (annotated tag on 11f6640; BankingEnv runtime 2.1, document-grounded dataset 3.1): https://github.com/thefazzer/cleanroom-eval/releases/tag/v2.1.0"
+    "notes": "cleanroom-eval 2.1.1 GitHub Release v2.1.1 published 2026-11-07, marked Latest (tag on 74c5e3b; BankingEnv runtime 2.1.1, document-grounded dataset 3.1; 2.1.1 corrects banking_v3.__version__ only): https://github.com/thefazzer/cleanroom-eval/releases/tag/v2.1.1"
   },
   "llmaj": {
     "rubric_id": "bocg-public-eval-mapping",
@@ -156,7 +156,7 @@
     }
   },
   "meridian": {
-    "footer_harness": "thefazzer/cleanroom-eval · 2.1.0",
+    "footer_harness": "thefazzer/cleanroom-eval · 2.1.1",
     "latest_json_fields": [
       "cleanroom_eval",
       "public_eval"
@@ -168,5 +168,5 @@
       "public.handshake_bankertoolbench"
     ]
   },
-  "observatory_sha256": "2a417477d933e8ffd5fbfbd375c51419a0bf8d5a86f03fd4ef17f0ec292f2f95"
+  "observatory_sha256": "fc3219b02b6d10e069dfa614d13d72d8d3561bc3458af949b3694fcabda9c9fb"
 }
