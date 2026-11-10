@@ -68,11 +68,11 @@ export const PUBLIC_EVAL_OBSERVATORY = {
 
 export const CLEANROOM_EVAL_PIN = {
   "repository": "thefazzer/cleanroom-eval",
-  "version": "2.1.1",
-  "commit_sha": "74c5e3b94e642d808db4d5c7b599850580af1c29",
-  "release_tag": "v2.1.1",
+  "version": "2.1.2",
+  "commit_sha": "8bbf6e06ca014921c0a1d4ede7b5014e418be096",
+  "release_tag": "v2.1.2",
   "release_status": "github_release_published",
-  "bocg_companion_tag": "v0.8.1",
+  "bocg_companion_tag": "v0.8.2",
   "url": "https://github.com/thefazzer/cleanroom-eval",
-  "notes": "cleanroom-eval 2.1.1 GitHub Release v2.1.1 published 2026-11-07: https://github.com/thefazzer/cleanroom-eval/releases/tag/v2.1.1"
+  "notes": "cleanroom-eval 2.1.2 GitHub Release v2.1.2 published 2026-11-10: https://github.com/thefazzer/cleanroom-eval/releases/tag/v2.1.2"
 } as const;

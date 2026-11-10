@@ -2,11 +2,11 @@
   "schema": "bocg.cleanroom-eval-companion/v1",
   "repository": "thefazzer/cleanroom-eval",
   "url": "https://github.com/thefazzer/cleanroom-eval",
-  "version": "2.1.1",
-  "release_tag": "v2.1.1",
-  "commit_sha": "74c5e3b94e642d808db4d5c7b599850580af1c29",
-  "bocg_companion_tag": "v0.8.1",
+  "version": "2.1.2",
+  "release_tag": "v2.1.2",
+  "commit_sha": "8bbf6e06ca014921c0a1d4ede7b5014e418be096",
+  "bocg_companion_tag": "v0.8.2",
   "release_status": "github_release_published",
-  "checked_at": "2026-11-07T20:00:00Z",
-  "notes": "cleanroom-eval 2.1.1 GitHub Release v2.1.1 published 2026-11-07, marked Latest (tag on 74c5e3b; BankingEnv runtime 2.1.1, document-grounded dataset 3.1; 2.1.1 corrects banking_v3.__version__ only): https://github.com/thefazzer/cleanroom-eval/releases/tag/v2.1.1"
+  "checked_at": "2026-11-10T00:00:00Z",
+  "notes": "cleanroom-eval 2.1.2 GitHub Release v2.1.2 published 2026-11-10, marked Latest (tag on 8bbf6e0; BankingEnv runtime 2.1.2, document-grounded dataset 3.1; 2.1.2 changes provider request parameters, a retry path and release-audit states, no case and no grading rule): https://github.com/thefazzer/cleanroom-eval/releases/tag/v2.1.2"
 }

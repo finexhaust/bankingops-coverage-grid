@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+## v0.8.2 - 2026-11-10
+
+- Re-pin the cleanroom-eval companion from 2.1.1 to **2.1.2** (GitHub Release
+  v2.1.2, commit `8bbf6e0`). 2.1.2 changes no case and no grading rule: OpenAI
+  endpoints receive `max_completion_tokens`, the free-run retry path reads
+  `Retry-After` correctly, and a failed release-audit gate can no longer map to
+  a pass state. The dataset stays 3.1. `reference/cleanroom-eval-companion.v1.json`,
+  the observatory version check in `tools/public_eval_observatory.py`, the
+  regenerated `reference/public-eval-observatory.v1.json` and the Ficta Meridian
+  fallback pin and seed move together. The four LLMAJ cases and their
+  `paint_eligible: false` outcomes are unchanged; only the cleanroom fields and
+  the observatory digest move.
+
 ## v0.8.1 — 2026-11-07
 
 - Re-pin the cleanroom-eval companion from 2.1.0 to **2.1.1** (GitHub Release

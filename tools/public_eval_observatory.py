@@ -27,7 +27,7 @@ INVENTORY_PATH = ROOT / "reference/public-eval-inventory.v1.yaml"
 OUT_PATH = ROOT / "reference/public-eval-observatory.v1.json"
 SCHEMA_PATH = ROOT / "specs/public-eval-observatory.schema.json"
 CLEANROOM_PIN_PATH = ROOT / "reference/cleanroom-eval-companion.v1.json"
-EXPECTED_CLEANROOM_VERSION = "2.1.1"
+EXPECTED_CLEANROOM_VERSION = "2.1.2"
 
 SCHEMA = "bocg.public-eval-observatory/v1"
 PAINT = {"QUALIFIED_MAPPING", "RATIFIED_MAPPING"}

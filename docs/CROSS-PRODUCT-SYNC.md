@@ -1,14 +1,14 @@
 # Cross-product context sync — BOCG / FinExhaust / Ficta Meridian
 
-Updated: 2026-11-07. The earlier access blocker below is historical.
+Updated: 2026-11-10. The earlier access blocker below is historical.
 
-## Current pins (BOCG v0.8.1)
+## Current pins (BOCG v0.8.2)
 
 | Surface | Pin |
 |---|---|
-| cleanroom-eval | `v2.1.1` (commit `74c5e3b`), BankingEnv runtime 2.1.1, dataset 3.1, in `reference/cleanroom-eval-companion.v1.json` |
-| Observatory | `reference/public-eval-observatory.v1.json` regenerated for the 2.1.1 pin; the four LLMAJ cases and their `paint_eligible: false` outcomes are unchanged |
-| Lab footer (once Meridian refreshes) | `thefazzer/cleanroom-eval · 2.1.1` |
+| cleanroom-eval | `v2.1.2` (commit `8bbf6e0`), BankingEnv runtime 2.1.2, dataset 3.1, in `reference/cleanroom-eval-companion.v1.json` |
+| Observatory | `reference/public-eval-observatory.v1.json` regenerated for the 2.1.2 pin; the four LLMAJ cases and their `paint_eligible: false` outcomes are unchanged |
+| Lab footer (once Meridian refreshes) | `thefazzer/cleanroom-eval · 2.1.2` |
 
 The 17 October tables below record the earlier 1.2.0 pin and are kept as history.
 
