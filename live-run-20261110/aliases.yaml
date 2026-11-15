@@ -1,0 +1,324 @@
+# BOCG alias table (SPEC-01 §5.2). Maps canon_name -> division_key. Authored AFTER all runs complete.
+# Every entry must carry a rationale. The sha256 of this file is published in aliases.sha256.
+version: 1
+authored_after_runs: efd90b74
+aliases:
+- canon: asset management buy side
+  key: asset_management_buy_side
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: asset management equity
+  key: asset_management_equity
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: asset management fixed income
+  key: asset_management_fixed_income
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: buy side derivatif collateral margin management umr
+  key: buy_side_derivatif_collateral_margin_management_umr
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: buy side execution
+  key: buy_side_execution
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: buy side execution dealing asset manager owner
+  key: buy_side_execution_dealing_asset_manager_owner
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: buy side execution trading asset manager hedge fund
+  key: buy_side_execution_trading_asset_manager_hedge_fund
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: buy side fixed income multi asset portfolio management
+  key: buy_side_fixed_income_multi_asset_portfolio_management
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: buy side institutional dealing portfolio implementation
+  key: buy_side_institutional_dealing_portfolio_implementation
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: buy side institutional execution portfolio implementation
+  key: buy_side_institutional_execution_portfolio_implementation
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: capital market operation
+  key: capital_market_operation
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: capital market origination ecm dcm
+  key: capital_market_origination_ecm_dcm
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: capital market risk management
+  key: capital_market_risk_management
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: cash equity agency execution
+  key: cash_equity_agency_execution
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: cash equity electronic execution
+  key: cash_equity_electronic_execution
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: cash equity execution service
+  key: cash_equity_execution_service
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: commodity market
+  key: commodity_market
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: commodity sale trading
+  key: commodity_sale_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: commodity trading
+  key: commodity_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: commodity trading derivatif
+  key: commodity_trading_derivatif
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: commodity trading energy metal agriculture
+  key: commodity_trading_energy_metal_agriculture
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: commodity trading structuring
+  key: commodity_trading_structuring
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: corporate treasury trade solution
+  key: corporate_treasury_trade_solution
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: counterparty risk trading valuation adjustment
+  key: counterparty_risk_trading_valuation_adjustment
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: credit market
+  key: credit_market
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: credit sale trading
+  key: credit_sale_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: credit trading
+  key: credit_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: credit trading ig hy cash cds
+  key: credit_trading_ig_hy_cash_cds
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: credit trading investment grade high yield cds
+  key: credit_trading_investment_grade_high_yield_cds
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: credit trading market making
+  key: credit_trading_market_making
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: credit trading structuring
+  key: credit_trading_structuring
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: debt capital market
+  key: debt_capital_market
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: debt capital market leveraged finance execution
+  key: debt_capital_market_leveraged_finance_execution
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: debt capital market leveraged finance syndication
+  key: debt_capital_market_leveraged_finance_syndication
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: debt capital market origination syndicate
+  key: debt_capital_market_origination_syndicate
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: debt capital market syndicate
+  key: debt_capital_market_syndicate
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: debt equity capital market underwriting
+  key: debt_equity_capital_market_underwriting
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: electronic market making algorithmic execution cross asset
+  key: electronic_market_making_algorithmic_execution_cross_asset
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: emerging market local market trading
+  key: emerging_market_local_market_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: emerging market macro trading local rate fx sovereign credit
+  key: emerging_market_macro_trading_local_rate_fx_sovereign_credit
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: emerging market sale trading
+  key: emerging_market_sale_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: emerging market trading
+  key: emerging_market_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: equity capital market
+  key: equity_capital_market
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: equity capital market equity linked issuance
+  key: equity_capital_market_equity_linked_issuance
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: equity capital market origination syndicate
+  key: equity_capital_market_origination_syndicate
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: equity derivatif flow exotic structured product
+  key: equity_derivatif_flow_exotic_structured_product
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: equity derivatif structured equity
+  key: equity_derivatif_structured_equity
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: equity derivatif structured product
+  key: equity_derivatif_structured_product
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: equity derivatif trading
+  key: equity_derivatif_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: equity execution trading derivatif
+  key: equity_execution_trading_derivatif
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: equity fixed income research
+  key: equity_fixed_income_research
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: equity sale trading
+  key: equity_sale_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: equity trading
+  key: equity_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: etf market making delta one
+  key: etf_market_making_delta_one
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: financing repo security lending
+  key: financing_repo_security_lending
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: fixed income secured financing repo
+  key: fixed_income_secured_financing_repo
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: foreign exchange market
+  key: foreign_exchange_market
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: foreign exchange trading g10 ndf
+  key: foreign_exchange_trading_g10_ndf
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: foreign exchange trading market making
+  key: foreign_exchange_trading_market_making
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: foreign exchange trading structuring
+  key: foreign_exchange_trading_structuring
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: fx market making g10 spot forward swap
+  key: fx_market_making_g10_spot_forward_swap
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: fx sale trading
+  key: fx_sale_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: fx trading
+  key: fx_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: g10 rate flow trading government bond primary dealership
+  key: g10_rate_flow_trading_government_bond_primary_dealership
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: g10 rate market making
+  key: g10_rate_market_making
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: global market risk control
+  key: global_market_risk_control
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: global market trade operation
+  key: global_market_trade_operation
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: institutional sale
+  key: institutional_sale
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: leveraged finance
+  key: leveraged_finance
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: leveraged finance syndication secondary loan trading
+  key: leveraged_finance_syndication_secondary_loan_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: listed derivatif execution clearing fcm
+  key: listed_derivatif_execution_clearing_fcm
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: municipal public sector bond trading us
+  key: municipal_public_sector_bond_trading_us
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: municipal security trading
+  key: municipal_security_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: prime brokerage
+  key: prime_brokerage
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: prime brokerage equity financing
+  key: prime_brokerage_equity_financing
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: prime brokerage financing
+  key: prime_brokerage_financing
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: prime brokerage financing equity security lending
+  key: prime_brokerage_financing_equity_security_lending
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: prime brokerage prime service
+  key: prime_brokerage_prime_service
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: prime brokerage security financing
+  key: prime_brokerage_security_financing
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: prime service financing margin security lending
+  key: prime_service_financing_margin_security_lending
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: prime service prime brokerage margin hedge fund financing
+  key: prime_service_prime_brokerage_margin_hedge_fund_financing
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: prime service security financing
+  key: prime_service_security_financing
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: public market asset management
+  key: public_market_asset_management
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: quantitative analytic electronic trading engineering
+  key: quantitative_analytic_electronic_trading_engineering
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: rate fx trading
+  key: rate_fx_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: rate market
+  key: rate_market
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: rate sale trading
+  key: rate_sale_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: rate trading
+  key: rate_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: rate trading market making
+  key: rate_trading_market_making
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: rate trading structuring
+  key: rate_trading_structuring
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: regulatory reporting compliance
+  key: regulatory_reporting_compliance
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: repo financing
+  key: repo_financing
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: repo security financing
+  key: repo_security_financing
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: securitised product
+  key: securitised_product
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: securitised product agency mbs abs clo trading
+  key: securitised_product_agency_mbs_abs_clo_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: securitised product asset backed structuring
+  key: securitised_product_asset_backed_structuring
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: securitised product trading
+  key: securitised_product_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: securitised product trading structuring
+  key: securitised_product_trading_structuring
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: securitized product asset backed financing
+  key: securitized_product_asset_backed_financing
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: securitized product trading
+  key: securitized_product_trading
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: security financing repo stock loan
+  key: security_financing_repo_stock_loan
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: structured product
+  key: structured_product
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: structured product securitized
+  key: structured_product_securitized
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: structured product structuring
+  key: structured_product_structuring
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: syndicated loan trading secondary loan
+  key: syndicated_loan_trading_secondary_loan
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+- canon: xva central funding
+  key: xva_central_funding
+  rationale: AUTO-DRAFT identity mapping (unreviewed)
+auto_generated: true
