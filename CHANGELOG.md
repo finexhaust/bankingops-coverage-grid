@@ -2,6 +2,26 @@
 
 ## Unreleased
 
+## v0.8.3 - 2026-11-18
+
+- Add the 10 November 2026 live division-decomposition panel run under
+  `live-run-20261110/` (#56): frozen prompt and schema, panel and provider
+  model listings, every raw response, retry and attempt history, the
+  generation receipt and normalised results, alongside the earlier runs. Of
+  eight requested models, five returned all three samples (DeepSeek V4.1 Flash,
+  Gemma 4 31B, GPT-6 Astra, Kimi K3, MiMo V2.6 Pro), Qwen 3.8 27B returned two
+  of three, and DeepSeek Flash and GLM 5.3 returned none; failures are kept in
+  the attempt history. The run is recorded as evidence only: the catalogue,
+  matrices, ledger and gate results are not rebuilt from it in this release,
+  and G6 and G10 still fail (#45).
+- Add `WORKED-SAMPLE.md` (#55): one demonstration finance-operations task shown
+  in full (situation, document set, rubric, declared-answer fields and monetary
+  effect) with its verifier outline. The answer key, reference answer and
+  check values stay sealed. It is a sample, not a result, and its reviews are
+  pending.
+- The cleanroom-eval companion pin is unchanged at 2.1.2 (`v2.1.2`, commit
+  `8bbf6e0`).
+
 ## v0.8.2 - 2026-11-10
 
 - Re-pin the cleanroom-eval companion from 2.1.1 to **2.1.2** (GitHub Release
