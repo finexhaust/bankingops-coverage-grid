@@ -25,6 +25,7 @@ STATIC_ARTIFACTS = {
     "tools/build_financial_work_context.py": "context-catalogue-builder",
     "CONFORMANCE.md": "conformance-record",
     "docs/isda-overlap.md": "documentation",
+    "WORKED-SAMPLE.md": "documentation",
     "specs/SPEC-06-operating-reference.md": "normative-specification",
     "specs/operating-reference-contract.json": "operating-reference-contract",
     "specs/operating-unit-register.schema.json": "operating-unit-register-schema",
@@ -69,6 +70,8 @@ STATIC_ARTIFACTS = {
     "specs/public-eval-observatory.schema.json": "json-schema",
     "specs/bocg-release-manifest.schema.json": "release-manifest-schema",
 }
+LIVE_RUN_GLOB = "live-run-*"
+EVIDENCE_SUFFIXES = {".json", ".csv", ".yaml", ".txt", ".sha256", ".md"}
 RUN_ARTIFACTS = {
     "RUN_SUMMARY.json": "run-summary",
     "aliases.yaml": "normalisation-aliases",
@@ -107,6 +110,15 @@ def _profile_identity(profile_path: Path) -> tuple[str, str]:
     if not profile_id or not version:
         raise ValueError("semantic profile id/version are not readable")
     return profile_id, version
+
+
+def _evidence_files(root: Path, run_dir: str) -> list[str]:
+    """Paths of a run directory's evidence files, relative to the root."""
+    return [
+        path.relative_to(root).as_posix()
+        for path in sorted((root / run_dir).rglob("*"))
+        if path.is_file() and path.suffix in EVIDENCE_SUFFIXES
+    ]
 
 
 def _artifact(root: Path, relative: str, role: str) -> dict:
@@ -167,15 +179,20 @@ def build_manifest(
         artifact_roles['reference/taxonomy-source.json'] = 'taxonomy-source'
     if (root / run_dir / 'generation-receipt.json').exists():
         # Preserve generation inputs, response attempts, exclusions and sources.
-        for path in sorted((root / run_dir).rglob('*')):
-            if path.is_file() and path.suffix in {'.json', '.csv', '.yaml', '.txt', '.sha256', '.md'}:
-                artifact_roles[path.relative_to(root).as_posix()] = 'generation-evidence'
+        for relative in _evidence_files(root, run_dir):
+            artifact_roles[relative] = 'generation-evidence'
         for name in ('public-eval-surface-map.v1.json', 'public-eval-llmaj-ledger.v1.json',
                      'public-eval-llmaj-prereg.v1.json', 'public-eval-observatory.v1.json'):
             artifact_roles['reference/' + name] = 'historical-' + STATIC_ARTIFACTS['reference/' + name]
     artifact_roles.update(
         {f"{run_dir}/{name}": role for name, role in RUN_ARTIFACTS.items()}
     )
+    # Every other recorded run is pinned too, so a release covers all the
+    # evidence it ships, not only the run the taxonomy is built from. Roles
+    # already assigned above (current run, verified historical snapshots) win.
+    for run in sorted(p.name for p in root.glob(LIVE_RUN_GLOB) if p.is_dir()):
+        for relative in _evidence_files(root, run):
+            artifact_roles.setdefault(relative, 'generation-evidence')
     artifact_roles.update(
         {
             path.relative_to(root).as_posix(): "control-point-cell"
