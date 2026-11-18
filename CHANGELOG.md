@@ -2,6 +2,26 @@
 
 ## Unreleased
 
+## v0.8.4 - 2026-11-18
+
+- The release manifest now pins every recorded run and the worked sample.
+  `tools/build_release_manifest.py` adds the evidence files of every
+  `live-run-*` directory (the same suffix filter as the current run) as
+  `generation-evidence`, and `WORKED-SAMPLE.md` as `documentation`. Roles
+  already assigned (the current run's named artifacts, verified historical
+  snapshots) are kept. Against v0.8.3 the manifest grows from 203 to 349
+  artifacts: 86 from `live-run-20261110`, 39 from `live-run-20260826`, 20 from
+  `live-run-public-eval-llmaj` and the worked sample; no existing entry is
+  removed or changed. An empty lock file and a `.gitignore` stay outside it.
+- The v0.8.3 release notes said its manifest pinned all artifacts; it did not
+  include `live-run-20261110/` or `WORKED-SAMPLE.md`, which were fixed only by
+  the tagged commit. v0.8.4 is the first release whose manifest covers them.
+- New test `bocg/tests/test_release_manifest_coverage.py` checks that every
+  tracked run evidence file and the worked sample are pinned with matching
+  digests.
+- No taxonomy, ledger or gate result changes; the cleanroom-eval companion pin
+  stays at 2.1.2.
+
 ## v0.8.3 - 2026-11-18
 
 - Add the 10 November 2026 live division-decomposition panel run under
