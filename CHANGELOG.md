@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+## v0.8.5 - 2026-11-19
+
+- Re-pin the cleanroom-eval companion from 2.1.2 to **2.1.3** (GitHub Release
+  v2.1.3, commit `3e27d59`). 2.1.3 changes no code path, no case and no grading
+  rule: cleanroom-eval is now the only public BankingEnv repository, and the
+  former `bankingenv` repository is archived and points to it. The dataset
+  stays 3.1. `reference/cleanroom-eval-companion.v1.json`, the observatory
+  version check in `tools/public_eval_observatory.py`, the regenerated
+  `reference/public-eval-observatory.v1.json`, the Ficta Meridian fallback pin
+  and seed, the Meridian README and the cross-product sync page move together.
+  The four LLMAJ cases and their `paint_eligible: false` outcomes are
+  unchanged; only the cleanroom fields and the observatory digest move.
+- `WORKED-SAMPLE.md` is withdrawn (18 November): task FM-PB-0417-R2 marked DTC
+  open on 25 May 2026 in its settlement calendar, which is wrong. The file now
+  holds the withdrawal notice; revision R3 is unsealed and unpublished. The
+  release manifest pins the notice in place of the v0.8.3 and v0.8.4 sample.
+
 ## v0.8.4 - 2026-11-18
 
 - The release manifest now pins every recorded run and the worked sample.
