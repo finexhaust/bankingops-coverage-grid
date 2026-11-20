@@ -9,7 +9,6 @@ from typing import Optional, Protocol
 
 from .crypto import manifest_merkle_root
 from .encoding import canonical_json, pretty_json, sha256_hex
-from .models import SourceDoc
 
 ANCHOR_FILE = "anchor_proof.ots"
 
