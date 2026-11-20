@@ -22,7 +22,7 @@ from .encoding import canonical_json, pretty_json, sha256_hex
 from .holdout import near_dups_against_sketches
 from .lineage import check_lineage
 from .manifest import utc_now, verify_manifest
-from .models import KEEP, MODE_SYNTHESISE, REDACT
+from .models import MODE_SYNTHESISE, REDACT
 from .pkgio import Package
 from .ratios import compute_ratios
 from .redact import RebuildError, make_token, rebuild_leaves, rebuild_root, reconstruct_original
