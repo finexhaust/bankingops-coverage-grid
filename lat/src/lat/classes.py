@@ -231,6 +231,3 @@ def class_predicate(cls: str, original: str, gaz: Optional[Gazetteer] = None) ->
         # only class allowed to hold substantive text; must be an explicit quotation
         return len(s) >= 2 and s[0] in "\"'“‘«" and s[-1] in "\"'”’»"
     return False
-
-
-ClassPredicate = Callable[[str, str, Optional[Gazetteer]], bool]
