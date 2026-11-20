@@ -6,7 +6,6 @@ Everything here is invented: names, counterparties, systems, ids, IBAN-like stri
 from __future__ import annotations
 
 import datetime as _dt
-import json
 import random
 from pathlib import Path
 
