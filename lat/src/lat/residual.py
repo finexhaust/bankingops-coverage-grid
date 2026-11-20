@@ -16,11 +16,11 @@ from typing import Optional
 import regex as re
 
 from .classes import (ACCOUNT_RE, AMOUNT_RE, EMAIL_RE, Gazetteer, IBAN_RE, ISIN_RE, LEI_RE, PHONE_RE, TOKEN_RE,
-                      TRADE_RE, amount_band, canonical_original)
+                      TRADE_RE, amount_band)
 from .holdout import near_dups_against_items, near_dups_against_sketches
 from .models import KEEP, Episode
 from .ner import Detector, RuleDetector
-from .redact import WorkDir, rebuild_leaves
+from .redact import WorkDir
 
 K_MIN = 5
 HIGH_MAX_FRACTION = 0.001
