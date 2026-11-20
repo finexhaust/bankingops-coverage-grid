@@ -15,14 +15,12 @@ Registry: append-only JSONL hash chain (each line {entry, prev_hash, sig}), Ed25
 """
 from __future__ import annotations
 
-import base64
-import hashlib
 import json
 import os
 from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Iterable, Optional
+from typing import Optional
 
 import regex as re
 
@@ -41,10 +39,6 @@ METHODS = ("ZW_SEQ", "PSEUD_SUFFIX")
 
 def strip_carriers(s: str) -> str:
     return _STRIP_RE.sub("", s)
-
-
-def has_carriers(s: str) -> bool:
-    return _STRIP_RE.search(s) is not None
 
 
 def canary_tag(salt: bytes, package_id: str, recipient_id: str) -> bytes:
