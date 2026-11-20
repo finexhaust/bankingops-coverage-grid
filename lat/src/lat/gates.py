@@ -2,24 +2,23 @@
 from __future__ import annotations
 
 import datetime as _dt
-import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
 from .canary import Registry
 from .classes import Gazetteer, TOKEN_RE
 from .holdout import near_dups_against_items
-from .lineage import check_lineage, check_modes
+from .lineage import check_modes
 from .manifest import utc_now
 from .models import MODE_SYNTHESISE, SourceDoc
 from .ner import Detector, RuleDetector
 from .pkgio import Package
 from .encoding import pretty_json
-from .redact import RebuildError, redact_doc, rebuild_root
+from .redact import redact_doc
 from .residual import scan as residual_scan
 from .vault import NonceVault
-from .verify import FAIL, PASS, WARN, Check, v7_vault_absent
+from .verify import FAIL, PASS, Check, v7_vault_absent
 
 GATE_NAMES = {"G1": "LEAKAGE_GATE", "G2": "CANARY_GATE", "G3": "MANIFEST_GATE", "G4": "CLASS_FLOOR_GATE",
               "G5": "RESIDUAL_GATE", "G6": "VAULT_GATE", "G7": "MODE_GATE", "G8": "DETERMINISM_GATE",
