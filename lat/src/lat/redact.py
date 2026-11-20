@@ -13,7 +13,7 @@ from typing import Optional
 from .classes import (CLASS_SET, TOKEN_CLOSE, TOKEN_OPEN, amount_band, canonical_original, date_shift_days,
                       date_token_value)
 from .crypto import commitment, keep_leaf, merkle_root, new_nonce, pseudonym_id
-from .encoding import nfc, pretty_json, sha256_hex
+from .encoding import pretty_json
 from .models import (KEEP, MODE_PSEUDONYMISE, MODE_SYNTHESISE, REDACT, Origin, Segment, Segmentation, SourceDoc,
                      VaultEntry)
 from .ner import Detector
