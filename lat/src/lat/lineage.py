@@ -11,9 +11,8 @@ from typing import Optional
 
 from .canary import strip_carriers
 from .classes import DERIVATION_OPS, LINEAGE_CLASSES, OP_TO_LINEAGE
-from .crypto import keep_leaf
 from .encoding import nfc, sha256_hex, utf8
-from .models import KEEP, MODE_SYNTHESISE, REDACT, Atom, Episode, Segmentation, SourceDoc, SpanRef
+from .models import KEEP, MODE_SYNTHESISE, Atom, Episode, Segmentation, SourceDoc, SpanRef
 from .redact import RebuildError, WorkDir, char_to_byte_offsets, rebuild_leaves
 
 GENERATOR_VERSION = "lat-lineage/0.1.0"
