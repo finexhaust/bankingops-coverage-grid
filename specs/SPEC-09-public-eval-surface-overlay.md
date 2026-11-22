@@ -169,7 +169,8 @@ function of painted rows under the locked band weights — not an owner knob.
 Ficta Meridian and other Lab surfaces. It carries:
 
 1. **cleanroom-eval companion pin** (`reference/cleanroom-eval-companion.v1.json`)
-   — version, tip commit, expected release tag, BOCG companion tag.
+   — version, tip commit, release archive and audit digests, audit terminal
+   state and gate counts, expected release tag, BOCG companion tag.
 2. **Live LLMAJ cases** — every `public_benchmark` card assessed under the locked
    prereg, including `paint_eligible: false` empty-intersection outcomes
    (Mercor APEX, Rogo Big Finance Bench, Handshake BankerToolBench).

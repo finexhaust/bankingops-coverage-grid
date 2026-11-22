@@ -29,11 +29,36 @@
     "cleanroom_eval": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["repository", "version", "commit_sha", "release_status", "bocg_companion_tag", "url"],
+      "required": [
+        "repository",
+        "version",
+        "commit_sha",
+        "release_archive_sha256",
+        "release_audit_sha256",
+        "release_audit_terminal_state",
+        "release_audit_gate_counts",
+        "release_status",
+        "bocg_companion_tag",
+        "url"
+      ],
       "properties": {
         "repository": { "type": "string" },
         "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
         "commit_sha": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "release_archive_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "release_audit_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "release_audit_terminal_state": { "type": "string", "minLength": 1 },
+        "release_audit_gate_counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["total", "passed", "failed", "not_run"],
+          "properties": {
+            "total": { "type": "integer", "minimum": 1 },
+            "passed": { "type": "integer", "minimum": 0 },
+            "failed": { "type": "integer", "minimum": 0 },
+            "not_run": { "type": "integer", "minimum": 0 }
+          }
+        },
         "release_tag": { "type": ["string", "null"] },
         "release_status": {
           "type": "string",

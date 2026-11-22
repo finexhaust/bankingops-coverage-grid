@@ -64,6 +64,23 @@ def load_cleanroom_pin() -> dict:
         raise ValueError("cleanroom companion pin schema drift")
     if pin.get("version") != EXPECTED_CLEANROOM_VERSION:
         raise ValueError(f"cleanroom companion pin must be {EXPECTED_CLEANROOM_VERSION} for this observatory")
+    for field in ("release_archive_sha256", "release_audit_sha256"):
+        value = pin.get(field)
+        if not isinstance(value, str) or not re.fullmatch(r"[a-f0-9]{64}", value):
+            raise ValueError(f"cleanroom companion pin has invalid {field}")
+    counts = pin.get("release_audit_gate_counts")
+    if (
+        not isinstance(counts, dict)
+        or set(counts) != {"total", "passed", "failed", "not_run"}
+        or any(type(value) is not int or value < 0 for value in counts.values())
+        or counts["total"] != counts["passed"] + counts["failed"] + counts["not_run"]
+    ):
+        raise ValueError("cleanroom companion pin has invalid release audit gate counts")
+    if (
+        not isinstance(pin.get("release_audit_terminal_state"), str)
+        or not pin["release_audit_terminal_state"]
+    ):
+        raise ValueError("cleanroom companion pin has invalid release audit terminal state")
     return pin
 
 
@@ -156,6 +173,10 @@ def build_observatory() -> dict:
             "repository": cleanroom["repository"],
             "version": cleanroom["version"],
             "commit_sha": cleanroom["commit_sha"],
+            "release_archive_sha256": cleanroom["release_archive_sha256"],
+            "release_audit_sha256": cleanroom["release_audit_sha256"],
+            "release_audit_terminal_state": cleanroom["release_audit_terminal_state"],
+            "release_audit_gate_counts": cleanroom["release_audit_gate_counts"],
             "release_tag": cleanroom.get("release_tag"),
             "release_status": cleanroom.get("release_status"),
             "bocg_companion_tag": cleanroom.get("bocg_companion_tag"),
@@ -217,6 +238,14 @@ def observatory_problems(doc: dict) -> list[str]:
         problems.append("cleanroom_eval.version drifted from companion pin")
     if cr.get("commit_sha") != pin["commit_sha"]:
         problems.append("cleanroom_eval.commit_sha drifted from companion pin")
+    for field in (
+        "release_archive_sha256",
+        "release_audit_sha256",
+        "release_audit_terminal_state",
+        "release_audit_gate_counts",
+    ):
+        if cr.get(field) != pin[field]:
+            problems.append(f"cleanroom_eval.{field} drifted from companion pin")
     llmaj = doc.get("llmaj") or {}
     cases = llmaj.get("cases") or []
     if llmaj.get("case_count") != len(cases):
