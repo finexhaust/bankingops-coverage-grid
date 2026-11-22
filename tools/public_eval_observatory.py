@@ -246,23 +246,9 @@ def build_observatory() -> dict:
 
 def render_meridian_seed(doc: dict) -> str:
     """Render the static integration seed from the same observatory document."""
-    cleanroom = doc["cleanroom_eval"]
-    public_eval = {
-        "prereg_sha256": doc["prereg_sha256"],
-        "headline": doc["llmaj"]["headline"],
-        "llmaj": doc["llmaj"],
-        "overlay_paint": doc["overlay_paint"],
-        "source": "seed_from_bocg_observatory",
-    }
-    return (
-        "// GENERATED from reference/public-eval-observatory.v1.json by tools/public_eval_observatory.py.\n"
-        "export const PUBLIC_EVAL_OBSERVATORY = "
-        + json.dumps(public_eval, indent=2, ensure_ascii=False)
-        + " as const;\n\n"
-        "export const CLEANROOM_EVAL_PIN = "
-        + json.dumps(cleanroom, indent=2, ensure_ascii=False)
-        + " as const;\n"
-    )
+    from runpy import run_path
+    renderer = run_path(str(ROOT / "integrations/ficta-meridian/scripts/sync-observatory.py"))
+    return renderer["render_seed"](doc)
 
 
 def observatory_problems(doc: dict) -> list[str]:

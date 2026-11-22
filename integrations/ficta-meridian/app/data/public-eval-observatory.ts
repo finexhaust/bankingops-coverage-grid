@@ -1,4 +1,30 @@
-// GENERATED from reference/public-eval-observatory.v1.json by tools/public_eval_observatory.py.
+// GENERATED from reference/public-eval-observatory.v1.json; do not hand-edit.
+export const CLEANROOM_EVAL_PIN = {
+  "repository": "finexhaust/cleanroom-eval",
+  "version": "2.1.3",
+  "commit_sha": "3e27d5909e782d530d67f9bcdfa4e1a55891629d",
+  "release_archive_sha256": "02184bb6fb3227f890488e16865aa6d994b0025583f613093d67363651a427d5",
+  "release_audit_sha256": "234db03f6b4516706e762ade9ef2bd6b04c10d79ca6aa2130e96d897e77b31bc",
+  "release_audit_terminal_state": "RELEASE_AUDIT_PASS_WITH_LIMITATIONS",
+  "release_audit_gate_counts": {
+    "total": 13,
+    "passed": 10,
+    "failed": 0,
+    "not_run": 3
+  },
+  "release_tag": "v2.1.3",
+  "release_status": "github_release_published",
+  "bocg_companion_tag": "v0.8.5",
+  "url": "https://github.com/finexhaust/cleanroom-eval",
+  "archive_sha256": "02184bb6fb3227f890488e16865aa6d994b0025583f613093d67363651a427d5",
+  "audit_sha256": "234db03f6b4516706e762ade9ef2bd6b04c10d79ca6aa2130e96d897e77b31bc",
+  "audit_gate_counts": {
+    "PASS": 10,
+    "NOT_RUN": 3
+  },
+  "audit_terminal_state": "RELEASE_AUDIT_PASS_WITH_LIMITATIONS",
+  "notes": "cleanroom-eval 2.1.3 GitHub Release v2.1.3 published 2026-11-19, marked Latest (tag on 3e27d59; BankingEnv runtime 2.1.3, document-grounded dataset 3.1; 2.1.3 changes no code path, no case and no grading rule). Its audit reports 10 of 13 gates PASS and 3 NOT_RUN; terminal state RELEASE_AUDIT_PASS_WITH_LIMITATIONS. The cleanroom-eval repository is now the only public BankingEnv repository and the former bankingenv repository is archived: https://github.com/finexhaust/cleanroom-eval/releases/tag/v2.1.3"
+} as const;
 export const PUBLIC_EVAL_OBSERVATORY = {
   "prereg_sha256": "dfcc901848f814fc078891590ecce94e288bd39e968baa42968df280a9ef9441",
   "headline": "Live primary+sensitivity LLMAJ under the locked prereg produced 0 paint-eligible PASS case(s) across 4 public_benchmark card(s). Empty mapping-key intersection on Mercor / Rogo / BankerToolBench → no public_benchmark QUALIFIED paint.",
@@ -142,32 +168,6 @@ export const PUBLIC_EVAL_OBSERVATORY = {
       "max_saturation": 1
     }
   },
-  "source": "seed_from_bocg_observatory"
-} as const;
-
-export const CLEANROOM_EVAL_PIN = {
-  "repository": "finexhaust/cleanroom-eval",
-  "version": "2.1.3",
-  "commit_sha": "3e27d5909e782d530d67f9bcdfa4e1a55891629d",
-  "release_archive_sha256": "02184bb6fb3227f890488e16865aa6d994b0025583f613093d67363651a427d5",
-  "release_audit_sha256": "234db03f6b4516706e762ade9ef2bd6b04c10d79ca6aa2130e96d897e77b31bc",
-  "release_audit_terminal_state": "RELEASE_AUDIT_PASS_WITH_LIMITATIONS",
-  "release_audit_gate_counts": {
-    "total": 13,
-    "passed": 10,
-    "failed": 0,
-    "not_run": 3
-  },
-  "release_tag": "v2.1.3",
-  "release_status": "github_release_published",
-  "bocg_companion_tag": "v0.8.5",
-  "url": "https://github.com/finexhaust/cleanroom-eval",
-  "archive_sha256": "02184bb6fb3227f890488e16865aa6d994b0025583f613093d67363651a427d5",
-  "audit_sha256": "234db03f6b4516706e762ade9ef2bd6b04c10d79ca6aa2130e96d897e77b31bc",
-  "audit_gate_counts": {
-    "PASS": 10,
-    "NOT_RUN": 3
-  },
-  "audit_terminal_state": "RELEASE_AUDIT_PASS_WITH_LIMITATIONS",
-  "notes": "cleanroom-eval 2.1.3 GitHub Release v2.1.3 published 2026-11-19, marked Latest (tag on 3e27d59; BankingEnv runtime 2.1.3, document-grounded dataset 3.1; 2.1.3 changes no code path, no case and no grading rule). Its audit reports 10 of 13 gates PASS and 3 NOT_RUN; terminal state RELEASE_AUDIT_PASS_WITH_LIMITATIONS. The cleanroom-eval repository is now the only public BankingEnv repository and the former bankingenv repository is archived: https://github.com/finexhaust/cleanroom-eval/releases/tag/v2.1.3"
+  "observatory_sha256": "fb321bf27c0a2683f152fac5491928e632ab7a5a3c50bdec86ca1e84aff3d7f5",
+  "source": "bocg.public-eval-observatory/v1"
 } as const;
