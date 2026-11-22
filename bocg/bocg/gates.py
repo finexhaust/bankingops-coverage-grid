@@ -12,8 +12,7 @@ from typing import Callable
 
 from .aliases import load_aliases
 from .corroborate import _check_columns, validate_ledger
-from .matrix import build_matrix
-from .prompt import find_forbidden, find_self_assessment, load_frozen
+from .prompt import find_forbidden, find_self_assessment
 from .run import Panel, load_runs, run_panel
 from .util import BocgError, Workspace, read_csv, read_json, sha256_bytes, sha256_file, sha256_text, utc_now_iso, write_json
 from .validate import admission, assess, order_check, parse_json
