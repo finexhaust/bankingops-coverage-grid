@@ -512,6 +512,7 @@ def gate_insight_construction() -> None:
         speech_schema = json.loads((ROOT / "specs/institutional-speech-act.schema.json").read_text())
         episode = yaml.safe_load((ROOT / "specs/rubrics/episode-feasibility.yaml").read_text())
         families = yaml.safe_load((ROOT / "specs/rubrics/five-families.yaml").read_text())
+        surface_schema = json.loads((ROOT / "specs/episode-surface.schema.json").read_text())
     except (OSError, ValueError, yaml.YAMLError) as exc:
         fail(f"S5-G1 insight-construction artifacts unreadable: {exc}")
         return
@@ -538,9 +539,175 @@ def gate_insight_construction() -> None:
         fail("S5-G3 directive expansion must not assert execution")
     if (episode.get("rubric") or {}).get("safeguards", {}).get("atom_truth_does_not_imply_episode_truth") is not True:
         fail("S5-G4 Episode rubric lacks composition safeguard")
+    rubric = episode.get("rubric") or {}
+    classification = rubric.get("classification") or {}
+    classes = classification.get("classes") or {}
+    if rubric.get("classification_version") != 2 or rubric.get("diagnostic_effect") != "no_gate_no_deletion":
+        fail("S5-G4 feasibility rubric must use diagnostic-only prerequisites and versioned classes")
+    if (
+        not classification.get("optional")
+        or not classification.get("missing_outcome_valid")
+        or classification.get("below_threshold") != "retain_without_classification"
+        or "NULL" in classes
+    ):
+        fail("S5-G4 feasibility rubric must retain unclassified Episodes without NULL")
+    if set(classes) != {"FEASIBLE", "STRONG"}:
+        fail("S5-G4 feasibility rubric class vocabulary drifted")
+
+    composition = profile.get("composition_lifecycle") or {}
+    if not {"draft", "reviewed", "withdrawn"}.issubset(set(composition.get("states") or [])):
+        fail("S5-G6 composed-object lifecycle vocabulary is incomplete")
+    if not {"unreviewed", "current", "stale"}.issubset(set(composition.get("review_states") or [])):
+        fail("S5-G6 review-state vocabulary is incomplete")
+    definitions = insight_schema.get("$defs") or {}
+    if "TraceHypothesisGroup" not in definitions:
+        fail("S5-G6 trace hypothesis container definition is missing")
+
+    required_bases = {
+        "source_evidence", "owner_attestation", "sme_attestation", "owner_attestation_as_assumption",
+        "sme_attestation_as_assumption", "author_supplied_completion", "independent_provenance",
+    }
+    if not required_bases.issubset(set((profile.get("adjudication_policy") or {}).get("basis_vocabulary") or [])):
+        fail("S5-G7 adjudication basis vocabulary is incomplete")
+    content = profile.get("content_vocabulary") or {}
+    if not {"author_supplied", "source_observed", "machine_inferred"}.issubset(set(content.get("origins") or [])):
+        fail("S5-G7 content origin vocabulary is incomplete")
+    if (
+        content.get("independent_provenance_weight", {}).get("required_when_claimed") is not True
+        or content.get("independent_provenance_weight", {}).get("author_supplied_completion_requires_numeric_weight") is not True
+    ):
+        fail("S5-G7 independent provenance weight policy is missing")
+    assertion_statuses = set(content.get("assertion_statuses") or [])
+    origin_values = set(content.get("origins") or [])
+    if assertion_statuses != set((definitions.get("AssertionStatus") or {}).get("enum") or []):
+        fail("S5-G7 assertion-status schema and profile vocabularies differ")
+    if origin_values != set((definitions.get("ContentOrigin") or {}).get("enum") or []):
+        fail("S5-G7 content-origin schema and profile vocabularies differ")
+    if not {"reason_required", "attribution_required", "reopenable"}.issubset(
+        {key for key, value in (profile.get("adjudication_policy") or {}).get("rejection", {}).items() if value is True}
+    ):
+        fail("S5-G8 rejection disposition is not reasoned, attributed and reopenable")
+    if not {"evidence_gap", "outcome", "mapping"}.issubset(set((profile.get("open_question_vocabulary") or {}).get("types") or [])):
+        fail("S5-G8 unresolved-question vocabulary is incomplete")
+    if "SIGNIFICANT_UNMAPPED" not in set((profile.get("mapping_vocabulary") or {}).get("statuses") or []):
+        fail("S5-G9 significant-unmapped mapping status is missing")
+    if "INDETERMINATE" not in set((profile.get("verdict_vocabulary") or {}).get("five_families", {}).values()):
+        fail("S5-G9 preferred five-families verdict is missing")
+
+    try:
+        import jsonschema
+    except ImportError as exc:
+        fail(f"S5-G10 JSON Schema validator unavailable: {exc}")
+        return
+    try:
+        jsonschema.Draft202012Validator.check_schema(insight_schema)
+        jsonschema.Draft202012Validator.check_schema(surface_schema)
+        schema_validator = jsonschema.Draft202012Validator(
+            insight_schema, format_checker=jsonschema.FormatChecker()
+        )
+        atom_fixtures = [
+            {
+                "kind": "ObservationAtom", "atom_id": "a-profile-fixture",
+                "predicate": "generic_assertion", "assertion_status": assertion_status,
+                "content_origin": origin,
+                **({"independent_provenance_weight": 0.8} if origin == "author_supplied" else {}),
+                "source_refs": [{
+                    "source_id": "synthetic-source", "lines": [1, 1],
+                    "selected_content_sha256": "0" * 64,
+                }],
+            }
+            for assertion_status in sorted(assertion_statuses)
+            for origin in sorted(origin_values)
+        ]
+        composition_states = (composition.get("states") or [])
+        episode_fixtures = [
+            {
+                "kind": "Episode", "episode_id": f"ep-profile-{state}", "atom_ids": ["a1"],
+                "composition_status": state,
+                **({"rejection": {
+                    "reason": "Insufficient support", "attributed_to": "sme", "reopenable": True,
+                }} if state == "rejected" else {}),
+            }
+            for state in composition_states
+        ]
+        review_fixtures = [
+            {
+                "kind": "Episode", "episode_id": f"ep-profile-review-{state}", "atom_ids": ["a1"],
+                "composition_status": "reviewed", "review_status": state,
+            }
+            for state in composition.get("review_states", [])
+        ]
+        new_term_fixtures = atom_fixtures + [
+            {
+                "kind": "TraceHypothesisGroup", "group_id": "group-profile-fixture",
+                "trace_ids": ["trace-a", "trace-b"],
+                "single_process_instance_asserted": False,
+            },
+            *episode_fixtures,
+            *review_fixtures,
+            {
+                "kind": "Episode", "episode_id": "ep-profile-reviewed", "atom_ids": ["a1"],
+                "composition_status": "reviewed", "review_status": "stale",
+                "review_history": [{
+                    "reviewer_role": "sme", "reviewed_at": "2026-01-01T00:00:00Z",
+                    "review_status": "stale",
+                }],
+                "adjudications": [
+                    {"adjudicator_role": "sme", "basis": "source_evidence"},
+                    {"adjudicator_role": "owner", "basis": "owner_attestation"},
+                    {"adjudicator_role": "sme", "basis": "sme_attestation"},
+                    {"adjudicator_role": "owner", "basis": "owner_attestation_as_assumption"},
+                    {"adjudicator_role": "sme", "basis": "sme_attestation_as_assumption"},
+                    {"adjudicator_role": "author", "basis": "author_supplied_completion",
+                     "independent_provenance_weight": 0.8},
+                    {"adjudicator_role": "independent_reviewer", "basis": "independent_provenance",
+                     "independent_provenance_weight": 1.0},
+                ],
+                "open_questions": [
+                    {"question_type": question_type, "question": f"Unresolved {question_type}?"}
+                    for question_type in profile["open_question_vocabulary"]["types"]
+                ],
+            },
+        ]
+        if any(list(schema_validator.iter_errors(fixture)) for fixture in new_term_fixtures):
+            fail("S5-G10 new insight-construction term fixtures do not validate")
+
+        rubric_fixture = {
+            "score": 3,
+            "outcome": None,
+            "diagnostic_results": {"instantiated_operational_proposition": False},
+            "retained": True,
+        }
+        if rubric_fixture["outcome"] is not None or not rubric_fixture["retained"]:
+            fail("S5-G10 below-threshold missing-outcome fixture must remain retained")
+        verdict_fixture = ["PASS", "FAIL", "INDETERMINATE", "UNCERTAIN", "NOT_APPLICABLE"]
+        allowed_verdicts = set((families.get("rubric") or {}).get("verdicts") or [])
+        if any(verdict not in allowed_verdicts for verdict in verdict_fixture):
+            fail("S5-G10 Five Families verdict fixtures do not validate")
+
+        surface_validator = jsonschema.Draft202012Validator(surface_schema)
+        surface_fixture = json.loads((ROOT / "specs/fixtures/episode-surface-synthetic.json").read_text())
+        unmapped = dict(surface_fixture["touchpoints"][0])
+        unmapped.update({
+            "division_key": None, "depth": "none", "mapping_status": "SIGNIFICANT_UNMAPPED",
+            "function_concept_id": None, "task_concept_id": None,
+            "task_reference_id": None, "control_point_id": None, "ruling": None,
+        })
+        surface_fixture["touchpoints"].append(unmapped)
+        if list(surface_validator.iter_errors(surface_fixture)):
+            fail("S5-G10 significant-unmapped touchpoint fixture does not validate")
+    except (OSError, ValueError, jsonschema.SchemaError) as exc:
+        fail(f"S5-G10 new insight-construction fixtures could not be validated: {exc}")
+
     family_ids = set(((families.get("rubric") or {}).get("families") or {}).keys())
     if family_ids != {"DEEP_DOMAIN_TRANSFER", "EVIDENCE_ABLATION", "NEGATIVE_CONTROL", "LATERAL_HIRE", "COMMERCIAL_INSIGHT"}:
         fail("S5-G5 Five Families vocabulary drifted")
+    family_rubric = families.get("rubric") or {}
+    if family_rubric.get("version") != "1.1.0":
+        fail("S5-G5 Five Families rubric version drifted")
+    allowed_verdicts = set(family_rubric.get("verdicts") or [])
+    if not {"PASS", "FAIL", "INDETERMINATE", "UNCERTAIN", "NOT_APPLICABLE"}.issubset(allowed_verdicts):
+        fail("S5-G5 Five Families verdict vocabulary drifted")
 
 
 def gate_compliance_scenarios() -> str | None:

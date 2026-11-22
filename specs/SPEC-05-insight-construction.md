@@ -2,7 +2,7 @@
 
 ```
 ARTIFACT : static definitions and rubrics for evidence-grounded insights
-STATUS   : v0.2 normative profile
+STATUS   : v0.3 normative profile
 SOURCE   : specs/insight-construction-profile.yaml
 BOUNDARY : definitions and conformance only; no institutional instances
 ```
@@ -36,6 +36,15 @@ The lifecycle states `directed`, `scheduled`, `executed`, `completed` and
 `verified` are non-interchangeable. A directive MUST NOT establish execution,
 completion or verification.
 
+Composed-object lifecycle is separate from occurrence lifecycle. Composition
+states include `draft`, `candidate`, `reviewed`, `admitted`, `qualified`,
+`recomposition_required`, `rejected` and `withdrawn`; review state may be
+`unreviewed`, `current` or `stale`, with an append-only review history.
+`TraceHypothesisGroup` groups Trace hypotheses while explicitly asserting no
+single process instance. A rejection carries a reason, attribution and whether
+it may be reopened. Episodes may carry unresolved questions typed against the
+registered question vocabulary.
+
 ## Temporal anchors and deadlines
 
 Episode and obligation-frame records may carry typed temporal anchors
@@ -58,11 +67,20 @@ are optional and occur on transitions, not on abstract vocabulary values.
 
 ## Adjudication
 
-Machine constructions are immutable. SME decisions are append-only overlays,
-bound to exact evidence and the prior machine construction. Split decisions
-retain the original Atom and produce content-addressed component Atoms sharing
-the same evidence selector. Dependent Traces and Episodes require explicit
-recomposition.
+Machine constructions are immutable. Adjudications record a labelled basis
+(including owner/SME attestations and attestations held as assumptions), and
+content origin distinguishes source-observed, author-supplied, machine-inferred
+and attested content. An independent-provenance weight is recorded when claimed.
+SME decisions are append-only overlays, bound to exact evidence and the prior
+machine construction. Split decisions retain the original Atom and produce
+content-addressed component Atoms sharing the same evidence selector.
+Dependent Traces and Episodes require explicit recomposition.
+
+The feasibility rubric's prerequisites are diagnostics only. Its versioned
+`FEASIBLE` and `STRONG` classes describe evidence-density bands, not truth or a
+retention gate. A score below a class threshold does not delete an Episode, and
+an assessment may have no outcome. The five-family rubric prefers
+`INDETERMINATE`; `UNCERTAIN` remains a compatibility synonym.
 
 ## Portability boundary
 

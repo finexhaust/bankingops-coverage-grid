@@ -106,6 +106,9 @@ A touchpoint names a division and, optionally, a function concept, a task
 concept, a released task and a control point, together with its mapping
 status and the ruling that produced that status. Its `depth` states which of
 those it claims, and the schema requires the matching identifier.
+`SIGNIFICANT_UNMAPPED` records a significant touchpoint with a null
+`division_key`; all other mapping statuses require a named division. This
+status is not a candidate or evidence mapping and raises neither depth.
 
 ### 3.1 Depth rule
 

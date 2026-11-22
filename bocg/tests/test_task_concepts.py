@@ -132,6 +132,27 @@ def test_episode_surface_fixture_follows_depth_rule_and_release_binding():
     assert candidate_depth(fixture) == fixture['candidate_depth']
 
 
+def test_significant_unmapped_touchpoint_has_no_division_or_depth():
+    schema = json.loads((ROOT / 'specs/episode-surface.schema.json').read_text())
+    fixture = json.loads((ROOT / 'specs/fixtures/episode-surface-synthetic.json').read_text())
+    point = {
+        'division_key': None,
+        'depth': 'none',
+        'mapping_status': 'SIGNIFICANT_UNMAPPED',
+        'function_concept_id': None,
+        'task_concept_id': None,
+        'task_reference_id': None,
+        'control_point_id': None,
+        'ruling': None,
+    }
+    fixture['touchpoints'].append(point)
+    assert not list(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(fixture))
+    assert surface_problems(fixture, root=ROOT) == []
+    point['division_key'] = 'prime_brokerage_financing'
+    assert list(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(fixture))
+    assert any('must not name a division' in problem for problem in surface_problems(fixture, root=ROOT))
+
+
 def test_candidates_never_raise_evidence_depth():
     fixture = json.loads((ROOT / 'specs/fixtures/episode-surface-synthetic.json').read_text())
     for point in fixture['touchpoints']:

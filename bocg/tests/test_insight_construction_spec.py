@@ -27,6 +27,62 @@ def test_profile_contains_temporal_semantics_for_lifecycle_states():
     assert "calendar_ref" in temporal
 
 
+def test_revision_vocabularies_and_feasibility_outcomes_are_non_gating():
+    profile = yaml.safe_load((ROOT / "specs/insight-construction-profile.yaml").read_text())
+    rubric = yaml.safe_load((ROOT / "specs/rubrics/episode-feasibility.yaml").read_text())["rubric"]
+    families = yaml.safe_load((ROOT / "specs/rubrics/five-families.yaml").read_text())["rubric"]
+    assert profile["profile"]["version"] == "0.3.0"
+    assert {"draft", "reviewed", "withdrawn"}.issubset(profile["composition_lifecycle"]["states"])
+    assert "stale" in profile["composition_lifecycle"]["review_states"]
+    assert rubric["classification_version"] == 2
+    assert rubric["diagnostic_effect"] == "no_gate_no_deletion"
+    assert "NULL" not in rubric["classification"]["classes"]
+    assert rubric["classification"]["missing_outcome_valid"] is True
+    assert rubric["classification"]["optional"] is True
+    assert families["version"] == "1.1.0"
+    assert {"INDETERMINATE", "UNCERTAIN"}.issubset(families["verdicts"])
+
+
+def test_new_episode_terms_validate_and_author_completion_needs_weight(insight_validator):
+    group = {
+        "kind": "TraceHypothesisGroup",
+        "group_id": "group-test",
+        "trace_ids": ["trace-a", "trace-b"],
+        "single_process_instance_asserted": False,
+    }
+    insight_validator.validate(group)
+
+    episode = _episode_fixture(
+        composition_status="reviewed",
+        review_status="stale",
+        review_history=[{
+            "reviewer_role": "sme",
+            "reviewed_at": "2026-01-01T00:00:00Z",
+            "review_status": "stale",
+        }],
+        adjudications=[{
+            "adjudicator_role": "author",
+            "basis": "author_supplied_completion",
+            "independent_provenance_weight": 0.8,
+        }],
+        open_questions=[{"question_type": "outcome", "question": "Is an outcome established?"}],
+    )
+    insight_validator.validate(episode)
+
+    episode["adjudications"][0].pop("independent_provenance_weight")
+    assert list(insight_validator.iter_errors(episode))
+
+
+def test_rejection_is_reasoned_attributed_and_reopenable(insight_validator):
+    episode = _episode_fixture(
+        composition_status="rejected",
+        rejection={"reason": "Insufficient support", "attributed_to": "sme", "reopenable": True},
+    )
+    insight_validator.validate(episode)
+    episode["rejection"]["reopenable"] = False
+    assert list(insight_validator.iter_errors(episode))
+
+
 def test_institutional_directive_keeps_execution_unobserved():
     schema = json.loads((ROOT / "specs/institutional-speech-act.schema.json").read_text())
     value = {

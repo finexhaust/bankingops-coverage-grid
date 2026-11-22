@@ -48,7 +48,7 @@
   "$defs": {
     "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "depth": {"enum": ["none", "division", "function_concept", "task_concept", "terminal_task", "control_point"]},
-    "mapping_status": {"enum": ["PROPOSED", "PENDING", "RATIFIED_MAPPING", "QUALIFIED_MAPPING", "REJECTED_MAPPING", "DEFERRED_MAPPING"]},
+    "mapping_status": {"enum": ["PROPOSED", "PENDING", "RATIFIED_MAPPING", "QUALIFIED_MAPPING", "REJECTED_MAPPING", "DEFERRED_MAPPING", "SIGNIFICANT_UNMAPPED"]},
     "cell_status": {"enum": ["PROPOSED", "CURATED", "RETIRED"]},
     "review_status": {"enum": ["AUTO", "REVIEWED"]},
     "touchpoint": {
@@ -56,7 +56,7 @@
       "additionalProperties": false,
       "required": ["division_key", "depth", "mapping_status", "function_concept_id", "task_concept_id", "task_reference_id", "control_point_id", "ruling"],
       "properties": {
-        "division_key": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+        "division_key": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^[a-z0-9_]+$"}]},
         "depth": {"$ref": "#/$defs/depth"},
         "mapping_status": {"$ref": "#/$defs/mapping_status"},
         "function_concept_id": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^function_concept:[a-z0-9_]+:[0-9a-f]{24}$"}]},
@@ -91,7 +91,6 @@
         }
       },
       "allOf": [
-        {"if": {"properties": {"depth": {"const": "none"}}}, "then": {"properties": {"depth": {"not": {"const": "none"}}}}},
         {"if": {"properties": {"depth": {"const": "function_concept"}}}, "then": {"properties": {"function_concept_id": {"type": "string"}}}},
         {"if": {"properties": {"depth": {"const": "task_concept"}}}, "then": {"properties": {"task_concept_id": {"type": "string"}}}},
         {"if": {"properties": {"depth": {"const": "terminal_task"}}}, "then": {"properties": {"task_reference_id": {"type": "string"}}}},
@@ -99,7 +98,9 @@
         {"if": {"required": ["function_concept_review_status"]}, "then": {"properties": {"function_concept_id": {"type": "string"}}}},
         {"if": {"required": ["task_concept_review_status"]}, "then": {"properties": {"task_concept_id": {"type": "string"}}}},
         {"if": {"required": ["control_point_status"]}, "then": {"properties": {"control_point_id": {"type": "string"}}}},
-        {"if": {"properties": {"mapping_status": {"enum": ["RATIFIED_MAPPING", "QUALIFIED_MAPPING", "REJECTED_MAPPING", "DEFERRED_MAPPING"]}}}, "then": {"properties": {"ruling": {"type": "object"}}}}
+        {"if": {"properties": {"mapping_status": {"enum": ["RATIFIED_MAPPING", "QUALIFIED_MAPPING", "REJECTED_MAPPING", "DEFERRED_MAPPING"]}}}, "then": {"properties": {"ruling": {"type": "object"}}}},
+        {"if": {"properties": {"mapping_status": {"const": "SIGNIFICANT_UNMAPPED"}}}, "then": {"properties": {"division_key": {"type": "null"}, "depth": {"const": "none"}, "function_concept_id": {"type": "null"}, "task_concept_id": {"type": "null"}, "task_reference_id": {"type": "null"}, "control_point_id": {"type": "null"}, "ruling": {"type": "null"}}}},
+        {"if": {"properties": {"mapping_status": {"not": {"const": "SIGNIFICANT_UNMAPPED"}}}}, "then": {"properties": {"division_key": {"type": "string"}}}}
       ]
     }
   }

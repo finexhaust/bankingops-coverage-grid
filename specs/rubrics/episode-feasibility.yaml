@@ -1,11 +1,13 @@
 rubric:
   id: bocg-episode-feasibility
-  version: 1.0.0
-  purpose: Determine whether a bounded source record can support a defeasible institutional Episode.
-  prerequisites:
+  version: 2.0.0
+  classification_version: 2
+  purpose: Describe evidence-density bands for a defeasible Episode without gating retention or asserting truth.
+  diagnostics:
     - bounded_context_with_exact_source_reference
     - instantiated_operational_proposition
     - two_participant_slots_or_one_participant_plus_state_change_dependency
+  diagnostic_effect: no_gate_no_deletion
   signals:
     explicit_institutional_participant: 2
     operational_action_dependency_flow_exception_state_or_change: 2
@@ -16,9 +18,16 @@ rubric:
     syntax_without_occurrence_marker: -3
     generic_definition_template_or_example: -3
   classification:
-    NULL: prerequisite_failure_or_score_below_4
-    FEASIBLE: score_4_to_5
-    STRONG: score_6_or_above
+    optional: true
+    missing_outcome_valid: true
+    below_threshold: retain_without_classification
+    classes:
+      FEASIBLE:
+        score: score_4_to_5
+        meaning: evidence-density band, not a feasibility or truth guarantee
+      STRONG:
+        score: score_6_or_above
+        meaning: higher evidence-density band, not a truth guarantee
   safeguards:
     score_is_triage_not_truth: true
     atom_truth_does_not_imply_episode_truth: true
