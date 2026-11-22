@@ -1,7 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/thefazzer/bankingops-coverage-grid/blob/main/specs/compliance-scenario.schema.json",
-  "title": "BOCG replayable compliance scenario",
+  "title": "BOCG legacy compliance scenario",
+  "deprecated": true,
+  "description": "Superseded by replayable-compliance-scenario.schema.json. Retained for validating historical fixtures.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -29,7 +31,7 @@
     },
     "manifest_sha256": {
       "$ref": "#/$defs/sha256",
-      "description": "BOCG release manifest the scenario is pinned to."
+      "description": "Canonical manifest digest: SHA-256 of canonical JSON for the manifest with manifest_sha256 omitted. This is not the raw manifest-file digest."
     },
     "cell_id": {
       "type": "string",
@@ -76,7 +78,8 @@
           "enum": ["cdm_event", "fpml_document", "synthetic_fixture"]
         },
         "sha256": {
-          "$ref": "#/$defs/sha256"
+          "$ref": "#/$defs/sha256",
+          "description": "SHA-256 of the exact raw bytes of the referenced input-state artifact."
         },
         "locator": {
           "type": "string",
@@ -107,7 +110,8 @@
           "minLength": 1
         },
         "parameters_sha256": {
-          "$ref": "#/$defs/sha256"
+          "$ref": "#/$defs/sha256",
+          "description": "SHA-256 of canonical JSON for the oracle parameter object."
         }
       }
     },

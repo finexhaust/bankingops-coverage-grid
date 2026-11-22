@@ -2,6 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/thefazzer/bankingops-coverage-grid/blob/main/specs/replayable-compliance-scenario.schema.json",
   "title": "BOCG replayable compliance scenario",
+  "description": "Current SPEC-07 scenario contract. scenario_hash is SHA-256 of canonical JSON containing exactly cell_ref, task_ref, input_state, oracle, and expected_verdict.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -13,18 +14,29 @@
     "task_ref",
     "input_state",
     "oracle",
-    "expected_verdict"
+    "expected_verdict",
+    "model_release"
   ],
   "properties": {
     "schema": {
       "const": "bocg.replayable-compliance-scenario.v1"
+    },
+    "model_release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model_id", "model_version"],
+      "properties": {
+        "model_id": {"type": "string", "minLength": 1},
+        "model_version": {"type": "string", "minLength": 1}
+      }
     },
     "scenario_id": {
       "type": "string",
       "pattern": "^scenario_[a-z0-9_]{3,128}$"
     },
     "scenario_hash": {
-      "$ref": "#/$defs/sha256"
+      "$ref": "#/$defs/sha256",
+      "description": "SHA-256 of canonical JSON for exactly cell_ref, task_ref, input_state, oracle, and expected_verdict; scenario_hash and all other fields are excluded."
     },
     "bocg_release": {
       "type": "object",
@@ -32,7 +44,8 @@
       "required": ["manifest_sha256", "release_tag"],
       "properties": {
         "manifest_sha256": {
-          "$ref": "#/$defs/sha256"
+          "$ref": "#/$defs/sha256",
+          "description": "Canonical manifest digest: SHA-256 of canonical JSON for the manifest with manifest_sha256 omitted. This is not the raw manifest-file digest."
         },
         "release_tag": {
           "type": "string",
@@ -50,7 +63,8 @@
           "pattern": "^cp_[a-z0-9_]{3,64}$"
         },
         "cell_sha256": {
-          "$ref": "#/$defs/sha256"
+          "$ref": "#/$defs/sha256",
+          "description": "SHA-256 of the exact raw bytes of the pinned cell JSON artifact."
         }
       }
     },

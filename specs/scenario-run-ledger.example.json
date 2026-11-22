@@ -3,15 +3,15 @@
   "version": "0.1.0",
   "rows": [
     {
-      "row_sha256": "a65aab35e56712bbf92878df4d24df3cf9185cc7ed4d6617fe34413cd9b5f7ed",
+      "row_sha256": "255fa80a4f6b6f0b722297fcc55e37e927a783de9d97885a170456de52228bbe",
       "recorded_at": "2026-09-20T12:00:00Z",
       "replaces_row_sha256": null,
       "model": {
         "model_id": "claude-opus-5",
         "provider_release": "anthropic/2.1.0"
       },
-      "manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-      "scenario_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "manifest_sha256": "a157ff3e9bff43dee9857c889c57f5ce87917e530999fbd6d365f47dfaf352ec",
+      "scenario_sha256": "f3f3077c485bbd3dbf7613c32112dd6dac63a5b1447d3a15d22bd3333502508c",
       "replicates": 3,
       "judge_ids": [
         "judge-primary",
@@ -26,15 +26,15 @@
       "evidence_ref": "0000111122223333444455556666777788889999aaaabbbbccccddddeeeeffff"
     },
     {
-      "row_sha256": "64c312c938665eeed09c92ecfa442e508fe8ccb150478b8cfd4e4fbed0e72320",
+      "row_sha256": "bb6da3fa25b8cd6ae59ca68574d720ca4e58c62cb6c7c95fb30ed43cf64b486f",
       "recorded_at": "2026-09-21T10:00:00Z",
-      "replaces_row_sha256": "a65aab35e56712bbf92878df4d24df3cf9185cc7ed4d6617fe34413cd9b5f7ed",
+      "replaces_row_sha256": "255fa80a4f6b6f0b722297fcc55e37e927a783de9d97885a170456de52228bbe",
       "model": {
         "model_id": "claude-opus-5",
         "provider_release": "anthropic/2.1.0"
       },
-      "manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-      "scenario_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "manifest_sha256": "a157ff3e9bff43dee9857c889c57f5ce87917e530999fbd6d365f47dfaf352ec",
+      "scenario_sha256": "f3f3077c485bbd3dbf7613c32112dd6dac63a5b1447d3a15d22bd3333502508c",
       "replicates": 4,
       "judge_ids": [
         "judge-primary",
@@ -49,15 +49,15 @@
       "evidence_ref": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
     },
     {
-      "row_sha256": "891a0ede3d2bdef6bcb50a3ed9f94e499eba352fc1b10675cc57c6c035432cbe",
+      "row_sha256": "4eeea0168802d16360cfadf44f747729fd6c3f4d0758984426bc5eed8fef2f77",
       "recorded_at": "2026-09-21T11:00:00Z",
       "replaces_row_sha256": null,
       "model": {
         "model_id": "gpt-5.6-sol",
         "provider_release": "openai/2026-08"
       },
-      "manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-      "scenario_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "manifest_sha256": "a157ff3e9bff43dee9857c889c57f5ce87917e530999fbd6d365f47dfaf352ec",
+      "scenario_sha256": "f3f3077c485bbd3dbf7613c32112dd6dac63a5b1447d3a15d22bd3333502508c",
       "replicates": 3,
       "judge_ids": [
         "judge-primary"

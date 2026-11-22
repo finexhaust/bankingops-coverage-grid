@@ -20,11 +20,11 @@ row that binds:
 - the verdict, and
 - the sealed evidence bundle.
 
-`specs/scenario-run-ledger-rows.schema.json` defines that row. The run-level
-ledger in `specs/scenario-run-ledger.schema.json` remains the simpler per-run
-record. Nothing in this ledger is
-a claim about the grid itself; it is a portable record of a model-scenario outcome
-that consumers can replay or audit against the named manifest and evidence bundle.
+`specs/scenario-run-ledger-rows.schema.json` defines the current ledger. The
+run-level schema in `specs/scenario-run-ledger.schema.json` is superseded.
+Nothing in this ledger is a claim about the grid itself; it is a portable record
+of a model-scenario outcome that consumers can replay or audit against the named
+manifest and evidence bundle.
 
 ## Row semantics
 
@@ -36,20 +36,20 @@ Each row carries:
 
 | Field | Meaning |
 |---|---|
-| `row_sha256` | Content-addressed digest of the row, computed over the canonical JSON of the row excluding `row_sha256`. |
+| `row_sha256` | SHA-256 of canonical JSON of the row excluding `row_sha256`. |
 | `recorded_at` | ISO 8601 timestamp when the row was recorded. |
 | `replaces_row_sha256` | Hash of the row this row corrects, or `null` for an original row. |
 | `model.model_id` | Exact model identifier returned by the provider. |
 | `model.provider_release` | Provider release identifier that scopes `model_id`, e.g. `openai/2026-08`. |
-| `manifest_sha256` | SHA-256 of the pinned BOCG release manifest (`bocg-release-manifest.json`). |
-| `scenario_sha256` | SHA-256 of the scenario/task contract executed. |
+| `manifest_sha256` | Canonical manifest digest: SHA-256 of UTF-8 canonical JSON with `manifest_sha256` omitted, not the raw file digest. |
+| `scenario_sha256` | SHA-256 of canonical JSON of the complete scenario object, including its `scenario_hash`. |
 | `replicates` | Number of independent replicates executed for this model/scenario pair (>= 1). |
 | `judge_ids` | Non-empty list of distinct judge identifiers that rendered the verdict. |
 | `pass_rule_ref` | Reference to the pass rule applied (e.g. `five-families/intersection-union/v1`). |
 | `verdict` | One of `PASS`, `FAIL`, `UNCERTAIN`, `NOT_APPLICABLE`, reusing the five-families vocabulary (`specs/rubrics/five-families.yaml`). |
-| `freeze.runner_sha256` | SHA-256 of the runner/evaluation harness code artifact. |
+| `freeze.runner_sha256` | SHA-256 of the exact raw bytes of the runner/evaluation harness code artifact. |
 | `freeze.clean_tree` | `true` iff the runner executed against a clean source tree. |
-| `evidence_ref` | SHA-256 of the sealed run bundle that supports the verdict. |
+| `evidence_ref` | SHA-256 of the exact raw bytes of the sealed run bundle that supports the verdict. |
 
 ## Verdict vocabulary
 
@@ -75,5 +75,6 @@ earlier rows. Deleting a row is prohibited.
 - the schema is a valid JSON Schema,
 - the example fixture is valid against the schema,
 - every row's `row_sha256` matches the canonical JSON digest of the row excluding `row_sha256`,
+- every row's manifest and scenario digest match their canonical digest domains,
 - every `replaces_row_sha256` (if non-null) resolves to an earlier row in the ledger,
 - verdict values belong to the five-families vocabulary.

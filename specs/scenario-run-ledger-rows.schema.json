@@ -51,7 +51,7 @@
       "properties": {
         "runner_sha256": {
           "$ref": "#/$defs/sha256",
-          "description": "SHA-256 of the runner/evaluation harness code artifact that produced this row."
+          "description": "SHA-256 of the exact raw bytes of the runner/evaluation harness code artifact that produced this row."
         },
         "clean_tree": {
           "type": "boolean",
@@ -96,11 +96,11 @@
         },
         "manifest_sha256": {
           "$ref": "#/$defs/sha256",
-          "description": "SHA-256 of the pinned BOCG release manifest."
+          "description": "Canonical manifest digest: SHA-256 of canonical JSON for the manifest with manifest_sha256 omitted. This is not the raw manifest-file digest."
         },
         "scenario_sha256": {
           "$ref": "#/$defs/sha256",
-          "description": "SHA-256 of the scenario/task contract used for this run."
+          "description": "SHA-256 of canonical JSON for the complete scenario object, including its scenario_hash."
         },
         "replicates": {
           "type": "integer",
@@ -131,7 +131,7 @@
         },
         "evidence_ref": {
           "$ref": "#/$defs/sha256",
-          "description": "Hash of the sealed run bundle that supports this verdict."
+          "description": "SHA-256 of the exact raw bytes of the sealed run bundle that supports this verdict."
         }
       }
     }

@@ -1,0 +1,43 @@
+{
+  "schema": "bocg.replayable-compliance-scenario.v1",
+  "scenario_id": "scenario_settled_instruction_amendment_synthetic",
+  "scenario_hash": "d3595ab1ed21aeeab6124e80e1610a98dc3afa7b4ba4faf80d1266a167feffcd",
+  "model_release": {
+    "model_id": "synthetic-model",
+    "model_version": "0.1.0"
+  },
+  "bocg_release": {
+    "manifest_sha256": "a157ff3e9bff43dee9857c889c57f5ce87917e530999fbd6d365f47dfaf352ec",
+    "release_tag": "v0.6.3"
+  },
+  "cell_ref": {
+    "cell_id": "cp_settled_instruction_amendment",
+    "cell_sha256": "92d0886e8b1b3619ac845dafc93e439e8e19d16e2787d35ffacdee6f201d8e53"
+  },
+  "task_ref": {
+    "division_key": "buyside_trading_execution",
+    "reference_id": "task:buyside_trading_execution:4da0790ddda180b928fa5a7a"
+  },
+  "input_state": {
+    "description": "A synthetic instruction amendment has not been confirmed by the custodian.",
+    "facts": [
+      {
+        "name": "custodian_confirmation_received",
+        "value_type": "boolean",
+        "value": false,
+        "source": "synthetic fixture"
+      }
+    ]
+  },
+  "oracle": {
+    "kind": "deterministic_function",
+    "public_reference": {
+      "source_name": "Synthetic instruction settlement rule",
+      "url": "https://example.org/instruction-settlement-rule",
+      "clause": "A settlement instruction is complete only after custodian confirmation.",
+      "accessed": "2026-09-20"
+    },
+    "rule_summary": "Require an explicit custodian confirmation before treating the instruction as complete."
+  },
+  "expected_verdict": "indeterminate"
+}

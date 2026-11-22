@@ -14,6 +14,59 @@ from build_release_manifest import build_manifest, canonical_json, sha256_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 FAILURES: list[str] = []
+SCHEMA_FIXTURES = {
+    "specs/bocg-release-manifest.schema.json": [
+        "reference/release-snapshots/v0.6.3/bocg-release-manifest.json",
+    ],
+    "specs/compliance-scenario.schema.json": [
+        "specs/fixtures/compliance-scenario-synthetic.json",
+    ],
+    "specs/control-point-cell.schema.json": [
+        "cells/cp_cftc_part43_realtime.json",
+    ],
+    "specs/episode-surface.schema.json": [
+        "specs/fixtures/episode-surface-synthetic.json",
+    ],
+    "specs/financial-work-context.schema.json": [
+        "reference/financial-work-context.v1.json",
+    ],
+    "specs/financial-work-placement.schema.json": [
+        "specs/fixtures/financial-work-placement-synthetic.json",
+    ],
+    "specs/insight-construction.schema.json": [
+        "specs/fixtures/insight-construction-synthetic.json",
+    ],
+    "specs/institutional-speech-act.schema.json": [
+        "specs/fixtures/institutional-speech-act-synthetic.json",
+    ],
+    "specs/operating-unit-register.schema.json": [
+        "specs/fixtures/operating-unit-register-synthetic.json",
+    ],
+    "specs/public-eval-llmaj-prereg.schema.json": [
+        "reference/public-eval-llmaj-prereg.v1.json",
+    ],
+    "specs/public-eval-llmaj.schema.json": [
+        "reference/public-eval-llmaj-ledger.v1.json",
+    ],
+    "specs/public-eval-observatory.schema.json": [
+        "reference/public-eval-observatory.v1.json",
+    ],
+    "specs/public-eval-surface-overlay.schema.json": [
+        "reference/public-eval-surface-map.v1.json",
+    ],
+    "specs/replayable-compliance-scenario.schema.json": [
+        "specs/fixtures/replayable-compliance-scenario-synthetic.json",
+    ],
+    "specs/scenario-run-ledger-rows.schema.json": [
+        "specs/scenario-run-ledger.example.json",
+    ],
+    "specs/scenario-run-ledger.schema.json": [
+        "specs/fixtures/scenario-run-ledger-synthetic.json",
+    ],
+    "specs/task-concepts.schema.json": [
+        "reference/task-concepts.v1.json",
+    ],
+}
 # S3-G4: statused rows committed in CONFORMANCE.md. The gate fails on fewer
 # rows (a row was dropped) and on more (raise this in the change that adds one).
 CONFORMANCE_ROW_BASELINE = 19
@@ -614,6 +667,115 @@ def gate_compliance_scenarios() -> str | None:
     return f"{cell_id} at status {cell.get('status')}"
 
 
+def gate_replayable_compliance_scenario() -> None:
+    """S7: current replayable scenario hashes and release references resolve."""
+    try:
+        import jsonschema
+        from release_snapshots import (
+            ReleaseSnapshotError, load_release_artifact, load_release_manifest,
+            read_json_object, required_format_checker,
+        )
+        schema = read_json_object(ROOT / "specs/replayable-compliance-scenario.schema.json")
+        fixture = read_json_object(
+            ROOT / "specs/fixtures/replayable-compliance-scenario-synthetic.json"
+        )
+        format_checker = required_format_checker()
+    except (ImportError, OSError, UnicodeError, ValueError) as exc:
+        fail(f"S7-G5 replayable scenario artifacts unreadable: {exc}")
+        return
+    errors = list(jsonschema.Draft202012Validator(
+        schema, format_checker=format_checker
+    ).iter_errors(fixture))
+    for err in errors:
+        fail(f"S7-G5 replayable scenario schema: {err.message[:120]}")
+    if errors:
+        return
+    try:
+        release = fixture["bocg_release"]
+        load_release_manifest(
+            ROOT, release_tag=release["release_tag"],
+            manifest_sha256=release["manifest_sha256"],
+        )
+        cell_id = fixture["cell_ref"]["cell_id"]
+        cell_bytes = load_release_artifact(
+            ROOT, f"cells/{cell_id}.json", manifest_sha256=release["manifest_sha256"]
+        )
+        if sha256_bytes(cell_bytes) != fixture["cell_ref"]["cell_sha256"]:
+            raise ReleaseSnapshotError("cell_ref.cell_sha256 does not match pinned raw artifact bytes")
+        catalogue = json.loads(load_release_artifact(
+            ROOT, "reference/operating-catalogue.v1.json",
+            manifest_sha256=release["manifest_sha256"],
+        ))
+        task_ref = fixture["task_ref"]
+        if not any(
+            definition.get("kind") == "task"
+            and definition.get("division_key") == task_ref["division_key"]
+            and definition.get("reference_id") == task_ref["reference_id"]
+            for definition in catalogue.get("definitions", [])
+        ):
+            raise ReleaseSnapshotError("task_ref is not a task in the pinned release")
+    except (ReleaseSnapshotError, ValueError, TypeError, KeyError) as exc:
+        fail(f"S7-G5 replayable scenario release binding is invalid: {exc}")
+        return
+    hashed_fields = (
+        "cell_ref", "task_ref", "input_state", "oracle", "expected_verdict"
+    )
+    body = {key: fixture[key] for key in hashed_fields}
+    if fixture["scenario_hash"] != sha256_bytes(canonical_json(body)):
+        fail("S7-G5 scenario_hash does not match canonical JSON of its declared hash fields")
+
+
+def gate_schema_fixtures() -> None:
+    """Every published JSON schema has a unique identity and a validated fixture."""
+    import jsonschema
+
+    schemas = {
+        path.relative_to(ROOT).as_posix()
+        for path in (ROOT / "specs").rglob("*.schema.json")
+    }
+    mapped = set(SCHEMA_FIXTURES)
+    for missing in sorted(schemas - mapped):
+        fail(f"schema fixture gate has no fixture mapping: {missing}")
+    for unknown in sorted(mapped - schemas):
+        fail(f"schema fixture gate refers to unknown schema: {unknown}")
+    ids: dict[str, str] = {}
+    schema_ids: dict[str, str] = {}
+    for relative in sorted(schemas & mapped):
+        try:
+            schema = json.loads((ROOT / relative).read_text(encoding="utf-8"))
+            jsonschema.Draft202012Validator.check_schema(schema)
+        except (OSError, UnicodeError, ValueError, jsonschema.SchemaError) as exc:
+            fail(f"schema fixture gate cannot load schema {relative}: {exc}")
+            continue
+        schema_id = schema.get("$id")
+        if not isinstance(schema_id, str) or not schema_id:
+            fail(f"schema fixture gate requires a nonempty $id: {relative}")
+        elif schema_id in ids:
+            fail(f"duplicate schema $id {schema_id}: {ids[schema_id]} and {relative}")
+        else:
+            ids[schema_id] = relative
+        contract_id = (schema.get("properties") or {}).get("schema", {}).get("const")
+        if isinstance(contract_id, str):
+            if contract_id in schema_ids:
+                fail(
+                    f"duplicate schema contract identifier {contract_id}: "
+                    f"{schema_ids[contract_id]} and {relative}"
+                )
+            else:
+                schema_ids[contract_id] = relative
+        validator = jsonschema.Draft202012Validator(
+            schema, format_checker=jsonschema.FormatChecker()
+        )
+        for fixture_path in SCHEMA_FIXTURES[relative]:
+            try:
+                fixture = json.loads((ROOT / fixture_path).read_text(encoding="utf-8"))
+            except (OSError, UnicodeError, ValueError) as exc:
+                fail(f"schema fixture gate cannot load {fixture_path}: {exc}")
+                continue
+            for err in validator.iter_errors(fixture):
+                fail(f"{fixture_path} against {relative}: {err.message[:120]}")
+
+
 def gate_scenario_run_ledger() -> None:
     """S7: append-only scenario-run ledger schema, fixture and row integrity."""
     schema_path = ROOT / "specs/scenario-run-ledger-rows.schema.json"
@@ -621,6 +783,9 @@ def gate_scenario_run_ledger() -> None:
     try:
         schema = json.loads(schema_path.read_text())
         ledger = json.loads(fixture_path.read_text())
+        scenario = json.loads(
+            (ROOT / "specs/fixtures/replayable-compliance-scenario-synthetic.json").read_text()
+        )
     except (OSError, json.JSONDecodeError) as exc:
         fail(f"S7-G1 scenario-run ledger unreadable: {exc}")
         return
@@ -635,6 +800,13 @@ def gate_scenario_run_ledger() -> None:
     if ledger.get("schema") != "bocg.scenario-run-ledger.v1":
         fail("S7-G1 ledger schema identity drifted")
     rows = ledger.get("rows") or []
+    scenario_sha256 = sha256_bytes(canonical_json(scenario))
+    scenario_release = scenario.get("bocg_release")
+    manifest_sha256 = (
+        scenario_release.get("manifest_sha256")
+        if isinstance(scenario_release, dict)
+        else None
+    )
     seen_hashes = set()
     for i, row in enumerate(rows):
         claimed = row.get("row_sha256")
@@ -645,6 +817,10 @@ def gate_scenario_run_ledger() -> None:
         if claimed in seen_hashes:
             fail(f"S7-G2 row {i}: duplicate row_sha256")
         seen_hashes.add(claimed)
+        if row.get("manifest_sha256") != manifest_sha256:
+            fail(f"S7-G2 row {i}: manifest_sha256 does not match the scenario release pin")
+        if row.get("scenario_sha256") != scenario_sha256:
+            fail(f"S7-G2 row {i}: scenario_sha256 does not match canonical scenario JSON")
         replaces = row.get("replaces_row_sha256")
         if replaces is not None and replaces not in seen_hashes:
             fail(f"S7-G2 row {i}: replaces_row_sha256 does not resolve to an earlier row")
@@ -815,7 +991,9 @@ def main() -> int:
     gate_release_manifest()
     gate_insight_construction()
     pinned_cell = gate_compliance_scenarios()
+    gate_replayable_compliance_scenario()
     gate_scenario_run_ledger()
+    gate_schema_fixtures()
     gate_task_concepts()
     gate_public_eval_overlay()
     if FAILURES:

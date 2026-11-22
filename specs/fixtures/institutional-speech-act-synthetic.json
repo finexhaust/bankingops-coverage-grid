@@ -1,0 +1,21 @@
+{
+  "schema": "kg-institutional-speech-act-expansion.v1",
+  "literal_speech_act": {
+    "type": "directive"
+  },
+  "institutional_speech_act": {
+    "type": "directive"
+  },
+  "pragmatic_expansion": {
+    "expanded_reading": "A synthetic instruction requires confirmation.",
+    "basis": ["synthetic fixture"],
+    "adjudication_status": "sme_confirmed"
+  },
+  "obligation_frame": {
+    "directive_status": "directed",
+    "execution_status": "not_observed",
+    "completion_status": "not_observed",
+    "verification_status": "not_observed"
+  },
+  "state_separation_enforced": true
+}

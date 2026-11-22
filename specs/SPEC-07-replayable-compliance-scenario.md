@@ -1,8 +1,8 @@
 # SPEC-07 — Replayable compliance scenario contract
 
 ```
-ARTIFACT : definition-only contract for replayable compliance scenarios
-STATUS   : v0.1 proposed contract
+ARTIFACT : current definition-only contract for replayable compliance scenarios
+STATUS   : v0.1 normative contract
 SOURCE   : specs/replayable-compliance-scenario.schema.json
 DEPTH    : composes public cell, task, input state, oracle and verdict shapes; never institution instances
 ```
@@ -28,6 +28,15 @@ S7-I7 REPLAY_HASHED       the scenario carries a deterministic scenario hash ove
 S7-I8 NO_OCCURRENCE_CLAIM a scenario is a test fixture, not an assertion that any institution experienced the facts.
 ```
 
+`manifest_sha256` is the canonical self-digest: SHA-256 of canonical JSON for
+the manifest with `manifest_sha256` omitted. It is not the digest of the
+manifest file's raw bytes. `cell_ref.cell_sha256` is SHA-256 of the exact raw
+bytes of the pinned cell JSON artifact. `scenario_hash` is SHA-256 of canonical
+JSON containing exactly `cell_ref`, `task_ref`, `input_state`, `oracle`, and
+`expected_verdict`; `scenario_hash` and all other scenario fields are excluded.
+Canonical JSON is UTF-8 JSON with non-ASCII characters preserved, sorted keys,
+and compact separators.
+
 ## 2. Verdict vocabulary
 
 A verdict expresses the result of applying the cell's control point to the
@@ -48,7 +57,9 @@ When a scenario is executed, the runner records:
 - the actual verdict;
 - a replay hash of the runner version and runtime parameters.
 
-The ledger schema is `specs/scenario-run-ledger.schema.json`.
+The current ledger schema is `specs/scenario-run-ledger-rows.schema.json`.
+The older run-level schema is superseded and retained as a separate compatibility
+contract.
 
 ## 4. Boundary
 
