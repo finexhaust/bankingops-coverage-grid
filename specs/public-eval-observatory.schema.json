@@ -29,7 +29,18 @@
     "cleanroom_eval": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["repository", "version", "commit_sha", "release_status", "bocg_companion_tag", "url"],
+      "required": [
+        "repository",
+        "version",
+        "commit_sha",
+        "release_status",
+        "bocg_companion_tag",
+        "url",
+        "archive_sha256",
+        "audit_sha256",
+        "audit_gate_counts",
+        "audit_terminal_state"
+      ],
       "properties": {
         "repository": { "type": "string" },
         "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
@@ -45,6 +56,14 @@
         },
         "bocg_companion_tag": { "type": "string" },
         "url": { "type": "string", "format": "uri" },
+        "archive_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "audit_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "audit_gate_counts": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "audit_terminal_state": { "type": "string", "minLength": 1 },
         "notes": { "type": ["string", "null"] }
       }
     },

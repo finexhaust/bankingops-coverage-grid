@@ -389,6 +389,27 @@ def gate_common_semantics() -> None:
     except (OSError, yaml.YAMLError) as exc:
         fail(f"S4-G1 common semantic profile is unreadable: {exc}")
         return
+    try:
+        proposed_context = json.loads(
+            (ROOT / "reference/financial-work-context-proposals.v1.json").read_text(encoding="utf-8")
+        )
+        context = json.loads(
+            (ROOT / "reference/financial-work-context.v1.json").read_text(encoding="utf-8")
+        )
+        operating_contract = json.loads(
+            (ROOT / "specs/operating-reference-contract.json").read_text(encoding="utf-8")
+        )
+        context_version = proposed_context["version"]
+        declared_versions = {
+            "proposal": context_version,
+            "catalogue": context["version"],
+            "operating-reference contract": operating_contract["optional_context"]["version"],
+            "common semantic profile": (profile.get("financial_work_context") or {}).get("version"),
+        }
+        if any(version != context_version for version in declared_versions.values()):
+            fail(f"S10-G1 financial work-context versions disagree: {declared_versions}")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        fail(f"S10-G1 financial work-context version source is unreadable: {exc}")
     meta = profile.get("profile") or {}
     if meta.get("id") != "bocg-common-semantics" or meta.get("scope", {}).get("ceiling") != "control_point":
         fail("S4-G1 profile identity or control-point ceiling drifted")

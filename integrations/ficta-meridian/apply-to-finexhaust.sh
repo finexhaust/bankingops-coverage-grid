@@ -20,46 +20,62 @@ if [[ ! -f "$PACK/scripts/gen-release-observatory.py" ]]; then
   exit 2
 fi
 
+PAGE=ficta-meridian-site/app/page.tsx
+for source in \
+  "$PACK/scripts/gen-release-observatory.py" \
+  "$PACK/app/components/PublicEvalObservatory.tsx" \
+  "$PACK/app/data/public-eval-observatory.ts"; do
+  [[ -f "$source" ]] || { echo "Pack file missing: $source" >&2; exit 2; }
+done
+[[ -f "$PAGE" ]] || { echo "Consumer page not found: $PAGE" >&2; exit 2; }
+for destination in \
+  ficta-meridian-site/scripts \
+  ficta-meridian-site/app/components \
+  ficta-meridian-site/app/data; do
+  [[ -d "$destination" && -w "$destination" ]] || {
+    echo "Consumer destination is missing or not writable: $destination" >&2
+    exit 2
+  }
+done
+
+STAGE_DIR=$(mktemp -d)
+trap 'rm -rf "$STAGE_DIR"' EXIT
+python3 - "$PAGE" "$STAGE_DIR/page.tsx" <<'PY'
+from pathlib import Path
+import sys
+path, staged = map(Path, sys.argv[1:])
+text = path.read_text(encoding="utf-8")
+import_anchor = "import ReferenceExplorer from './components/ReferenceExplorer';\n"
+section_anchor = "      <ReferenceExplorer />\n"
+import_lines = (
+    "import PublicEvalObservatory from './components/PublicEvalObservatory';\n"
+    "import { CLEANROOM_EVAL_PIN } from './data/public-eval-observatory';\n"
+)
+if "import PublicEvalObservatory from" not in text:
+    if import_anchor not in text:
+        raise SystemExit("import anchor not found in page.tsx; no files were changed")
+    text = text.replace(import_anchor, import_anchor + import_lines, 1)
+if "<PublicEvalObservatory" not in text:
+    if section_anchor not in text:
+        raise SystemExit("section anchor not found in page.tsx; no files were changed")
+    text = text.replace(section_anchor, section_anchor + "\n      <PublicEvalObservatory />\n", 1)
+old = "· harness: thefazzer/cleanroom-eval · 2026-09</footer>"
+new = "· harness: finexhaust/cleanroom-eval · {CLEANROOM_EVAL_PIN.version} · {RELEASE_OBSERVATORY.built_at.slice(0, 7)}</footer>"
+if "CLEANROOM_EVAL_PIN.version" not in text:
+    if old not in text:
+        raise SystemExit("footer anchor not found in page.tsx; no files were changed")
+    text = text.replace(old, new, 1)
+staged.write_text(text, encoding="utf-8")
+PY
+
 install -m 0644 "$PACK/scripts/gen-release-observatory.py" \
   ficta-meridian-site/scripts/gen-release-observatory.py
 install -m 0644 "$PACK/app/components/PublicEvalObservatory.tsx" \
   ficta-meridian-site/app/components/PublicEvalObservatory.tsx
 install -m 0644 "$PACK/app/data/public-eval-observatory.ts" \
   ficta-meridian-site/app/data/public-eval-observatory.ts
-
-PAGE=ficta-meridian-site/app/page.tsx
-if ! grep -q "PublicEvalObservatory" "$PAGE"; then
-  python3 - "$PAGE" <<'PY'
-from pathlib import Path
-import sys
-path = Path(sys.argv[1])
-text = path.read_text(encoding="utf-8")
-needle = "import ReferenceExplorer from './components/ReferenceExplorer';\n"
-insert = needle + (
-    "import PublicEvalObservatory from './components/PublicEvalObservatory';\n"
-    "import { CLEANROOM_EVAL_PIN } from './data/public-eval-observatory';\n"
-)
-if needle not in text:
-    raise SystemExit("import anchor not found in page.tsx")
-if "PublicEvalObservatory" not in text:
-    text = text.replace(needle, insert, 1)
-anchor = "      <ReferenceExplorer />\n"
-if anchor in text and "<PublicEvalObservatory />" not in text:
-    text = text.replace(anchor, anchor + "\n      <PublicEvalObservatory />\n", 1)
-old = "harness: thefazzer/cleanroom-eval · 2026-09"
-new = "harness: finexhaust/cleanroom-eval · {CLEANROOM_EVAL_PIN.version} · {RELEASE_OBSERVATORY.built_at.slice(0, 7)}"
-# footer is JSX text — replace month-only clause when present
-if "CLEANROOM_EVAL_PIN.version" not in text:
-    text = text.replace(
-        "· harness: thefazzer/cleanroom-eval · 2026-09</footer>",
-        "· harness: finexhaust/cleanroom-eval · {CLEANROOM_EVAL_PIN.version} · {RELEASE_OBSERVATORY.built_at.slice(0, 7)}</footer>",
-        1,
-    )
-path.write_text(text, encoding="utf-8")
-print(f"patched {path}")
-PY
-else
-  echo "page.tsx already references PublicEvalObservatory — left as-is"
+if ! cmp -s "$STAGE_DIR/page.tsx" "$PAGE"; then
+  install -m 0644 "$STAGE_DIR/page.tsx" "$PAGE"
 fi
 
 echo "Applied Meridian observatory pack from $PACK"

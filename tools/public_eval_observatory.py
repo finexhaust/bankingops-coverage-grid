@@ -27,6 +27,7 @@ INVENTORY_PATH = ROOT / "reference/public-eval-inventory.v1.yaml"
 OUT_PATH = ROOT / "reference/public-eval-observatory.v1.json"
 SCHEMA_PATH = ROOT / "specs/public-eval-observatory.schema.json"
 CLEANROOM_PIN_PATH = ROOT / "reference/cleanroom-eval-companion.v1.json"
+MERIDIAN_SEED_PATH = ROOT / "integrations/ficta-meridian/app/data/public-eval-observatory.ts"
 EXPECTED_CLEANROOM_VERSION = "2.1.3"
 
 SCHEMA = "bocg.public-eval-observatory/v1"
@@ -64,6 +65,17 @@ def load_cleanroom_pin() -> dict:
         raise ValueError("cleanroom companion pin schema drift")
     if pin.get("version") != EXPECTED_CLEANROOM_VERSION:
         raise ValueError(f"cleanroom companion pin must be {EXPECTED_CLEANROOM_VERSION} for this observatory")
+    for field in ("archive_sha256", "audit_sha256"):
+        if not isinstance(pin.get(field), str) or not re.fullmatch(r"[a-f0-9]{64}", pin[field]):
+            raise ValueError(f"cleanroom companion pin has an invalid {field}")
+    gate_counts = pin.get("audit_gate_counts")
+    if (not isinstance(gate_counts, dict) or not gate_counts
+            or any(not isinstance(status, str) or type(count) is not int or count < 0
+                   for status, count in gate_counts.items())
+            or sum(gate_counts.values()) != 13):
+        raise ValueError("cleanroom companion pin has invalid audit gate counts")
+    if not isinstance(pin.get("audit_terminal_state"), str) or not pin["audit_terminal_state"]:
+        raise ValueError("cleanroom companion pin has no audit terminal state")
     return pin
 
 
@@ -160,6 +172,10 @@ def build_observatory() -> dict:
             "release_status": cleanroom.get("release_status"),
             "bocg_companion_tag": cleanroom.get("bocg_companion_tag"),
             "url": cleanroom.get("url"),
+            "archive_sha256": cleanroom.get("archive_sha256"),
+            "audit_sha256": cleanroom.get("audit_sha256"),
+            "audit_gate_counts": cleanroom.get("audit_gate_counts"),
+            "audit_terminal_state": cleanroom.get("audit_terminal_state"),
             "notes": cleanroom.get("notes"),
         },
         "llmaj": {
@@ -207,6 +223,27 @@ def build_observatory() -> dict:
     return body
 
 
+def render_meridian_seed(doc: dict) -> str:
+    """Render the static integration seed from the same observatory document."""
+    cleanroom = doc["cleanroom_eval"]
+    public_eval = {
+        "prereg_sha256": doc["prereg_sha256"],
+        "headline": doc["llmaj"]["headline"],
+        "llmaj": doc["llmaj"],
+        "overlay_paint": doc["overlay_paint"],
+        "source": "seed_from_bocg_observatory",
+    }
+    return (
+        "// GENERATED from reference/public-eval-observatory.v1.json by tools/public_eval_observatory.py.\n"
+        "export const PUBLIC_EVAL_OBSERVATORY = "
+        + json.dumps(public_eval, indent=2, ensure_ascii=False)
+        + " as const;\n\n"
+        "export const CLEANROOM_EVAL_PIN = "
+        + json.dumps(cleanroom, indent=2, ensure_ascii=False)
+        + " as const;\n"
+    )
+
+
 def observatory_problems(doc: dict) -> list[str]:
     problems: list[str] = []
     if doc.get("schema") != SCHEMA:
@@ -217,6 +254,9 @@ def observatory_problems(doc: dict) -> list[str]:
         problems.append("cleanroom_eval.version drifted from companion pin")
     if cr.get("commit_sha") != pin["commit_sha"]:
         problems.append("cleanroom_eval.commit_sha drifted from companion pin")
+    for field in ("archive_sha256", "audit_sha256", "audit_gate_counts", "audit_terminal_state"):
+        if cr.get(field) != pin[field]:
+            problems.append(f"cleanroom_eval.{field} drifted from companion pin")
     llmaj = doc.get("llmaj") or {}
     cases = llmaj.get("cases") or []
     if llmaj.get("case_count") != len(cases):
@@ -246,6 +286,7 @@ def observatory_problems(doc: dict) -> list[str]:
 def cmd_build() -> int:
     doc = build_observatory()
     OUT_PATH.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    MERIDIAN_SEED_PATH.write_text(render_meridian_seed(doc), encoding="utf-8")
     print(
         f"wrote {OUT_PATH.relative_to(ROOT)} "
         f"cases={doc['llmaj']['case_count']} paint_eligible={doc['llmaj']['paint_eligible_count']} "
@@ -259,6 +300,9 @@ def cmd_check() -> int:
         print(f"FAIL missing {OUT_PATH.relative_to(ROOT)}")
         return 1
     doc = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+    if not MERIDIAN_SEED_PATH.is_file() or MERIDIAN_SEED_PATH.read_text(encoding="utf-8") != render_meridian_seed(doc):
+        print("FAIL Meridian seed differs from the observatory")
+        return 1
     try:
         import jsonschema
 
