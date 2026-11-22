@@ -80,6 +80,14 @@ RUN_ARTIFACTS = {
     "matrix.json": "coverage-matrix",
     "normalised.json": "normalised-grid",
 }
+# SPEC-03 S3-I6: only a CURATED cell is a released control point. The role of
+# every other cell states its status, so a reader of the manifest can tell a
+# practitioner-reviewed control point from an unreviewed or withdrawn one.
+CELL_ROLES = {
+    "CURATED": "control-point-cell",
+    "PROPOSED": "proposed-control-point-cell",
+    "RETIRED": "retired-control-point-cell",
+}
 
 
 def canonical_json(value: object) -> bytes:
@@ -119,6 +127,20 @@ def _evidence_files(root: Path, run_dir: str) -> list[str]:
         for path in sorted((root / run_dir).rglob("*"))
         if path.is_file() and path.suffix in EVIDENCE_SUFFIXES
     ]
+
+
+def _cell_role(path: Path) -> str:
+    """Manifest role of one cell file, from the status the cell itself states."""
+    try:
+        cell = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        raise ValueError(f"cell {path.name} is not readable: {exc}") from exc
+    status = cell.get("status") if isinstance(cell, dict) else None
+    if not isinstance(status, str) or status not in CELL_ROLES:
+        raise ValueError(
+            f"cell {path.name} has status {status!r}; expected one of {', '.join(CELL_ROLES)}"
+        )
+    return CELL_ROLES[status]
 
 
 def _artifact(root: Path, relative: str, role: str) -> dict:
@@ -195,7 +217,7 @@ def build_manifest(
             artifact_roles.setdefault(relative, 'generation-evidence')
     artifact_roles.update(
         {
-            path.relative_to(root).as_posix(): "control-point-cell"
+            path.relative_to(root).as_posix(): _cell_role(path)
             for path in sorted((root / "cells").glob("*.json"))
         }
     )
