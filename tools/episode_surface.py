@@ -128,7 +128,8 @@ def reviewed_evidence_depth(surface: dict, root: Path = ROOT, *, current: bool =
     """
     try:
         concepts, _, cells, _ = _release_data(surface, root, current)
-        if current and surface['bocg_release']['task_concepts_sha256'] != concepts['task_concepts_sha256']:
+        if (current or 'taxonomy_run' in surface['bocg_release']) and (
+                surface['bocg_release']['task_concepts_sha256'] != concepts['task_concepts_sha256']):
             return 'none'
         concepts = {c['concept_id']: c for c in concepts['concepts']}
     except UNREADABLE:
@@ -183,7 +184,12 @@ def surface_problems(surface: dict, *, root: Path = ROOT, current: bool = False)
     if problems:
         return problems
     release = surface.get('bocg_release') or {}
-    if current and release.get('task_concepts_sha256') != concepts_digest:
+    # SPEC-08: checkout mode checks the run and concept digest against checkout
+    # files. In pinned mode the concept digest is part of a v2 release binding
+    # (a surface that declares taxonomy_run); a legacy v1 surface carries an
+    # illustrative pin and its digest tracks the checkout, not the pinned
+    # release.
+    if (current or 'taxonomy_run' in release) and release.get('task_concepts_sha256') != concepts_digest:
         problems.append('surface is bound to a different task-concepts digest')
     for index, point in enumerate(surface.get('touchpoints') or []):
         where = f'touchpoint {index}'
