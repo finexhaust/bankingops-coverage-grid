@@ -127,7 +127,7 @@ def test_episode_surface_fixture_follows_depth_rule_and_release_binding():
     Draft202012Validator.check_schema(schema)
     fixture = json.loads((ROOT / 'specs/fixtures/episode-surface-synthetic.json').read_text())
     assert not list(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(fixture))
-    assert surface_problems(fixture, root=ROOT) == []
+    assert surface_problems(fixture, root=ROOT, current=True) == []
     assert evidence_depth(fixture) == fixture['evidence_depth']
     assert candidate_depth(fixture) == fixture['candidate_depth']
 
@@ -140,14 +140,104 @@ def test_candidates_never_raise_evidence_depth():
             point['ruling'] = None
     assert evidence_depth(fixture) == 'none'
     assert candidate_depth(fixture) != 'none'
-    assert 'evidence_depth does not follow the depth rule' in surface_problems(fixture, root=ROOT)
+    assert 'evidence_depth does not follow the depth rule' in surface_problems(fixture, root=ROOT, current=True)
 
 
 def test_surface_rejects_identifiers_outside_the_release():
     fixture = json.loads((ROOT / 'specs/fixtures/episode-surface-synthetic.json').read_text())
     point = next(p for p in fixture['touchpoints'] if p['task_concept_id'])
     point['task_concept_id'] = 'task_concept:' + point['division_key'] + ':' + '0' * 24
-    assert any('not a released concept' in p for p in surface_problems(fixture, root=ROOT))
+    assert any('not a released concept' in p for p in surface_problems(fixture, root=ROOT, current=True))
+
+
+def _historical_surface():
+    base = ROOT / 'reference/release-snapshots/v0.6.3/reference'
+    concepts = json.loads((base / 'task-concepts.v1.json').read_text())
+    concept = next(c for c in concepts['concepts'] if c['kind'] == 'task_concept' and c['members'])
+    return {
+        'schema': 'bocg.episode-surface/v1',
+        'bocg_release': {
+            'tag': 'v0.6.3',
+            'manifest_sha256': 'a157ff3e9bff43dee9857c889c57f5ce87917e530999fbd6d365f47dfaf352ec',
+            'task_concepts_sha256': concepts['task_concepts_sha256'],
+            'taxonomy_run': 'live-run-20260826',
+        },
+        'episode_ref': 'ep-000000000001',
+        'source_profile_ref': 'sp-00000000',
+        'touchpoints': [{
+            'division_key': concept['division_key'],
+            'depth': 'terminal_task',
+            'mapping_status': 'RATIFIED_MAPPING',
+            'function_concept_id': None,
+            'task_concept_id': concept['concept_id'],
+            'task_reference_id': concept['members'][0],
+            'control_point_id': None,
+            'ruling': {'ruled_at': '2026-09-24', 'ruled_by_role': 'owner'},
+        }],
+        'evidence_depth': 'terminal_task',
+        'candidate_depth': 'none',
+        'reviewed_evidence_depth': 'terminal_task',
+    }
+
+
+def test_historical_surface_uses_pinned_run_and_cli_reports_it(tmp_path):
+    import subprocess
+    import sys
+    surface = _historical_surface()
+    schema = json.loads((ROOT / 'specs/episode-surface.schema.json').read_text())
+    Draft202012Validator(schema, format_checker=FormatChecker()).validate(surface)
+    assert surface_problems(surface) == []
+    path = tmp_path / 'surface.json'
+    path.write_text(json.dumps(surface))
+    result = subprocess.run([sys.executable, str(ROOT / 'tools/episode_surface.py'), str(path)], capture_output=True, text=True)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert 'taxonomy_run=live-run-20260826 status=historical validation=pinned' in result.stdout
+
+
+def test_historical_surface_rejects_mismatched_pin_run_and_identifiers():
+    surface = _historical_surface()
+    for field, value in [('tag', 'v0.6.2'), ('manifest_sha256', '0' * 64),
+                         ('taxonomy_run', 'live-run-20261019'), ('task_concepts_sha256', '0' * 64)]:
+        broken = copy.deepcopy(surface)
+        broken['bocg_release'][field] = value
+        assert surface_problems(broken), field
+    broken = copy.deepcopy(surface)
+    broken['touchpoints'][0]['task_reference_id'] = 'task:' + broken['touchpoints'][0]['division_key'] + ':' + '0' * 24
+    assert any('not a released task' in p for p in surface_problems(broken))
+
+
+def test_historical_surface_rejects_tampered_snapshot(tmp_path):
+    import shutil
+    shutil.copytree(ROOT / 'reference/release-snapshots', tmp_path / 'reference/release-snapshots')
+    (tmp_path / 'specs').mkdir()
+    shutil.copyfile(ROOT / 'specs/bocg-release-manifest.schema.json', tmp_path / 'specs/bocg-release-manifest.schema.json')
+    path = tmp_path / 'reference/release-snapshots/v0.6.3/reference/operating-catalogue.v1.json'
+    path.write_text(path.read_text() + ' ')
+    assert any('digest mismatch' in p for p in surface_problems(_historical_surface(), root=tmp_path))
+
+
+def test_historical_cell_is_verified_and_reviewed_in_its_release(tmp_path):
+    import shutil
+    surface = _historical_surface()
+    surface['touchpoints'] = [{
+        'division_key': 'trade_lifecycle_operations', 'depth': 'control_point',
+        'mapping_status': 'RATIFIED_MAPPING', 'function_concept_id': None,
+        'task_concept_id': None, 'task_reference_id': None,
+        'control_point_id': 'cp_otc_confirmation_timeliness', 'control_point_status': 'PROPOSED',
+        'ruling': {'ruled_at': '2026-09-24', 'ruled_by_role': 'owner'},
+    }]
+    surface['evidence_depth'] = 'control_point'
+    surface['reviewed_evidence_depth'] = 'division'
+    assert surface_problems(surface) == []
+    surface['touchpoints'][0]['control_point_status'] = 'CURATED'
+    assert any('PROPOSED in the release' in p for p in surface_problems(surface))
+    surface['touchpoints'][0]['control_point_status'] = 'PROPOSED'
+    shutil.copytree(ROOT / 'reference/release-snapshots', tmp_path / 'reference/release-snapshots')
+    (tmp_path / 'specs').mkdir()
+    shutil.copyfile(ROOT / 'specs/bocg-release-manifest.schema.json', tmp_path / 'specs/bocg-release-manifest.schema.json')
+    cell = tmp_path / 'reference/release-snapshots/v0.6.3/cells/cp_otc_confirmation_timeliness.json'
+    cell.unlink()
+    assert any('artifact unavailable' in p for p in surface_problems(surface, root=tmp_path))
 
 
 def test_release_binds_concepts_and_refuses_stale_concepts(tmp_path):

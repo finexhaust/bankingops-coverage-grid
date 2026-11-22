@@ -121,9 +121,9 @@ terminal_task < control_point`.
 - Candidates never raise evidence depth. A ratified division mapping with a
   candidate task-concept mapping has evidence depth `division`.
 
-The synthetic fixture binds the task-concept digest of this release and carries
-a zero manifest digest: the fixture is itself a manifest artifact, so it cannot
-name the digest of the manifest that binds it. Consumers fill both.
+The synthetic fixture identifies the current checkout's taxonomy run and concept
+digest. Its manifest pin is illustrative, not a verification of this checkout:
+the fixture is itself a manifest artifact and cannot bind its own manifest.
 
 `tools/episode_surface.py` implements the rule and the release-bound checks
 (concept and task identifiers must exist in the pinned release, in the named
@@ -152,6 +152,23 @@ work occurred as described, and not a ranking of divisions. An Episode at
 The release manifest binds this specification, both schemas, the rulings, the
 concept file and the synthetic fixture. `build_release_manifest.py` refuses to
 build while the concept file is stale. Consumers that pin an earlier release
-are unaffected: the catalogue, matrix and cells are unchanged, so an evidence
-ledger bound to v0.3.0 through the coverage-matrix digest projects onto v0.6.0
-without relabelling, exactly as SPEC-06 requires.
+are unaffected when the catalogue, matrix and cells are unchanged, exactly as
+SPEC-06 requires.
+
+Each surface names the `taxonomy_run` it was ruled against in `bocg_release`,
+alongside the release tag, manifest digest and concept digest. After a
+regeneration, the original surface and ruling remain pinned: never replace
+retired keys or labels, or silently rebind them to the new taxonomy. Display
+the original run and release with the historical ruling beside the current
+taxonomy; any current mapping requires a separate, explicitly adjudicated
+surface.
+
+By default `tools/episode_surface.py <surface.json>` resolves the exact tag and
+manifest digest through `tools/release_snapshots.py`, checks the run against the
+pinned catalogue, and validates identifiers, membership, cell status and depth
+against verified artifacts from that release only. It reports the run and
+whether it is historical relative to `reference/taxonomy-source.json`.
+Missing, unknown, mismatched or tampered pins and artifacts fail closed.
+`--current` is an explicit checkout-only mode for the synthetic fixture and
+development: it checks the run and concept digest against checkout files but
+does not verify the manifest pin and MUST NOT be used as release validation.

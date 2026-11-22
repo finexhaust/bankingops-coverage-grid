@@ -717,7 +717,7 @@ def gate_task_concepts() -> None:
             fail(f"S8-G3 {concept['concept_id']}: REVIEWED concept outside any ruling")
     if reviewed_aliases != concepts["counts"]["reviewed_aliases"]:
         fail("S8-G3 reviewed alias count does not reconcile")
-    for problem in surface_problems(fixture, root=ROOT):
+    for problem in surface_problems(fixture, root=ROOT, current=True):
         fail(f"S8-G4 episode-surface fixture: {problem}")
 
 

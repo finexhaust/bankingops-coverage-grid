@@ -11,11 +11,12 @@
     "bocg_release": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["tag", "manifest_sha256", "task_concepts_sha256"],
+      "required": ["tag", "manifest_sha256", "task_concepts_sha256", "taxonomy_run"],
       "properties": {
         "tag": {"type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$"},
         "manifest_sha256": {"$ref": "#/$defs/sha256"},
-        "task_concepts_sha256": {"$ref": "#/$defs/sha256"}
+        "task_concepts_sha256": {"$ref": "#/$defs/sha256"},
+        "taxonomy_run": {"type": "string", "pattern": "^live-run-[0-9]{8}$"}
       }
     },
     "episode_ref": {
