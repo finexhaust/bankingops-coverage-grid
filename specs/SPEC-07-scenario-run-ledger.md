@@ -46,19 +46,20 @@ Each row carries:
 | `replicates` | Number of independent replicates executed for this model/scenario pair (>= 1). |
 | `judge_ids` | Non-empty list of distinct judge identifiers that rendered the verdict. |
 | `pass_rule_ref` | Reference to the pass rule applied (e.g. `five-families/intersection-union/v1`). |
-| `verdict` | One of `PASS`, `FAIL`, `UNCERTAIN`, `NOT_APPLICABLE`, reusing the five-families vocabulary (`specs/rubrics/five-families.yaml`). |
-| `freeze.runner_sha256` | SHA-256 of the exact raw bytes of the runner/evaluation harness code artifact. |
+| `verdict` | One of `PASS`, `FAIL`, `INDETERMINATE`, `UNCERTAIN`, `NOT_APPLICABLE`, reusing the five-families vocabulary (`specs/rubrics/five-families.yaml`). |
+| `freeze.runner_sha256` | SHA-256 of the runner/evaluation harness code artifact. |
 | `freeze.clean_tree` | `true` iff the runner executed against a clean source tree. |
 | `evidence_ref` | SHA-256 of the exact raw bytes of the sealed run bundle that supports the verdict. |
 
 ## Verdict vocabulary
 
-The four verdicts are taken directly from the five-families rubric
+The verdicts are taken directly from the five-families rubric
 (`specs/rubrics/five-families.yaml`):
 
 - `PASS` — the scenario's canonical claim is satisfied under the pass rule.
 - `FAIL` — the claim is not satisfied.
-- `UNCERTAIN` — the evidence does not establish a definitive pass or fail.
+- `INDETERMINATE` — the evidence does not establish a definitive pass or fail.
+- `UNCERTAIN` — retained as a compatibility synonym for `INDETERMINATE`.
 - `NOT_APPLICABLE` — the scenario or rule does not apply to this model/scenario pair.
 
 ## Immutability and corrections

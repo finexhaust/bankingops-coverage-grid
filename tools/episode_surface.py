@@ -160,6 +160,17 @@ def surface_problems(surface: dict, *, root: Path = ROOT) -> list[str]:
         problems.append('surface is bound to a different task-concepts digest')
     for index, point in enumerate(surface.get('touchpoints') or []):
         where = f'touchpoint {index}'
+        if point.get('mapping_status') == 'SIGNIFICANT_UNMAPPED':
+            if point.get('division_key') is not None:
+                problems.append(f'{where}: significant unmapped touchpoint must not name a division')
+            if point.get('depth') != 'none':
+                problems.append(f'{where}: significant unmapped touchpoint must have depth none')
+            if any(point.get(key) is not None for key in (
+                'function_concept_id', 'task_concept_id', 'task_reference_id',
+                'control_point_id', 'ruling',
+            )):
+                problems.append(f'{where}: significant unmapped touchpoint must not name a mapped target')
+            continue
         division = point.get('division_key')
         if division not in divisions:
             problems.append(f'{where}: unknown division {division!r}')

@@ -123,7 +123,7 @@
           "description": "Reference to the pass rule applied (e.g. URI or rule identifier)."
         },
         "verdict": {
-          "enum": ["PASS", "FAIL", "UNCERTAIN", "NOT_APPLICABLE"],
+          "enum": ["PASS", "FAIL", "INDETERMINATE", "UNCERTAIN", "NOT_APPLICABLE"],
           "description": "Verdict reusing the five-families vocabulary."
         },
         "freeze": {

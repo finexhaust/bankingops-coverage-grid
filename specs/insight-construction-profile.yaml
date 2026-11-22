@@ -1,6 +1,6 @@
 profile:
   id: bocg-insight-construction
-  version: 0.2.0
+  version: 0.3.0
   status: NORMATIVE
   title: BankingOps portable insight-construction profile
   layered_on: bocg-common-semantics
@@ -28,11 +28,21 @@ objects:
   Episode:
     definition: Defeasible composition providing connective tissue among evidence-bound Atoms.
     component_truth_does_not_imply_composition_truth: true
+  TraceHypothesisGroup:
+    definition: Container for related Trace hypotheses that explicitly does not assert one process instance.
+    single_process_instance_asserted: false
   InstitutionalSpeechActExpansion:
     definition: SME-confirmed sidecar separating literal form from institutional force.
     source_text_mutation_prohibited: true
   FiveFamilyAssessment:
     definition: Non-aggregated machine or SME test result attached to an immutable target.
+
+composition_lifecycle:
+  states: [draft, candidate, reviewed, admitted, qualified, recomposition_required, rejected, withdrawn]
+  review_states: [unreviewed, current, stale]
+  review_history:
+    append_only: true
+    records_reviewer_and_time: true
 
 lifecycle_vocabulary:
   ordered_states: [directed, pending, scheduled, executed, completed, verified]
@@ -84,6 +94,14 @@ lifecycle_vocabulary:
         - "firm-internal calendar"
 
 adjudication_policy:
+  basis_vocabulary:
+    - source_evidence
+    - owner_attestation
+    - sme_attestation
+    - owner_attestation_as_assumption
+    - sme_attestation_as_assumption
+    - author_supplied_completion
+    - independent_provenance
   source_and_machine_construction_immutable: true
   overlays_append_only: true
   evidence_retargeting_prohibited: true
@@ -91,6 +109,43 @@ adjudication_policy:
   split_components_independently_addressable: true
   downstream_recomposition_required: true
   score_aggregation_prohibited: true
+  rejection:
+    reason_required: true
+    attribution_required: true
+    reopenable: true
+
+content_vocabulary:
+  origins:
+    - source_observed
+    - author_supplied
+    - machine_inferred
+    - owner_attested
+    - sme_attested
+  independent_provenance_weight:
+    range: [0, 1]
+    required_when_claimed: true
+    author_supplied_completion_requires_numeric_weight: true
+  assertion_statuses: [asserted, denied, disputed, uncertain, inferred, withdrawn]
+
+open_question_vocabulary:
+  types: [evidence_gap, actor_identity, causal_link, outcome, temporal_bound, mapping, other]
+
+mapping_vocabulary:
+  statuses:
+    - PROPOSED
+    - PENDING
+    - RATIFIED_MAPPING
+    - QUALIFIED_MAPPING
+    - REJECTED_MAPPING
+    - DEFERRED_MAPPING
+    - SIGNIFICANT_UNMAPPED
+  significant_unmapped:
+    division_key_may_be_null: true
+
+verdict_vocabulary:
+  five_families:
+    preferred_indeterminate_value: INDETERMINATE
+    legacy_uncertain_value: UNCERTAIN
 
 standards_alignment:
   w3c_annotation: https://www.w3.org/TR/annotation-model/

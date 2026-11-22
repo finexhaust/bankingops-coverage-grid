@@ -1,6 +1,6 @@
 rubric:
   id: bocg-five-families
-  version: 1.0.0
+  version: 1.1.0
   aggregation: prohibited
   families:
     DEEP_DOMAIN_TRANSFER:
@@ -13,9 +13,11 @@ rubric:
       question: Can an experienced outsider reproduce the judgment from evidence and rubric alone?
     COMMERCIAL_INSIGHT:
       question: Is the construction decision-relevant without exceeding the evidence?
-  verdicts: [PASS, FAIL, UNCERTAIN, NOT_APPLICABLE]
+  verdicts: [PASS, FAIL, INDETERMINATE, UNCERTAIN, NOT_APPLICABLE]
   policy:
     target_immutable: true
     assessments_append_only: true
     disagreement_preserved_until_resolution: true
     machine_and_sme_assessors_permitted: true
+    INDETERMINATE: preferred_term_for_insufficient_or_inconclusive_evidence
+    UNCERTAIN: retained_legacy_synonym_for_compatibility

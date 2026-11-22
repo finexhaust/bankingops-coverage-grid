@@ -5,7 +5,8 @@
   "oneOf": [
     {"$ref": "#/$defs/ObservationAtom"},
     {"$ref": "#/$defs/Trace"},
-    {"$ref": "#/$defs/Episode"}
+    {"$ref": "#/$defs/Episode"},
+    {"$ref": "#/$defs/TraceHypothesisGroup"}
   ],
   "$defs": {
     "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
@@ -31,11 +32,16 @@
         "object_entity_id": {"type": ["string", "null"]},
         "object_literal": {},
         "qualifiers": {"type": "object"},
-        "assertion_status": {"type": "string", "minLength": 1},
+        "assertion_status": {"$ref": "#/$defs/AssertionStatus"},
+        "content_origin": {"$ref": "#/$defs/ContentOrigin"},
+        "independent_provenance_weight": {"type": "number", "minimum": 0, "maximum": 1},
         "confidence": {"type": "number", "minimum": 0, "maximum": 1},
         "source_refs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/EvidenceReference"}}
       },
-      "allOf": [{"not": {"required": ["object_entity_id", "object_literal"], "properties": {"object_entity_id": {"type": "string"}, "object_literal": {"not": {"type": "null"}}}}}]
+      "allOf": [
+        {"not": {"required": ["object_entity_id", "object_literal"], "properties": {"object_entity_id": {"type": "string"}, "object_literal": {"not": {"type": "null"}}}}},
+        {"if": {"required": ["content_origin"], "properties": {"content_origin": {"const": "author_supplied"}}}, "then": {"required": ["independent_provenance_weight"]}}
+      ]
     },
     "Trace": {
       "type": "object",
@@ -49,6 +55,17 @@
         "causality_asserted": {"type": "boolean"}
       }
     },
+    "TraceHypothesisGroup": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["kind", "group_id", "trace_ids", "single_process_instance_asserted"],
+      "properties": {
+        "kind": {"const": "TraceHypothesisGroup"},
+        "group_id": {"type": "string", "minLength": 1},
+        "trace_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "single_process_instance_asserted": {"const": false}
+      }
+    },
     "Episode": {
       "type": "object",
       "additionalProperties": true,
@@ -57,7 +74,12 @@
         "kind": {"const": "Episode"},
         "episode_id": {"type": "string", "minLength": 1},
         "atom_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
-        "composition_status": {"enum": ["candidate", "admitted", "qualified", "recomposition_required", "rejected"]},
+        "composition_status": {"enum": ["draft", "candidate", "reviewed", "admitted", "qualified", "recomposition_required", "rejected", "withdrawn"]},
+        "review_status": {"enum": ["unreviewed", "current", "stale"]},
+        "review_history": {"type": "array", "items": {"$ref": "#/$defs/ReviewRecord"}},
+        "adjudications": {"type": "array", "items": {"$ref": "#/$defs/AdjudicationRecord"}},
+        "rejection": {"$ref": "#/$defs/RejectionDisposition"},
+        "open_questions": {"type": "array", "items": {"$ref": "#/$defs/OpenQuestion"}},
         "execution_status": {"$ref": "#/$defs/LifecycleStatus"},
         "completion_status": {"$ref": "#/$defs/LifecycleStatus"},
         "verification_status": {"$ref": "#/$defs/LifecycleStatus"},
@@ -69,6 +91,54 @@
           "type": "array",
           "items": {"$ref": "#/$defs/DeadlineConstraint"}
         }
+      },
+      "allOf": [
+        {"if": {"properties": {"composition_status": {"const": "rejected"}}}, "then": {"required": ["rejection"]}}
+      ]
+    },
+    "AssertionStatus": {"enum": ["asserted", "denied", "disputed", "uncertain", "inferred", "withdrawn"]},
+    "ContentOrigin": {"enum": ["source_observed", "author_supplied", "machine_inferred", "owner_attested", "sme_attested"]},
+    "AdjudicationBasis": {"enum": ["source_evidence", "owner_attestation", "sme_attestation", "owner_attestation_as_assumption", "sme_attestation_as_assumption", "author_supplied_completion", "independent_provenance"]},
+    "AdjudicationRecord": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["adjudicator_role", "basis"],
+      "properties": {
+        "adjudicator_role": {"enum": ["owner", "sme", "author", "machine", "independent_reviewer"]},
+        "basis": {"$ref": "#/$defs/AdjudicationBasis"},
+        "independent_provenance_weight": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "allOf": [
+        {"if": {"properties": {"basis": {"enum": ["author_supplied_completion", "independent_provenance"]}}}, "then": {"required": ["independent_provenance_weight"]}}
+      ]
+    },
+    "ReviewRecord": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["reviewer_role", "reviewed_at", "review_status"],
+      "properties": {
+        "reviewer_role": {"enum": ["owner", "sme", "second_reviewer"]},
+        "reviewed_at": {"type": "string", "format": "date-time"},
+        "review_status": {"enum": ["current", "stale"]}
+      }
+    },
+    "RejectionDisposition": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["reason", "attributed_to", "reopenable"],
+      "properties": {
+        "reason": {"type": "string", "minLength": 1},
+        "attributed_to": {"enum": ["owner", "sme", "second_reviewer"]},
+        "reopenable": {"const": true}
+      }
+    },
+    "OpenQuestion": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["question_type", "question"],
+      "properties": {
+        "question_type": {"enum": ["evidence_gap", "actor_identity", "causal_link", "outcome", "temporal_bound", "mapping", "other"]},
+        "question": {"type": "string", "minLength": 1}
       }
     },
     "LifecycleState": {"enum": ["not_observed", "directed", "pending", "scheduled", "executed", "completed", "verified", "unknown"]},
