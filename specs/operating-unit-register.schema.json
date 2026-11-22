@@ -6,7 +6,7 @@
       "const": "bocg.operating-unit-register/v1"
     },
     "contract_version": {
-      "const": "1.0.0"
+      "const": "1.1.0"
     },
     "dataset_id": {
       "type": "string",
@@ -69,6 +69,24 @@
         "$ref": "#/$defs/relationship"
       }
     },
+    "role_holdings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/role_holding"
+      }
+    },
+    "reporting_relations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/reporting_relation"
+      }
+    },
+    "regulated_function_correspondences": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/regulated_function_correspondence"
+      }
+    },
     "settings": {
       "type": "array",
       "items": {
@@ -91,6 +109,9 @@
     "units",
     "assignments",
     "relationships",
+    "role_holdings",
+    "reporting_relations",
+    "regulated_function_correspondences",
     "settings"
   ],
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -125,13 +146,22 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 4000
+        },
+        "assertion_basis": {
+          "enum": [
+            "source_observed",
+            "inferred",
+            "corrected",
+            "attested"
+          ]
         }
       },
       "required": [
         "status",
         "reviewer_ref",
         "reviewed_at",
-        "reason"
+        "reason",
+        "assertion_basis"
       ],
       "allOf": [
         {
@@ -392,6 +422,309 @@
         "review"
       ]
     },
+    "role_holding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "role_holding_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,199}$"
+        },
+        "person_ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "organization_ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "unit_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "role_ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 4000
+        },
+        "grade": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 4000
+        },
+        "seniority": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 4000
+        },
+        "valid_from": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "valid_to": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "corrects_role_holding_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,199}$"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,199}$"
+          }
+        },
+        "review": {
+          "$ref": "#/$defs/review"
+        }
+      },
+      "required": [
+        "role_holding_id",
+        "person_ref",
+        "organization_ref",
+        "unit_id",
+        "role_ref",
+        "title",
+        "grade",
+        "seniority",
+        "valid_from",
+        "valid_to",
+        "corrects_role_holding_id",
+        "evidence_refs",
+        "review"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "review": {
+                "properties": {
+                  "assertion_basis": {
+                    "const": "corrected"
+                  }
+                },
+                "required": [
+                  "assertion_basis"
+                ]
+              }
+            },
+            "required": [
+              "review"
+            ]
+          },
+          "then": {
+            "properties": {
+              "corrects_role_holding_id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,199}$"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "reporting_relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reporting_relation_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,199}$"
+        },
+        "manager_person_ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "report_person_ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "status": {
+          "enum": [
+            "observed",
+            "proposed",
+            "corrected"
+          ]
+        },
+        "valid_from": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "valid_to": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "corrects_reporting_relation_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,199}$"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,199}$"
+          }
+        },
+        "review": {
+          "$ref": "#/$defs/review"
+        }
+      },
+      "required": [
+        "reporting_relation_id",
+        "manager_person_ref",
+        "report_person_ref",
+        "status",
+        "valid_from",
+        "valid_to",
+        "corrects_reporting_relation_id",
+        "evidence_refs",
+        "review"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "corrected"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "corrects_reporting_relation_id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,199}$"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "regulated_function_correspondence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "correspondence_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,199}$"
+        },
+        "role_holding_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,199}$"
+        },
+        "regulated_function_ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "functional_confidence": {
+          "enum": [
+            "unknown",
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "legal_applicability": {
+          "enum": [
+            "unknown",
+            "applicable",
+            "not_applicable"
+          ]
+        },
+        "registration_status": {
+          "enum": [
+            "unknown",
+            "registered",
+            "not_registered"
+          ]
+        },
+        "registration_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 4000
+        },
+        "jurisdiction": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 4000
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,199}$"
+          }
+        },
+        "review": {
+          "$ref": "#/$defs/review"
+        }
+      },
+      "required": [
+        "correspondence_id",
+        "role_holding_id",
+        "regulated_function_ref",
+        "functional_confidence",
+        "legal_applicability",
+        "registration_status",
+        "registration_ref",
+        "jurisdiction",
+        "evidence_refs",
+        "review"
+      ]
+    },
     "setting": {
       "type": "object",
       "additionalProperties": false,
@@ -484,7 +817,9 @@
           "enum": [
             "canonical_record",
             "governed_reference",
-            "authored_fixture"
+            "authored_fixture",
+            "owner_attestation",
+            "sme_attestation"
           ]
         },
         "locator": {
@@ -497,7 +832,10 @@
           "pattern": "^[0-9a-f]{64}$"
         },
         "observed_at": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "format": "date-time"
         }
       },
@@ -526,7 +864,7 @@
           "pattern": "^[0-9a-f]{64}$"
         },
         "contract_version": {
-          "const": "1.0.0"
+          "const": "1.1.0"
         }
       },
       "required": [
