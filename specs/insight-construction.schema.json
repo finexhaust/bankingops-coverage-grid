@@ -157,7 +157,7 @@
       "required": ["state"],
       "properties": {
         "state": {"$ref": "#/$defs/LifecycleState"},
-        "occurred_at": {"type": "string", "format": "date-time", "description": "Source-grounded timestamp when the transition into this state occurred."},
+        "occurred_at": {"$ref": "#/$defs/TemporalValue"},
         "deadline_ref": {"$ref": "#/$defs/DeadlineReference"},
         "calendar_ref": {"type": "string", "minLength": 1, "description": "Business-day calendar identifier used to interpret deadline_ref."}
       }
@@ -168,16 +168,64 @@
         {"$ref": "#/$defs/LifecycleStateTransition"}
       ]
     },
+    "TemporalPoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["precision", "value"],
+      "properties": {
+        "precision": {"enum": ["instant", "date", "business_date", "month", "year"]},
+        "value": {"type": "string"}
+      },
+      "allOf": [
+        {"if": {"properties": {"precision": {"const": "instant"}}}, "then": {"properties": {"value": {"format": "date-time"}}}},
+        {"if": {"properties": {"precision": {"enum": ["date", "business_date"]}}}, "then": {"properties": {"value": {"format": "date", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"}}}},
+        {"if": {"properties": {"precision": {"const": "month"}}}, "then": {"properties": {"value": {"pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"}}}},
+        {"if": {"properties": {"precision": {"const": "year"}}}, "then": {"properties": {"value": {"pattern": "^[0-9]{4}$"}}}}
+      ]
+    },
+    "TemporalInterval": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["precision", "start", "end"],
+          "properties": {
+            "precision": {"const": "interval"},
+            "start": {"$ref": "#/$defs/TemporalPoint"},
+            "end": {"$ref": "#/$defs/TemporalPoint"}
+          }
+    },
+    "TemporalValue": {
+      "oneOf": [
+        {"type": "string", "format": "date-time"},
+        {"$ref": "#/$defs/TemporalPoint"},
+        {"$ref": "#/$defs/TemporalInterval"}
+      ]
+    },
     "TemporalAnchor": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["anchor_type", "timestamp"],
+      "required": ["anchor_type"],
       "properties": {
+        "anchor_id": {"type": "string", "minLength": 1},
         "anchor_type": {"enum": ["observed_at", "valid_from", "valid_to", "deadline", "scheduled_at", "executed_at", "completed_at", "verified_at"]},
         "timestamp": {"type": "string", "format": "date-time"},
         "timezone": {"type": "string"},
-        "precision": {"enum": ["instant", "date", "business_date", "unknown"]}
-      }
+        "precision": {"enum": ["instant", "date", "business_date", "unknown"]},
+        "time": {"oneOf": [{"$ref": "#/$defs/TemporalPoint"}, {"$ref": "#/$defs/TemporalInterval"}]},
+        "relation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["order", "anchor_id"],
+          "properties": {
+            "order": {"enum": ["before", "after", "same_window"]},
+            "anchor_id": {"type": "string", "minLength": 1}
+          }
+        }
+      },
+      "oneOf": [
+        {"required": ["timestamp"], "not": {"anyOf": [{"required": ["time"]}, {"required": ["relation"]}]}},
+        {"required": ["time"], "not": {"anyOf": [{"required": ["timestamp"]}, {"required": ["relation"]}, {"required": ["precision"]}]}},
+        {"required": ["relation"], "not": {"anyOf": [{"required": ["timestamp"]}, {"required": ["time"]}, {"required": ["precision"]}, {"required": ["timezone"]}]}}
+      ]
     },
     "DeadlineConstraint": {
       "type": "object",
@@ -185,7 +233,7 @@
       "required": ["deadline_type", "reference_time"],
       "properties": {
         "deadline_type": {"enum": ["regulatory", "contractual", "internal_sla", "market_cutoff"]},
-        "reference_time": {"type": "string", "format": "date-time"},
+        "reference_time": {"$ref": "#/$defs/TemporalValue"},
         "window": {"type": "string"},
         "business_calendar": {"type": "string"},
         "non_business_day_rule": {"enum": ["previous", "following", "modified_following", "none"]}
