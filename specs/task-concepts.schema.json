@@ -82,10 +82,11 @@
               {
                 "type": "object",
                 "additionalProperties": false,
-                "required": ["path", "member_count", "surviving_member_count"],
+                "required": ["path", "ruled_at", "member_count", "surviving_member_count"],
                 "properties": {
                   "path": {"type": "string", "minLength": 1},
-                  "member_count": {"type": "integer", "minimum": 0},
+                  "ruled_at": {"type": "string", "format": "date"},
+                  "member_count": {"type": "integer", "minimum": 1},
                   "surviving_member_count": {"type": "integer", "minimum": 0}
                 }
               }

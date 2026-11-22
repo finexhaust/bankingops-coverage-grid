@@ -79,6 +79,12 @@ division, a member named twice, a merge with fewer than two members, and an
 alias without a rationale. Members a ruling does not name become standalone
 concepts of that division.
 
+Archived rulings are not active rulings and do not change a division's review
+status. The concept builder reports any archived ruling for each current
+division, including its original member count and how many `(kind, label)`
+pairs still match released definitions. This makes a lost match visible without
+transferring review to regenerated labels.
+
 ## 2. Concept identity and comparison
 
 A concept identifier is `<kind>:<division_key>:<24 hex>` where the digits are the

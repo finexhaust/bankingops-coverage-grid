@@ -51,6 +51,78 @@ def test_current_task_concepts_use_machine_provenance_without_reviewed_rulings()
     assert value['counts']['reviewed_aliases'] == 0
 
 
+def test_archived_ruling_is_visible_without_changing_review_status():
+    value = _concepts()
+    divisions = {d['division_key']: d for d in value['divisions']}
+    archived = divisions['prime_brokerage_financing']['archived_ruling']
+    assert archived == {
+        'path': 'reference/history/task-concept-rulings-v0.6.3.yaml',
+        'ruled_at': '2026-09-24',
+        'member_count': 25,
+        'surviving_member_count': 0,
+    }
+    assert divisions['prime_brokerage_financing']['review_status'] == 'AUTO'
+    assert divisions['prime_brokerage_financing']['ruling'] is None
+    assert all(
+        division['archived_ruling'] is None
+        for key, division in divisions.items()
+        if key != 'prime_brokerage_financing'
+    )
+
+
+def test_archived_ruling_survival_counts_current_kind_and_label_matches(tmp_path):
+    import shutil
+    for relative in (
+        'reference/operating-catalogue.v1.json',
+        'reference/task-concept-rulings.yaml',
+        'reference/history/task-concept-rulings-v0.6.3.yaml',
+    ):
+        dest = tmp_path / relative
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / relative, dest)
+
+    catalogue_path = tmp_path / 'reference/operating-catalogue.v1.json'
+    catalogue = json.loads(catalogue_path.read_text())
+    archived = yaml.safe_load(
+        (tmp_path / 'reference/history/task-concept-rulings-v0.6.3.yaml').read_text()
+    )['rulings'][0]
+    archived_task = next(
+        member
+        for concept in archived['concepts'] if concept['kind'] == 'task_concept'
+        for member in concept['members']
+    )
+    current_task = next(
+        definition for definition in catalogue['definitions']
+        if definition['kind'] == 'task'
+        and definition['division_key'] == archived['division_key']
+    )
+    original_task_label = current_task['label']
+    current_task['label'] = archived_task
+    current_function = next(
+        definition for definition in catalogue['definitions']
+        if definition['kind'] == 'function'
+        and definition['division_key'] == archived['division_key']
+    )
+    current_function['label'] = archived_task
+    catalogue_path.write_text(json.dumps(catalogue))
+
+    division = next(
+        row for row in build_task_concepts(tmp_path)['divisions']
+        if row['division_key'] == archived['division_key']
+    )
+    assert division['review_status'] == 'AUTO'
+    assert division['archived_ruling']['member_count'] == 25
+    assert division['archived_ruling']['surviving_member_count'] == 1
+
+    current_task['label'] = original_task_label
+    catalogue_path.write_text(json.dumps(catalogue))
+    division = next(
+        row for row in build_task_concepts(tmp_path)['divisions']
+        if row['division_key'] == archived['division_key']
+    )
+    assert division['archived_ruling']['surviving_member_count'] == 0
+
+
 def test_auto_divisions_are_machine_clustered_and_never_claim_review():
     value = _concepts()
     for division in value['divisions']:
@@ -79,7 +151,11 @@ def test_concept_identity_separates_kind_division_and_label():
 
 def test_ruling_rejects_unknown_members_and_missing_rationales(tmp_path):
     import shutil
-    for relative in ('reference/operating-catalogue.v1.json', 'reference/task-concept-rulings.yaml'):
+    for relative in (
+        'reference/operating-catalogue.v1.json',
+        'reference/task-concept-rulings.yaml',
+        'reference/history/task-concept-rulings-v0.6.3.yaml',
+    ):
         dest = tmp_path / relative
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / relative, dest)
@@ -155,7 +231,7 @@ def test_release_binds_concepts_and_refuses_stale_concepts(tmp_path):
     import shutil
     manifest = build_manifest(tag='v0.6.0', commit_sha='a' * 40, generated_at='2026-09-24T00:00:00Z', root=ROOT)
     rows = {row['path']: row for row in manifest['artifacts']}
-    for path in ('specs/SPEC-08-task-concepts-and-episode-surface.md', 'specs/task-concepts.schema.json', 'specs/episode-surface.schema.json', 'reference/task-concepts.v1.json', 'reference/task-concept-rulings.yaml', 'specs/fixtures/episode-surface-synthetic.json'):
+    for path in ('specs/SPEC-08-task-concepts-and-episode-surface.md', 'specs/task-concepts.schema.json', 'specs/episode-surface.schema.json', 'reference/task-concepts.v1.json', 'reference/task-concept-rulings.yaml', 'reference/history/task-concept-rulings-v0.6.3.yaml', 'specs/fixtures/episode-surface-synthetic.json'):
         assert path in STATIC_ARTIFACTS
         assert rows[path]['sha256'] == hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
     for path in STATIC_ARTIFACTS:

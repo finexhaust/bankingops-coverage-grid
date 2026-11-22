@@ -3,7 +3,7 @@
   "bocg_release": {
     "tag": "v0.7.0",
     "manifest_sha256": "a301e598be8c7c9e53198bc2ae740057411ea7a1515658dfa3f2f99e43cba4a6",
-    "task_concepts_sha256": "f85488da28151bc68bccc7dab4d5bc4eb3ff5cdd9963c052e8c2edd2d1c1849a"
+    "task_concepts_sha256": "a410b82fa8b10d5867e93dcf4ba64d81785ed3e972516d18e1768b96d64140c5"
   },
   "episode_ref": "ep-000000000001",
   "source_profile_ref": "sp-00000000",

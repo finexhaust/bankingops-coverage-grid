@@ -64,6 +64,7 @@ STATIC_ARTIFACTS = {
     "specs/fixtures/public-eval-llmaj-synthetic.json": "conformance-fixture",
     "reference/task-concepts.v1.json": "task-concept-catalogue",
     "reference/task-concept-rulings.yaml": "task-concept-rulings",
+    "reference/history/task-concept-rulings-v0.6.3.yaml": "historical-task-concept-rulings",
     "reference/public-eval-inventory.v1.yaml": "public-eval-inventory",
     "reference/public-eval-surface-map.v1.json": "public-eval-surface-overlay",
     "reference/public-eval-llmaj-ledger.v1.json": "public-eval-llmaj-ledger",

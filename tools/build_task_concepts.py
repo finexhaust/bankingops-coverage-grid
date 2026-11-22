@@ -146,8 +146,8 @@ def _definition(entry: dict, members: list[dict], aliases: list[dict]) -> dict:
     return value
 
 
-def load_rulings(root: Path) -> dict:
-    raw = yaml.safe_load((root / RULINGS_PATH).read_text(encoding='utf-8'))
+def load_rulings(root: Path, path: str = RULINGS_PATH) -> dict:
+    raw = yaml.safe_load((root / path).read_text(encoding='utf-8'))
     if not isinstance(raw, dict) or raw.get('schema') != RULINGS_SCHEMA_ID:
         raise ValueError('task-concept rulings file has the wrong schema')
     seen = set()
@@ -170,14 +170,10 @@ def build_task_concepts(root: Path = ROOT) -> dict:
     archived_path = root / ARCHIVED_RULINGS_PATH
     archived_rulings_raw = archived_path.read_bytes() if archived_path.is_file() else None
     rulings = load_rulings(root)
-    archived_rulings = yaml.safe_load(archived_rulings_raw) if archived_rulings_raw else {}
-    if not isinstance(archived_rulings, dict):
-        raise ValueError('archived task-concept rulings file must be a mapping')
+    archived_rulings = load_rulings(root, ARCHIVED_RULINGS_PATH) if archived_rulings_raw else {}
     ruling_by_division = {r['division_key']: r for r in rulings.get('rulings') or []}
-    archived_by_division = {
-        r['division_key']: r
-        for r in archived_rulings.get('rulings', [])
-        if isinstance(r, dict) and isinstance(r.get('division_key'), str)
+    archived_ruling_by_division = {
+        r['division_key']: r for r in archived_rulings.get('rulings') or []
     }
 
     definitions = catalogue['definitions']
@@ -185,7 +181,7 @@ def build_task_concepts(root: Path = ROOT) -> dict:
     for key in ruling_by_division:
         if key not in division_keys:
             raise ValueError(f'ruling names an unknown division: {key}')
-    for key in archived_by_division:
+    for key in archived_ruling_by_division:
         if key not in division_keys:
             raise ValueError(f'archived ruling names an unknown division: {key}')
     by_division: dict[str, dict[str, dict[str, dict]]] = {k: {'function': {}, 'task': {}} for k in division_keys}
@@ -199,6 +195,7 @@ def build_task_concepts(root: Path = ROOT) -> dict:
     division_rows: list[dict] = []
     for division in division_keys:
         ruling = ruling_by_division.get(division)
+        archived_ruling = archived_ruling_by_division.get(division)
         counts = {'functions': len(by_division[division]['function']), 'tasks': len(by_division[division]['task']),
                   'function_concepts': 0, 'task_concepts': 0, 'aliases': 0, 'argued_merges': 0}
         if ruling is None:
@@ -265,25 +262,23 @@ def build_task_concepts(root: Path = ROOT) -> dict:
                         'review_status': review_status, 'basis': BASIS_STANDALONE, 'rationale': None,
                     }, [entry], []))
                     counts[concept_kind + 's'] += 1
-        archived = archived_by_division.get(division)
-        archived_summary = None
-        if archived is not None:
+        archived_ruling_summary = None
+        if archived_ruling is not None:
             archived_members = {
-                (member_kind, label)
-                for ruled in archived.get('concepts', [])
-                for member_kind, labels in (
-                    ({'function_concept': 'function', 'task_concept': 'task'}[ruled['kind']], ruled.get('members', [])),
-                )
-                for label in labels
+                ({'function_concept': 'function', 'task_concept': 'task'}[concept['kind']], member)
+                for concept in archived_ruling['concepts']
+                for member in concept['members']
             }
-            survivors = sum(
-                label in by_division[division][member_kind]
-                for member_kind, label in archived_members
-            )
-            archived_summary = {
+            current_members = {
+                (kind, label)
+                for kind, pool in by_division[division].items()
+                for label in pool
+            }
+            archived_ruling_summary = {
                 'path': ARCHIVED_RULINGS_PATH,
+                'ruled_at': str(archived_ruling['ruled_at']),
                 'member_count': len(archived_members),
-                'surviving_member_count': survivors,
+                'surviving_member_count': len(archived_members & current_members),
             }
         division_rows.append({
             'division_key': division, 'review_status': review_status, 'basis': basis,
@@ -291,7 +286,7 @@ def build_task_concepts(root: Path = ROOT) -> dict:
                 'ruled_by': ruling['ruled_by'], 'ruled_at': str(ruling['ruled_at']), 'basis': ruling['basis'],
                 'argued_merges': counts['argued_merges'], 'aliases': counts['aliases'],
             },
-            'archived_ruling': archived_summary,
+            'archived_ruling': archived_ruling_summary,
             'counts': {k: counts[k] for k in ('functions', 'function_concepts', 'tasks', 'task_concepts', 'aliases')},
         })
 
