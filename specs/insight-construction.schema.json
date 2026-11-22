@@ -40,7 +40,7 @@
       },
       "allOf": [
         {"not": {"required": ["object_entity_id", "object_literal"], "properties": {"object_entity_id": {"type": "string"}, "object_literal": {"not": {"type": "null"}}}}},
-        {"if": {"properties": {"content_origin": {"const": "author_supplied"}}}, "then": {"required": ["independent_provenance_weight"]}}
+        {"if": {"required": ["content_origin"], "properties": {"content_origin": {"const": "author_supplied"}}}, "then": {"required": ["independent_provenance_weight"]}}
       ]
     },
     "Trace": {

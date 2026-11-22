@@ -83,6 +83,31 @@ def test_rejection_is_reasoned_attributed_and_reopenable(insight_validator):
     assert list(insight_validator.iter_errors(episode))
 
 
+def test_atom_without_content_origin_does_not_require_provenance_weight(insight_validator):
+    atom = {
+        "kind": "ObservationAtom",
+        "atom_id": "a-no-origin",
+        "predicate": "generic_assertion",
+        "assertion_status": "asserted",
+        "source_refs": [{
+            "source_id": "synthetic-source",
+            "lines": [1, 1],
+            "selected_content_sha256": "0" * 64,
+        }],
+    }
+    insight_validator.validate(atom)
+
+
+def test_indeterminate_scenario_ledger_verdict_validates():
+    schema = json.loads((ROOT / "specs/scenario-run-ledger-rows.schema.json").read_text())
+    ledger = json.loads((ROOT / "specs/scenario-run-ledger.example.json").read_text())
+    validator = jsonschema.Draft202012Validator(schema, format_checker=jsonschema.FormatChecker())
+    assert not list(validator.iter_errors(ledger))
+    for row in ledger["rows"]:
+        row["verdict"] = "INDETERMINATE"
+    assert not list(validator.iter_errors(ledger))
+
+
 def test_institutional_directive_keeps_execution_unobserved():
     schema = json.loads((ROOT / "specs/institutional-speech-act.schema.json").read_text())
     value = {

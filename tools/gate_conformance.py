@@ -513,6 +513,7 @@ def gate_insight_construction() -> None:
         episode = yaml.safe_load((ROOT / "specs/rubrics/episode-feasibility.yaml").read_text())
         families = yaml.safe_load((ROOT / "specs/rubrics/five-families.yaml").read_text())
         surface_schema = json.loads((ROOT / "specs/episode-surface.schema.json").read_text())
+        ledger_schema = json.loads((ROOT / "specs/scenario-run-ledger-rows.schema.json").read_text())
     except (OSError, ValueError, yaml.YAMLError) as exc:
         fail(f"S5-G1 insight-construction artifacts unreadable: {exc}")
         return
@@ -619,6 +620,14 @@ def gate_insight_construction() -> None:
             for assertion_status in sorted(assertion_statuses)
             for origin in sorted(origin_values)
         ]
+        atom_fixtures.append({
+            "kind": "ObservationAtom", "atom_id": "a-profile-no-origin",
+            "predicate": "generic_assertion", "assertion_status": "asserted",
+            "source_refs": [{
+                "source_id": "synthetic-source", "lines": [1, 1],
+                "selected_content_sha256": "0" * 64,
+            }],
+        })
         composition_states = (composition.get("states") or [])
         episode_fixtures = [
             {
@@ -684,6 +693,15 @@ def gate_insight_construction() -> None:
         allowed_verdicts = set((families.get("rubric") or {}).get("verdicts") or [])
         if any(verdict not in allowed_verdicts for verdict in verdict_fixture):
             fail("S5-G10 Five Families verdict fixtures do not validate")
+
+        ledger_fixture = json.loads((ROOT / "specs/scenario-run-ledger.example.json").read_text())
+        for row in ledger_fixture.get("rows", []):
+            row["verdict"] = "INDETERMINATE"
+        ledger_validator = jsonschema.Draft202012Validator(
+            ledger_schema, format_checker=jsonschema.FormatChecker()
+        )
+        if list(ledger_validator.iter_errors(ledger_fixture)):
+            fail("S5-G10 INDETERMINATE scenario-ledger fixture does not validate")
 
         surface_validator = jsonschema.Draft202012Validator(surface_schema)
         surface_fixture = json.loads((ROOT / "specs/fixtures/episode-surface-synthetic.json").read_text())
@@ -817,7 +835,7 @@ def gate_scenario_run_ledger() -> None:
             fail(f"S7-G2 row {i}: replaces_row_sha256 does not resolve to an earlier row")
     families = yaml.safe_load((ROOT / "specs/rubrics/five-families.yaml").read_text())
     allowed_verdicts = set((families.get("rubric") or {}).get("verdicts") or [])
-    if not {"PASS", "FAIL", "UNCERTAIN", "NOT_APPLICABLE"}.issubset(allowed_verdicts):
+    if not {"PASS", "FAIL", "INDETERMINATE", "UNCERTAIN", "NOT_APPLICABLE"}.issubset(allowed_verdicts):
         fail("S7-G3 five-families verdict vocabulary missing required values")
     for i, row in enumerate(rows):
         if row.get("verdict") not in allowed_verdicts:
