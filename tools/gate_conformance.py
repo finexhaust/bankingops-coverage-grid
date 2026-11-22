@@ -20,16 +20,59 @@ CONFORMANCE_ROW_BASELINE = 19
 # S3-G3: pinned paths the deny scan leaves alone. Run directories hold raw and
 # derived model output published as recorded (I4); snapshots are historical bytes.
 DENY_SCAN_EXEMPT_PREFIXES = ("live-run-", "reference/release-snapshots/")
+# S3-G5: the tier bocg/bocg/grid.py writes to grid.json for a division that
+# dropped below admission once refuted anchors were removed (SPEC-01 section 6).
+REJECTED_TIER = "REJECTED_POST_CORROBORATION"
+REJECTED_BY_RUN: dict[str, set[str]] = {}   # run directory -> keys rejected in its grid.json
 
 
 def fail(msg: str) -> None:
     FAILURES.append(msg)
 
 
+def _rejected_after_corroboration(run: Path, keys: set[str], *, required: bool) -> set[str]:
+    """SPEC-01 section 6: keys whose tier in the run's grid.json is REJECTED_POST_CORROBORATION.
+
+    The taxonomy-source run must carry a readable grid.json that covers every
+    matrix key. A historical run recorded without a grid file falls back to
+    matrix.csv alone; a grid file that is present is always read.
+    """
+    if not (run / "grid.json").exists():
+        if required:
+            raise ValueError("grid.json is missing, so admission after corroboration cannot be read")
+        return set()
+    grid_path = (run / "grid.json").resolve(strict=True)
+    if not grid_path.is_relative_to(run):
+        raise ValueError("grid.json resolves outside its taxonomy run")
+    grid = json.loads(grid_path.read_text(encoding="utf-8"))
+    cells = grid.get("cells") if isinstance(grid, dict) else None
+    if not isinstance(cells, list):
+        raise ValueError("grid.json has no cells list")
+    tiers: dict[str, str] = {}
+    for index, cell in enumerate(cells):
+        key = cell.get("division_key") if isinstance(cell, dict) else None
+        if not isinstance(key, str) or not isinstance(cell.get("tier"), str) or key in tiers:
+            raise ValueError(f"grid.json cell {index} has an invalid or duplicate division_key or tier")
+        tiers[key] = cell["tier"]
+    if keys - set(tiers):
+        raise ValueError(f"grid.json does not cover matrix.csv keys {sorted(keys - set(tiers))}")
+    return {key for key, tier in tiers.items() if tier == REJECTED_TIER}
+
+
+def _rejection_note(key: object, run_dir: str) -> str:
+    rejected = isinstance(key, str) and key in REJECTED_BY_RUN.get(run_dir, set())
+    return f" ({REJECTED_TIER} in grid.json)" if rejected else ""
+
+
 def _admitted_division_keys(
     run_dir: str | None = None, *, context: str = "taxonomy source"
 ) -> tuple[set[str] | None, str]:
-    """S3-G5: read admitted keys from the named, repository-local taxonomy run."""
+    """S3-G5: read admitted keys from the named, repository-local taxonomy run.
+
+    A key is admitted when matrix.csv lists it and grid.json does not record
+    it as rejected after corroboration.
+    """
+    is_source_run = run_dir is None
     if run_dir is None:
         try:
             source = json.loads((ROOT / "reference/taxonomy-source.json").read_text(encoding="utf-8"))
@@ -70,13 +113,15 @@ def _admitted_division_keys(
                 keys.add(key)
         if not keys:
             raise ValueError("matrix.csv contains no admitted division keys")
+        rejected = _rejected_after_corroboration(run, keys, required=is_source_run)
     except FileNotFoundError as exc:
         fail(f"S3-G5 {context}: unknown taxonomy run or missing matrix.csv ({exc})")
         return None, ""
     except (OSError, ValueError, csv.Error, RuntimeError) as exc:
-        fail(f"S3-G5 {context}: taxonomy run or matrix.csv is invalid ({exc})")
+        fail(f"S3-G5 {context}: taxonomy run, matrix.csv or grid.json is invalid ({exc})")
         return None, ""
-    return keys, run_dir
+    REJECTED_BY_RUN[run_dir] = rejected
+    return keys - rejected, run_dir
 
 
 def gate_cells() -> None:
@@ -119,7 +164,10 @@ def gate_cells() -> None:
         if cell.get("status") != "RETIRED":
             key = cell.get("division_key")
             if admitted is not None and key not in admitted:
-                fail(f"S3-G5 {path.name}: division_key {key!r} is not admitted in {run_dir}")
+                fail(
+                    f"S3-G5 {path.name}: division_key {key!r} is not admitted in {run_dir}"
+                    f"{_rejection_note(key, run_dir)}"
+                )
         for i, hist in enumerate(cell.get("division_key_history") or []):
             if hist.get("division_key") == cell.get("division_key"):
                 fail(f"S3-G5 {path.name}: history {i} repeats the current division_key")
@@ -133,6 +181,7 @@ def gate_cells() -> None:
                     fail(
                         f"S3-G5 {path.name}: history {i} division_key {hist['division_key']!r} "
                         f"is not admitted in {history_run}"
+                        f"{_rejection_note(hist['division_key'], history_run)}"
                     )
                 elif not claimed_admitted and was_admitted:
                     fail(
