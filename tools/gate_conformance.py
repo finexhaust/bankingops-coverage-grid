@@ -33,13 +33,15 @@ def fail(msg: str) -> None:
 def _rejected_after_corroboration(run: Path, keys: set[str], *, required: bool) -> set[str]:
     """SPEC-01 section 6: keys whose tier in the run's grid.json is REJECTED_POST_CORROBORATION.
 
-    The taxonomy-source run must carry a readable grid.json that covers every
-    matrix key. A historical run recorded without a grid file falls back to
-    matrix.csv alone; a grid file that is present is always read.
+    A rejection exists only once a ledger has been corroborated. The
+    taxonomy-source run must carry a readable grid.json covering every matrix
+    key as soon as it has a corroboration ledger; a run with no ledger, and a
+    historical run recorded without a grid file, fall back to matrix.csv alone.
+    A grid file that is present is always read.
     """
     if not (run / "grid.json").exists():
-        if required:
-            raise ValueError("grid.json is missing, so admission after corroboration cannot be read")
+        if required and (run / "corroboration.csv").exists():
+            raise ValueError("corroboration.csv exists but grid.json is missing, so admission after corroboration cannot be read")
         return set()
     grid_path = (run / "grid.json").resolve(strict=True)
     if not grid_path.is_relative_to(run):

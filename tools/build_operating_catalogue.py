@@ -27,14 +27,15 @@ def current_run(root=ROOT):
 def rejected_after_corroboration(root, matrix_path):
     """SPEC-01 section 6: division keys whose tier in the grid.json beside the matrix is REJECTED_POST_CORROBORATION.
 
-    The taxonomy-source run must carry grid.json. Another run recorded without
-    one has no post-corroboration tier to read.
+    The taxonomy-source run must carry grid.json once it has a corroboration
+    ledger. A run with no ledger, or another run recorded without a grid file,
+    has no post-corroboration tier to read.
     """
     run = Path(matrix_path).parent
     grid_path = root / run / 'grid.json'
     if not grid_path.exists():
-        if run.as_posix() == current_run(root):
-            raise ValueError('grid.json is missing beside ' + str(matrix_path) + '; admission after corroboration cannot be read')
+        if run.as_posix() == current_run(root) and (root / run / 'corroboration.csv').exists():
+            raise ValueError('corroboration.csv exists but grid.json is missing beside ' + str(matrix_path) + '; admission after corroboration cannot be read')
         return []
     try:
         return sorted(cell['division_key'] for cell in json.loads(grid_path.read_text())['cells'] if cell['tier'] == REJECTED_TIER)
