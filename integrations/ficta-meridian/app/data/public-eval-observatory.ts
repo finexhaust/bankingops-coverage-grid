@@ -149,6 +149,15 @@ export const CLEANROOM_EVAL_PIN = {
   "repository": "finexhaust/cleanroom-eval",
   "version": "2.1.3",
   "commit_sha": "3e27d5909e782d530d67f9bcdfa4e1a55891629d",
+  "release_archive_sha256": "02184bb6fb3227f890488e16865aa6d994b0025583f613093d67363651a427d5",
+  "release_audit_sha256": "234db03f6b4516706e762ade9ef2bd6b04c10d79ca6aa2130e96d897e77b31bc",
+  "release_audit_terminal_state": "RELEASE_AUDIT_PASS_WITH_LIMITATIONS",
+  "release_audit_gate_counts": {
+    "total": 13,
+    "passed": 10,
+    "failed": 0,
+    "not_run": 3
+  },
   "release_tag": "v2.1.3",
   "release_status": "github_release_published",
   "bocg_companion_tag": "v0.8.5",
