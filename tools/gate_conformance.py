@@ -135,6 +135,91 @@ def gate_cells() -> None:
                     )
 
 
+def _taxonomy_source_run(label: str) -> tuple[Path | None, str]:
+    """Resolve the repository-local run named by reference/taxonomy-source.json."""
+    try:
+        source = json.loads((ROOT / "reference/taxonomy-source.json").read_text(encoding="utf-8"))
+        run_dir = source.get("run_dir") if isinstance(source, dict) else None
+        if not isinstance(run_dir, str) or not re.fullmatch(r"live-run-[0-9]{8}", run_dir):
+            raise ValueError("run_dir must name a repository-local live-run-YYYYMMDD directory")
+        run = (ROOT / run_dir).resolve(strict=True)
+        if not run.is_relative_to(ROOT.resolve(strict=True)) or not run.is_dir():
+            raise ValueError("run directory resolves outside the repository or is not a directory")
+    except (OSError, ValueError, RuntimeError) as exc:
+        fail(f"{label}: taxonomy source run is missing or unreadable ({exc})")
+        return None, ""
+    return run, run_dir
+
+
+def gate_run_summary() -> None:
+    """RUN_SUMMARY.json of the taxonomy-source run agrees with its gate report and ledger.
+
+    Only the run named by reference/taxonomy-source.json is checked. The
+    summary of a historical run stays as it was written.
+    """
+    run, run_dir = _taxonomy_source_run("RUN-SUMMARY")
+    if run is None:
+        return
+    label = f"RUN-SUMMARY {run_dir}"
+    try:
+        summary = json.loads((run / "RUN_SUMMARY.json").read_text(encoding="utf-8"))
+        report = json.loads((run / "gates_report.json").read_text(encoding="utf-8"))
+        if not isinstance(summary, dict) or not isinstance(report, dict):
+            raise ValueError("RUN_SUMMARY.json and gates_report.json must be JSON objects")
+        executed: dict[str, str] = {}
+        for gate in report["gates"]:
+            if gate["id"] in executed:
+                raise ValueError(f"gates_report.json repeats gate {gate['id']!r}")
+            executed[gate["id"]] = gate["status"]
+        with (run / "corroboration.csv").open(encoding="utf-8", newline="") as handle:
+            rows = csv.DictReader(handle, strict=True)
+            if "status" not in (rows.fieldnames or []):
+                raise ValueError("corroboration.csv has no status column")
+            ledger: list[str] = []
+            for index, row in enumerate(rows, 2):
+                if None in row or any(value is None for value in row.values()):
+                    raise ValueError(f"corroboration.csv row {index} has the wrong number of fields")
+                ledger.append(row["status"])
+    except (OSError, ValueError, csv.Error, KeyError, TypeError) as exc:
+        fail(f"{label}: run summary, gate report or ledger is missing or unreadable ({exc!r})")
+        return
+    claimed = summary.get("gates")
+    if not isinstance(claimed, dict):
+        fail(f"{label}: RUN_SUMMARY.json has no gates object")
+    else:
+        for gate_id in [*executed, *(g for g in claimed if g not in executed)]:
+            if claimed.get(gate_id) != executed.get(gate_id):
+                fail(
+                    f"{label}: gate {gate_id} is {claimed.get(gate_id)!r} in RUN_SUMMARY.json "
+                    f"but {executed.get(gate_id)!r} in gates_report.json"
+                )
+    stamp = summary.get("gates_executed_at")
+    if stamp is not None and stamp != report.get("ts_utc"):
+        fail(f"{label}: gates_executed_at {stamp!r} is not the gate report's ts_utc {report.get('ts_utc')!r}")
+    counted: dict[str, int] = {}
+    for status in ledger:
+        counted[status] = counted.get(status, 0) + 1
+    held = ", ".join(f"{count} {status}" for status, count in sorted(counted.items()))
+    totals = summary.get("corroboration")
+    by_status = totals.get("by_status") if isinstance(totals, dict) else None
+    if not isinstance(by_status, dict):
+        fail(
+            f"{label}: RUN_SUMMARY.json has no corroboration totals block "
+            f"(corroboration.csv holds {held} of {len(ledger)} rows)"
+        )
+        return
+    rows_claimed = totals.get("ledger_rows")
+    if type(rows_claimed) is not int or rows_claimed != len(ledger):
+        fail(f"{label}: corroboration.ledger_rows is {rows_claimed!r} but corroboration.csv holds {len(ledger)} rows")
+    for status in sorted(set(by_status) | set(counted)):
+        count = by_status.get(status, 0)
+        if type(count) is not int or count != counted.get(status, 0):
+            fail(
+                f"{label}: corroboration.by_status.{status} is {by_status.get(status)!r} "
+                f"but corroboration.csv holds {counted.get(status, 0)} such rows"
+            )
+
+
 def gate_deny() -> None:
     """S3-G3: forbidden tokens in cells and SPEC-03."""
     literals, patterns = [], []
@@ -632,6 +717,7 @@ def gate_public_eval_overlay() -> None:
 
 def main() -> int:
     gate_cells()
+    gate_run_summary()
     gate_deny()
     gate_conformance_doc()
     gate_common_semantics()

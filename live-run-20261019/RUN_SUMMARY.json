@@ -4,18 +4,29 @@
   "prompt_sha256": "efd90b74d2fcab8c65ae39a245d93ef837376b8b7f3b7fc8a51ad3f5f48b149f",
   "prompt_sha8": "efd90b74",
   "aliases_sha256": "442985978ad8d1b76c1a69c241e6797ec81ccba463e7ff6b753535aeeb408398",
-  "status": "PROVISIONAL: panel requirement not met (2 of 4 independent vendors); all anchor and seat claims unverified; aliases and task concepts have no human review.",
+  "status": "PROVISIONAL: panel requirement not met (2 of 4 independent vendors); corroboration incomplete (24 VERIFIED, 4 PARTIAL, 12 REFUTED, 251 UNVERIFIED of 291 ledger rows); aliases and task concepts have no human review.",
   "gates": {
-    "G1": "NOT_RUN",
-    "G2": "NOT_RUN",
-    "G3": "NOT_RUN",
-    "G4": "NOT_RUN",
-    "G5": "NOT_RUN",
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS",
+    "G5": "PASS",
     "G6": "FAIL",
-    "G7": "NOT_RUN",
-    "G8": "NOT_RUN",
-    "G9": "NOT_RUN",
+    "G7": "PASS",
+    "G8": "PASS",
+    "G9": "PASS",
     "G10": "FAIL"
+  },
+  "gates_executed_at": "2026-11-04T04:45:14.959535Z",
+  "corroboration": {
+    "ledger": "corroboration.csv",
+    "ledger_rows": 291,
+    "by_status": {
+      "VERIFIED": 24,
+      "PARTIAL": 4,
+      "REFUTED": 12,
+      "UNVERIFIED": 251
+    }
   },
   "samples_by_model": {
     "deepseek-flash": {
