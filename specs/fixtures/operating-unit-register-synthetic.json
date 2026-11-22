@@ -1,6 +1,6 @@
 {
   "schema": "bocg.operating-unit-register/v1",
-  "contract_version": "1.0.0",
+  "contract_version": "1.1.0",
   "dataset_id": "synthetic-register-v1",
   "revision": 1,
   "previous_sha256": null,
@@ -12,11 +12,14 @@
     "release_tag": "v0.6.3",
     "manifest_sha256": "a157ff3e9bff43dee9857c889c57f5ce87917e530999fbd6d365f47dfaf352ec",
     "catalogue_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-    "contract_version": "1.0.0"
+    "contract_version": "1.1.0"
   },
   "sources": [],
   "units": [],
   "assignments": [],
   "relationships": [],
+  "role_holdings": [],
+  "reporting_relations": [],
+  "regulated_function_correspondences": [],
   "settings": []
 }

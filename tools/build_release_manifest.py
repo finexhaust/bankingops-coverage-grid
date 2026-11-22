@@ -24,7 +24,6 @@ STATIC_ARTIFACTS = {
     "reference/financial-work-context.v1.json": "financial-work-context-catalogue",
     "tools/build_financial_work_context.py": "context-catalogue-builder",
     "CONFORMANCE.md": "conformance-record",
-    "docs/isda-overlap.md": "documentation",
     "WORKED-SAMPLE.md": "documentation",
     "specs/SPEC-06-operating-reference.md": "normative-specification",
     "specs/operating-reference-contract.json": "operating-reference-contract",

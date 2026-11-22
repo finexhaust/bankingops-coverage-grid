@@ -2,7 +2,7 @@
   "kind": "ObservationAtom",
   "atom_id": "synthetic-observation-1",
   "predicate": "custodian_confirmation_received",
-  "assertion_status": "not_observed",
+  "assertion_status": "asserted",
   "source_refs": [
     {
       "source_id": "synthetic-input",
