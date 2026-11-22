@@ -46,6 +46,22 @@ constraints name a deadline type (`regulatory`, `contractual`, `internal_sla`,
 `market_cutoff`) and a reference time; they express when a state is due, not that
 it occurred. Unknown timestamps remain unknown.
 
+An anchor may use the legacy `timestamp` date-time, or `time` with an explicit
+`precision` and `value`: `instant` is a date-time, `date` and `business_date`
+are YYYY-MM-DD, `month` is YYYY-MM, and `year` is YYYY. An `interval` has
+`start` and `end` points, each with its own precision. Bounds are inclusive;
+consumers MUST reject reversed intervals and MUST NOT infer a clock time or
+greater precision. The same structured values are available for transition
+`occurred_at` and deadline `reference_time`; their legacy date-time strings
+remain valid.
+
+For ordering without a date, an anchor may instead carry `relation` with
+`order` (`before`, `after`, or `same_window`) and the `anchor_id` of another
+anchor in the same Episode. Referenced anchors MUST exist, identifiers MUST be
+unique, and an anchor MUST NOT refer to itself. These cross-record and interval
+ordering constraints require consumer validation beyond JSON Schema. Relations
+do not imply causality or a timestamp. Consumers may omit unknown anchors.
+
 Lifecycle states are also deadline-bearing transitions. Each state MAY remain a
 plain vocabulary value or MAY be a `LifecycleStateTransition` carrying an
 optional `occurred_at` timestamp that MUST be grounded in a source span, per the

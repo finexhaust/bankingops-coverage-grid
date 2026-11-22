@@ -63,10 +63,10 @@ lifecycle_vocabulary:
       - internal_sla
       - market_cutoff
     occurred_at:
-      definition: Source-grounded timestamp at which a transition into a lifecycle state occurred.
+      definition: Source-grounded temporal value at which a transition into a lifecycle state occurred.
       source_anchor_required: true
       signal: source_grounded_temporal_anchor
-      format: ISO 8601 date-time
+      format: ISO 8601 date-time or a precision-qualified point or interval as defined in SPEC-05.
     deadline_ref:
       definition: Regime clock expression describing when a lifecycle transition is due.
       expression_examples:
