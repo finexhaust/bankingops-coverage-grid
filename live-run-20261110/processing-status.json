@@ -1,0 +1,32 @@
+{
+  "schema": "bocg.processing-status/v1",
+  "status": "UNPROCESSED",
+  "decision": "NOT_PROCESSED_PENDING_OWNER_APPROVAL",
+  "reason": "Post-processing would apply panel eligibility to the committed normalised results and rewrite normalised.json and canon_names.json. Owner approval for those rewrites has not been recorded.",
+  "eligibility": {
+    "spec": "SPEC-01",
+    "validity_includes_order_rule": true,
+    "eligible_vendors": 2,
+    "g10": "FAIL"
+  },
+  "aliases": {
+    "reviewed": false,
+    "mapping": "automatic identity draft",
+    "canonical_names": 106,
+    "distinct_keys": 106
+  },
+  "inputs_rewritten": false,
+  "taxonomy_source_updated": false,
+  "taxonomy_source_run_dir": "live-run-20261019",
+  "outputs_not_created": [
+    "exclusions.json",
+    "matrix.csv",
+    "matrix.json",
+    "corroboration.csv",
+    "corroboration_summary.json",
+    "grid.json",
+    "gates_report.json",
+    "RUN_SUMMARY.json",
+    "postprocessing-receipt.json"
+  ]
+}
