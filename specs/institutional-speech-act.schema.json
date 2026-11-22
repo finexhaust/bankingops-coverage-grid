@@ -36,13 +36,44 @@
     "expansion_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
   },
   "$defs": {
+    "TemporalPoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["precision", "value"],
+      "properties": {
+        "precision": {"enum": ["instant", "date", "business_date", "month", "year"]},
+        "value": {"type": "string"}
+      },
+      "allOf": [
+        {"if": {"properties": {"precision": {"const": "instant"}}}, "then": {"properties": {"value": {"format": "date-time"}}}},
+        {"if": {"properties": {"precision": {"enum": ["date", "business_date"]}}}, "then": {"properties": {"value": {"format": "date", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"}}}},
+        {"if": {"properties": {"precision": {"const": "month"}}}, "then": {"properties": {"value": {"pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"}}}},
+        {"if": {"properties": {"precision": {"const": "year"}}}, "then": {"properties": {"value": {"pattern": "^[0-9]{4}$"}}}}
+      ]
+    },
+    "TemporalValue": {
+      "oneOf": [
+        {"type": "string", "format": "date-time"},
+        {"$ref": "#/$defs/TemporalPoint"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["precision", "start", "end"],
+          "properties": {
+            "precision": {"const": "interval"},
+            "start": {"$ref": "#/$defs/TemporalPoint"},
+            "end": {"$ref": "#/$defs/TemporalPoint"}
+          }
+        }
+      ]
+    },
     "DeadlineConstraint": {
       "type": "object",
       "additionalProperties": false,
       "required": ["deadline_type", "reference_time"],
       "properties": {
         "deadline_type": {"enum": ["regulatory", "contractual", "internal_sla", "market_cutoff"]},
-        "reference_time": {"type": "string", "format": "date-time"},
+        "reference_time": {"$ref": "#/$defs/TemporalValue"},
         "window": {"type": "string"},
         "business_calendar": {"type": "string"},
         "non_business_day_rule": {"enum": ["previous", "following", "modified_following", "none"]}

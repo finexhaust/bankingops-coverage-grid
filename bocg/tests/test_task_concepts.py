@@ -9,7 +9,7 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 from build_task_concepts import build_task_concepts, concept_id, machine_clusters, render, KINDS
 from build_release_manifest import build_manifest, STATIC_ARTIFACTS
-from episode_surface import candidate_depth, evidence_depth, surface_problems
+from episode_surface import candidate_depth, evidence_depth, reviewed_evidence_depth, surface_problems
 
 ROOT = Path(__file__).parents[2]
 
@@ -192,6 +192,13 @@ def test_historical_surface_uses_pinned_run_and_cli_reports_it(tmp_path):
     result = subprocess.run([sys.executable, str(ROOT / 'tools/episode_surface.py'), str(path)], capture_output=True, text=True)
     assert result.returncode == 0, result.stdout + result.stderr
     assert 'taxonomy_run=live-run-20260826 status=historical validation=pinned' in result.stdout
+    del surface['bocg_release']['taxonomy_run']
+    Draft202012Validator(schema, format_checker=FormatChecker()).validate(surface)
+    assert surface_problems(surface) == []
+    path.write_text(json.dumps(surface))
+    result = subprocess.run([sys.executable, str(ROOT / 'tools/episode_surface.py'), str(path)], capture_output=True, text=True)
+    assert result.returncode == 0
+    assert 'taxonomy_run=live-run-20260826 status=historical' in result.stdout
 
 
 def test_historical_surface_rejects_mismatched_pin_run_and_identifiers():
@@ -201,6 +208,7 @@ def test_historical_surface_rejects_mismatched_pin_run_and_identifiers():
         broken = copy.deepcopy(surface)
         broken['bocg_release'][field] = value
         assert surface_problems(broken), field
+    assert reviewed_evidence_depth(broken) == 'none'
     broken = copy.deepcopy(surface)
     broken['touchpoints'][0]['task_reference_id'] = 'task:' + broken['touchpoints'][0]['division_key'] + ':' + '0' * 24
     assert any('not a released task' in p for p in surface_problems(broken))

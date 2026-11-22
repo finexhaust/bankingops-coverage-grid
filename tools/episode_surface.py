@@ -128,6 +128,8 @@ def reviewed_evidence_depth(surface: dict, root: Path = ROOT, *, current: bool =
     """
     try:
         concepts, _, cells, _ = _release_data(surface, root, current)
+        if surface['bocg_release']['task_concepts_sha256'] != concepts['task_concepts_sha256']:
+            return 'none'
         concepts = {c['concept_id']: c for c in concepts['concepts']}
     except UNREADABLE:
         return 'none'
@@ -161,7 +163,7 @@ def _release_data(surface: dict, root: Path, current: bool) -> tuple[dict, dict,
     if len(paths) != 1:
         raise ValueError('catalogue must identify exactly one taxonomy run')
     run = paths[0].split('/')[0]
-    if release['taxonomy_run'] != run:
+    if 'taxonomy_run' in release and release['taxonomy_run'] != run:
         raise ValueError(f'taxonomy run does not match pinned catalogue: {run}')
     return concepts, catalogue, cells, run
 

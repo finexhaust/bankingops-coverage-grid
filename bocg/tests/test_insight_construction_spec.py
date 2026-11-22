@@ -38,6 +38,13 @@ def test_institutional_directive_keeps_execution_unobserved():
         "state_separation_enforced": True,
     }
     jsonschema.Draft202012Validator(schema).validate(value)
+    value["obligation_frame"]["deadline_constraints"] = [
+        {"deadline_type": "contractual", "reference_time": {"precision": "date", "value": "2026-10-20"}}
+    ]
+    jsonschema.Draft202012Validator(schema, format_checker=jsonschema.FormatChecker()).validate(value)
+    value["obligation_frame"]["deadline_constraints"][0]["reference_time"]["value"] = "2026-13-20"
+    assert list(jsonschema.Draft202012Validator(schema, format_checker=jsonschema.FormatChecker()).iter_errors(value))
+    value["obligation_frame"]["deadline_constraints"][0]["reference_time"]["value"] = "2026-10-20"
     value["obligation_frame"]["execution_status"] = "executed"
     assert list(jsonschema.Draft202012Validator(schema).iter_errors(value))
 

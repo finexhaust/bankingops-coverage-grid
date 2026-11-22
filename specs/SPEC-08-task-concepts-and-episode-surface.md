@@ -155,13 +155,17 @@ build while the concept file is stale. Consumers that pin an earlier release
 are unaffected when the catalogue, matrix and cells are unchanged, exactly as
 SPEC-06 requires.
 
-Each surface names the `taxonomy_run` it was ruled against in `bocg_release`,
+New surfaces MUST name the `taxonomy_run` they were ruled against in `bocg_release`,
 alongside the release tag, manifest digest and concept digest. After a
 regeneration, the original surface and ruling remain pinned: never replace
 retired keys or labels, or silently rebind them to the new taxonomy. Display
 the original run and release with the historical ruling beside the current
 taxonomy; any current mapping requires a separate, explicitly adjudicated
 surface.
+
+Existing v1 surfaces without `taxonomy_run` remain valid; their run is derived
+only from their verified pinned catalogue and displayed with the ruling. An
+explicit run that disagrees with that catalogue is an error.
 
 By default `tools/episode_surface.py <surface.json>` resolves the exact tag and
 manifest digest through `tools/release_snapshots.py`, checks the run against the
