@@ -45,10 +45,13 @@
   `live-run-20261110/` (#56): frozen prompt and schema, panel and provider
   model listings, every raw response, retry and attempt history, the
   generation receipt and normalised results, alongside the earlier runs. Of
-  eight requested models, five returned all three samples (DeepSeek V4.1 Flash,
-  Gemma 4 31B, GPT-6 Astra, Kimi K3, MiMo V2.6 Pro), Qwen 3.8 27B returned two
-  of three, and DeepSeek Flash and GLM 5.3 returned none; failures are kept in
-  the attempt history. The run is recorded as evidence only: the catalogue,
+  eight requested models, five produced three schema-valid responses (DeepSeek
+  V4.1 Flash, Gemma 4 31B, GPT-6 Astra, Kimi K3, MiMo V2.6 Pro), Qwen 3.8 27B
+  produced two, and DeepSeek Flash and GLM 5.3 produced none; failures are kept
+  in the attempt history. Applying SPEC-01's order rule leaves only DeepSeek
+  V4.1 Flash and GPT-6 Astra with three valid samples; Kimi K3 and Qwen 3.8 27B
+  have two each, and the other four models have none. The run is recorded as
+  evidence only: the catalogue,
   matrices, ledger and gate results are not rebuilt from it in this release,
   and G6 and G10 still fail (#45).
 - Add `WORKED-SAMPLE.md` (#55): one demonstration finance-operations task shown
