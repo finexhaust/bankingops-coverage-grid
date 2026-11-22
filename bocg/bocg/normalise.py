@@ -4,10 +4,10 @@ from __future__ import annotations
 import shutil
 from pathlib import Path
 
-from .aliases import AliasTable, draft_identity_table, load_aliases, write_aliases
+from .aliases import draft_identity_table, load_aliases, write_aliases
 from .canon import canon_name
 from .run import load_runs
-from .util import BocgError, Workspace, read_json, sha256_file, sha256_text, write_json
+from .util import Workspace, read_json, sha256_file, sha256_text, write_json
 from .validate import admission, assess
 
 NORMALISED_VERSION = "bocg.normalised.v1"
