@@ -22,7 +22,7 @@
       "additionalProperties": false,
       "required": ["repository", "tag", "commit_sha", "generated_at"],
       "properties": {
-        "repository": {"const": "thefazzer/bankingops-coverage-grid"},
+        "repository": {"enum": ["thefazzer/bankingops-coverage-grid", "finexhaust/bankingops-coverage-grid"]},
         "tag": {"type": "string", "minLength": 1},
         "commit_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
         "generated_at": {"type": "string", "format": "date-time"}
