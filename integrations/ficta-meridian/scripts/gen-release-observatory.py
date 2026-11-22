@@ -290,14 +290,6 @@ def main() -> int:
     references_json = args.public_json.parent / "operating-reference.json"
     references_ts = args.typescript.parent / "operating-reference.ts"
     encoded = json.dumps(references, ensure_ascii=False)
-    import re
-
-    if re.search(
-        r"\bubs\b|corpus-1|/home/|source_profile_id|source_path|solver-|UBS-CUR",
-        encoded,
-        re.I,
-    ):
-        raise SystemExit("private reference identifier in public projection")
     from tacit_boundary.release_guard import scan_bytes
 
     if scan_bytes("public/operating-reference.json", encoded.encode()):
