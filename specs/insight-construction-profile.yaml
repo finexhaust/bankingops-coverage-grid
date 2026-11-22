@@ -76,6 +76,7 @@ lifecycle_vocabulary:
       citation_required: true
     calendar_ref:
       definition: Business-day calendar identifier used to interpret deadline_ref.
+      reference_data: reference/business-calendars.v1.json
       examples:
         - "TARGET2"
         - "FED"

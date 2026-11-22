@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Publish worked-sample revision R3 only after S5-G6 checks its dated settlement
+  and cutoff events against sourced, year-bounded business calendars. Retain the
+  withdrawn R2 holiday error as a regression fixture.
+
 ## v0.8.5 - 2026-11-19
 
 - Re-pin the cleanroom-eval companion from 2.1.2 to **2.1.3** (GitHub Release

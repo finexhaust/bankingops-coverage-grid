@@ -564,6 +564,59 @@ def gate_insight_construction() -> None:
         fail("S5-G5 Five Families vocabulary drifted")
 
 
+def gate_worked_sample_calendar() -> None:
+    """S5-G6: published worked-sample dates resolve to covered business days."""
+    from calendar_gate import validate_calendar_data, validate_dated_sample
+
+    calendar_path = ROOT / "reference/business-calendars.v1.json"
+    try:
+        calendar_data = json.loads(calendar_path.read_text(encoding="utf-8"))
+        profile = yaml.safe_load(
+            (ROOT / "specs/insight-construction-profile.yaml").read_text(encoding="utf-8")
+        )
+    except (OSError, ValueError, yaml.YAMLError) as exc:
+        fail(f"S5-G6 calendar data or profile is unreadable: {exc}")
+        return
+    for error in validate_calendar_data(calendar_data):
+        fail(f"S5-G6 {error}")
+    expected_calendars = set(
+        (
+            ((profile.get("lifecycle_vocabulary") or {}).get("temporal_semantics") or {})
+            .get("calendar_ref", {})
+            .get("examples", [])
+        )
+    )
+    actual_calendars = set(
+        (calendar_data.get("calendars") or {}).keys()
+        if isinstance(calendar_data, dict) and isinstance(calendar_data.get("calendars"), dict)
+        else ()
+    )
+    if expected_calendars - actual_calendars:
+        fail(f"S5-G6 missing example calendars {sorted(expected_calendars - actual_calendars)}")
+    sample_paths = sorted((ROOT / "reference/worked-samples").glob("*.json"))
+    if not sample_paths:
+        fail("S5-G6 no published dated samples found")
+        return
+    found_r3 = False
+    for sample_path in sample_paths:
+        try:
+            sample = json.loads(sample_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            fail(f"S5-G6 {sample_path.name} is unreadable: {exc}")
+            continue
+        if not isinstance(sample, dict):
+            fail(f"S5-G6 {sample_path.name} is not an object")
+            continue
+        if sample.get("sample_id") == "FM-PB-0417" and sample.get("revision") == "R3":
+            found_r3 = True
+        if sample.get("publication_status") != "published":
+            fail(f"S5-G6 {sample_path.name} is not marked published")
+        for error in validate_dated_sample(sample, calendar_data):
+            fail(f"S5-G6 {sample_path.name}: {error}")
+    if not found_r3:
+        fail("S5-G6 published worked sample FM-PB-0417-R3 is missing")
+
+
 def gate_compliance_scenarios() -> str | None:
     """S7: replayable compliance scenarios are schema-valid, pinned and lifecycle-safe.
 
@@ -835,6 +888,7 @@ def main() -> int:
     gate_common_semantics()
     gate_release_manifest()
     gate_insight_construction()
+    gate_worked_sample_calendar()
     pinned_cell = gate_compliance_scenarios()
     gate_scenario_run_ledger()
     gate_task_concepts()

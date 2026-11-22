@@ -1,0 +1,13 @@
+{
+  "sample_id": "FM-PB-0417",
+  "revision": "R2",
+  "publication_status": "withdrawn",
+  "dated_events": [
+    {
+      "date": "2026-05-25",
+      "event_type": "settlement",
+      "calendar_ref": "FED",
+      "status": "open"
+    }
+  ]
+}

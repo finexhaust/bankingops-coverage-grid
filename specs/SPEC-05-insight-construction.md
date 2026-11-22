@@ -56,6 +56,15 @@ together with the citation it derives from, and a `calendar_ref` identifying the
 business-day calendar used to interpret that expression. These temporal fields
 are optional and occur on transitions, not on abstract vocabulary values.
 
+Dated settlement and cutoff events in a published sample MUST name a
+`calendar_ref`. S5-G6 resolves it against
+`reference/business-calendars.v1.json`, whose listed sources and coverage years
+bound what can be checked. An event marked open MUST NOT fall on a weekend or a
+listed holiday. Dates outside a calendar's stated coverage are rejected rather
+than treated as business days. The generic `firm-internal calendar` example has
+no published coverage; an institution-specific schedule is required before it
+can validate dated events.
+
 ## Adjudication
 
 Machine constructions are immutable. SME decisions are append-only overlays,
