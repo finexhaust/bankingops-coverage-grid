@@ -1,0 +1,4954 @@
+{
+  "schema": "bocg.task-concepts/v1",
+  "contract_version": "1.0.0",
+  "identity_rule": "SHA-256 of exact kind, division key and concept label, first 24 hex characters; concepts never cross a division",
+  "institution_instances": false,
+  "sources": [
+    {
+      "path": "reference/operating-catalogue.v1.json",
+      "sha256": "0acb2492f97f80c18f62f47b45427ba7d6912305104d6335f86531c88299e007"
+    },
+    {
+      "path": "reference/task-concept-rulings.yaml",
+      "sha256": "937be301f5750aa161ce5d5dde7a33ccd27f380e2a45b57904192f8bf80e309a"
+    }
+  ],
+  "method": {
+    "machine": {
+      "algorithm": "average-linkage agglomerative clustering over Jaccard similarity of canonical label tokens",
+      "similarity_threshold": 0.4,
+      "token_rule": "bocg.canon.canon_name, digits dropped, verb/noun variants folded, stoplist removed",
+      "stoplist_sha256": "555e9d69b3b2e505f562a38819e2a39c02e7a5a3af3d203f88d3eb7edf9d677f",
+      "variants_sha256": "8f3988e31e93e3058c818e3890f3b1437b855bb0817dd4c28c7018727e030833",
+      "representative_rule": "shortest member label, ties alphabetical; never an invented label",
+      "read_by_a_human": false
+    },
+    "reviewed": {
+      "rulings_path": "reference/task-concept-rulings.yaml",
+      "rule": "only argued merges group definitions; everything the ruling does not merge stands alone"
+    }
+  },
+  "divisions": [
+    {
+      "division_key": "buyside_portfolio_management",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 4,
+        "function_concepts": 2,
+        "tasks": 12,
+        "task_concepts": 8,
+        "aliases": 6
+      }
+    },
+    {
+      "division_key": "buyside_trading_execution",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 1,
+        "function_concepts": 1,
+        "tasks": 4,
+        "task_concepts": 4,
+        "aliases": 0
+      }
+    },
+    {
+      "division_key": "clearing_settlement_custody",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 1,
+        "function_concepts": 1,
+        "tasks": 3,
+        "task_concepts": 3,
+        "aliases": 0
+      }
+    },
+    {
+      "division_key": "commodities_trading",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 6,
+        "function_concepts": 3,
+        "tasks": 18,
+        "task_concepts": 13,
+        "aliases": 8
+      }
+    },
+    {
+      "division_key": "credit_trading",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 6,
+        "function_concepts": 3,
+        "tasks": 20,
+        "task_concepts": 14,
+        "aliases": 9
+      }
+    },
+    {
+      "division_key": "dcm_origination",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 1,
+        "function_concepts": 1,
+        "tasks": 3,
+        "task_concepts": 3,
+        "aliases": 0
+      }
+    },
+    {
+      "division_key": "ecm_origination",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 1,
+        "function_concepts": 1,
+        "tasks": 3,
+        "task_concepts": 3,
+        "aliases": 0
+      }
+    },
+    {
+      "division_key": "em_trading",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 2,
+        "function_concepts": 2,
+        "tasks": 8,
+        "task_concepts": 8,
+        "aliases": 0
+      }
+    },
+    {
+      "division_key": "equities_trading",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 5,
+        "function_concepts": 3,
+        "tasks": 17,
+        "task_concepts": 10,
+        "aliases": 9
+      }
+    },
+    {
+      "division_key": "equity_derivatives_structured",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 4,
+        "function_concepts": 2,
+        "tasks": 14,
+        "task_concepts": 10,
+        "aliases": 6
+      }
+    },
+    {
+      "division_key": "fx_cross_asset_combined",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 1,
+        "function_concepts": 1,
+        "tasks": 3,
+        "task_concepts": 3,
+        "aliases": 0
+      }
+    },
+    {
+      "division_key": "fx_trading",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 4,
+        "function_concepts": 3,
+        "tasks": 14,
+        "task_concepts": 12,
+        "aliases": 3
+      }
+    },
+    {
+      "division_key": "global_banking_financing",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 1,
+        "function_concepts": 1,
+        "tasks": 3,
+        "task_concepts": 3,
+        "aliases": 0
+      }
+    },
+    {
+      "division_key": "global_financing_capital_markets",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 1,
+        "function_concepts": 1,
+        "tasks": 3,
+        "task_concepts": 3,
+        "aliases": 0
+      }
+    },
+    {
+      "division_key": "leveraged_finance_loan_capital_markets",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 1,
+        "function_concepts": 1,
+        "tasks": 3,
+        "task_concepts": 3,
+        "aliases": 0
+      }
+    },
+    {
+      "division_key": "listed_derivatives_client_clearing",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 2,
+        "function_concepts": 2,
+        "tasks": 8,
+        "task_concepts": 7,
+        "aliases": 1
+      }
+    },
+    {
+      "division_key": "market_risk_management",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 3,
+        "function_concepts": 3,
+        "tasks": 7,
+        "task_concepts": 5,
+        "aliases": 2
+      }
+    },
+    {
+      "division_key": "prime_brokerage_financing",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 6,
+        "function_concepts": 4,
+        "tasks": 20,
+        "task_concepts": 16,
+        "aliases": 6
+      }
+    },
+    {
+      "division_key": "rates_fx_combined",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 1,
+        "function_concepts": 1,
+        "tasks": 3,
+        "task_concepts": 3,
+        "aliases": 0
+      }
+    },
+    {
+      "division_key": "rates_trading",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 5,
+        "function_concepts": 3,
+        "tasks": 16,
+        "task_concepts": 14,
+        "aliases": 4
+      }
+    },
+    {
+      "division_key": "regulatory_reporting_conduct_compliance",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 1,
+        "function_concepts": 1,
+        "tasks": 3,
+        "task_concepts": 3,
+        "aliases": 0
+      }
+    },
+    {
+      "division_key": "repo_secfin_collateral",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 3,
+        "function_concepts": 2,
+        "tasks": 11,
+        "task_concepts": 10,
+        "aliases": 2
+      }
+    },
+    {
+      "division_key": "securitised_products",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 6,
+        "function_concepts": 4,
+        "tasks": 20,
+        "task_concepts": 16,
+        "aliases": 6
+      }
+    },
+    {
+      "division_key": "sellside_research",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 1,
+        "function_concepts": 1,
+        "tasks": 3,
+        "task_concepts": 3,
+        "aliases": 0
+      }
+    },
+    {
+      "division_key": "trade_lifecycle_operations",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "ruling": null,
+      "counts": {
+        "functions": 1,
+        "function_concepts": 1,
+        "tasks": 3,
+        "task_concepts": 3,
+        "aliases": 0
+      }
+    }
+  ],
+  "concepts": [
+    {
+      "concept_id": "function_concept:buyside_portfolio_management:990b322837ff07aa9efe3de7",
+      "kind": "function_concept",
+      "division_key": "buyside_portfolio_management",
+      "label": "Buy-side portfolio managers",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:buyside_portfolio_management:ed9d57995a187801408bd657",
+        "function:buyside_portfolio_management:9c476d904622645dc555c944"
+      ],
+      "member_labels": [
+        "Asset management portfolio managers and buy-side traders",
+        "Buy-side portfolio managers"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:buyside_portfolio_management:ed9d57995a187801408bd657",
+          "label": "Asset management portfolio managers and buy-side traders",
+          "rationale": "machine-clustered: mean Jaccard 0.57 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "e8df72475135c0537d375aa54d33a436e256893b32da7bfa2bf53d776329d32e"
+    },
+    {
+      "concept_id": "function_concept:buyside_portfolio_management:b68302ef589f6f880796ce62",
+      "kind": "function_concept",
+      "division_key": "buyside_portfolio_management",
+      "label": "Portfolio management and investment operations",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:buyside_portfolio_management:8907499e147ad4a9288a49fe",
+        "function:buyside_portfolio_management:998c9cae49faa69350e9fe5b"
+      ],
+      "member_labels": [
+        "Portfolio management and investment operations",
+        "Portfolio management, research, and fund operations"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:buyside_portfolio_management:998c9cae49faa69350e9fe5b",
+          "label": "Portfolio management, research, and fund operations",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "a72c9df0a1b3a2746d19c25375fc8ae5809aaaf021cb2c09bc3aa3e5786a88c9"
+    },
+    {
+      "concept_id": "function_concept:buyside_trading_execution:76c2c2cc3deb52afb510b37d",
+      "kind": "function_concept",
+      "division_key": "buyside_trading_execution",
+      "label": "Buy-side execution trading desk",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:buyside_trading_execution:8fc803e0dbbd336f2d2bd1a3"
+      ],
+      "member_labels": [
+        "Buy-side execution trading desk"
+      ],
+      "aliases": [],
+      "definition_sha256": "3944f736e094eba05eb25a0121aca9483d0b29d8f9f97536de97b33595354472"
+    },
+    {
+      "concept_id": "function_concept:clearing_settlement_custody:52b5e86ca3ad08db359bf7ce",
+      "kind": "function_concept",
+      "division_key": "clearing_settlement_custody",
+      "label": "Clearing, settlement, and custody operations",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:clearing_settlement_custody:634fffceb75f2b90f0064fdb"
+      ],
+      "member_labels": [
+        "Clearing, settlement, and custody operations"
+      ],
+      "aliases": [],
+      "definition_sha256": "b58ccbe68d78f298ac3ef059e1e42b57c1b63cf4736ebc06a47deaaa61d0128d"
+    },
+    {
+      "concept_id": "function_concept:commodities_trading:0bb7e4d1f90328550aa15298",
+      "kind": "function_concept",
+      "division_key": "commodities_trading",
+      "label": "Commodities trader / physical and derivative market maker",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:commodities_trading:bac6dd1f5086147f5d30d5dc"
+      ],
+      "member_labels": [
+        "Commodities trader / physical and derivative market maker"
+      ],
+      "aliases": [],
+      "definition_sha256": "e92f150fb76f155773944fe6904f75cfc03fd2f8456143ddc089b0a47997bf08"
+    },
+    {
+      "concept_id": "function_concept:commodities_trading:2ce2324cb7b732f46fb41f4e",
+      "kind": "function_concept",
+      "division_key": "commodities_trading",
+      "label": "Commodities and energy sales and traders",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:commodities_trading:77c906f31c2e6008467aac3f",
+        "function:commodities_trading:42e0837cd3b8413e4b289cd0"
+      ],
+      "member_labels": [
+        "Commodities and energy sales and traders",
+        "Commodity traders and commodity sales coverage"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:commodities_trading:42e0837cd3b8413e4b289cd0",
+          "label": "Commodity traders and commodity sales coverage",
+          "rationale": "machine-clustered: mean Jaccard 0.60 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "66474a3c33daeda536b48af854d977a5f70c06c2f05b804c2ea488b5451c5624"
+    },
+    {
+      "concept_id": "function_concept:commodities_trading:f19180ad65bb6252eef78b4f",
+      "kind": "function_concept",
+      "division_key": "commodities_trading",
+      "label": "Commodities trading and sales desk",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:commodities_trading:4a3d984d19d0d393b58cc62f",
+        "function:commodities_trading:6fe62436ffe8c35905d6cc68",
+        "function:commodities_trading:a8c39922cc6719c485a643fc"
+      ],
+      "member_labels": [
+        "Commodities sales, trading, and structuring",
+        "Commodities trading and sales desk",
+        "Commodity sales, trading, and structuring desk"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:commodities_trading:4a3d984d19d0d393b58cc62f",
+          "label": "Commodities sales, trading, and structuring",
+          "rationale": "machine-clustered: mean Jaccard 0.88 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "function:commodities_trading:a8c39922cc6719c485a643fc",
+          "label": "Commodity sales, trading, and structuring desk",
+          "rationale": "machine-clustered: mean Jaccard 0.88 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "ace445874c767622c6da7be6b0fab9bf21ab38a6a31d0e09c0c66be19080e923"
+    },
+    {
+      "concept_id": "function_concept:credit_trading:aa860e753a4ad1682d29dcb4",
+      "kind": "function_concept",
+      "division_key": "credit_trading",
+      "label": "Credit and high yield sales and traders",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:credit_trading:543c1a6fdf71e3f9fe8f8a0f",
+        "function:credit_trading:abbe3e59f763d4d8e3d7ac91"
+      ],
+      "member_labels": [
+        "Credit and high yield sales and traders",
+        "Credit traders and credit sales coverage"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:credit_trading:abbe3e59f763d4d8e3d7ac91",
+          "label": "Credit traders and credit sales coverage",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "ae2366e294e5c76a62bf238c927308b8bd0dabfd5d641ec12f93be9d7bd9ab00"
+    },
+    {
+      "concept_id": "function_concept:credit_trading:ad570a16b96d1e925ebde99d",
+      "kind": "function_concept",
+      "division_key": "credit_trading",
+      "label": "Credit trader / corporate bond and CDS market maker",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:credit_trading:c0807f8e95daee478da7b090"
+      ],
+      "member_labels": [
+        "Credit trader / corporate bond and CDS market maker"
+      ],
+      "aliases": [],
+      "definition_sha256": "d1ce53b3e96747758b1f0122dfdf81b630a8664a8d3258210b2a4d878d62b122"
+    },
+    {
+      "concept_id": "function_concept:credit_trading:fecd163a15d80e97507fd81a",
+      "kind": "function_concept",
+      "division_key": "credit_trading",
+      "label": "Credit trading and sales desk",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:credit_trading:d800f9e8d77a1c9dbb4b3bb4",
+        "function:credit_trading:c81d9bf3a957cc7183ac4e89",
+        "function:credit_trading:62a45d7f6b4071ec34a6e0f1"
+      ],
+      "member_labels": [
+        "Credit sales, trading, and structuring",
+        "Credit sales, trading, and structuring desk",
+        "Credit trading and sales desk"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:credit_trading:d800f9e8d77a1c9dbb4b3bb4",
+          "label": "Credit sales, trading, and structuring",
+          "rationale": "machine-clustered: mean Jaccard 0.88 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "function:credit_trading:c81d9bf3a957cc7183ac4e89",
+          "label": "Credit sales, trading, and structuring desk",
+          "rationale": "machine-clustered: mean Jaccard 0.88 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "9e6441027e03ff9d4c231bdf6da16f71d6e7c7f2b1119971f7ad22d938114718"
+    },
+    {
+      "concept_id": "function_concept:dcm_origination:68f4179b798ae77d98d515f2",
+      "kind": "function_concept",
+      "division_key": "dcm_origination",
+      "label": "Debt capital markets bankers and syndicate",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:dcm_origination:ed534ec701136f09445a3056"
+      ],
+      "member_labels": [
+        "Debt capital markets bankers and syndicate"
+      ],
+      "aliases": [],
+      "definition_sha256": "98fe1179dc90c0ebdbc74bb6a731d6b00b64204832119e30a1593d1f2e6899c2"
+    },
+    {
+      "concept_id": "function_concept:ecm_origination:119de3e5a3d77452919ed93f",
+      "kind": "function_concept",
+      "division_key": "ecm_origination",
+      "label": "Equity capital markets bankers and syndicate",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:ecm_origination:a32fe767fdc24edc3a57ec40"
+      ],
+      "member_labels": [
+        "Equity capital markets bankers and syndicate"
+      ],
+      "aliases": [],
+      "definition_sha256": "dd5a61429d000d23f9c2c3e3e69513cacd0e974b327880b492147ea0ac5701ae"
+    },
+    {
+      "concept_id": "function_concept:em_trading:62fa78995582cdf7d8fcec77",
+      "kind": "function_concept",
+      "division_key": "em_trading",
+      "label": "Emerging markets cross-product trading and sales desk",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:em_trading:d3e5fe7aec31519374755c02"
+      ],
+      "member_labels": [
+        "Emerging markets cross-product trading and sales desk"
+      ],
+      "aliases": [],
+      "definition_sha256": "fb6961a2951807480b71d0b41e10741dee6aaf830ce9348c699d2776602d9778"
+    },
+    {
+      "concept_id": "function_concept:em_trading:81a47633df9d576bcd608850",
+      "kind": "function_concept",
+      "division_key": "em_trading",
+      "label": "Emerging markets rates and FX trader",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:em_trading:ef404d93cbb1dbb2f9921e76"
+      ],
+      "member_labels": [
+        "Emerging markets rates and FX trader"
+      ],
+      "aliases": [],
+      "definition_sha256": "5029412bb7e85ada7dc8b43066b5666f898db9253bea58f169faf253ee122efb"
+    },
+    {
+      "concept_id": "function_concept:equities_trading:2e18e37950a9ac87930c69e3",
+      "kind": "function_concept",
+      "division_key": "equities_trading",
+      "label": "Equities sales trader and execution trader",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:equities_trading:0474b51d9460a29e06effdcd",
+        "function:equities_trading:6a26f011b83c5a7516d0b531"
+      ],
+      "member_labels": [
+        "Cash equities traders and institutional equity sales",
+        "Equities sales trader and execution trader"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:equities_trading:0474b51d9460a29e06effdcd",
+          "label": "Cash equities traders and institutional equity sales",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "c28789aab6f5792acd9fdbff48ea8b2cbc2e2102f5e8c13ba33d426ac801c3bc"
+    },
+    {
+      "concept_id": "function_concept:equities_trading:8d31674e82e315debadc0c76",
+      "kind": "function_concept",
+      "division_key": "equities_trading",
+      "label": "Equity cash trader / market maker",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:equities_trading:8a1a9a178c1508e3c4e09897"
+      ],
+      "member_labels": [
+        "Equity cash trader / market maker"
+      ],
+      "aliases": [],
+      "definition_sha256": "95dd04b2b2f4df6a79195d310954aca161322875f102eea280f91c158669f553"
+    },
+    {
+      "concept_id": "function_concept:equities_trading:9872bdfe4b2d6b37671ce608",
+      "kind": "function_concept",
+      "division_key": "equities_trading",
+      "label": "Equities sales, trading, and structuring",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:equities_trading:46348f7bc271339574d8ab7f",
+        "function:equities_trading:f10f2006cc587cb890e7da07"
+      ],
+      "member_labels": [
+        "Equities sales, trading, and structuring",
+        "Equity cash and derivatives sales, trading, and structuring desk"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:equities_trading:f10f2006cc587cb890e7da07",
+          "label": "Equity cash and derivatives sales, trading, and structuring desk",
+          "rationale": "machine-clustered: mean Jaccard 0.67 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "cc30606b20a2e7b0c06ac70bef9871afb8d0e015cd5ce3891abdb0c66fd0e9ef"
+    },
+    {
+      "concept_id": "function_concept:equity_derivatives_structured:79ccfae8ff5a8b4c43825d26",
+      "kind": "function_concept",
+      "division_key": "equity_derivatives_structured",
+      "label": "Equity derivatives trader / structurer",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:equity_derivatives_structured:7ca209a8e92dafc22ff108d7",
+        "function:equity_derivatives_structured:be9760b63015d8e6a045cb23",
+        "function:equity_derivatives_structured:eda8587829ef78369aa635ee"
+      ],
+      "member_labels": [
+        "Equities and derivatives sales and traders",
+        "Equity derivatives trader / structurer",
+        "Equity derivatives traders and structurers"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:equity_derivatives_structured:7ca209a8e92dafc22ff108d7",
+          "label": "Equities and derivatives sales and traders",
+          "rationale": "machine-clustered: mean Jaccard 0.60 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "function:equity_derivatives_structured:eda8587829ef78369aa635ee",
+          "label": "Equity derivatives traders and structurers",
+          "rationale": "machine-clustered: mean Jaccard 0.80 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "e3460019e36125cad249bb9251745a9fb2ddc544b0b84184197186efccc527c6"
+    },
+    {
+      "concept_id": "function_concept:equity_derivatives_structured:eecfcc24adfe1c811b248d43",
+      "kind": "function_concept",
+      "division_key": "equity_derivatives_structured",
+      "label": "Equity derivatives trading and structuring desk",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:equity_derivatives_structured:41745e839be6c601d30ef679"
+      ],
+      "member_labels": [
+        "Equity derivatives trading and structuring desk"
+      ],
+      "aliases": [],
+      "definition_sha256": "beab1eb755dd5e4e8799238f9fd1633a7cd39118129b7d56ffddf7d8b4ea53f9"
+    },
+    {
+      "concept_id": "function_concept:fx_cross_asset_combined:566789c47b5656f18c6d9e99",
+      "kind": "function_concept",
+      "division_key": "fx_cross_asset_combined",
+      "label": "FX and cross-asset sales and traders",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:fx_cross_asset_combined:64887c5c8e3f90c9bb4e95df"
+      ],
+      "member_labels": [
+        "FX and cross-asset sales and traders"
+      ],
+      "aliases": [],
+      "definition_sha256": "62d688acf56f33dc301d057f060d531644c59fb39f92e8727e80a83217a606ed"
+    },
+    {
+      "concept_id": "function_concept:fx_trading:abd5060fbe2126d0ec4dee65",
+      "kind": "function_concept",
+      "division_key": "fx_trading",
+      "label": "FX trading and sales desk",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:fx_trading:cde1f1180e75de13b7175ce1",
+        "function:fx_trading:0496c04165bdc94785361234"
+      ],
+      "member_labels": [
+        "FX sales, trading, and structuring desk",
+        "FX trading and sales desk"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:fx_trading:cde1f1180e75de13b7175ce1",
+          "label": "FX sales, trading, and structuring desk",
+          "rationale": "machine-clustered: mean Jaccard 0.75 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "cd4e25aaa2e7b1bf386921131db395f6eac4cad2f199566189caa2f249b6a080"
+    },
+    {
+      "concept_id": "function_concept:fx_trading:ad91b45baa564f49daa492f0",
+      "kind": "function_concept",
+      "division_key": "fx_trading",
+      "label": "FX trader / spot and forward market maker",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:fx_trading:ebc6411291d96f9ec7f278db"
+      ],
+      "member_labels": [
+        "FX trader / spot and forward market maker"
+      ],
+      "aliases": [],
+      "definition_sha256": "9172afec05f25e5bcf1bbd9e157bda2fa5544a6f690bfef5b645593e609d1817"
+    },
+    {
+      "concept_id": "function_concept:fx_trading:f5f91941b4c39c35eb97d6f0",
+      "kind": "function_concept",
+      "division_key": "fx_trading",
+      "label": "FX traders and FX sales coverage",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:fx_trading:eedf0d2272688ea39b3ebb58"
+      ],
+      "member_labels": [
+        "FX traders and FX sales coverage"
+      ],
+      "aliases": [],
+      "definition_sha256": "3458907a9607c1b0afc941b25481fc4ec31a02ef840d314ce7bd389aa1524e47"
+    },
+    {
+      "concept_id": "function_concept:global_banking_financing:14b13c0d26a9c0d347b99120",
+      "kind": "function_concept",
+      "division_key": "global_banking_financing",
+      "label": "Global banking and financing desk (syndicated loans, project finance, leveraged finance)",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:global_banking_financing:8dee1996b822f4a924f348f0"
+      ],
+      "member_labels": [
+        "Global banking and financing desk (syndicated loans, project finance, leveraged finance)"
+      ],
+      "aliases": [],
+      "definition_sha256": "7cc728b05981f1e29fa553f85ebc46b5649e97f35aa8253418a56b086baeaa8c"
+    },
+    {
+      "concept_id": "function_concept:global_financing_capital_markets:32d166ed6d61ace9b69702c6",
+      "kind": "function_concept",
+      "division_key": "global_financing_capital_markets",
+      "label": "Global financing and capital markets bankers",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:global_financing_capital_markets:961e28a6e75c47dd97025989"
+      ],
+      "member_labels": [
+        "Global financing and capital markets bankers"
+      ],
+      "aliases": [],
+      "definition_sha256": "053d5dd8bbc578e3b1a818a4a34bb1a799691e3361726f391cc252177bd9a92f"
+    },
+    {
+      "concept_id": "function_concept:leveraged_finance_loan_capital_markets:08f43c8a4c672bd7f3b451e0",
+      "kind": "function_concept",
+      "division_key": "leveraged_finance_loan_capital_markets",
+      "label": "Leveraged finance bankers and loan syndicate",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:leveraged_finance_loan_capital_markets:66552a3db9bde411af493ea8"
+      ],
+      "member_labels": [
+        "Leveraged finance bankers and loan syndicate"
+      ],
+      "aliases": [],
+      "definition_sha256": "1b0883287d8a377bcd7ad6ade521ae3cffde4dbce192f4115cb827a5b2cc8335"
+    },
+    {
+      "concept_id": "function_concept:listed_derivatives_client_clearing:cfc81c8c800089e5813cc2d2",
+      "kind": "function_concept",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "Client clearing specialist / margin analyst",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:listed_derivatives_client_clearing:fc01c2860724b45c94ad34bc"
+      ],
+      "member_labels": [
+        "Client clearing specialist / margin analyst"
+      ],
+      "aliases": [],
+      "definition_sha256": "448847ce51b211f7bec88149550f698dc79461229ad6da06770590866c83e2b8"
+    },
+    {
+      "concept_id": "function_concept:listed_derivatives_client_clearing:ee844707c3a00e8aebc61279",
+      "kind": "function_concept",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "Listed derivatives clearing and margin operations",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:listed_derivatives_client_clearing:d6b03cc72c54007b368cd354"
+      ],
+      "member_labels": [
+        "Listed derivatives clearing and margin operations"
+      ],
+      "aliases": [],
+      "definition_sha256": "e8d9dcdb83b649e305e35ec277e90104ed33a956aab435c777819b97373d8f2d"
+    },
+    {
+      "concept_id": "function_concept:market_risk_management:8d9b927885e14ff3323ea299",
+      "kind": "function_concept",
+      "division_key": "market_risk_management",
+      "label": "Market risk management and control",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:market_risk_management:0ec57c48f3f8573c02025f6c"
+      ],
+      "member_labels": [
+        "Market risk management and control"
+      ],
+      "aliases": [],
+      "definition_sha256": "1494a93bbcf77ca09067e926604a1412ff14dd13fb0cefb49d8d0b13f8edab10"
+    },
+    {
+      "concept_id": "function_concept:market_risk_management:df80730aa973e9defc9dbe73",
+      "kind": "function_concept",
+      "division_key": "market_risk_management",
+      "label": "Market risk measurement, limits, and stress testing",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:market_risk_management:d5a33c34789e7508526cf019"
+      ],
+      "member_labels": [
+        "Market risk measurement, limits, and stress testing"
+      ],
+      "aliases": [],
+      "definition_sha256": "0db176b846867a5456b5eb24d5d6cd580a5d0d6079ebdf0519fddb44e92568b0"
+    },
+    {
+      "concept_id": "function_concept:market_risk_management:e95cdf92e59052cc2abe5c7f",
+      "kind": "function_concept",
+      "division_key": "market_risk_management",
+      "label": "Market risk and middle office analysts",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:market_risk_management:c1b9a9708ab3d0a5e01a9e63"
+      ],
+      "member_labels": [
+        "Market risk and middle office analysts"
+      ],
+      "aliases": [],
+      "definition_sha256": "24e675b93a8266efd386f8e22fa2a9cf313d3ecd2aa55089d2103b80b86f158a"
+    },
+    {
+      "concept_id": "function_concept:prime_brokerage_financing:64b4fe23ee1e8cf52b78066f",
+      "kind": "function_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "Prime brokerage, securities lending, and financing",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:prime_brokerage_financing:2fef873af5ca73e93d10fafa",
+        "function:prime_brokerage_financing:9b39f41c2a2e9dca60bf6de5",
+        "function:prime_brokerage_financing:d221dcc56f56927a709928a8"
+      ],
+      "member_labels": [
+        "Prime brokerage client financing and securities lending specialist",
+        "Prime brokerage client service and securities lending traders",
+        "Prime brokerage, securities lending, and financing"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:prime_brokerage_financing:2fef873af5ca73e93d10fafa",
+          "label": "Prime brokerage client financing and securities lending specialist",
+          "rationale": "machine-clustered: mean Jaccard 0.67 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "function:prime_brokerage_financing:9b39f41c2a2e9dca60bf6de5",
+          "label": "Prime brokerage client service and securities lending traders",
+          "rationale": "machine-clustered: mean Jaccard 0.54 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "6a020d2b86d2d3af0f5c569c23742699e6cd50801222d9709fdf2d42ef1c837e"
+    },
+    {
+      "concept_id": "function_concept:prime_brokerage_financing:6bb96f1c40953527fd0d905c",
+      "kind": "function_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "Prime brokerage and client financing (hedge funds, asset managers)",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:prime_brokerage_financing:e2833c7e6f900117429c4565"
+      ],
+      "member_labels": [
+        "Prime brokerage and client financing (hedge funds, asset managers)"
+      ],
+      "aliases": [],
+      "definition_sha256": "71fea611ca5e9bc7eada90b449afd200912f0572477bc46f84b005b83aa107f8"
+    },
+    {
+      "concept_id": "function_concept:prime_brokerage_financing:cbf15101aa7bbfec6308f5f0",
+      "kind": "function_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "Prime brokerage client service and margin operations",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:prime_brokerage_financing:afce17beba19d2cf0c3af859"
+      ],
+      "member_labels": [
+        "Prime brokerage client service and margin operations"
+      ],
+      "aliases": [],
+      "definition_sha256": "db05b41588ebab0260e7e7348a7efa51cc5f56f8f6636e3dc16d556dd56922d3"
+    },
+    {
+      "concept_id": "function_concept:prime_brokerage_financing:ccfc43e073fc7c1e4e6dc09c",
+      "kind": "function_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "Prime brokerage and client finance bankers and traders",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:prime_brokerage_financing:0ca91c61ea425159ec8dcd59"
+      ],
+      "member_labels": [
+        "Prime brokerage and client finance bankers and traders"
+      ],
+      "aliases": [],
+      "definition_sha256": "829bdbcbf9846c2ea77f71177bdb71a719f0f1cbac5d2019d2b6bfd05c70b1f7"
+    },
+    {
+      "concept_id": "function_concept:rates_fx_combined:2ec85bed9ea02efc412a131e",
+      "kind": "function_concept",
+      "division_key": "rates_fx_combined",
+      "label": "Rates & FX sales, trading, and structuring",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:rates_fx_combined:930392ab5f25c9095e700dd5"
+      ],
+      "member_labels": [
+        "Rates & FX sales, trading, and structuring"
+      ],
+      "aliases": [],
+      "definition_sha256": "55613c97484a48865aab5e583f19e55e97489714436555660197221e2161563d"
+    },
+    {
+      "concept_id": "function_concept:rates_trading:7abd6351b9d7f81aad2db579",
+      "kind": "function_concept",
+      "division_key": "rates_trading",
+      "label": "Rates trading and sales desk",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:rates_trading:b258e7b425161efc96e67c70",
+        "function:rates_trading:da40354c69662fa6880d106e",
+        "function:rates_trading:0194724f65bce5c3732986a9"
+      ],
+      "member_labels": [
+        "Rates & fixed income sales, trading, and structuring desk",
+        "Rates and fixed income sales and traders",
+        "Rates trading and sales desk"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:rates_trading:b258e7b425161efc96e67c70",
+          "label": "Rates & fixed income sales, trading, and structuring desk",
+          "rationale": "machine-clustered: mean Jaccard 0.54 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "function:rates_trading:da40354c69662fa6880d106e",
+          "label": "Rates and fixed income sales and traders",
+          "rationale": "machine-clustered: mean Jaccard 0.45 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "e9daa5a149bd5fde8120a994f4f6037767e9d6feb6cbc493a706eb5c44d33ddb"
+    },
+    {
+      "concept_id": "function_concept:rates_trading:af7c498036418ad8bd0d712d",
+      "kind": "function_concept",
+      "division_key": "rates_trading",
+      "label": "Rates trader / government bond and swaps market maker",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:rates_trading:42d14433213fa739eab05d1c"
+      ],
+      "member_labels": [
+        "Rates trader / government bond and swaps market maker"
+      ],
+      "aliases": [],
+      "definition_sha256": "d67d77bf529522f5351b9cd897a6bdfba0149aeb42f450a8a2a6b0f31e7886b1"
+    },
+    {
+      "concept_id": "function_concept:rates_trading:c5661481d1012b026c134974",
+      "kind": "function_concept",
+      "division_key": "rates_trading",
+      "label": "Rates traders and rates sales coverage",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:rates_trading:904f78f1e6d90f05b4fef85b"
+      ],
+      "member_labels": [
+        "Rates traders and rates sales coverage"
+      ],
+      "aliases": [],
+      "definition_sha256": "85a9523fbaf207cfe34a375a92fb9427e7309e2b8153032dfb6b0c4ec82452b0"
+    },
+    {
+      "concept_id": "function_concept:regulatory_reporting_conduct_compliance:b004d76709b9eb7186b6b064",
+      "kind": "function_concept",
+      "division_key": "regulatory_reporting_conduct_compliance",
+      "label": "Regulatory reporting and market conduct compliance analysts",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:regulatory_reporting_conduct_compliance:4519bcc5cc7e4dd5294c433f"
+      ],
+      "member_labels": [
+        "Regulatory reporting and market conduct compliance analysts"
+      ],
+      "aliases": [],
+      "definition_sha256": "213dd4e07572c00f21caa2e91e944cb65d5cf10329a47e7aa5545d725e558852"
+    },
+    {
+      "concept_id": "function_concept:repo_secfin_collateral:041be895bf7fd9d924836f5e",
+      "kind": "function_concept",
+      "division_key": "repo_secfin_collateral",
+      "label": "Repo trader / collateral financier",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:repo_secfin_collateral:6bfec8001749544a66c363aa"
+      ],
+      "member_labels": [
+        "Repo trader / collateral financier"
+      ],
+      "aliases": [],
+      "definition_sha256": "a0e749cfe289988447898fa31648cf4499f3ae522c8d383b87318c9986ea5c16"
+    },
+    {
+      "concept_id": "function_concept:repo_secfin_collateral:ea9c72c70566c3f1cf9ece81",
+      "kind": "function_concept",
+      "division_key": "repo_secfin_collateral",
+      "label": "Repo and securities lending desk",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:repo_secfin_collateral:2a2c6bb49d799b9334537661",
+        "function:repo_secfin_collateral:2fe50dc837e3f38f0097fd0f"
+      ],
+      "member_labels": [
+        "Repo and securities lending desk",
+        "Securities finance operations (repo, securities lending, collateral management)"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:repo_secfin_collateral:2fe50dc837e3f38f0097fd0f",
+          "label": "Securities finance operations (repo, securities lending, collateral management)",
+          "rationale": "machine-clustered: mean Jaccard 0.43 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "5421cceff3947bd5e63cb5a7e7ce7662ec6dad486286ab58a7a074f2b9e1047c"
+    },
+    {
+      "concept_id": "function_concept:securitised_products:0f526a4098a38750c7f40b38",
+      "kind": "function_concept",
+      "division_key": "securitised_products",
+      "label": "Securitised products trading desk",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:securitised_products:b0299698844e5506959af850",
+        "function:securitised_products:8c861095b8aa4f2497d29e20"
+      ],
+      "member_labels": [
+        "Securitised products trader / structurer",
+        "Securitised products trading desk"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:securitised_products:b0299698844e5506959af850",
+          "label": "Securitised products trader / structurer",
+          "rationale": "machine-clustered: mean Jaccard 0.40 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "34bf8737c3d637746e68e88650241a4fb2fe1ae31892a54f632181f08375ce26"
+    },
+    {
+      "concept_id": "function_concept:securitised_products:285b06483997e695c45fd4aa",
+      "kind": "function_concept",
+      "division_key": "securitised_products",
+      "label": "Securitisation structurers and ABS traders",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:securitised_products:0f1bc6e1545b200d68d81131"
+      ],
+      "member_labels": [
+        "Securitisation structurers and ABS traders"
+      ],
+      "aliases": [],
+      "definition_sha256": "6b4a0f7f23e0cc212c0a7089e135aaea59e552eab1a5f9595e5076f1e72cbcf6"
+    },
+    {
+      "concept_id": "function_concept:securitised_products:4ff42cbb8924848387164824",
+      "kind": "function_concept",
+      "division_key": "securitised_products",
+      "label": "Structured products, securitization, and ABS trading",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:securitised_products:f044a88f55ef8d76edc91330"
+      ],
+      "member_labels": [
+        "Structured products, securitization, and ABS trading"
+      ],
+      "aliases": [],
+      "definition_sha256": "09c82ba5b4b64629a28a0af527a2a4776c4ae917d6f960861ebb499978077859"
+    },
+    {
+      "concept_id": "function_concept:securitised_products:d61648677640971af7064516",
+      "kind": "function_concept",
+      "division_key": "securitised_products",
+      "label": "Structured finance and securitized products desk",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:securitised_products:5c1024a1fb74dd233b83bfe3",
+        "function:securitised_products:254510da8d73532dd054db3d"
+      ],
+      "member_labels": [
+        "Structured finance and securitized products bankers and traders",
+        "Structured finance and securitized products desk"
+      ],
+      "aliases": [
+        {
+          "reference_id": "function:securitised_products:5c1024a1fb74dd233b83bfe3",
+          "label": "Structured finance and securitized products bankers and traders",
+          "rationale": "machine-clustered: mean Jaccard 0.67 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "c35ed9a22d120d1b7de504e085af6aee8ba3bda657954257ba89d42557eae20f"
+    },
+    {
+      "concept_id": "function_concept:sellside_research:6dc8936c321b77c897f6aea5",
+      "kind": "function_concept",
+      "division_key": "sellside_research",
+      "label": "Sell-side equity research analysts",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:sellside_research:2e1548c4898f23a416a5b86b"
+      ],
+      "member_labels": [
+        "Sell-side equity research analysts"
+      ],
+      "aliases": [],
+      "definition_sha256": "ab7b90f43f5694d984433f92e5bfa55a6d4f0d1728b575d4f10e33ec92cab8f3"
+    },
+    {
+      "concept_id": "function_concept:trade_lifecycle_operations:37ff5a331d3e98045ff9b688",
+      "kind": "function_concept",
+      "division_key": "trade_lifecycle_operations",
+      "label": "Trade operations, settlement, and reconciliation",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "function:trade_lifecycle_operations:045ae4b198d592c817f63e2f"
+      ],
+      "member_labels": [
+        "Trade operations, settlement, and reconciliation"
+      ],
+      "aliases": [],
+      "definition_sha256": "a94c3cdcec1851b13abd798a9f5d16d98ef054a0aceca61540d7a6b3c9998b4a"
+    },
+    {
+      "concept_id": "task_concept:buyside_portfolio_management:1555934f75bbb37eb8af12a0",
+      "kind": "task_concept",
+      "division_key": "buyside_portfolio_management",
+      "label": "value portfolio daily",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:buyside_portfolio_management:ba29423a4235b158e63b6b92"
+      ],
+      "member_labels": [
+        "value portfolio daily"
+      ],
+      "aliases": [],
+      "definition_sha256": "29b2a5df54c575af6b929c23fd006d1b95a530ecc6d1a965f4f10781b334c4bb"
+    },
+    {
+      "concept_id": "task_concept:buyside_portfolio_management:230ae1533483d3797c8f5dd0",
+      "kind": "task_concept",
+      "division_key": "buyside_portfolio_management",
+      "label": "execute buy side trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:buyside_portfolio_management:3dc3177e1edbacb5fd2c082f"
+      ],
+      "member_labels": [
+        "execute buy side trade"
+      ],
+      "aliases": [],
+      "definition_sha256": "68601fe5ee00d0ea4bee665adf0049fa40c8d2efc0bac92a87f8e7f3b656ec4b"
+    },
+    {
+      "concept_id": "task_concept:buyside_portfolio_management:2cfada45a47006294423ed40",
+      "kind": "task_concept",
+      "division_key": "buyside_portfolio_management",
+      "label": "calculate fund nav",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:buyside_portfolio_management:55a76babb1ad85f199e9a489"
+      ],
+      "member_labels": [
+        "calculate fund nav"
+      ],
+      "aliases": [],
+      "definition_sha256": "f060ff0ab6ed7fe8797595e7b63768494ec7783fb900fac531556afd1fc14476"
+    },
+    {
+      "concept_id": "task_concept:buyside_portfolio_management:67e0d04c6307ae86266f6332",
+      "kind": "task_concept",
+      "division_key": "buyside_portfolio_management",
+      "label": "capture portfolio trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:buyside_portfolio_management:243502cfb59d39fe3a5cbd9a",
+        "task:buyside_portfolio_management:7f390752a32903c99f59f11d",
+        "task:buyside_portfolio_management:fce5d6610c42a19b4cc0dcbf"
+      ],
+      "member_labels": [
+        "capture portfolio trade",
+        "execute a portfolio trade",
+        "execute portfolio trade"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:buyside_portfolio_management:7f390752a32903c99f59f11d",
+          "label": "execute a portfolio trade",
+          "rationale": "machine-clustered: mean Jaccard 0.75 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "task:buyside_portfolio_management:fce5d6610c42a19b4cc0dcbf",
+          "label": "execute portfolio trade",
+          "rationale": "machine-clustered: mean Jaccard 0.75 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "8e1d597a4641993efd049e5926d649353f6c033e7ed963546daf512090b6e1d4"
+    },
+    {
+      "concept_id": "task_concept:buyside_portfolio_management:6b7b4846df9c85177d3b34a3",
+      "kind": "task_concept",
+      "division_key": "buyside_portfolio_management",
+      "label": "run compliance pre trade screen",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:buyside_portfolio_management:56224ba155b89b12f7eb2e6a"
+      ],
+      "member_labels": [
+        "run compliance pre trade screen"
+      ],
+      "aliases": [],
+      "definition_sha256": "377c7e88782beee889ac03e5ceacee82e03b5a713a20ec8002e5b0dc8ae8c669"
+    },
+    {
+      "concept_id": "task_concept:buyside_portfolio_management:9a8d2bdb860a9111fc58d37b",
+      "kind": "task_concept",
+      "division_key": "buyside_portfolio_management",
+      "label": "produce quarterly performance attribution",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:buyside_portfolio_management:6d7e65889c40411d24b3cbcb"
+      ],
+      "member_labels": [
+        "produce quarterly performance attribution"
+      ],
+      "aliases": [],
+      "definition_sha256": "c913adbd7743f9229438dafefcbbeed63e34c983b71081cf8194277e3c7095e6"
+    },
+    {
+      "concept_id": "task_concept:buyside_portfolio_management:b7d1afc9627d299c8d81fa34",
+      "kind": "task_concept",
+      "division_key": "buyside_portfolio_management",
+      "label": "check compliance limit",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:buyside_portfolio_management:9a8c8adf6497ca7f526bd872",
+        "task:buyside_portfolio_management:297883f27352ac71712e969b"
+      ],
+      "member_labels": [
+        "check compliance limit",
+        "check investment mandate limit"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:buyside_portfolio_management:297883f27352ac71712e969b",
+          "label": "check investment mandate limit",
+          "rationale": "machine-clustered: mean Jaccard 0.40 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "2277731415d7e6d21425211f3c5c3d054b3e275235df6694bf8a4c44d4a66b72"
+    },
+    {
+      "concept_id": "task_concept:buyside_portfolio_management:d9cac79678c49d397ced2d5b",
+      "kind": "task_concept",
+      "division_key": "buyside_portfolio_management",
+      "label": "rebalance portfolio",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:buyside_portfolio_management:a67081179d06c8d169461acf",
+        "task:buyside_portfolio_management:ef773ad5f58bd32a8baa0982"
+      ],
+      "member_labels": [
+        "rebalance portfolio",
+        "rebalance portfolio to target weight"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:buyside_portfolio_management:ef773ad5f58bd32a8baa0982",
+          "label": "rebalance portfolio to target weight",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "f4eb189c29827ee856139738a508d5fef9eca8ea81d0c0e3dfb14a6b2ffe912c"
+    },
+    {
+      "concept_id": "task_concept:buyside_trading_execution:46112775d40c95266c31754f",
+      "kind": "task_concept",
+      "division_key": "buyside_trading_execution",
+      "label": "reconcile settlement with custodian",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:buyside_trading_execution:0b110b631ca73e9649c30c24"
+      ],
+      "member_labels": [
+        "reconcile settlement with custodian"
+      ],
+      "aliases": [],
+      "definition_sha256": "12e9668bdcff69dd166a6f83e352fdc9b599e7783e9a2dfa92ac5b4ecda7e1ac"
+    },
+    {
+      "concept_id": "task_concept:buyside_trading_execution:4ee0fa8a3d67a643d64bff1d",
+      "kind": "task_concept",
+      "division_key": "buyside_trading_execution",
+      "label": "execute order in order management system",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:buyside_trading_execution:a09638b61d1482dbb3131034"
+      ],
+      "member_labels": [
+        "execute order in order management system"
+      ],
+      "aliases": [],
+      "definition_sha256": "b414bebad8dac78703063be8f924202786d3d5a6d4bd1631a67de8902544a58a"
+    },
+    {
+      "concept_id": "task_concept:buyside_trading_execution:b06b2734ea89330a732132d1",
+      "kind": "task_concept",
+      "division_key": "buyside_trading_execution",
+      "label": "produce transaction cost analysis",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:buyside_trading_execution:4f30c0230e71f4a761415dcd"
+      ],
+      "member_labels": [
+        "produce transaction cost analysis"
+      ],
+      "aliases": [],
+      "definition_sha256": "62cbbdf7ca7aa27e1d2fe96e63873dcd0c98cb5febc4cf906f0aebeb55b100f5"
+    },
+    {
+      "concept_id": "task_concept:buyside_trading_execution:ef9a3cad8c2726aa3c228751",
+      "kind": "task_concept",
+      "division_key": "buyside_trading_execution",
+      "label": "allocate executed trade across portfolio",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:buyside_trading_execution:85c9a256b22b190a40ba5c5a"
+      ],
+      "member_labels": [
+        "allocate executed trade across portfolio"
+      ],
+      "aliases": [],
+      "definition_sha256": "0922e0f9c7fdd86a222426326bc329c6eb05ecd06e92cf396dcb02442fb63a75"
+    },
+    {
+      "concept_id": "task_concept:clearing_settlement_custody:1088bc950a9339a8d9add823",
+      "kind": "task_concept",
+      "division_key": "clearing_settlement_custody",
+      "label": "update custody safekeeping record",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:clearing_settlement_custody:d6be648a862a5cdbc07331a0"
+      ],
+      "member_labels": [
+        "update custody safekeeping record"
+      ],
+      "aliases": [],
+      "definition_sha256": "a971eebb0a6d05b7ab7675ad435cf19d4d4cab3041c2d0b0b2e99baba06471d9"
+    },
+    {
+      "concept_id": "task_concept:clearing_settlement_custody:202dda4c179c74e83cae08fd",
+      "kind": "task_concept",
+      "division_key": "clearing_settlement_custody",
+      "label": "reconcile custody to subcustodian",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:clearing_settlement_custody:b8a8ac7af0eccf3245272214"
+      ],
+      "member_labels": [
+        "reconcile custody to subcustodian"
+      ],
+      "aliases": [],
+      "definition_sha256": "e1bb79158893906164cad467d9c7991b1137fb8b761467e480e3dd33116bd341"
+    },
+    {
+      "concept_id": "task_concept:clearing_settlement_custody:a9df06059f3cb695f01e3e5f",
+      "kind": "task_concept",
+      "division_key": "clearing_settlement_custody",
+      "label": "settle a trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:clearing_settlement_custody:a84a7f9ac1d3dd8ab6fb4851"
+      ],
+      "member_labels": [
+        "settle a trade"
+      ],
+      "aliases": [],
+      "definition_sha256": "5819b24e61126f6809c09ff9b3a46036517751972d416eaef1c4938ee4cd28b1"
+    },
+    {
+      "concept_id": "task_concept:commodities_trading:19fd9de4edafe4d2576de606",
+      "kind": "task_concept",
+      "division_key": "commodities_trading",
+      "label": "mark commodity curve position",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:commodities_trading:94d0850abbeae8c7ab3cf9d7"
+      ],
+      "member_labels": [
+        "mark commodity curve position"
+      ],
+      "aliases": [],
+      "definition_sha256": "aa0b7e8dbe94e3a5b5db6edfc44553d97d0c8010adb325dbddad63e93b04e1f6"
+    },
+    {
+      "concept_id": "task_concept:commodities_trading:1ce21ce814e1a3d739df54f1",
+      "kind": "task_concept",
+      "division_key": "commodities_trading",
+      "label": "reconcile warehouse receipt physical inventory",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:commodities_trading:e8a83123e371a637b1fcd0f9"
+      ],
+      "member_labels": [
+        "reconcile warehouse receipt physical inventory"
+      ],
+      "aliases": [],
+      "definition_sha256": "1242401d4f2630215075197c7911e6067e06047cd8d273dd096f61551e015ca8"
+    },
+    {
+      "concept_id": "task_concept:commodities_trading:754aeebfea96e89f0100ecd2",
+      "kind": "task_concept",
+      "division_key": "commodities_trading",
+      "label": "reconcile commodity position to exchange",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:commodities_trading:aea207918587aa014f38bc88"
+      ],
+      "member_labels": [
+        "reconcile commodity position to exchange"
+      ],
+      "aliases": [],
+      "definition_sha256": "974ed67184814a41bba141f582e4327f05639067f6f6555d672651af429dda22"
+    },
+    {
+      "concept_id": "task_concept:commodities_trading:77bb26f620733bfcc9c623d4",
+      "kind": "task_concept",
+      "division_key": "commodities_trading",
+      "label": "check commodity position limit",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:commodities_trading:45b12660be6249885632c95c",
+        "task:commodities_trading:19663191a44d0c4ea1829ff0"
+      ],
+      "member_labels": [
+        "check commodity position against position limit",
+        "check commodity position limit"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:commodities_trading:45b12660be6249885632c95c",
+          "label": "check commodity position against position limit",
+          "rationale": "machine-clustered: mean Jaccard 1.00 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "bd28901f5b02e8ff7b6936ed3d312c6eddb444f31fcc62015ec21136eef1091b"
+    },
+    {
+      "concept_id": "task_concept:commodities_trading:814ac5a2688479ca3f5ec93b",
+      "kind": "task_concept",
+      "division_key": "commodities_trading",
+      "label": "execute commodity swap",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:commodities_trading:ab95b0ea3a1eea6816b8ef56",
+        "task:commodities_trading:2355d4bea7b1dc3c8b1703da",
+        "task:commodities_trading:327b4bcdc7acec468c9c42f0"
+      ],
+      "member_labels": [
+        "execute commodity swap",
+        "execute commodity swap or forward",
+        "execute commodity swap order"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:commodities_trading:2355d4bea7b1dc3c8b1703da",
+          "label": "execute commodity swap or forward",
+          "rationale": "machine-clustered: mean Jaccard 0.68 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "task:commodities_trading:327b4bcdc7acec468c9c42f0",
+          "label": "execute commodity swap order",
+          "rationale": "machine-clustered: mean Jaccard 0.68 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "20e9135f80ef2356761b1361c2f66e6ab19df0977b981c3d8929860a34bba73d"
+    },
+    {
+      "concept_id": "task_concept:commodities_trading:83f0b7a054b6dc641c8e39f0",
+      "kind": "task_concept",
+      "division_key": "commodities_trading",
+      "label": "monitor position limit",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:commodities_trading:26d5d1f7cd82d431527f1755",
+        "task:commodities_trading:9d6676fa50467a386ecb3889"
+      ],
+      "member_labels": [
+        "calculate position limit report",
+        "monitor position limit"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:commodities_trading:26d5d1f7cd82d431527f1755",
+          "label": "calculate position limit report",
+          "rationale": "machine-clustered: mean Jaccard 0.40 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "19d7812c907bafdc0b5c736bfa596cf5cf3570b77d533052d07b220a3e2932bc"
+    },
+    {
+      "concept_id": "task_concept:commodities_trading:a09bc0fc46c1e56608554606",
+      "kind": "task_concept",
+      "division_key": "commodities_trading",
+      "label": "calculate commodity margin",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:commodities_trading:6785ff9cd70f5d022f47ea8a"
+      ],
+      "member_labels": [
+        "calculate commodity margin"
+      ],
+      "aliases": [],
+      "definition_sha256": "2680521333413f9d49f5b6ce1972ecf3e858c829b6af88fcc0edc8418f105203"
+    },
+    {
+      "concept_id": "task_concept:commodities_trading:c045216f9440365719d47d14",
+      "kind": "task_concept",
+      "division_key": "commodities_trading",
+      "label": "confirm commodity derivative trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:commodities_trading:54287fcf02c23fc0019a3a9a"
+      ],
+      "member_labels": [
+        "confirm commodity derivative trade"
+      ],
+      "aliases": [],
+      "definition_sha256": "21bb051f2468e3e6c439479036f6990f6c1aa0d1af58100f02194803c893188f"
+    },
+    {
+      "concept_id": "task_concept:commodities_trading:c3b400e377f10f59109f3a1f",
+      "kind": "task_concept",
+      "division_key": "commodities_trading",
+      "label": "capture executed commodity trade into core trading system",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:commodities_trading:e394012b686b2091384bdd9a"
+      ],
+      "member_labels": [
+        "capture executed commodity trade into core trading system"
+      ],
+      "aliases": [],
+      "definition_sha256": "47450d435f58d6e729166fef80095043c3d248551f06fcaced7b9a1e783f6a5f"
+    },
+    {
+      "concept_id": "task_concept:commodities_trading:c8c8a04c4ec016ea02aba5dc",
+      "kind": "task_concept",
+      "division_key": "commodities_trading",
+      "label": "execute a commodity future or forward trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:commodities_trading:ff60f786c598e6bae9180472"
+      ],
+      "member_labels": [
+        "execute a commodity future or forward trade"
+      ],
+      "aliases": [],
+      "definition_sha256": "5dfa6340bf4bf5109a09823be8485f5ba00796f91884f9c1b3fd16c9960f10c4"
+    },
+    {
+      "concept_id": "task_concept:commodities_trading:c8d6782be57b09073cd05fd0",
+      "kind": "task_concept",
+      "division_key": "commodities_trading",
+      "label": "mark commodity book to market",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:commodities_trading:9bbcbb3ed88678b2249a6332",
+        "task:commodities_trading:777023daf184d2e86b6e0969"
+      ],
+      "member_labels": [
+        "mark commodity book to market",
+        "mark commodity book to official settlement price"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:commodities_trading:777023daf184d2e86b6e0969",
+          "label": "mark commodity book to official settlement price",
+          "rationale": "machine-clustered: mean Jaccard 0.43 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "e473e1718098c4423f38cd57bad654e9f2e95f58952197597ff2ad6614868c3b"
+    },
+    {
+      "concept_id": "task_concept:commodities_trading:dbccd251b8fc98e228a61841",
+      "kind": "task_concept",
+      "division_key": "commodities_trading",
+      "label": "process option exercise or physical delivery notice",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:commodities_trading:e3a1d72b7dbf6a93d56cd5c9"
+      ],
+      "member_labels": [
+        "process option exercise or physical delivery notice"
+      ],
+      "aliases": [],
+      "definition_sha256": "5ed03a2804a723462495cc74c3664cade38558d497ee4c9276f8eb71f74e0500"
+    },
+    {
+      "concept_id": "task_concept:commodities_trading:ee4972312092899c33d86f14",
+      "kind": "task_concept",
+      "division_key": "commodities_trading",
+      "label": "schedule physical delivery",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:commodities_trading:735d9da3475ee5c29d0d43c9"
+      ],
+      "member_labels": [
+        "schedule physical delivery"
+      ],
+      "aliases": [],
+      "definition_sha256": "ba2a9efa4c2c53690dce51187eed0f6fbc4189fa2f62c9fff417ba82737ac1c8"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:01136196ab484a4795b57fa1",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "confirm bond cds trade economic",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:678f9a088d332d4a4669748d"
+      ],
+      "member_labels": [
+        "confirm bond cds trade economic"
+      ],
+      "aliases": [],
+      "definition_sha256": "2bced190e7a3ac2b378648f714fc4002d1195e9a932a9bb5230562d9c1315573"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:1752fe0b5a0837862ef04397",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "capture executed credit trade into core trading system",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:246ea5f81423e4c648345b70"
+      ],
+      "member_labels": [
+        "capture executed credit trade into core trading system"
+      ],
+      "aliases": [],
+      "definition_sha256": "3d36dc47e59b28247f895af86d9532e5cecd202fdce9f8b5fba3dcc0519a4b65"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:4e0268781588997e423a2459",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "resolve trade confirmation exception",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:831a34b5a05bb71eb6254953"
+      ],
+      "member_labels": [
+        "resolve trade confirmation exception"
+      ],
+      "aliases": [],
+      "definition_sha256": "672255ddaea54ba5b418c3bb09ce27e1c45ef3dd5c3664278ad43e93780db692"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:5a1464d5c38ad70ee147f4d3",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "monitor issuer counterparty limit",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:b72dc0c92361e51fef76bdb6"
+      ],
+      "member_labels": [
+        "monitor issuer counterparty limit"
+      ],
+      "aliases": [],
+      "definition_sha256": "5a8c3ea6cfe13642a61438e957d1aa7b8d94c96afb570cc346b7ad874d2d71e2"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:5ca7b1692865f727f6456d86",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "run counterparty credit limit check",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:016e072244bc5ddb012ead5c",
+        "task:credit_trading:239ff5097bf231969f303233",
+        "task:credit_trading:c019cde36aaadf3e0fcc15ec"
+      ],
+      "member_labels": [
+        "check counterparty issuer credit limit",
+        "check credit position against exposure limit",
+        "run counterparty credit limit check"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:credit_trading:016e072244bc5ddb012ead5c",
+          "label": "check counterparty issuer credit limit",
+          "rationale": "machine-clustered: mean Jaccard 0.55 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "task:credit_trading:239ff5097bf231969f303233",
+          "label": "check credit position against exposure limit",
+          "rationale": "machine-clustered: mean Jaccard 0.43 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "c82a7cc3b3a0b705a261cba156785ba9e70805148d00f7fea776f3d3fb2fdc92"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:5ce894f442c86e79c971131b",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "mark credit book to market",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:77d4f2aafbfc6cc39399c53f",
+        "task:credit_trading:595266b2cdd12e35d184f637"
+      ],
+      "member_labels": [
+        "mark cash credit cds position to market",
+        "mark credit book to market"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:credit_trading:77d4f2aafbfc6cc39399c53f",
+          "label": "mark cash credit cds position to market",
+          "rationale": "machine-clustered: mean Jaccard 0.43 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "6fc05577203cc405e378d858827c133ac202a939692dbb7c04463d646e60538a"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:6710bd9d7c11b31968de9391",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "submit transaction swap report",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:427d18ec0f40baee6d133e70"
+      ],
+      "member_labels": [
+        "submit transaction swap report"
+      ],
+      "aliases": [],
+      "definition_sha256": "5d4e93710f162e259bfa75ab5af3220c93344c89a9e9ae45d7c011f01d82f54c"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:70ba372edb45aaed05e3a2d7",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "calculate a cds margin call",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:95d96f5a55ff166b86a704cf"
+      ],
+      "member_labels": [
+        "calculate a cds margin call"
+      ],
+      "aliases": [],
+      "definition_sha256": "8ad920969e87830ed382ddc9c55fd0f1d17eef774abadb80ff0789764122af81"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:8fb131c9e2802332ef8e71ac",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "execute credit derivative trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:c266d6199c965b26bc34eecc",
+        "task:credit_trading:a586ec7dfb5b3675c0ee2162"
+      ],
+      "member_labels": [
+        "execute credit derivative trade",
+        "report credit derivative to trade repository"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:credit_trading:a586ec7dfb5b3675c0ee2162",
+          "label": "report credit derivative to trade repository",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "e3759d25b3519972355dee27c8c9669acc3c358e7d84d4b28ddacd498f95dd47"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:ab2cbf5bff09b9c98d0f703d",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "mark credit book to official bond cds curf",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:c07af48bc0970925c51bf821"
+      ],
+      "member_labels": [
+        "mark credit book to official bond cds curf"
+      ],
+      "aliases": [],
+      "definition_sha256": "9b19ea165b0b484f34c270489295ea8d86dcc7d96dac6942b567d5207ef898f5"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:acec3b22b04f72adb163db7c",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "execute credit default swap order",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:fa6fc0c2a846dd7c1c308704",
+        "task:credit_trading:529be2498553e17b03bc22f7",
+        "task:credit_trading:e25068dc79a810f64dd1050c"
+      ],
+      "member_labels": [
+        "execute client credit default swap order",
+        "execute corporate bond or credit default swap trade",
+        "execute credit default swap order"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:credit_trading:fa6fc0c2a846dd7c1c308704",
+          "label": "execute client credit default swap order",
+          "rationale": "machine-clustered: mean Jaccard 0.75 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "task:credit_trading:529be2498553e17b03bc22f7",
+          "label": "execute corporate bond or credit default swap trade",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "3fca667b02762e3af48105dba00c1a7fc2674565f0200abc884797f900fda747"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:ce9393d8ef0f83bcdad16864",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "reconcile cds position to ccp",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:7903fe8f4940984f8bc04bf8"
+      ],
+      "member_labels": [
+        "reconcile cds position to ccp"
+      ],
+      "aliases": [],
+      "definition_sha256": "7a911389ca21b3d5884647d1f795ac3a1cf2fce68c9a5978889b59d9f480f039"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:d93e99a1e711602b9009cba9",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "mark credit position reconcile to clearing",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:105cdeac7a99d7565a5a0176"
+      ],
+      "member_labels": [
+        "mark credit position reconcile to clearing"
+      ],
+      "aliases": [],
+      "definition_sha256": "18a149eca55411f8eb66c379280d784ff2b2ab46c182e7574e0ca3cf7b736b3d"
+    },
+    {
+      "concept_id": "task_concept:credit_trading:f0b690bc6a8c5f2e2c5fa699",
+      "kind": "task_concept",
+      "division_key": "credit_trading",
+      "label": "price execute a cds",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:credit_trading:8d2bd0e83fdfdb3864ffbce3"
+      ],
+      "member_labels": [
+        "price execute a cds"
+      ],
+      "aliases": [],
+      "definition_sha256": "46f9e7c3105c85a4029c2a29d3cbe7ba011bfa80786d0f1ddde53b79cf53bfc0"
+    },
+    {
+      "concept_id": "task_concept:dcm_origination:20ce51026c5e681c026ff623",
+      "kind": "task_concept",
+      "division_key": "dcm_origination",
+      "label": "prepare file prospectus",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:dcm_origination:27e6decaa190700203b1a02d"
+      ],
+      "member_labels": [
+        "prepare file prospectus"
+      ],
+      "aliases": [],
+      "definition_sha256": "a897140525943c8d867c7c1e89d0c50780ce40466e7079000e6b7de670e9f923"
+    },
+    {
+      "concept_id": "task_concept:dcm_origination:329312a24ad9bbe48e0baa4d",
+      "kind": "task_concept",
+      "division_key": "dcm_origination",
+      "label": "price allocate new bond issue",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:dcm_origination:78c3446b46b962636ccbd9fb"
+      ],
+      "member_labels": [
+        "price allocate new bond issue"
+      ],
+      "aliases": [],
+      "definition_sha256": "9f17d242d4e5fb0b1d3eaa06290dcc7b0cde2ead15c15aceb652ea4f45973d9f"
+    },
+    {
+      "concept_id": "task_concept:dcm_origination:c9e4b5f05f5d796f2798ea68",
+      "kind": "task_concept",
+      "division_key": "dcm_origination",
+      "label": "settle new issuance",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:dcm_origination:f7e7cf7ec67faf48066d03a8"
+      ],
+      "member_labels": [
+        "settle new issuance"
+      ],
+      "aliases": [],
+      "definition_sha256": "017500ee7420ebeb94426d3673c847201a55c0723cd4484c8cd3939affc5c188"
+    },
+    {
+      "concept_id": "task_concept:ecm_origination:431edc3b52b41009ff0d9271",
+      "kind": "task_concept",
+      "division_key": "ecm_origination",
+      "label": "file registration statement or prospectus",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:ecm_origination:9a9a1b3e1f6f8179921230c0"
+      ],
+      "member_labels": [
+        "file registration statement or prospectus"
+      ],
+      "aliases": [],
+      "definition_sha256": "2c0c3ad97fdebbb72ac68e71e6360a1672f5d20c3b0579895a622ddd955150c2"
+    },
+    {
+      "concept_id": "task_concept:ecm_origination:5b246927fadb1160f6cd506e",
+      "kind": "task_concept",
+      "division_key": "ecm_origination",
+      "label": "allocate share to investor",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:ecm_origination:2aba59ffe7b4d907eb1eacd6"
+      ],
+      "member_labels": [
+        "allocate share to investor"
+      ],
+      "aliases": [],
+      "definition_sha256": "7d4da602e8c76f2d7261d1de312015e998e2ed42ea641b86de12600168a0c9c1"
+    },
+    {
+      "concept_id": "task_concept:ecm_origination:ac3908d8f94cbdaf48b82790",
+      "kind": "task_concept",
+      "division_key": "ecm_origination",
+      "label": "price initial public offering or follow on offering",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:ecm_origination:db42a21c4c3408fe4187c192"
+      ],
+      "member_labels": [
+        "price initial public offering or follow on offering"
+      ],
+      "aliases": [],
+      "definition_sha256": "5733359ffc5f1c4295526e1a21674cc688c06dfb7db7150952eb735ff9319c2e"
+    },
+    {
+      "concept_id": "task_concept:em_trading:2593db48ab9134d6d4728344",
+      "kind": "task_concept",
+      "division_key": "em_trading",
+      "label": "revalue em book with official local curf",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:em_trading:047915308b9696d924237773"
+      ],
+      "member_labels": [
+        "revalue em book with official local curf"
+      ],
+      "aliases": [],
+      "definition_sha256": "984014b121560fabebdac63f13042fcea0325ba9bdf35f07d0f3204dbffbc7b0"
+    },
+    {
+      "concept_id": "task_concept:em_trading:25be00b8480973666dafb863",
+      "kind": "task_concept",
+      "division_key": "em_trading",
+      "label": "mark em position to market",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:em_trading:78bdbc4b9702e7ce944befb8"
+      ],
+      "member_labels": [
+        "mark em position to market"
+      ],
+      "aliases": [],
+      "definition_sha256": "dfd8ffd316386d54ebff441f4b70007cc19454c10eeb358b0453efe2b1c44a4c"
+    },
+    {
+      "concept_id": "task_concept:em_trading:404c14fbd2a8aba1a5a8eb84",
+      "kind": "task_concept",
+      "division_key": "em_trading",
+      "label": "resolve local settlement exception",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:em_trading:a991fed1fa7bd4e0495a8110"
+      ],
+      "member_labels": [
+        "resolve local settlement exception"
+      ],
+      "aliases": [],
+      "definition_sha256": "aee114472841ab0fed7b639a30b17b9af1d163e333d563df1d814c0625747165"
+    },
+    {
+      "concept_id": "task_concept:em_trading:7c95b79937bfb5bef6e4f833",
+      "kind": "task_concept",
+      "division_key": "em_trading",
+      "label": "validate local regulatory reporting",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:em_trading:a540990d819794ca2a2f37a7"
+      ],
+      "member_labels": [
+        "validate local regulatory reporting"
+      ],
+      "aliases": [],
+      "definition_sha256": "33e8191e7c137e6bd56973164dff87ba261a094be1369d27fa623de67909719d"
+    },
+    {
+      "concept_id": "task_concept:em_trading:c06534d95860999be522effa",
+      "kind": "task_concept",
+      "division_key": "em_trading",
+      "label": "confirm local market trade with broker or counterparty",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:em_trading:508178adbd5c9e36422cec26"
+      ],
+      "member_labels": [
+        "confirm local market trade with broker or counterparty"
+      ],
+      "aliases": [],
+      "definition_sha256": "169c01da83740f5a10e4ab1c2b9ac957f0bfb4ca0155245c8c8ca9c6b15e55b8"
+    },
+    {
+      "concept_id": "task_concept:em_trading:c98a50dd8a88a5dccdaf6250",
+      "kind": "task_concept",
+      "division_key": "em_trading",
+      "label": "monitor country counterparty limit",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:em_trading:4decc7637e62ddfb3b94341b"
+      ],
+      "member_labels": [
+        "monitor country counterparty limit"
+      ],
+      "aliases": [],
+      "definition_sha256": "cd9c64502492b551e8f453423b5494b96b7f79957a04c905ce7afbae9dde5138"
+    },
+    {
+      "concept_id": "task_concept:em_trading:f821f7a752550856857be057",
+      "kind": "task_concept",
+      "division_key": "em_trading",
+      "label": "reconcile fx settlement local cash",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:em_trading:d2767e171ec9e237205743cf"
+      ],
+      "member_labels": [
+        "reconcile fx settlement local cash"
+      ],
+      "aliases": [],
+      "definition_sha256": "8374b6694b13e65018d348bdd08df79dc69f59f4837453c28e09bfc4af43f760"
+    },
+    {
+      "concept_id": "task_concept:em_trading:f87998e1fc5e1455c62997b3",
+      "kind": "task_concept",
+      "division_key": "em_trading",
+      "label": "execute em fx rate or credit order",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:em_trading:545abeb370b9c12298717d63"
+      ],
+      "member_labels": [
+        "execute em fx rate or credit order"
+      ],
+      "aliases": [],
+      "definition_sha256": "70f7d38c4525152fdbab6347a3ce7affe36c8985b3a9ede2decc698633811b27"
+    },
+    {
+      "concept_id": "task_concept:equities_trading:23d097cf36e73adb829c6a3b",
+      "kind": "task_concept",
+      "division_key": "equities_trading",
+      "label": "generate settlement instruction",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equities_trading:bf8ed29fdd4d84281afe46cb"
+      ],
+      "member_labels": [
+        "generate settlement instruction"
+      ],
+      "aliases": [],
+      "definition_sha256": "f8c1b777c024ccf158524f7d53747e34e3b840b89b8a3bd6c9736bfcb617a418"
+    },
+    {
+      "concept_id": "task_concept:equities_trading:24a00d17e10c35baf930d705",
+      "kind": "task_concept",
+      "division_key": "equities_trading",
+      "label": "document short sale locate",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equities_trading:33c548276a9b05d875447a89",
+        "task:equities_trading:c501bcf21216ad26795530d2",
+        "task:equities_trading:868395658aded43af2037f0b"
+      ],
+      "member_labels": [
+        "document a short sale locate under regulation sho",
+        "document short sale locate",
+        "perform short sale locate before execution"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:equities_trading:33c548276a9b05d875447a89",
+          "label": "document a short sale locate under regulation sho",
+          "rationale": "machine-clustered: mean Jaccard 0.52 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "task:equities_trading:868395658aded43af2037f0b",
+          "label": "perform short sale locate before execution",
+          "rationale": "machine-clustered: mean Jaccard 0.44 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "12ded5dc50b31dbad9f80f68ab9e72dbb633c54bcdf144d7419cfab2ec11c432"
+    },
+    {
+      "concept_id": "task_concept:equities_trading:2e3cc3fd3a3dea7e70a0de85",
+      "kind": "task_concept",
+      "division_key": "equities_trading",
+      "label": "produce best execution review",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equities_trading:ee81fac6744d4d0912b20f4e",
+        "task:equities_trading:b2b374c5c80f807d00403178"
+      ],
+      "member_labels": [
+        "produce best execution review",
+        "produce best execution venue report"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:equities_trading:b2b374c5c80f807d00403178",
+          "label": "produce best execution venue report",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "208c9574eea7255e65c5205cc82ad8fb5450e2a1bf881cbc679b05478265d9e6"
+    },
+    {
+      "concept_id": "task_concept:equities_trading:5f238cff32414d81be4c8e7e",
+      "kind": "task_concept",
+      "division_key": "equities_trading",
+      "label": "execute client equity order",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equities_trading:4855df3559faef598ca5f1fa",
+        "task:equities_trading:1844024492818c67ac90b460",
+        "task:equities_trading:a283b1758d7aa9ac70585b7e",
+        "task:equities_trading:a018a63ab39c41d212eb2200"
+      ],
+      "member_labels": [
+        "execute a client equity order",
+        "execute client cash equity order",
+        "execute client equity order",
+        "execute client equity trade"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:equities_trading:4855df3559faef598ca5f1fa",
+          "label": "execute a client equity order",
+          "rationale": "machine-clustered: mean Jaccard 0.75 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "task:equities_trading:1844024492818c67ac90b460",
+          "label": "execute client cash equity order",
+          "rationale": "machine-clustered: mean Jaccard 0.63 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "task:equities_trading:a018a63ab39c41d212eb2200",
+          "label": "execute client equity trade",
+          "rationale": "machine-clustered: mean Jaccard 0.47 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "ec25cd2203ec006a256989233fa1e4dfd2dba20f1bb80b46db9a4d501f5b987e"
+    },
+    {
+      "concept_id": "task_concept:equities_trading:702bced2b2f421651cacc731",
+      "kind": "task_concept",
+      "division_key": "equities_trading",
+      "label": "allocate executed equity trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equities_trading:8591d1059921618034e10943"
+      ],
+      "member_labels": [
+        "allocate executed equity trade"
+      ],
+      "aliases": [],
+      "definition_sha256": "764d6f1dfdca11babdafa8c683c5828ade534e486fb7607881af842a0e1861ea"
+    },
+    {
+      "concept_id": "task_concept:equities_trading:919e5d52c50fbab1e7e8b38e",
+      "kind": "task_concept",
+      "division_key": "equities_trading",
+      "label": "reconcile equity position",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equities_trading:2f08e92ad6cbc16632c1a777",
+        "task:equities_trading:ccd4258343973a619b484e8d"
+      ],
+      "member_labels": [
+        "reconcile equity position",
+        "reconcile equity position to custodian"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:equities_trading:ccd4258343973a619b484e8d",
+          "label": "reconcile equity position to custodian",
+          "rationale": "machine-clustered: mean Jaccard 0.75 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "5278268205fe7db7d023630e6877a8c82a9f139b69670ede333bbfbfced539f4"
+    },
+    {
+      "concept_id": "task_concept:equities_trading:a65c1cb99f15a6b45980e70f",
+      "kind": "task_concept",
+      "division_key": "equities_trading",
+      "label": "confirm affirm execution",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equities_trading:dbdc76d539185542957eee27"
+      ],
+      "member_labels": [
+        "confirm affirm execution"
+      ],
+      "aliases": [],
+      "definition_sha256": "734783727492bd1f97470356cc4077b1e63ce619bda366fdb28e849b8dfdec4f"
+    },
+    {
+      "concept_id": "task_concept:equities_trading:be7e3bdb7d20670923d12377",
+      "kind": "task_concept",
+      "division_key": "equities_trading",
+      "label": "calculate daily p l for equity book",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equities_trading:d3d8c1321a9672507881cb08"
+      ],
+      "member_labels": [
+        "calculate daily p l for equity book"
+      ],
+      "aliases": [],
+      "definition_sha256": "2ca51029e4bf9738a5600c5f54ba0557b7dff0d37ebcc2ec39aad60af422c2a0"
+    },
+    {
+      "concept_id": "task_concept:equities_trading:e71153edd0da34b553a1ae8e",
+      "kind": "task_concept",
+      "division_key": "equities_trading",
+      "label": "reconcile trade affirmation",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equities_trading:51009e3b5b27b0e491b7eaa6"
+      ],
+      "member_labels": [
+        "reconcile trade affirmation"
+      ],
+      "aliases": [],
+      "definition_sha256": "8e9a8fc361f77927bd9c1eb39786c8189916cd2c3499b2873cd504d0fe82d4af"
+    },
+    {
+      "concept_id": "task_concept:equities_trading:f923ca11a5cac68cc51cd61c",
+      "kind": "task_concept",
+      "division_key": "equities_trading",
+      "label": "allocate executed share across client account",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equities_trading:a9d246c154c1422892bb7d35"
+      ],
+      "member_labels": [
+        "allocate executed share across client account"
+      ],
+      "aliases": [],
+      "definition_sha256": "879433c2b7f6ab8893845e03e0f2b852dfa9973f92a6c760a319ffe97809cd67"
+    },
+    {
+      "concept_id": "task_concept:equity_derivatives_structured:0bbcbb4938d4aadc5beeba8c",
+      "kind": "task_concept",
+      "division_key": "equity_derivatives_structured",
+      "label": "capture executed equity trade into core trading system",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equity_derivatives_structured:ae8ad3ea7d370981a882c60e"
+      ],
+      "member_labels": [
+        "capture executed equity trade into core trading system"
+      ],
+      "aliases": [],
+      "definition_sha256": "3734140d51ff18bcfa674559decd8ed88f41bfe0e7572664201d7663d51f50ad"
+    },
+    {
+      "concept_id": "task_concept:equity_derivatives_structured:1cf4aff450f6b7e8b719d1d8",
+      "kind": "task_concept",
+      "division_key": "equity_derivatives_structured",
+      "label": "execute delta hedge",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equity_derivatives_structured:6ec5b5e779b66a564b6a1003",
+        "task:equity_derivatives_structured:f0b9fdf8536aa1d4c76bddda"
+      ],
+      "member_labels": [
+        "execute delta hedge",
+        "execute delta hedge for equity derivative"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:equity_derivatives_structured:f0b9fdf8536aa1d4c76bddda",
+          "label": "execute delta hedge for equity derivative",
+          "rationale": "machine-clustered: mean Jaccard 0.60 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "9b3d97e76cc43ec4590c265576d3303c3ab4ba8d6250f01810c098d28bf49973"
+    },
+    {
+      "concept_id": "task_concept:equity_derivatives_structured:205c281fd9dd5e86a85e844a",
+      "kind": "task_concept",
+      "division_key": "equity_derivatives_structured",
+      "label": "calculate post hedge rebalance",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equity_derivatives_structured:b94594ae1c74802c30e2d370"
+      ],
+      "member_labels": [
+        "calculate post hedge rebalance"
+      ],
+      "aliases": [],
+      "definition_sha256": "bebc1b700c1129e103c265cdf1bda6d7310966db472b4929308a6b4d02a95a8b"
+    },
+    {
+      "concept_id": "task_concept:equity_derivatives_structured:8c407a991892fa5fe3b17cef",
+      "kind": "task_concept",
+      "division_key": "equity_derivatives_structured",
+      "label": "mark dividend volatility input",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equity_derivatives_structured:6b9fa2effa2821b47bc99c84"
+      ],
+      "member_labels": [
+        "mark dividend volatility input"
+      ],
+      "aliases": [],
+      "definition_sha256": "c32a38069b9ff856ec4dffa9dcb95634fe7cfa2f3bbe54d37a6ef49568bc038c"
+    },
+    {
+      "concept_id": "task_concept:equity_derivatives_structured:b38ec6052b8067bfb1206d59",
+      "kind": "task_concept",
+      "division_key": "equity_derivatives_structured",
+      "label": "allocate executed equity trade to client account",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equity_derivatives_structured:a7ac76d805630e16648fb17d"
+      ],
+      "member_labels": [
+        "allocate executed equity trade to client account"
+      ],
+      "aliases": [],
+      "definition_sha256": "85d4c3605dd8523ccb8a2b6fcee5596008dcf013db6f62facb245a14baaac004"
+    },
+    {
+      "concept_id": "task_concept:equity_derivatives_structured:b9d8eb59778c7291f7065012",
+      "kind": "task_concept",
+      "division_key": "equity_derivatives_structured",
+      "label": "execute equity order",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equity_derivatives_structured:a010c5383f105b10fbaffdf8"
+      ],
+      "member_labels": [
+        "execute equity order"
+      ],
+      "aliases": [],
+      "definition_sha256": "dac5995c8b415a6c33be28624025140aa22b7ec0e9f0222b3678fffa31e387f6"
+    },
+    {
+      "concept_id": "task_concept:equity_derivatives_structured:bfa42ff286069ecb73103ea5",
+      "kind": "task_concept",
+      "division_key": "equity_derivatives_structured",
+      "label": "confirm legal term derivative",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equity_derivatives_structured:536576a7bdf949d6b2311527",
+        "task:equity_derivatives_structured:05de2fac2df3fb09ff5c9eea"
+      ],
+      "member_labels": [
+        "confirm legal term derivative",
+        "confirm legal term structured transaction"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:equity_derivatives_structured:05de2fac2df3fb09ff5c9eea",
+          "label": "confirm legal term structured transaction",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "2698abdd8f5cb252802b85135031fd35194dc1ad4e118da7d3b067a7a7ad90b7"
+    },
+    {
+      "concept_id": "task_concept:equity_derivatives_structured:e32947a0d283b0043389d68b",
+      "kind": "task_concept",
+      "division_key": "equity_derivatives_structured",
+      "label": "price structured equity note",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equity_derivatives_structured:37a7e5e7434b797dfe3b9ebc",
+        "task:equity_derivatives_structured:024963f5f3b250a0e0b4c75e",
+        "task:equity_derivatives_structured:008f48328f4b752400a646b0"
+      ],
+      "member_labels": [
+        "price confirm structured note term",
+        "price structured equity derivative or note",
+        "price structured equity note"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:equity_derivatives_structured:37a7e5e7434b797dfe3b9ebc",
+          "label": "price confirm structured note term",
+          "rationale": "machine-clustered: mean Jaccard 0.46 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "task:equity_derivatives_structured:024963f5f3b250a0e0b4c75e",
+          "label": "price structured equity derivative or note",
+          "rationale": "machine-clustered: mean Jaccard 0.61 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "41179cf14c7c3c73bacd8021f49c1c558a2aafb7c33680b47366cdb9d083a435"
+    },
+    {
+      "concept_id": "task_concept:equity_derivatives_structured:e4f4fd0254a7c40b4e83852c",
+      "kind": "task_concept",
+      "division_key": "equity_derivatives_structured",
+      "label": "daily mark risk calculation",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equity_derivatives_structured:70260143deeff4fa00dc3c71"
+      ],
+      "member_labels": [
+        "daily mark risk calculation"
+      ],
+      "aliases": [],
+      "definition_sha256": "1e5951da237e514748f09078570052e172c1fd5c7c57d6fb923890f759f06872"
+    },
+    {
+      "concept_id": "task_concept:equity_derivatives_structured:e66285b944ff9debd7f4b836",
+      "kind": "task_concept",
+      "division_key": "equity_derivatives_structured",
+      "label": "submit otc derivative report",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:equity_derivatives_structured:15e2939b2add1fccf494cd0b"
+      ],
+      "member_labels": [
+        "submit otc derivative report"
+      ],
+      "aliases": [],
+      "definition_sha256": "4ac38e0429db2b017c90cf9756504f97766516b367fbb3f7b3af50b121f2fbf4"
+    },
+    {
+      "concept_id": "task_concept:fx_cross_asset_combined:5fa587a7ae957774730b5054",
+      "kind": "task_concept",
+      "division_key": "fx_cross_asset_combined",
+      "label": "check fx position against netting limit rule",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_cross_asset_combined:5661407d7bd2c4974adca32f"
+      ],
+      "member_labels": [
+        "check fx position against netting limit rule"
+      ],
+      "aliases": [],
+      "definition_sha256": "4e2d5bf4f21c3d15ccfc17dc5c36e6d29a16c2ff496aa09fafd381af6b7b4fed"
+    },
+    {
+      "concept_id": "task_concept:fx_cross_asset_combined:b1d2d5d757e24694675514df",
+      "kind": "task_concept",
+      "division_key": "fx_cross_asset_combined",
+      "label": "execute fx spot or forward order",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_cross_asset_combined:a8587897d7356ceb11169397"
+      ],
+      "member_labels": [
+        "execute fx spot or forward order"
+      ],
+      "aliases": [],
+      "definition_sha256": "1761cb00f4dfac98485e27e0a4c94f046f628e994288959a4f0200e1454a99f6"
+    },
+    {
+      "concept_id": "task_concept:fx_cross_asset_combined:ce751920f50b3d28fd90347e",
+      "kind": "task_concept",
+      "division_key": "fx_cross_asset_combined",
+      "label": "report trade to trade repository",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_cross_asset_combined:701c5ba5ab026015d12f7960"
+      ],
+      "member_labels": [
+        "report trade to trade repository"
+      ],
+      "aliases": [],
+      "definition_sha256": "e97c2c3c435815cd0c955de1ef96cf22e144528aba194148be02a06c510766b7"
+    },
+    {
+      "concept_id": "task_concept:fx_trading:0b749f3178afc823079c362c",
+      "kind": "task_concept",
+      "division_key": "fx_trading",
+      "label": "check settlement instruction confirm trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_trading:62a64fe473acece699b9501d"
+      ],
+      "member_labels": [
+        "check settlement instruction confirm trade"
+      ],
+      "aliases": [],
+      "definition_sha256": "0f7bfc67b33cbab08aeefca68335b04f12daf7e02566893a1708e6de5b33b96c"
+    },
+    {
+      "concept_id": "task_concept:fx_trading:0fc06d3ee6fea920fd199526",
+      "kind": "task_concept",
+      "division_key": "fx_trading",
+      "label": "quote execute spot or forward fx trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_trading:01ae8a0ceb01e81be5d47733",
+        "task:fx_trading:7f1a04f3f6e62c664f87b20b"
+      ],
+      "member_labels": [
+        "confirm fx spot forward trade with counterparty",
+        "quote execute spot or forward fx trade"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:fx_trading:01ae8a0ceb01e81be5d47733",
+          "label": "confirm fx spot forward trade with counterparty",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "2e97a0057e087a10d5a2b45d34d7ba345a9d781378c0210db7c7ecea9e07f710"
+    },
+    {
+      "concept_id": "task_concept:fx_trading:2815d94355a669b452f34b9e",
+      "kind": "task_concept",
+      "division_key": "fx_trading",
+      "label": "calculate fx margin for an uncleared swap",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_trading:142829fdcfd6a0cc316f4aa4"
+      ],
+      "member_labels": [
+        "calculate fx margin for an uncleared swap"
+      ],
+      "aliases": [],
+      "definition_sha256": "6dd3a55f953093d7f7efb5bd283882f67b107e904d8e98aad126cfae0abdcddc"
+    },
+    {
+      "concept_id": "task_concept:fx_trading:783b7de40638e0d9d3214d46",
+      "kind": "task_concept",
+      "division_key": "fx_trading",
+      "label": "revalue fx position against official fix",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_trading:690f88a17a92bb91dd769748"
+      ],
+      "member_labels": [
+        "revalue fx position against official fix"
+      ],
+      "aliases": [],
+      "definition_sha256": "d4ea21efc705f40e13355d1cb53420b309167fec6a7b0da9b462ad2dea3436ed"
+    },
+    {
+      "concept_id": "task_concept:fx_trading:855484345c352caa82fdbd0e",
+      "kind": "task_concept",
+      "division_key": "fx_trading",
+      "label": "resolve settlement instruction exception",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_trading:a0d7310564663bbe9ac80092"
+      ],
+      "member_labels": [
+        "resolve settlement instruction exception"
+      ],
+      "aliases": [],
+      "definition_sha256": "59f976863ba51722db51e6e16ec6bbbb36d31b7a9be6e65e99f6b88b9f479116"
+    },
+    {
+      "concept_id": "task_concept:fx_trading:a2d9cce050844b9c2aa29488",
+      "kind": "task_concept",
+      "division_key": "fx_trading",
+      "label": "execute client fx spot or swap order",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_trading:6d2425f8b20177bf74a86dfa"
+      ],
+      "member_labels": [
+        "execute client fx spot or swap order"
+      ],
+      "aliases": [],
+      "definition_sha256": "765a329e0cd64feda4284dcfb753c9c2e48f995b6067187c87f932cb2377ae46"
+    },
+    {
+      "concept_id": "task_concept:fx_trading:a3f66cfd13283289ae237096",
+      "kind": "task_concept",
+      "division_key": "fx_trading",
+      "label": "submit transaction report",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_trading:23bc403fb5cffa304176d31a"
+      ],
+      "member_labels": [
+        "submit transaction report"
+      ],
+      "aliases": [],
+      "definition_sha256": "5dd36995a09a8e00f6f8e8a05c8510922837a754ff30e42a7af299c830bd203f"
+    },
+    {
+      "concept_id": "task_concept:fx_trading:c12bcfc951ae98fad7773702",
+      "kind": "task_concept",
+      "division_key": "fx_trading",
+      "label": "mark fx position to market at close",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_trading:653a1bb5e0639d503c25d9d7"
+      ],
+      "member_labels": [
+        "mark fx position to market at close"
+      ],
+      "aliases": [],
+      "definition_sha256": "f04ceb26641bd9b2db7812a8d4238c325a053815ae1eb397dba94cd4c632d92e"
+    },
+    {
+      "concept_id": "task_concept:fx_trading:c88db4432fa39cda26ebfeb2",
+      "kind": "task_concept",
+      "division_key": "fx_trading",
+      "label": "validate settlement instruction cut off",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_trading:f257f3a76c8aa9c3b417db32"
+      ],
+      "member_labels": [
+        "validate settlement instruction cut off"
+      ],
+      "aliases": [],
+      "definition_sha256": "eebe83ff0185987525b0434efd1dfa9a61fe8b7f9671d03ba0d6e8f935abe2b3"
+    },
+    {
+      "concept_id": "task_concept:fx_trading:d79eb91f5d48e33aea692a56",
+      "kind": "task_concept",
+      "division_key": "fx_trading",
+      "label": "reconcile fx position profit loss",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_trading:922e0a9c8eea34360de068f6",
+        "task:fx_trading:72fcacacdb8534a0cb64590b"
+      ],
+      "member_labels": [
+        "reconcile fx position profit loss",
+        "reconcile fx position to clearing house"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:fx_trading:72fcacacdb8534a0cb64590b",
+          "label": "reconcile fx position to clearing house",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "d34ff64c4847ad0aa2ad394aabb01cae25b5d7c40d9aa21ce536fb746bee75b2"
+    },
+    {
+      "concept_id": "task_concept:fx_trading:f35dfc6f0a330027582e8c02",
+      "kind": "task_concept",
+      "division_key": "fx_trading",
+      "label": "hedge residual fx position",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_trading:e8cb0e537c88e60470b67450"
+      ],
+      "member_labels": [
+        "hedge residual fx position"
+      ],
+      "aliases": [],
+      "definition_sha256": "adf45eeaf3a471f8d53a02729b57b5fef50f4bb2a50c194748ed8b0450045f63"
+    },
+    {
+      "concept_id": "task_concept:fx_trading:ff50be191e2cd81140fd030e",
+      "kind": "task_concept",
+      "division_key": "fx_trading",
+      "label": "execute an otc fx forward",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:fx_trading:00b1e3ed566d190466c6ff44"
+      ],
+      "member_labels": [
+        "execute an otc fx forward"
+      ],
+      "aliases": [],
+      "definition_sha256": "2367a4f08c7396136587865c0a238d03549fde68bc09b698b8566ca3f3a4bc87"
+    },
+    {
+      "concept_id": "task_concept:global_banking_financing:3a2739185ad36201912e6ca1",
+      "kind": "task_concept",
+      "division_key": "global_banking_financing",
+      "label": "allocate loan syndication",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:global_banking_financing:5ac09000c6fd9fb57e9f2252"
+      ],
+      "member_labels": [
+        "allocate loan syndication"
+      ],
+      "aliases": [],
+      "definition_sha256": "4e42cd06ac86911b144f2c6801eb6226638666a82abd5ea74a02a481b645edb4"
+    },
+    {
+      "concept_id": "task_concept:global_banking_financing:3cb5e033fb2b2a339d21b288",
+      "kind": "task_concept",
+      "division_key": "global_banking_financing",
+      "label": "commit a syndicated loan",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:global_banking_financing:95e1b468db2ab0f9b298252a"
+      ],
+      "member_labels": [
+        "commit a syndicated loan"
+      ],
+      "aliases": [],
+      "definition_sha256": "55ebc14512dbf96b92fe2367cff1cd6f5256947e0f78d696437abaa7d99603e5"
+    },
+    {
+      "concept_id": "task_concept:global_banking_financing:e0a906d355f443184876c7ba",
+      "kind": "task_concept",
+      "division_key": "global_banking_financing",
+      "label": "process loan drawdown",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:global_banking_financing:385bed36274570c7115c3978"
+      ],
+      "member_labels": [
+        "process loan drawdown"
+      ],
+      "aliases": [],
+      "definition_sha256": "ea4156bdb64c166bdbec4be037a25bd2362807aecdf42b320c4af83bf770d336"
+    },
+    {
+      "concept_id": "task_concept:global_financing_capital_markets:8a62d9f894dbe63020d98600",
+      "kind": "task_concept",
+      "division_key": "global_financing_capital_markets",
+      "label": "capture financing transaction into core system",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:global_financing_capital_markets:46e2f96be86ce66a4ed23026"
+      ],
+      "member_labels": [
+        "capture financing transaction into core system"
+      ],
+      "aliases": [],
+      "definition_sha256": "20f0aab0ae62099930c765714ccb42a4bc6b4b99089b5fea2870ab237d4c9913"
+    },
+    {
+      "concept_id": "task_concept:global_financing_capital_markets:9e68c55f64278e76080a79f1",
+      "kind": "task_concept",
+      "division_key": "global_financing_capital_markets",
+      "label": "allocate syndicated loan",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:global_financing_capital_markets:9b3ea460f2b803edf8fa7ed4"
+      ],
+      "member_labels": [
+        "allocate syndicated loan"
+      ],
+      "aliases": [],
+      "definition_sha256": "9fa16d2ec9e4a7dcb1b8b1ca381c559edd0d77537507bac0a6263e6f9c931b19"
+    },
+    {
+      "concept_id": "task_concept:global_financing_capital_markets:d5e455750ab22fbcb03a5b9f",
+      "kind": "task_concept",
+      "division_key": "global_financing_capital_markets",
+      "label": "prepare loan commitment",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:global_financing_capital_markets:821eb9fcc6a2c8aef6c4201f"
+      ],
+      "member_labels": [
+        "prepare loan commitment"
+      ],
+      "aliases": [],
+      "definition_sha256": "bb2cf51a861c476b7082fca2f9733746ed235a49b5702a549f5c9602993720fa"
+    },
+    {
+      "concept_id": "task_concept:leveraged_finance_loan_capital_markets:7e5e44a75e74f291c386a4e9",
+      "kind": "task_concept",
+      "division_key": "leveraged_finance_loan_capital_markets",
+      "label": "run leveraged lending underwriting test",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:leveraged_finance_loan_capital_markets:a867b6efcd4d9143ec7f7c3d"
+      ],
+      "member_labels": [
+        "run leveraged lending underwriting test"
+      ],
+      "aliases": [],
+      "definition_sha256": "c9937ba06406b9a25c220cd9b9f651eb2967ed15418d36e06c46cf6d465b8e68"
+    },
+    {
+      "concept_id": "task_concept:leveraged_finance_loan_capital_markets:c5d43bb8ca42a8c0b6f08a2a",
+      "kind": "task_concept",
+      "division_key": "leveraged_finance_loan_capital_markets",
+      "label": "settle loan closing",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:leveraged_finance_loan_capital_markets:bb5fa3f595ffc0cb22283fda"
+      ],
+      "member_labels": [
+        "settle loan closing"
+      ],
+      "aliases": [],
+      "definition_sha256": "2c3a39a1ac82e916a1b208a6176254c7262807e303e671349413bf9970ac290f"
+    },
+    {
+      "concept_id": "task_concept:leveraged_finance_loan_capital_markets:db7a9d97aaf984ecee58a561",
+      "kind": "task_concept",
+      "division_key": "leveraged_finance_loan_capital_markets",
+      "label": "price allocate syndicated leveraged loan",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:leveraged_finance_loan_capital_markets:ae3e8104f20cb771a4d83f26"
+      ],
+      "member_labels": [
+        "price allocate syndicated leveraged loan"
+      ],
+      "aliases": [],
+      "definition_sha256": "0048e918f8fdf350f7d5273e6fbdb1b2d0898f3674e781111bf3a039354adb57"
+    },
+    {
+      "concept_id": "task_concept:listed_derivatives_client_clearing:005b2569de03f0d4dc03ec7c",
+      "kind": "task_concept",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "clear exchange traded future trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:listed_derivatives_client_clearing:68e12da78e60de2f123129a1"
+      ],
+      "member_labels": [
+        "clear exchange traded future trade"
+      ],
+      "aliases": [],
+      "definition_sha256": "21b2042498ecc838f7d935c860e601b8304bef1899d90cb16492c372b0764e33"
+    },
+    {
+      "concept_id": "task_concept:listed_derivatives_client_clearing:03d791b9325009fd187bb28f",
+      "kind": "task_concept",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "determine client clearing eligibility",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:listed_derivatives_client_clearing:b4e0384f912b838171da284b"
+      ],
+      "member_labels": [
+        "determine client clearing eligibility"
+      ],
+      "aliases": [],
+      "definition_sha256": "13daea1c8f2e60b0f775a5b7237b6d6be33eb2d604d643f445f390f76e11f0c9"
+    },
+    {
+      "concept_id": "task_concept:listed_derivatives_client_clearing:3c9a509dbbccaa38a8d40547",
+      "kind": "task_concept",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "process option exercise or assignment",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:listed_derivatives_client_clearing:4a0ebe0f098743ce11646ecf"
+      ],
+      "member_labels": [
+        "process option exercise or assignment"
+      ],
+      "aliases": [],
+      "definition_sha256": "96bacb05170616e222b07afea832384c94cf969a8da252e5ca18e7bb685af5c0"
+    },
+    {
+      "concept_id": "task_concept:listed_derivatives_client_clearing:88c1f14301b93a0e8b98bd71",
+      "kind": "task_concept",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "allocate executed trade to client account",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:listed_derivatives_client_clearing:4a6826ad0ad337515ac95729"
+      ],
+      "member_labels": [
+        "allocate executed trade to client account"
+      ],
+      "aliases": [],
+      "definition_sha256": "30861a20a40f78b9944e770ea1576c425884c315bf2fbe8e1c1b5011d0260a9f"
+    },
+    {
+      "concept_id": "task_concept:listed_derivatives_client_clearing:972cb4c424115e37c664ae70",
+      "kind": "task_concept",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "calculate initial variation margin",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:listed_derivatives_client_clearing:0255632e8e772188a531c7bd",
+        "task:listed_derivatives_client_clearing:3a2bcb8cacc83a2c2970068c"
+      ],
+      "member_labels": [
+        "calculate initial margin requirement",
+        "calculate initial variation margin"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:listed_derivatives_client_clearing:0255632e8e772188a531c7bd",
+          "label": "calculate initial margin requirement",
+          "rationale": "machine-clustered: mean Jaccard 0.60 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "853d81b62b7e8f2f9ed7306ce64b5f06071c8624e5490ae2499e1be013f0c22b"
+    },
+    {
+      "concept_id": "task_concept:listed_derivatives_client_clearing:c03674717789f24cd9491538",
+      "kind": "task_concept",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "submit regulatory clearing report",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:listed_derivatives_client_clearing:838d52dc2add7d536a9ea1da"
+      ],
+      "member_labels": [
+        "submit regulatory clearing report"
+      ],
+      "aliases": [],
+      "definition_sha256": "cf03f912d8ebb066c91fc5ad33ecd46559ceb96b22877fdf505b3963e4aba518"
+    },
+    {
+      "concept_id": "task_concept:listed_derivatives_client_clearing:ccb31d8762856a08eb714943",
+      "kind": "task_concept",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "reconcile position with clearinghouse",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:listed_derivatives_client_clearing:da37f6f52c8b13c9f5b9fc0b"
+      ],
+      "member_labels": [
+        "reconcile position with clearinghouse"
+      ],
+      "aliases": [],
+      "definition_sha256": "805a7c6373a41a2e1b13ca90c79451c2f4ea394b46f8444e251fc10c27ad5d12"
+    },
+    {
+      "concept_id": "task_concept:market_risk_management:19ea8e3c9de7a696e720e47f",
+      "kind": "task_concept",
+      "division_key": "market_risk_management",
+      "label": "run stress test",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:market_risk_management:c1d073cc3f6c18644d1dde1b"
+      ],
+      "member_labels": [
+        "run stress test"
+      ],
+      "aliases": [],
+      "definition_sha256": "e09e93ec1e53467cf7acd082b154e251f7fdc8a83b896c6f403297d4912a1d0b"
+    },
+    {
+      "concept_id": "task_concept:market_risk_management:26be41d7c8c2000c6f5a9178",
+      "kind": "task_concept",
+      "division_key": "market_risk_management",
+      "label": "validate risk model output",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:market_risk_management:ea3978263f9fe3f9907cf00c"
+      ],
+      "member_labels": [
+        "validate risk model output"
+      ],
+      "aliases": [],
+      "definition_sha256": "d07e2739131c4c99aa5de3f6c72d6770eef19b4842a614d8856635cbe1302afa"
+    },
+    {
+      "concept_id": "task_concept:market_risk_management:363c009b3ebd35635a15f6a8",
+      "kind": "task_concept",
+      "division_key": "market_risk_management",
+      "label": "reconcile risk position to trading",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:market_risk_management:ced492ea97dc2d5d545d3bfe"
+      ],
+      "member_labels": [
+        "reconcile risk position to trading"
+      ],
+      "aliases": [],
+      "definition_sha256": "72c26a7dc204aa552f9c9c16b8d339aa034337cff05f3b1ea601f772a74bc6d4"
+    },
+    {
+      "concept_id": "task_concept:market_risk_management:952f23f4a0c814c43da89911",
+      "kind": "task_concept",
+      "division_key": "market_risk_management",
+      "label": "calculate var",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:market_risk_management:e9966056cdba9ac4f5047203",
+        "task:market_risk_management:b25e61494ee082e4d88e9a2b"
+      ],
+      "member_labels": [
+        "calculate daily var",
+        "calculate var"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:market_risk_management:e9966056cdba9ac4f5047203",
+          "label": "calculate daily var",
+          "rationale": "machine-clustered: mean Jaccard 1.00 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "e5665fa005aa89d7d1ebd5b52758fb39283e0ff6fa3aab81e36ef59a337a620f"
+    },
+    {
+      "concept_id": "task_concept:market_risk_management:b8cd0f190a3f3f99a37476f6",
+      "kind": "task_concept",
+      "division_key": "market_risk_management",
+      "label": "check limit breach",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:market_risk_management:a2e24d4f4ff09ec2e1e85981",
+        "task:market_risk_management:58e91190cde07cac48e81df8"
+      ],
+      "member_labels": [
+        "check limit breach",
+        "monitor limit breach"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:market_risk_management:58e91190cde07cac48e81df8",
+          "label": "monitor limit breach",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "044eacddc9f19152728becd4cdf347f585babbb081d887d881a8425db0e6a877"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:1dac3a55da3dc80ae9efd3e5",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "locate share for short sale",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:251acee1d27109299b6b15da"
+      ],
+      "member_labels": [
+        "locate share for short sale"
+      ],
+      "aliases": [],
+      "definition_sha256": "92277af1e43c2c53f647b2cd352ad6089945d2369b87e10b8df16a0890aa2758"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:4da112e3ae74012acca48bd9",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "process security lending",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:d9cde3d88b7686e6f17062b2"
+      ],
+      "member_labels": [
+        "process security lending"
+      ],
+      "aliases": [],
+      "definition_sha256": "12c49c1cd40ead68e2064e352acc0363fbcaef3a037a9ec9ee70bff87da8a1c8"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:69dc245be988e026d480fa97",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "settle a prime brokerage trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:e86c48b4dc20c9bfeda085a9"
+      ],
+      "member_labels": [
+        "settle a prime brokerage trade"
+      ],
+      "aliases": [],
+      "definition_sha256": "9da03539753becc99810edeb132d21da3926b90e41231f955172929eb52fa3bb"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:8f9aba11c6c5096747fec0c7",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "mark collateral",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:bc58af9ceaa6e86b16f0cb60"
+      ],
+      "member_labels": [
+        "mark collateral"
+      ],
+      "aliases": [],
+      "definition_sha256": "d23fc24abb704ff8486635caba63a767eae663eb589ac4343b5b689841a2cb8d"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:990f282f1e1515b267a5000d",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "allocate security lending to a hedge fund",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:7e1e5d1465edcb52839e68eb"
+      ],
+      "member_labels": [
+        "allocate security lending to a hedge fund"
+      ],
+      "aliases": [],
+      "definition_sha256": "f343951f7bb20dfa64ee3f2f905c2019cd12a158b26a138fc53ccdaa3b3bea44"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:99a69fc032529946e8bde36c",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "process stock loan locate",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:ba81181e41c0b6e0d0779a26"
+      ],
+      "member_labels": [
+        "process stock loan locate"
+      ],
+      "aliases": [],
+      "definition_sha256": "63253c3d1c56b1ca33a651111deb884122c6c8c7e7258e098a54bfe4ee7eb04c"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:9bd8b2048280fd2808b28e5f",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "capture prime trade into core trading system",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:2216682e6bc8272cbc4a7c8a"
+      ],
+      "member_labels": [
+        "capture prime trade into core trading system"
+      ],
+      "aliases": [],
+      "definition_sha256": "9c3281df54986a76b4dd3b5f9e0c1da858841dbaeffde5279927a345f1b4bd88"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:a962542218fb31c36ccb8ef1",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "validate collateral eligibility",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:4ffd88409e6f1d21132dd440"
+      ],
+      "member_labels": [
+        "validate collateral eligibility"
+      ],
+      "aliases": [],
+      "definition_sha256": "1a960464ab58549e94c0e9e71991fdf0e4eca42fb89d1d51fb1426e94dc72324"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:aa56ab0884e0f9d6bf0957c1",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "process security loan recall",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:572eb04619173203a35384a6",
+        "task:prime_brokerage_financing:9071cc422a0ab07fcd3e606e"
+      ],
+      "member_labels": [
+        "process security loan recall",
+        "recall or release security loan"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:prime_brokerage_financing:9071cc422a0ab07fcd3e606e",
+          "label": "recall or release security loan",
+          "rationale": "machine-clustered: mean Jaccard 0.60 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "fa2a15617f6fada44b366c2fdf2419b97c274f5616ac08f389ede714a4b09de4"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:c30e1996dfc72038db499b4a",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "issue margin call",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:9f90df53a2895a29d80ebfef",
+        "task:prime_brokerage_financing:f75642b7a1769cdcfadc6505",
+        "task:prime_brokerage_financing:3c3cb6aa056091f95bd3c8a5",
+        "task:prime_brokerage_financing:620142634412171b325d393d"
+      ],
+      "member_labels": [
+        "calculate client margin call",
+        "calculate issue margin call",
+        "issue a margin call to a hedge fund",
+        "issue margin call"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:prime_brokerage_financing:9f90df53a2895a29d80ebfef",
+          "label": "calculate client margin call",
+          "rationale": "machine-clustered: mean Jaccard 0.53 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "task:prime_brokerage_financing:f75642b7a1769cdcfadc6505",
+          "label": "calculate issue margin call",
+          "rationale": "machine-clustered: mean Jaccard 0.67 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "task:prime_brokerage_financing:3c3cb6aa056091f95bd3c8a5",
+          "label": "issue a margin call to a hedge fund",
+          "rationale": "machine-clustered: mean Jaccard 0.48 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "02be3c20b174ea46e40e8ff4cfc31edd8c67dcefc3f8b2c73db100225f024307"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:cfc051006caa5a3d0f18f34f",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "reset client financing rate",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:e9567abc83eeeaf5c8323a35"
+      ],
+      "member_labels": [
+        "reset client financing rate"
+      ],
+      "aliases": [],
+      "definition_sha256": "ffa2ee47e70f0a6191cdc36aceb96c17fa482ebe50b8096bd03d48ed5fb69d20"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:dd03125fc2e16ef9fc23a6bb",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "report customer asset",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:d8a0d9753d9f7aef70a5764d"
+      ],
+      "member_labels": [
+        "report customer asset"
+      ],
+      "aliases": [],
+      "definition_sha256": "32311c1c5bc49866a0af640b90c04920d8604797ce30720e16753c8c8e484180"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:dff40f325de4ffa54e9aef46",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "allocate block trade to client account",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:6650dd1ed1703c1ad78cb1ae"
+      ],
+      "member_labels": [
+        "allocate block trade to client account"
+      ],
+      "aliases": [],
+      "definition_sha256": "69209fbe495fa37c5210443e651da9ba27288dbd04b24aea3f07933f4051785d"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:e2d7a47880ddc700a8ddfbd5",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "reconcile client account break",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:62278fed78bc618df7d158df"
+      ],
+      "member_labels": [
+        "reconcile client account break"
+      ],
+      "aliases": [],
+      "definition_sha256": "0da4effba8f4fa3e228e37d37299fa7ebd2ef9146454d928c60df957b75f5d8a"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:e90c424b9a0f16b7a929415d",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "calculate client margin requirement",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:43156c9533ee63177a63a6d8"
+      ],
+      "member_labels": [
+        "calculate client margin requirement"
+      ],
+      "aliases": [],
+      "definition_sha256": "c2cb01f5d09fed17eac5b4f1d71b07fd730972f647c4f0c77946d7d6d951fdcb"
+    },
+    {
+      "concept_id": "task_concept:prime_brokerage_financing:f9573795d97d4a78b1bc7a91",
+      "kind": "task_concept",
+      "division_key": "prime_brokerage_financing",
+      "label": "extend margin loan",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:prime_brokerage_financing:36753c525823380d105faedf"
+      ],
+      "member_labels": [
+        "extend margin loan"
+      ],
+      "aliases": [],
+      "definition_sha256": "ebfaa26be66243b5a998d0e74e61eabce4c5194eebd6677b2d5d04ca435fa6b7"
+    },
+    {
+      "concept_id": "task_concept:rates_fx_combined:27377fc5482857c99e8c6e5c",
+      "kind": "task_concept",
+      "division_key": "rates_fx_combined",
+      "label": "calculate daily p l for rate book",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_fx_combined:b6401e2b58efaa2bece92dd4"
+      ],
+      "member_labels": [
+        "calculate daily p l for rate book"
+      ],
+      "aliases": [],
+      "definition_sha256": "030029951e9da94fd07af0ce834560499e62b217b6c38581a171dab31c0a9fa1"
+    },
+    {
+      "concept_id": "task_concept:rates_fx_combined:6494c4e4b3ac3d9cdca41b4e",
+      "kind": "task_concept",
+      "division_key": "rates_fx_combined",
+      "label": "report otc derivative trade to trade repository",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_fx_combined:1b46e81b8749c67f2bc6b14e"
+      ],
+      "member_labels": [
+        "report otc derivative trade to trade repository"
+      ],
+      "aliases": [],
+      "definition_sha256": "21d8ab6d110aa5446ccbcceaf744bfb595cc0244760d4d266d6bc1d0f0ecef96"
+    },
+    {
+      "concept_id": "task_concept:rates_fx_combined:9ecf1cfaf62527a5f7990ffd",
+      "kind": "task_concept",
+      "division_key": "rates_fx_combined",
+      "label": "execute client fx spot trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_fx_combined:1c4ec15ac80ab8f665e70939"
+      ],
+      "member_labels": [
+        "execute client fx spot trade"
+      ],
+      "aliases": [],
+      "definition_sha256": "bf65719aac4bd94ca73360c9fa37043f1217ea1b9be0f00d8c49a90238d39b76"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:063a83b5d0db23c55334af85",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "mark rate position to market at close",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:b0c583add9e0c5064080bca8"
+      ],
+      "member_labels": [
+        "mark rate position to market at close"
+      ],
+      "aliases": [],
+      "definition_sha256": "d0391ac753a9a7c6fbe887d7488405dbadbc08b69c724137901e663a9c046999"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:07e6b0345b523bae878e21bf",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "validate central clearing eligibility for an otc derivative",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:557d15f17f9ad3235d200a12"
+      ],
+      "member_labels": [
+        "validate central clearing eligibility for an otc derivative"
+      ],
+      "aliases": [],
+      "definition_sha256": "072f7d1d0dccd1c2af6a3e730d1ff0d8fa547f3dfac68db2b7e5d545d8f4fa59"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:226daa68d2802a84b599c908",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "execute client interest rate swap order",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:570d46b306e89231ab1d8a59",
+        "task:rates_trading:71197b1fe47667675c246834",
+        "task:rates_trading:b07c01bd64f8eb1b8b3c31bc"
+      ],
+      "member_labels": [
+        "execute client interest rate swap order",
+        "price execute a client interest rate swap",
+        "price execute client hedge in interest rate swap"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:rates_trading:71197b1fe47667675c246834",
+          "label": "price execute a client interest rate swap",
+          "rationale": "machine-clustered: mean Jaccard 0.75 to the other members; unread by any human"
+        },
+        {
+          "reference_id": "task:rates_trading:b07c01bd64f8eb1b8b3c31bc",
+          "label": "price execute client hedge in interest rate swap",
+          "rationale": "machine-clustered: mean Jaccard 0.70 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "e486dc506fba0b71bccbf83c8a6ceaa96c67752c8df9ba5cdc18d4cc18454a50"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:3a1582855fbca87dcf57d723",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "mark curve reconcile profit loss",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:0f051f15539182a31c96d2b3"
+      ],
+      "member_labels": [
+        "mark curve reconcile profit loss"
+      ],
+      "aliases": [],
+      "definition_sha256": "ae8a84d1c25d5c93c526d8527a885f805f5a5a6037f9907edc0e2a4dea61fea7"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:5011ae824303fd45e944f7ed",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "confirm swap economic against execution clearing record",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:36d0ef19067f7d23d6c7e00a"
+      ],
+      "member_labels": [
+        "confirm swap economic against execution clearing record"
+      ],
+      "aliases": [],
+      "definition_sha256": "f3503521af7fdbb23527937035b0c2af1b679d9b8bc629eaf2c71fd919aca40c"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:5b59f5a2cfe86474bfac0590",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "capture executed trade into core trading system",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:b592f41363005226aae555b1"
+      ],
+      "member_labels": [
+        "capture executed trade into core trading system"
+      ],
+      "aliases": [],
+      "definition_sha256": "ae25908b5aee05c63beb3315865b1131d9aa456eb660b174c845698b81bdcfe9"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:6b0f041ace49390601e42f01",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "calculate hedge ratio rebalance hedge",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:a9e11acdb151882af72b82c1"
+      ],
+      "member_labels": [
+        "calculate hedge ratio rebalance hedge"
+      ],
+      "aliases": [],
+      "definition_sha256": "0a2d2db8724178ac01dbdebce1905605a2d5c1ad11aaec159d2f2072ef7f0afc"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:6f446bc65026dbdcbd7826e9",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "check position against var notional limit",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:2209199c8e4da26df328c416"
+      ],
+      "member_labels": [
+        "check position against var notional limit"
+      ],
+      "aliases": [],
+      "definition_sha256": "5933c9a386ba6f06e4485cffd84deff6c909209fef0080b80c77204b5ea4b5df"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:6f9e72de802626a4f2357e9f",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "monitor clear limit exception",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:becbb9e3b875b12494473bea"
+      ],
+      "member_labels": [
+        "monitor clear limit exception"
+      ],
+      "aliases": [],
+      "definition_sha256": "79f59c862d91a262bb4a23a3bf6fc6ed2450da1ab4a118fc0be6fa394db05053"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:9602560a94674c3bef6a274a",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "submit reportable swap data",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:dc1259fff9e9c62c3766d2da"
+      ],
+      "member_labels": [
+        "submit reportable swap data"
+      ],
+      "aliases": [],
+      "definition_sha256": "4e012e3fd19cf2ef85b10bd01a25ee5de83201eb6dc61919516fa1b60ed5b75a"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:b08e01ce682ab3335c37647d",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "submit trade for clearing",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:8e8e17a09907c868692e4e48"
+      ],
+      "member_labels": [
+        "submit trade for clearing"
+      ],
+      "aliases": [],
+      "definition_sha256": "7d96e96550224acb7e80ff10b2456bc0692e8fc54f9cdaf7ca236e3b516e756d"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:bb1a9343c9becefac469516b",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "revalue end day rate book against official curf",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:fa90e0991e1d382047f41502"
+      ],
+      "member_labels": [
+        "revalue end day rate book against official curf"
+      ],
+      "aliases": [],
+      "definition_sha256": "dfe3515d64b1db7f167ca5b8b5ab5b631c2c76d801898b18cc7bd63040bbffd6"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:c7c6aaca88efdcb8ebeacc8f",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "allocate hedge trade to strategy",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:2fd675f637b69216b3c640ce"
+      ],
+      "member_labels": [
+        "allocate hedge trade to strategy"
+      ],
+      "aliases": [],
+      "definition_sha256": "bd8473cfd91e75a0514d69aa39dda9654a4c7cd461841327859dbd06056f72c2"
+    },
+    {
+      "concept_id": "task_concept:rates_trading:dc03760c9a6cdc69fa275dac",
+      "kind": "task_concept",
+      "division_key": "rates_trading",
+      "label": "calculate daily mark to market p l for rate book",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:rates_trading:30b4ec4e1003b4ab63cdf6e2"
+      ],
+      "member_labels": [
+        "calculate daily mark to market p l for rate book"
+      ],
+      "aliases": [],
+      "definition_sha256": "cb958117a8d12f986b829ae53932e274736d1cca91e10b4ef68ab9da22ac5d97"
+    },
+    {
+      "concept_id": "task_concept:regulatory_reporting_conduct_compliance:767a84252d0f451e458919fc",
+      "kind": "task_concept",
+      "division_key": "regulatory_reporting_conduct_compliance",
+      "label": "prepare emir trade report",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:regulatory_reporting_conduct_compliance:a26017e32a6cb808c09eda6e"
+      ],
+      "member_labels": [
+        "prepare emir trade report"
+      ],
+      "aliases": [],
+      "definition_sha256": "633b2fdb3be8acd943b76f844291f2c102758c7d069ab60de72ca0634668c58d"
+    },
+    {
+      "concept_id": "task_concept:regulatory_reporting_conduct_compliance:8e2a9e3a98f96b2144fbd622",
+      "kind": "task_concept",
+      "division_key": "regulatory_reporting_conduct_compliance",
+      "label": "retain book record",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:regulatory_reporting_conduct_compliance:7719054ca75f325ae4a60e66"
+      ],
+      "member_labels": [
+        "retain book record"
+      ],
+      "aliases": [],
+      "definition_sha256": "b3ce812d45050b0edf728cf612c7ad086206d7da13a6c640b5ce3b504641e00f"
+    },
+    {
+      "concept_id": "task_concept:regulatory_reporting_conduct_compliance:d70b2b629c352b1a5a9fab96",
+      "kind": "task_concept",
+      "division_key": "regulatory_reporting_conduct_compliance",
+      "label": "prepare mifir transaction report",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:regulatory_reporting_conduct_compliance:f25cb063715835d26ae7f478"
+      ],
+      "member_labels": [
+        "prepare mifir transaction report"
+      ],
+      "aliases": [],
+      "definition_sha256": "e007bb950d9899a0eab62fc7f3cecaa29a4d870490ff0923a2039105c901a64c"
+    },
+    {
+      "concept_id": "task_concept:repo_secfin_collateral:045df5539af5adfe5d93fce5",
+      "kind": "task_concept",
+      "division_key": "repo_secfin_collateral",
+      "label": "value collateral daily",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:repo_secfin_collateral:96d8128148ca09510e98a020"
+      ],
+      "member_labels": [
+        "value collateral daily"
+      ],
+      "aliases": [],
+      "definition_sha256": "1620072269e4f1512b3996fd38dea2f4e97315bc4413725691d0a1dc0988f22a"
+    },
+    {
+      "concept_id": "task_concept:repo_secfin_collateral:5b042a2456b33430e5f87e54",
+      "kind": "task_concept",
+      "division_key": "repo_secfin_collateral",
+      "label": "meet or dispute margin call",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:repo_secfin_collateral:9180558b239c3bbc8e1325bc"
+      ],
+      "member_labels": [
+        "meet or dispute margin call"
+      ],
+      "aliases": [],
+      "definition_sha256": "428f0a96addf670e5e167bd01c38a27138d98ccdaf5259c104f1fa2515728438"
+    },
+    {
+      "concept_id": "task_concept:repo_secfin_collateral:61787e82ca0013ca05c0f114",
+      "kind": "task_concept",
+      "division_key": "repo_secfin_collateral",
+      "label": "execute repo trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:repo_secfin_collateral:35b43659d737e24171eb0587",
+        "task:repo_secfin_collateral:690a0edd19b48574e1c6d282"
+      ],
+      "member_labels": [
+        "execute repo trade",
+        "settle a repo trade"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:repo_secfin_collateral:690a0edd19b48574e1c6d282",
+          "label": "settle a repo trade",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "a8d865f524c7425f6650fceee714d3ee5666f0c78cc0d0280956d6a90b0e79c2"
+    },
+    {
+      "concept_id": "task_concept:repo_secfin_collateral:633f68953a6885d92a250f21",
+      "kind": "task_concept",
+      "division_key": "repo_secfin_collateral",
+      "label": "process a security lending recall",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:repo_secfin_collateral:2197871441dd055cd459433c"
+      ],
+      "member_labels": [
+        "process a security lending recall"
+      ],
+      "aliases": [],
+      "definition_sha256": "ce039603bc59e0f9ca1b3387b5b21729591b5c99b19d3174ce08efb0d4ee1db9"
+    },
+    {
+      "concept_id": "task_concept:repo_secfin_collateral:6f625eb08139d62906270bc0",
+      "kind": "task_concept",
+      "division_key": "repo_secfin_collateral",
+      "label": "revalue repo book",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:repo_secfin_collateral:626b058376ef83552dec5bbd"
+      ],
+      "member_labels": [
+        "revalue repo book"
+      ],
+      "aliases": [],
+      "definition_sha256": "12e066a3861a0c0c986a4f53371fca1de9cb7d640272cbedb69f862cca23cf7c"
+    },
+    {
+      "concept_id": "task_concept:repo_secfin_collateral:96e1e428726a16c0c806ada4",
+      "kind": "task_concept",
+      "division_key": "repo_secfin_collateral",
+      "label": "calculate daily financing p l",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:repo_secfin_collateral:2a28afae8e1d3ef1c04e8da0"
+      ],
+      "member_labels": [
+        "calculate daily financing p l"
+      ],
+      "aliases": [],
+      "definition_sha256": "b17a6be31680ecdc62079886616e49cf26225c5fe80d0a75ba0a3666406cda31"
+    },
+    {
+      "concept_id": "task_concept:repo_secfin_collateral:dc037dede60e160e839f87e9",
+      "kind": "task_concept",
+      "division_key": "repo_secfin_collateral",
+      "label": "confirm repo trade collateral schedule",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:repo_secfin_collateral:693f634facefab3e4f8e3d76"
+      ],
+      "member_labels": [
+        "confirm repo trade collateral schedule"
+      ],
+      "aliases": [],
+      "definition_sha256": "e8037857ba19ce6e692f1e6163ccf96c7f7b44ea9890d46af9d4bef6d46f40fb"
+    },
+    {
+      "concept_id": "task_concept:repo_secfin_collateral:dffe6b7f2380623663006d13",
+      "kind": "task_concept",
+      "division_key": "repo_secfin_collateral",
+      "label": "allocate collateral to financing transaction",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:repo_secfin_collateral:7ecc15581e6f19200b45f5f7"
+      ],
+      "member_labels": [
+        "allocate collateral to financing transaction"
+      ],
+      "aliases": [],
+      "definition_sha256": "a39e1a289d17b3be4ceb3a1234bf3f879608f03c0015bf00b9c630fc1bcbfdc6"
+    },
+    {
+      "concept_id": "task_concept:repo_secfin_collateral:e7aa63b6d9c7ce508616b060",
+      "kind": "task_concept",
+      "division_key": "repo_secfin_collateral",
+      "label": "validate collateral margin haircut",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:repo_secfin_collateral:f112295b1140405389cbb322"
+      ],
+      "member_labels": [
+        "validate collateral margin haircut"
+      ],
+      "aliases": [],
+      "definition_sha256": "4a7331f71117fca1169e77e46ad647bf700b7433ac075d21ad84351603e80a2b"
+    },
+    {
+      "concept_id": "task_concept:repo_secfin_collateral:f727c1850575ce11e5a6dda1",
+      "kind": "task_concept",
+      "division_key": "repo_secfin_collateral",
+      "label": "process repo settlement",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:repo_secfin_collateral:c10b7324f1516634d766edd7"
+      ],
+      "member_labels": [
+        "process repo settlement"
+      ],
+      "aliases": [],
+      "definition_sha256": "601d2ca7f6b15c9815a01d884caee49798b4e9efc7a7b84c43597c1c03dd845d"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:09974e56f68f1f8dd7240ba4",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "check collateral eligibility",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:414d6cab9577e3eec96d3457"
+      ],
+      "member_labels": [
+        "check collateral eligibility"
+      ],
+      "aliases": [],
+      "definition_sha256": "2fa9b9ce1e0e2d4e8f418c09f538bb38085b194d9d6ebda0d9ed3cf834310dc0"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:25c53be917335b64e824ac5e",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "execute securitised product trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:3300632204ef944f8c7fd540"
+      ],
+      "member_labels": [
+        "execute securitised product trade"
+      ],
+      "aliases": [],
+      "definition_sha256": "320d1101e97d4954396e7fac2cdd59adf3bf60f77e784b285df9a0559c339641"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:2d4d71d21feed242fa0256ab",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "price abs or mbs bid",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:d41e1ebc6a148b2d02e662ba"
+      ],
+      "member_labels": [
+        "price abs or mbs bid"
+      ],
+      "aliases": [],
+      "definition_sha256": "ec87f1364c83dff92d1288500c9c60c665bf36adb6bf523063280955f3a1c4c0"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:380435fade9d61e4fcd49c22",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "report abs transaction",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:ccab3081f682ac981c650e74",
+        "task:securitised_products:94de1185cf70c667c0215727"
+      ],
+      "member_labels": [
+        "report abs transaction",
+        "submit regulatory transaction report"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:securitised_products:94de1185cf70c667c0215727",
+          "label": "submit regulatory transaction report",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "7a2f336350f74ff50cd1bf73aff58c67ddc7624859797e57404c0d28cab85396"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:3d5fb5fc4012ec31796f75cd",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "run prepayment loss model",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:4f7e3e4fce6bb69d176bccd5"
+      ],
+      "member_labels": [
+        "run prepayment loss model"
+      ],
+      "aliases": [],
+      "definition_sha256": "aba6f77c203682f2972ab7265e922dcbcca6dc24cca3ba534b25ce15fb6778cb"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:445ee6ba8d04a0d98052ab81",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "perform securitisation due diligence risk retention check",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:3b176374ead16318f7a94b7f"
+      ],
+      "member_labels": [
+        "perform securitisation due diligence risk retention check"
+      ],
+      "aliases": [],
+      "definition_sha256": "8603b1e418043c5589f2ea2626d50b01cd319b1dabaa386547323891cdc6dff1"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:5bfecdea9340b9784b249e24",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "settle an abs trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:7980249316309a81b17ae6ea",
+        "task:securitised_products:60c320c3225c8726322467cb"
+      ],
+      "member_labels": [
+        "confirm abs mbs trade",
+        "settle an abs trade"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:securitised_products:7980249316309a81b17ae6ea",
+          "label": "confirm abs mbs trade",
+          "rationale": "machine-clustered: mean Jaccard 0.40 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "6ced496dfa2936c11f82d6ac9d144fcf24609d039774d8b348efdb02438441bd"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:668e681d5673db010062a9f9",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "validate waterfall cashflow allocation",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:c79d78ef1ec14f948d6f98e6"
+      ],
+      "member_labels": [
+        "validate waterfall cashflow allocation"
+      ],
+      "aliases": [],
+      "definition_sha256": "5fcb88853340ce3610471352eb968fbc6432c1a93b4a5e02255743becbe1d9be"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:81e64eb864e436257fec434e",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "capture securitised trade into core trading system",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:c246f6fa7730836c839188b0"
+      ],
+      "member_labels": [
+        "capture securitised trade into core trading system"
+      ],
+      "aliases": [],
+      "definition_sha256": "935a2a8a45e2ae769661f74526e405cec7dae8f555d1ba7e8930bce639a357c2"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:82b959077256c0a347a9fc47",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "confirm settlement securitised trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:fb679851b12630943a48755f"
+      ],
+      "member_labels": [
+        "confirm settlement securitised trade"
+      ],
+      "aliases": [],
+      "definition_sha256": "8a644710fc65e0e628c2d9aa61ad79a6efa041007dd949ed8fd59ee86ef4775c"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:918558e4668665218cbc413b",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "run eligibility compliance test",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:0379a4acce842e3224e2b8b9"
+      ],
+      "member_labels": [
+        "run eligibility compliance test"
+      ],
+      "aliases": [],
+      "definition_sha256": "31a4487aceb13e1c8df7201a5f19ef5b31da7c7767322cdfd40ddc524ae2e404"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:b1f59ae4769a1d0f0164c33e",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "price securitised tranche",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:f5eda7766b7bf6ebf778d936",
+        "task:securitised_products:9eb49d258019ab34774d0af6"
+      ],
+      "member_labels": [
+        "price securitisation tranche",
+        "price securitised tranche"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:securitised_products:f5eda7766b7bf6ebf778d936",
+          "label": "price securitisation tranche",
+          "rationale": "machine-clustered: mean Jaccard 0.50 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "63f995dce77eaa6388d187c3900fe41fa032f1c3aa793536eb21e9611b0a3917"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:cc1e8527749ca9da9b77ceec",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "reconcile collateral pool",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:3c99bbbe37d33de724452d9d",
+        "task:securitised_products:92959f1c43d3d7e3954b8115"
+      ],
+      "member_labels": [
+        "reconcile collateral pool",
+        "report collateral pool performance"
+      ],
+      "aliases": [
+        {
+          "reference_id": "task:securitised_products:92959f1c43d3d7e3954b8115",
+          "label": "report collateral pool performance",
+          "rationale": "machine-clustered: mean Jaccard 0.40 to the other members; unread by any human"
+        }
+      ],
+      "definition_sha256": "7a12209324ea69a2427db8290412a4804b29fe7b12ca79b5cd89e3a42e3b5a17"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:d3b85a0fa9b319aadd05c187",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "settle securitisation issuance",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:2ce1f0eb8666153d8973fa8e"
+      ],
+      "member_labels": [
+        "settle securitisation issuance"
+      ],
+      "aliases": [],
+      "definition_sha256": "0fbee4204ffbecf675251cb1f2ac8ea1703bf09956a0accde052b4718dac47d2"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:dd8d79ce8a8cef529290fccc",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "model tranche cashflow",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:6246dfd9dd5e457e6be3e25f"
+      ],
+      "member_labels": [
+        "model tranche cashflow"
+      ],
+      "aliases": [],
+      "definition_sha256": "c7c59c4d41fba6d1b301c9c3f83aed84cc10de363491d4055253a545532c5047"
+    },
+    {
+      "concept_id": "task_concept:securitised_products:e28b13228d109c2e56f0756d",
+      "kind": "task_concept",
+      "division_key": "securitised_products",
+      "label": "price structured note",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:securitised_products:f3dcbe21db5f29326ca12ea0"
+      ],
+      "member_labels": [
+        "price structured note"
+      ],
+      "aliases": [],
+      "definition_sha256": "7ac425304b30ea399a6d63cd8fb99f18fe40ad882a9c07c151e843b137741348"
+    },
+    {
+      "concept_id": "task_concept:sellside_research:284d6d9682239661cef0ebd2",
+      "kind": "task_concept",
+      "division_key": "sellside_research",
+      "label": "update earning model",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:sellside_research:7a8c4a3f05ab3d13be6c809d"
+      ],
+      "member_labels": [
+        "update earning model"
+      ],
+      "aliases": [],
+      "definition_sha256": "9ba94884127e41e96704c473d1a849af50b3634c2e6fe1c3ee23be2f32083f83"
+    },
+    {
+      "concept_id": "task_concept:sellside_research:87a25172114332b327ff2a51",
+      "kind": "task_concept",
+      "division_key": "sellside_research",
+      "label": "clear research report through compliance",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:sellside_research:a6614b8bd7055d916df44585"
+      ],
+      "member_labels": [
+        "clear research report through compliance"
+      ],
+      "aliases": [],
+      "definition_sha256": "14e32b67eaefcfaa71a2c81c2cce96560db13e9a9be1a3cf0b84c4453d897085"
+    },
+    {
+      "concept_id": "task_concept:sellside_research:bf991d8a510fd95d35a44d3a",
+      "kind": "task_concept",
+      "division_key": "sellside_research",
+      "label": "publish rating target price",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:sellside_research:2e8357259d075f32e1a5f76a"
+      ],
+      "member_labels": [
+        "publish rating target price"
+      ],
+      "aliases": [],
+      "definition_sha256": "d19efcb205199887d21dee57203e248c91a693de0481fb8522fe1a2857ffe3e1"
+    },
+    {
+      "concept_id": "task_concept:trade_lifecycle_operations:012a18da9addf86ca87181fd",
+      "kind": "task_concept",
+      "division_key": "trade_lifecycle_operations",
+      "label": "reconcile position",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:trade_lifecycle_operations:f8b81e642bedae403f4e0099"
+      ],
+      "member_labels": [
+        "reconcile position"
+      ],
+      "aliases": [],
+      "definition_sha256": "eb8053d1bf4af5c42fa8016e65faff711ce2c652974830da1df8448477a9d6da"
+    },
+    {
+      "concept_id": "task_concept:trade_lifecycle_operations:05459342f073f41de97b980a",
+      "kind": "task_concept",
+      "division_key": "trade_lifecycle_operations",
+      "label": "settle trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:trade_lifecycle_operations:3287de2d80abdebe4438ad0c"
+      ],
+      "member_labels": [
+        "settle trade"
+      ],
+      "aliases": [],
+      "definition_sha256": "24c65b162c29b167c036fe10330dc903b7a8af73c1a9404247eab18afce479ae"
+    },
+    {
+      "concept_id": "task_concept:trade_lifecycle_operations:4b00509f491b34c50c453066",
+      "kind": "task_concept",
+      "division_key": "trade_lifecycle_operations",
+      "label": "capture trade",
+      "label_source": "member",
+      "review_status": "AUTO",
+      "basis": "machine_clustered",
+      "rationale": null,
+      "members": [
+        "task:trade_lifecycle_operations:5ba6a130dcec651a8bb91533"
+      ],
+      "member_labels": [
+        "capture trade"
+      ],
+      "aliases": [],
+      "definition_sha256": "9b942fb869a99fe175328b8e83088f48387819a241bf26e6a0055f6c1f643268"
+    }
+  ],
+  "counts": {
+    "divisions": 25,
+    "reviewed_divisions": 0,
+    "auto_divisions": 25,
+    "function_concepts": 48,
+    "task_concepts": 180,
+    "aliases": 62,
+    "reviewed_aliases": 0
+  },
+  "task_concepts_sha256": "3618185e198fa868cd0c3a326e5a4c64e25890767db88ba14bc8354ae32f6855"
+}

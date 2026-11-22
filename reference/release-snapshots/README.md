@@ -6,10 +6,11 @@ history. It does not change any release, mapping, admission or review status.
 
 `index.json` pins the original published manifest file digest, canonical manifest
 digest and declared source commit for each retained release. Manifest files were
-downloaded from the corresponding GitHub release asset on 4 November 2026.
-Their byte digests matched the GitHub release-asset metadata. Every artifact in
-each complete original manifest was checked against its declared Git commit;
-all 65 v0.6.2 artifacts and all 68 v0.6.3 artifacts matched in size and SHA-256.
+downloaded from the corresponding GitHub release asset on 4 November 2026 (the
+v0.7.0 manifest on 22 November 2026). Their byte digests matched the GitHub
+release-asset metadata. Every artifact in each complete original manifest was
+checked against its declared Git commit; all 65 v0.6.2 artifacts, all 68 v0.6.3
+artifacts and all 150 v0.7.0 artifacts matched in size and SHA-256.
 
 The retained subset contains the operating catalogue, task concepts, coverage
 matrix and control-point definitions used by the validators. These files are

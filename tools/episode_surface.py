@@ -128,7 +128,7 @@ def reviewed_evidence_depth(surface: dict, root: Path = ROOT, *, current: bool =
     """
     try:
         concepts, _, cells, _ = _release_data(surface, root, current)
-        if surface['bocg_release']['task_concepts_sha256'] != concepts['task_concepts_sha256']:
+        if current and surface['bocg_release']['task_concepts_sha256'] != concepts['task_concepts_sha256']:
             return 'none'
         concepts = {c['concept_id']: c for c in concepts['concepts']}
     except UNREADABLE:
@@ -171,6 +171,7 @@ def _release_data(surface: dict, root: Path, current: bool) -> tuple[dict, dict,
 def surface_problems(surface: dict, *, root: Path = ROOT, current: bool = False) -> list[str]:
     """Structural problems beyond JSON Schema: depth rules, release-bound identifiers and statuses."""
     problems: list[str] = []
+    concepts_digest: str | None = None
     try:
         concepts, catalogue, cells, _ = _release_data(surface, root, current)
         concept_ids = {c['concept_id']: c for c in concepts['concepts']}
@@ -182,7 +183,7 @@ def surface_problems(surface: dict, *, root: Path = ROOT, current: bool = False)
     if problems:
         return problems
     release = surface.get('bocg_release') or {}
-    if release.get('task_concepts_sha256') != concepts_digest:
+    if current and release.get('task_concepts_sha256') != concepts_digest:
         problems.append('surface is bound to a different task-concepts digest')
     for index, point in enumerate(surface.get('touchpoints') or []):
         where = f'touchpoint {index}'

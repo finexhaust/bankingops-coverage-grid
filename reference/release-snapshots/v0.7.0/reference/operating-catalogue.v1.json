@@ -1,0 +1,3888 @@
+{
+  "schema": "bocg.operating-catalogue/v1",
+  "contract_version": "1.0.0",
+  "identity_rule": "division key; otherwise SHA-256 of exact kind, division key and source canonical label, first 24 hex characters; control points retain cell_id",
+  "institution_instances": false,
+  "sources": [
+    {
+      "path": "live-run-20261019/matrix.json",
+      "sha256": "d2deeb555871212905a22f91d8384019d5c2e64aca1223b3376a6e323589190f"
+    }
+  ],
+  "definitions": [
+    {
+      "reference_id": "division:buyside_portfolio_management",
+      "kind": "division",
+      "division_key": "buyside_portfolio_management",
+      "label": "buyside_portfolio_management",
+      "aliases": [
+        "Asset Management",
+        "Asset Management & Buy-side Portfolio Management",
+        "Asset Management Buy-Side Counterpart",
+        "Buy-Side Institutional Asset Management / Portfolio Management"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:buyside_trading_execution",
+      "kind": "division",
+      "division_key": "buyside_trading_execution",
+      "label": "buyside_trading_execution",
+      "aliases": [
+        "Buy-Side Asset Management Execution Desk"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:clearing_settlement_custody",
+      "kind": "division",
+      "division_key": "clearing_settlement_custody",
+      "label": "clearing_settlement_custody",
+      "aliases": [
+        "Clearing, Settlement & Custody"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:commodities_trading",
+      "kind": "division",
+      "division_key": "commodities_trading",
+      "label": "commodities_trading",
+      "aliases": [
+        "Commodities & Energy Sales & Trading",
+        "Commodities Sales & Trading",
+        "Commodities Trading and Financing",
+        "Commodities Trading and Sales",
+        "Global Markets Commodities Sales & Trading"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:credit_trading",
+      "kind": "division",
+      "division_key": "credit_trading",
+      "label": "credit_trading",
+      "aliases": [
+        "Credit & High Yield Sales & Trading",
+        "Credit Sales & Trading",
+        "Credit Trading and Market Making",
+        "Credit Trading and Sales",
+        "Global Markets Credit Sales & Trading"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:dcm_origination",
+      "kind": "division",
+      "division_key": "dcm_origination",
+      "label": "dcm_origination",
+      "aliases": [
+        "Debt Capital Markets Origination"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:ecm_origination",
+      "kind": "division",
+      "division_key": "ecm_origination",
+      "label": "ecm_origination",
+      "aliases": [
+        "Equity Capital Markets Origination"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:em_trading",
+      "kind": "division",
+      "division_key": "em_trading",
+      "label": "em_trading",
+      "aliases": [
+        "Emerging Markets Cross-Product Trading",
+        "Emerging Markets Trading"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:equities_trading",
+      "kind": "division",
+      "division_key": "equities_trading",
+      "label": "equities_trading",
+      "aliases": [
+        "Cash Equities Sales & Trading",
+        "Equities Cash Execution and Sales Trading",
+        "Equities Sales & Trading",
+        "Equity Cash Trading and Market Making",
+        "Global Markets Equities Sales & Trading"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:equity_derivatives_structured",
+      "kind": "division",
+      "division_key": "equity_derivatives_structured",
+      "label": "equity_derivatives_structured",
+      "aliases": [
+        "Equities & Derivatives Sales & Trading",
+        "Equity Derivatives & Structured Products",
+        "Equity Derivatives Trading and Structuring",
+        "Equity Derivatives and Structured Products"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:fx_cross_asset_combined",
+      "kind": "division",
+      "division_key": "fx_cross_asset_combined",
+      "label": "fx_cross_asset_combined",
+      "aliases": [
+        "FX & Cross-Asset Sales & Trading"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:fx_trading",
+      "kind": "division",
+      "division_key": "fx_trading",
+      "label": "fx_trading",
+      "aliases": [
+        "FX Sales & Trading",
+        "FX Trading and Market Making",
+        "FX Trading and Sales"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:global_banking_financing",
+      "kind": "division",
+      "division_key": "global_banking_financing",
+      "label": "global_banking_financing",
+      "aliases": [
+        "Global Banking & Financing"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:global_financing_capital_markets",
+      "kind": "division",
+      "division_key": "global_financing_capital_markets",
+      "label": "global_financing_capital_markets",
+      "aliases": [
+        "Global Financing & Capital Markets"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:leveraged_finance_loan_capital_markets",
+      "kind": "division",
+      "division_key": "leveraged_finance_loan_capital_markets",
+      "label": "leveraged_finance_loan_capital_markets",
+      "aliases": [
+        "Leveraged Finance & Syndicated Loans"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:listed_derivatives_client_clearing",
+      "kind": "division",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "listed_derivatives_client_clearing",
+      "aliases": [
+        "Listed Derivatives Execution and Clearing",
+        "Listed and OTC Clearing"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:market_risk_management",
+      "kind": "division",
+      "division_key": "market_risk_management",
+      "label": "market_risk_management",
+      "aliases": [
+        "Global Markets Market Risk Control",
+        "Market Risk & Control",
+        "Market Risk & Middle Office"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:prime_brokerage_financing",
+      "kind": "division",
+      "division_key": "prime_brokerage_financing",
+      "label": "prime_brokerage_financing",
+      "aliases": [
+        "Global Markets Financing & Prime Brokerage",
+        "Prime Brokerage & Client Finance",
+        "Prime Brokerage & Financing",
+        "Prime Brokerage & Securities Lending",
+        "Prime Brokerage and Prime Services",
+        "Prime Brokerage and Securities Lending"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:rates_fx_combined",
+      "kind": "division",
+      "division_key": "rates_fx_combined",
+      "label": "rates_fx_combined",
+      "aliases": [
+        "Global Markets Rates & FX Sales & Trading"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:rates_trading",
+      "kind": "division",
+      "division_key": "rates_trading",
+      "label": "rates_trading",
+      "aliases": [
+        "Rates & Fixed Income Sales & Trading",
+        "Rates Sales & Trading",
+        "Rates Trading and Market Making",
+        "Rates Trading and Sales"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:regulatory_reporting_conduct_compliance",
+      "kind": "division",
+      "division_key": "regulatory_reporting_conduct_compliance",
+      "label": "regulatory_reporting_conduct_compliance",
+      "aliases": [
+        "Regulatory Reporting & Market Conduct Compliance"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:repo_secfin_collateral",
+      "kind": "division",
+      "division_key": "repo_secfin_collateral",
+      "label": "repo_secfin_collateral",
+      "aliases": [
+        "Repo and Collateral Financing",
+        "Repo, Securities Lending and Financing",
+        "Securities Finance"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:securitised_products",
+      "kind": "division",
+      "division_key": "securitised_products",
+      "label": "securitised_products",
+      "aliases": [
+        "Global Markets Structured Products & Securitized",
+        "Securitised Products & Structured Finance",
+        "Securitised Products Trading",
+        "Securitised Products Trading and Structuring",
+        "Structured Finance & Securitized",
+        "Structured Finance & Securitized Products"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:sellside_research",
+      "kind": "division",
+      "division_key": "sellside_research",
+      "label": "sellside_research",
+      "aliases": [
+        "Equity Research"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "division:trade_lifecycle_operations",
+      "kind": "division",
+      "division_key": "trade_lifecycle_operations",
+      "label": "trade_lifecycle_operations",
+      "aliases": [
+        "Trade Operations & Settlement"
+      ],
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:buyside_portfolio_management:8907499e147ad4a9288a49fe",
+      "kind": "function",
+      "division_key": "buyside_portfolio_management",
+      "label": "Portfolio management and investment operations",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:buyside_portfolio_management:998c9cae49faa69350e9fe5b",
+      "kind": "function",
+      "division_key": "buyside_portfolio_management",
+      "label": "Portfolio management, research, and fund operations",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:buyside_portfolio_management:9c476d904622645dc555c944",
+      "kind": "function",
+      "division_key": "buyside_portfolio_management",
+      "label": "Buy-side portfolio managers",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:buyside_portfolio_management:ed9d57995a187801408bd657",
+      "kind": "function",
+      "division_key": "buyside_portfolio_management",
+      "label": "Asset management portfolio managers and buy-side traders",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:buyside_trading_execution:8fc803e0dbbd336f2d2bd1a3",
+      "kind": "function",
+      "division_key": "buyside_trading_execution",
+      "label": "Buy-side execution trading desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:clearing_settlement_custody:634fffceb75f2b90f0064fdb",
+      "kind": "function",
+      "division_key": "clearing_settlement_custody",
+      "label": "Clearing, settlement, and custody operations",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:commodities_trading:42e0837cd3b8413e4b289cd0",
+      "kind": "function",
+      "division_key": "commodities_trading",
+      "label": "Commodity traders and commodity sales coverage",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:commodities_trading:4a3d984d19d0d393b58cc62f",
+      "kind": "function",
+      "division_key": "commodities_trading",
+      "label": "Commodities sales, trading, and structuring",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:commodities_trading:6fe62436ffe8c35905d6cc68",
+      "kind": "function",
+      "division_key": "commodities_trading",
+      "label": "Commodities trading and sales desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:commodities_trading:77c906f31c2e6008467aac3f",
+      "kind": "function",
+      "division_key": "commodities_trading",
+      "label": "Commodities and energy sales and traders",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:commodities_trading:a8c39922cc6719c485a643fc",
+      "kind": "function",
+      "division_key": "commodities_trading",
+      "label": "Commodity sales, trading, and structuring desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:commodities_trading:bac6dd1f5086147f5d30d5dc",
+      "kind": "function",
+      "division_key": "commodities_trading",
+      "label": "Commodities trader / physical and derivative market maker",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:credit_trading:543c1a6fdf71e3f9fe8f8a0f",
+      "kind": "function",
+      "division_key": "credit_trading",
+      "label": "Credit and high yield sales and traders",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:credit_trading:62a45d7f6b4071ec34a6e0f1",
+      "kind": "function",
+      "division_key": "credit_trading",
+      "label": "Credit trading and sales desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:credit_trading:abbe3e59f763d4d8e3d7ac91",
+      "kind": "function",
+      "division_key": "credit_trading",
+      "label": "Credit traders and credit sales coverage",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:credit_trading:c0807f8e95daee478da7b090",
+      "kind": "function",
+      "division_key": "credit_trading",
+      "label": "Credit trader / corporate bond and CDS market maker",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:credit_trading:c81d9bf3a957cc7183ac4e89",
+      "kind": "function",
+      "division_key": "credit_trading",
+      "label": "Credit sales, trading, and structuring desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:credit_trading:d800f9e8d77a1c9dbb4b3bb4",
+      "kind": "function",
+      "division_key": "credit_trading",
+      "label": "Credit sales, trading, and structuring",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:dcm_origination:ed534ec701136f09445a3056",
+      "kind": "function",
+      "division_key": "dcm_origination",
+      "label": "Debt capital markets bankers and syndicate",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:ecm_origination:a32fe767fdc24edc3a57ec40",
+      "kind": "function",
+      "division_key": "ecm_origination",
+      "label": "Equity capital markets bankers and syndicate",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:em_trading:d3e5fe7aec31519374755c02",
+      "kind": "function",
+      "division_key": "em_trading",
+      "label": "Emerging markets cross-product trading and sales desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:em_trading:ef404d93cbb1dbb2f9921e76",
+      "kind": "function",
+      "division_key": "em_trading",
+      "label": "Emerging markets rates and FX trader",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:equities_trading:0474b51d9460a29e06effdcd",
+      "kind": "function",
+      "division_key": "equities_trading",
+      "label": "Cash equities traders and institutional equity sales",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:equities_trading:46348f7bc271339574d8ab7f",
+      "kind": "function",
+      "division_key": "equities_trading",
+      "label": "Equities sales, trading, and structuring",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:equities_trading:6a26f011b83c5a7516d0b531",
+      "kind": "function",
+      "division_key": "equities_trading",
+      "label": "Equities sales trader and execution trader",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:equities_trading:8a1a9a178c1508e3c4e09897",
+      "kind": "function",
+      "division_key": "equities_trading",
+      "label": "Equity cash trader / market maker",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:equities_trading:f10f2006cc587cb890e7da07",
+      "kind": "function",
+      "division_key": "equities_trading",
+      "label": "Equity cash and derivatives sales, trading, and structuring desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:equity_derivatives_structured:41745e839be6c601d30ef679",
+      "kind": "function",
+      "division_key": "equity_derivatives_structured",
+      "label": "Equity derivatives trading and structuring desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:equity_derivatives_structured:7ca209a8e92dafc22ff108d7",
+      "kind": "function",
+      "division_key": "equity_derivatives_structured",
+      "label": "Equities and derivatives sales and traders",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:equity_derivatives_structured:be9760b63015d8e6a045cb23",
+      "kind": "function",
+      "division_key": "equity_derivatives_structured",
+      "label": "Equity derivatives trader / structurer",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:equity_derivatives_structured:eda8587829ef78369aa635ee",
+      "kind": "function",
+      "division_key": "equity_derivatives_structured",
+      "label": "Equity derivatives traders and structurers",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:fx_cross_asset_combined:64887c5c8e3f90c9bb4e95df",
+      "kind": "function",
+      "division_key": "fx_cross_asset_combined",
+      "label": "FX and cross-asset sales and traders",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:fx_trading:0496c04165bdc94785361234",
+      "kind": "function",
+      "division_key": "fx_trading",
+      "label": "FX trading and sales desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:fx_trading:cde1f1180e75de13b7175ce1",
+      "kind": "function",
+      "division_key": "fx_trading",
+      "label": "FX sales, trading, and structuring desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:fx_trading:ebc6411291d96f9ec7f278db",
+      "kind": "function",
+      "division_key": "fx_trading",
+      "label": "FX trader / spot and forward market maker",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:fx_trading:eedf0d2272688ea39b3ebb58",
+      "kind": "function",
+      "division_key": "fx_trading",
+      "label": "FX traders and FX sales coverage",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:global_banking_financing:8dee1996b822f4a924f348f0",
+      "kind": "function",
+      "division_key": "global_banking_financing",
+      "label": "Global banking and financing desk (syndicated loans, project finance, leveraged finance)",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:global_financing_capital_markets:961e28a6e75c47dd97025989",
+      "kind": "function",
+      "division_key": "global_financing_capital_markets",
+      "label": "Global financing and capital markets bankers",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:leveraged_finance_loan_capital_markets:66552a3db9bde411af493ea8",
+      "kind": "function",
+      "division_key": "leveraged_finance_loan_capital_markets",
+      "label": "Leveraged finance bankers and loan syndicate",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:listed_derivatives_client_clearing:d6b03cc72c54007b368cd354",
+      "kind": "function",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "Listed derivatives clearing and margin operations",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:listed_derivatives_client_clearing:fc01c2860724b45c94ad34bc",
+      "kind": "function",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "Client clearing specialist / margin analyst",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:market_risk_management:0ec57c48f3f8573c02025f6c",
+      "kind": "function",
+      "division_key": "market_risk_management",
+      "label": "Market risk management and control",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:market_risk_management:c1b9a9708ab3d0a5e01a9e63",
+      "kind": "function",
+      "division_key": "market_risk_management",
+      "label": "Market risk and middle office analysts",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:market_risk_management:d5a33c34789e7508526cf019",
+      "kind": "function",
+      "division_key": "market_risk_management",
+      "label": "Market risk measurement, limits, and stress testing",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:prime_brokerage_financing:0ca91c61ea425159ec8dcd59",
+      "kind": "function",
+      "division_key": "prime_brokerage_financing",
+      "label": "Prime brokerage and client finance bankers and traders",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:prime_brokerage_financing:2fef873af5ca73e93d10fafa",
+      "kind": "function",
+      "division_key": "prime_brokerage_financing",
+      "label": "Prime brokerage client financing and securities lending specialist",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:prime_brokerage_financing:9b39f41c2a2e9dca60bf6de5",
+      "kind": "function",
+      "division_key": "prime_brokerage_financing",
+      "label": "Prime brokerage client service and securities lending traders",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:prime_brokerage_financing:afce17beba19d2cf0c3af859",
+      "kind": "function",
+      "division_key": "prime_brokerage_financing",
+      "label": "Prime brokerage client service and margin operations",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:prime_brokerage_financing:d221dcc56f56927a709928a8",
+      "kind": "function",
+      "division_key": "prime_brokerage_financing",
+      "label": "Prime brokerage, securities lending, and financing",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:prime_brokerage_financing:e2833c7e6f900117429c4565",
+      "kind": "function",
+      "division_key": "prime_brokerage_financing",
+      "label": "Prime brokerage and client financing (hedge funds, asset managers)",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:rates_fx_combined:930392ab5f25c9095e700dd5",
+      "kind": "function",
+      "division_key": "rates_fx_combined",
+      "label": "Rates & FX sales, trading, and structuring",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:rates_trading:0194724f65bce5c3732986a9",
+      "kind": "function",
+      "division_key": "rates_trading",
+      "label": "Rates trading and sales desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:rates_trading:42d14433213fa739eab05d1c",
+      "kind": "function",
+      "division_key": "rates_trading",
+      "label": "Rates trader / government bond and swaps market maker",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:rates_trading:904f78f1e6d90f05b4fef85b",
+      "kind": "function",
+      "division_key": "rates_trading",
+      "label": "Rates traders and rates sales coverage",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:rates_trading:b258e7b425161efc96e67c70",
+      "kind": "function",
+      "division_key": "rates_trading",
+      "label": "Rates & fixed income sales, trading, and structuring desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:rates_trading:da40354c69662fa6880d106e",
+      "kind": "function",
+      "division_key": "rates_trading",
+      "label": "Rates and fixed income sales and traders",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:regulatory_reporting_conduct_compliance:4519bcc5cc7e4dd5294c433f",
+      "kind": "function",
+      "division_key": "regulatory_reporting_conduct_compliance",
+      "label": "Regulatory reporting and market conduct compliance analysts",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:repo_secfin_collateral:2a2c6bb49d799b9334537661",
+      "kind": "function",
+      "division_key": "repo_secfin_collateral",
+      "label": "Repo and securities lending desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:repo_secfin_collateral:2fe50dc837e3f38f0097fd0f",
+      "kind": "function",
+      "division_key": "repo_secfin_collateral",
+      "label": "Securities finance operations (repo, securities lending, collateral management)",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:repo_secfin_collateral:6bfec8001749544a66c363aa",
+      "kind": "function",
+      "division_key": "repo_secfin_collateral",
+      "label": "Repo trader / collateral financier",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:securitised_products:0f1bc6e1545b200d68d81131",
+      "kind": "function",
+      "division_key": "securitised_products",
+      "label": "Securitisation structurers and ABS traders",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:securitised_products:254510da8d73532dd054db3d",
+      "kind": "function",
+      "division_key": "securitised_products",
+      "label": "Structured finance and securitized products desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:securitised_products:5c1024a1fb74dd233b83bfe3",
+      "kind": "function",
+      "division_key": "securitised_products",
+      "label": "Structured finance and securitized products bankers and traders",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:securitised_products:8c861095b8aa4f2497d29e20",
+      "kind": "function",
+      "division_key": "securitised_products",
+      "label": "Securitised products trading desk",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:securitised_products:b0299698844e5506959af850",
+      "kind": "function",
+      "division_key": "securitised_products",
+      "label": "Securitised products trader / structurer",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:securitised_products:f044a88f55ef8d76edc91330",
+      "kind": "function",
+      "division_key": "securitised_products",
+      "label": "Structured products, securitization, and ABS trading",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:sellside_research:2e1548c4898f23a416a5b86b",
+      "kind": "function",
+      "division_key": "sellside_research",
+      "label": "Sell-side equity research analysts",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "function:trade_lifecycle_operations:045ae4b198d592c817f63e2f",
+      "kind": "function",
+      "division_key": "trade_lifecycle_operations",
+      "label": "Trade operations, settlement, and reconciliation",
+      "basis": "model_consensus_prior"
+    },
+    {
+      "reference_id": "task:buyside_portfolio_management:243502cfb59d39fe3a5cbd9a",
+      "kind": "task",
+      "division_key": "buyside_portfolio_management",
+      "label": "capture portfolio trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "capture portfolio trade",
+        "evidence_record": "trade capture audit log",
+        "input_records": "executed trade ticket, portfolio master data",
+        "task": "Capture portfolio trade",
+        "terminal_state": "trade posted to correct portfolio with correct security, quantity, and price"
+      }
+    },
+    {
+      "reference_id": "task:buyside_portfolio_management:297883f27352ac71712e969b",
+      "kind": "task",
+      "division_key": "buyside_portfolio_management",
+      "label": "check investment mandate limit",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "check investment mandate limit",
+        "evidence_record": "compliance monitoring report",
+        "input_records": "portfolio holdings, mandate limits, market data",
+        "task": "Check investment mandate limits",
+        "terminal_state": "portfolio within mandate limits or exception raised"
+      }
+    },
+    {
+      "reference_id": "task:buyside_portfolio_management:3dc3177e1edbacb5fd2c082f",
+      "kind": "task",
+      "division_key": "buyside_portfolio_management",
+      "label": "execute buy side trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute buy side trade",
+        "evidence_record": "FIX execution report and allocation record",
+        "input_records": "Order, broker list, benchmark, compliance checks",
+        "task": "Execute buy-side trade",
+        "terminal_state": "Trade filled and allocated to fund"
+      }
+    },
+    {
+      "reference_id": "task:buyside_portfolio_management:55a76babb1ad85f199e9a489",
+      "kind": "task",
+      "division_key": "buyside_portfolio_management",
+      "label": "calculate fund nav",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate fund nav",
+        "evidence_record": "NAV calculation report and audited financial statements",
+        "input_records": "holdings, market prices, cash, fees",
+        "task": "Calculate fund NAV",
+        "terminal_state": "NAV per share posted"
+      }
+    },
+    {
+      "reference_id": "task:buyside_portfolio_management:56224ba155b89b12f7eb2e6a",
+      "kind": "task",
+      "division_key": "buyside_portfolio_management",
+      "label": "run compliance pre trade screen",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "run compliance pre trade screen",
+        "evidence_record": "compliance log",
+        "input_records": "order, client mandate, restricted list",
+        "task": "Run compliance pre-trade screen",
+        "terminal_state": "order approved or rejected"
+      }
+    },
+    {
+      "reference_id": "task:buyside_portfolio_management:6d7e65889c40411d24b3cbcb",
+      "kind": "task",
+      "division_key": "buyside_portfolio_management",
+      "label": "produce quarterly performance attribution",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "produce quarterly performance attribution",
+        "evidence_record": "Signed performance report and review record",
+        "input_records": "Holdings, returns, benchmark, attribution model",
+        "task": "Produce quarterly performance attribution",
+        "terminal_state": "Attribution report completed and reviewed"
+      }
+    },
+    {
+      "reference_id": "task:buyside_portfolio_management:7f390752a32903c99f59f11d",
+      "kind": "task",
+      "division_key": "buyside_portfolio_management",
+      "label": "execute a portfolio trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute a portfolio trade",
+        "evidence_record": "trade blotter",
+        "input_records": "investment decision, order, compliance limits",
+        "task": "Execute a portfolio trade",
+        "terminal_state": "trade captured in portfolio system"
+      }
+    },
+    {
+      "reference_id": "task:buyside_portfolio_management:9a8c8adf6497ca7f526bd872",
+      "kind": "task",
+      "division_key": "buyside_portfolio_management",
+      "label": "check compliance limit",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "check compliance limit",
+        "evidence_record": "compliance report",
+        "input_records": "portfolio, limit policy",
+        "task": "Check compliance limits",
+        "terminal_state": "limit breach flagged or cleared"
+      }
+    },
+    {
+      "reference_id": "task:buyside_portfolio_management:a67081179d06c8d169461acf",
+      "kind": "task",
+      "division_key": "buyside_portfolio_management",
+      "label": "rebalance portfolio",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "rebalance portfolio",
+        "evidence_record": "portfolio management system trade blotter",
+        "input_records": "portfolio holdings, investment mandate, market data",
+        "task": "Rebalance portfolio",
+        "terminal_state": "portfolio rebalanced to target weights within mandate"
+      }
+    },
+    {
+      "reference_id": "task:buyside_portfolio_management:ba29423a4235b158e63b6b92",
+      "kind": "task",
+      "division_key": "buyside_portfolio_management",
+      "label": "value portfolio daily",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "value portfolio daily",
+        "evidence_record": "NAV report",
+        "input_records": "positions, market prices",
+        "task": "Value portfolio daily",
+        "terminal_state": "NAV calculated"
+      }
+    },
+    {
+      "reference_id": "task:buyside_portfolio_management:ef773ad5f58bd32a8baa0982",
+      "kind": "task",
+      "division_key": "buyside_portfolio_management",
+      "label": "rebalance portfolio to target weight",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "rebalance portfolio to target weight",
+        "evidence_record": "Order management system rebalance report and pre-trade compliance log",
+        "input_records": "Investment policy statement, target weights, holdings, prices, restrictions",
+        "task": "Rebalance portfolio to target weights",
+        "terminal_state": "Orders generated and portfolio within tolerance"
+      }
+    },
+    {
+      "reference_id": "task:buyside_portfolio_management:fce5d6610c42a19b4cc0dcbf",
+      "kind": "task",
+      "division_key": "buyside_portfolio_management",
+      "label": "execute portfolio trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute portfolio trade",
+        "evidence_record": "trade blotter and settlement record",
+        "input_records": "order ticket, portfolio holdings, market data",
+        "task": "Execute portfolio trade",
+        "terminal_state": "trade booked with correct security, quantity, and price"
+      }
+    },
+    {
+      "reference_id": "task:buyside_trading_execution:0b110b631ca73e9649c30c24",
+      "kind": "task",
+      "division_key": "buyside_trading_execution",
+      "label": "reconcile settlement with custodian",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile settlement with custodian",
+        "evidence_record": "custody reconciliation",
+        "input_records": "trade details, custodian statement",
+        "task": "Reconcile settlement with custodian",
+        "terminal_state": "settled and reconciled trade"
+      }
+    },
+    {
+      "reference_id": "task:buyside_trading_execution:4f30c0230e71f4a761415dcd",
+      "kind": "task",
+      "division_key": "buyside_trading_execution",
+      "label": "produce transaction cost analysis",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "produce transaction cost analysis",
+        "evidence_record": "TCA sign-off",
+        "input_records": "executions, benchmarks, peer data",
+        "task": "Produce transaction cost analysis",
+        "terminal_state": "TCA report with exceptions"
+      }
+    },
+    {
+      "reference_id": "task:buyside_trading_execution:85c9a256b22b190a40ba5c5a",
+      "kind": "task",
+      "division_key": "buyside_trading_execution",
+      "label": "allocate executed trade across portfolio",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "allocate executed trade across portfolio",
+        "evidence_record": "allocation report",
+        "input_records": "execution fill, allocation policy, account weights",
+        "task": "Allocate executed trade across portfolios",
+        "terminal_state": "allocations booked to portfolios"
+      }
+    },
+    {
+      "reference_id": "task:buyside_trading_execution:a09638b61d1482dbb3131034",
+      "kind": "task",
+      "division_key": "buyside_trading_execution",
+      "label": "execute order in order management system",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute order in order management system",
+        "evidence_record": "OMS execution report",
+        "input_records": "investment instruction, compliance pre-trade check, market data",
+        "task": "Execute order in order management system",
+        "terminal_state": "filled or cancelled order with timestamps"
+      }
+    },
+    {
+      "reference_id": "task:clearing_settlement_custody:a84a7f9ac1d3dd8ab6fb4851",
+      "kind": "task",
+      "division_key": "clearing_settlement_custody",
+      "label": "settle a trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "settle a trade",
+        "evidence_record": "settlement report",
+        "input_records": "trade ticket, settlement instructions",
+        "task": "Settle a trade",
+        "terminal_state": "cash and securities exchanged"
+      }
+    },
+    {
+      "reference_id": "task:clearing_settlement_custody:b8a8ac7af0eccf3245272214",
+      "kind": "task",
+      "division_key": "clearing_settlement_custody",
+      "label": "reconcile custody to subcustodian",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile custody to subcustodian",
+        "evidence_record": "reconciliation report",
+        "input_records": "internal custody records, subcustodian statement",
+        "task": "Reconcile custody to subcustodian",
+        "terminal_state": "positions match or exception resolved"
+      }
+    },
+    {
+      "reference_id": "task:clearing_settlement_custody:d6be648a862a5cdbc07331a0",
+      "kind": "task",
+      "division_key": "clearing_settlement_custody",
+      "label": "update custody safekeeping record",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "update custody safekeeping record",
+        "evidence_record": "custody ledger",
+        "input_records": "securities received, client account",
+        "task": "Update custody safekeeping record",
+        "terminal_state": "custody ledger updated"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:19663191a44d0c4ea1829ff0",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "check commodity position limit",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "check commodity position limit",
+        "evidence_record": "Limit-check log with approval or rejection",
+        "input_records": "Position records, exchange and house limits, order details",
+        "task": "Check commodity position limit",
+        "terminal_state": "Order approved or rejected against limit"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:2355d4bea7b1dc3c8b1703da",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "execute commodity swap or forward",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute commodity swap or forward",
+        "evidence_record": "Trade confirmation and blotter record",
+        "input_records": "Client order, market quote, limit-check log, trade blotter",
+        "task": "Execute commodity swap or forward",
+        "terminal_state": "Trade booked and confirmed"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:26d5d1f7cd82d431527f1755",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "calculate position limit report",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate position limit report",
+        "evidence_record": "CFTC/exchange submission receipt",
+        "input_records": "Positions, exchange limits, aggregate controls",
+        "task": "Calculate position-limit report",
+        "terminal_state": "Filed position-limit report"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:327b4bcdc7acec468c9c42f0",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "execute commodity swap order",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute commodity swap order",
+        "evidence_record": "trade blotter and electronic confirmation",
+        "input_records": "order ticket, pre-trade limit check, market data snapshot",
+        "task": "Execute commodity swap order",
+        "terminal_state": "booked commodity swap with price, volume and counterparty"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:45b12660be6249885632c95c",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "check commodity position against position limit",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "check commodity position against position limit",
+        "evidence_record": "limit monitoring system log",
+        "input_records": "position file, limit configuration, market data",
+        "task": "Check commodity position against position limits",
+        "terminal_state": "position within approved limits or exception raised"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:54287fcf02c23fc0019a3a9a",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "confirm commodity derivative trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "confirm commodity derivative trade",
+        "evidence_record": "Trade repository acknowledgment and blotter match",
+        "input_records": "Execution report, clearing confirmation, legal confirmation",
+        "task": "Confirm commodity derivative trade",
+        "terminal_state": "Affirmed trade"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:6785ff9cd70f5d022f47ea8a",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "calculate commodity margin",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate commodity margin",
+        "evidence_record": "margin call notice",
+        "input_records": "positions, exchange margin schedule",
+        "task": "Calculate commodity margin",
+        "terminal_state": "margin call amount sent"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:735d9da3475ee5c29d0d43c9",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "schedule physical delivery",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "schedule physical delivery",
+        "evidence_record": "settlement instruction and delivery confirmation",
+        "input_records": "delivery notice, warehouse receipts, settlement instructions",
+        "task": "Schedule physical delivery",
+        "terminal_state": "delivery confirmed or failed with reason"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:777023daf184d2e86b6e0969",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "mark commodity book to official settlement price",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "mark commodity book to official settlement price",
+        "evidence_record": "P&L sign-off",
+        "input_records": "Position file, exchange settlements, curve marks",
+        "task": "Mark commodity book to official settlement prices",
+        "terminal_state": "Official EOD P&L"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:94d0850abbeae8c7ab3cf9d7",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "mark commodity curve position",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "mark commodity curve position",
+        "evidence_record": "valuation report",
+        "input_records": "position ledger, forward curves, storage and transport assumptions",
+        "task": "Mark commodity curve positions",
+        "terminal_state": "official end-of-day marks and P&L"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:9bbcbb3ed88678b2249a6332",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "mark commodity book to market",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "mark commodity book to market",
+        "evidence_record": "valuation report and GL journal entry",
+        "input_records": "positions, commodity prices",
+        "task": "Mark commodity book to market",
+        "terminal_state": "mark-to-market posted to general ledger"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:9d6676fa50467a386ecb3889",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "monitor position limit",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "monitor position limit",
+        "evidence_record": "limit monitoring report",
+        "input_records": "limit schedule, positions, exchange and regulatory thresholds",
+        "task": "Monitor position limits",
+        "terminal_state": "within-limit or breach status"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:ab95b0ea3a1eea6816b8ef56",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "execute commodity swap",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute commodity swap",
+        "evidence_record": "trade confirmation",
+        "input_records": "client order, commodity price, ISDA master",
+        "task": "Execute commodity swap",
+        "terminal_state": "trade booked with correct commodity, quantity, and price"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:aea207918587aa014f38bc88",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "reconcile commodity position to exchange",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile commodity position to exchange",
+        "evidence_record": "reconciliation report",
+        "input_records": "internal positions, exchange statement",
+        "task": "Reconcile commodity positions to exchange",
+        "terminal_state": "positions match or exception resolved"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:e394012b686b2091384bdd9a",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "capture executed commodity trade into core trading system",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "capture executed commodity trade into core trading system",
+        "evidence_record": "trade capture audit log",
+        "input_records": "executed trade ticket, commodity master data",
+        "task": "Capture executed commodity trade into core trading system",
+        "terminal_state": "trade record posted with correct reference, notional, and price"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:e3a1d72b7dbf6a93d56cd5c9",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "process option exercise or physical delivery notice",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "process option exercise or physical delivery notice",
+        "evidence_record": "Exercise confirmation and settlement instruction",
+        "input_records": "Option position, exercise notice, delivery instructions",
+        "task": "Process option exercise or physical delivery notice",
+        "terminal_state": "Exercise or delivery instruction accepted and matched"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:e8a83123e371a637b1fcd0f9",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "reconcile warehouse receipt physical inventory",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile warehouse receipt physical inventory",
+        "evidence_record": "Inventory reconciliation sign-off",
+        "input_records": "Warehouse receipts, inventory ledger, surveyor reports",
+        "task": "Reconcile warehouse receipts and physical inventory",
+        "terminal_state": "Reconciled physical position"
+      }
+    },
+    {
+      "reference_id": "task:commodities_trading:ff60f786c598e6bae9180472",
+      "kind": "task",
+      "division_key": "commodities_trading",
+      "label": "execute a commodity future or forward trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute a commodity future or forward trade",
+        "evidence_record": "trade blotter and confirmation",
+        "input_records": "client order, market data, credit limit",
+        "task": "Execute a commodity futures or forward trade",
+        "terminal_state": "trade booked with product, quantity, price, and settlement date"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:016e072244bc5ddb012ead5c",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "check counterparty issuer credit limit",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "check counterparty issuer credit limit",
+        "evidence_record": "Limit-check log with approval ID",
+        "input_records": "Trade record, limit framework, exposure report",
+        "task": "Check counterparty and issuer credit limits",
+        "terminal_state": "Limit approved or trade escalated/rejected"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:105cdeac7a99d7565a5a0176",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "mark credit position reconcile to clearing",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "mark credit position reconcile to clearing",
+        "evidence_record": "P&L and position reconciliation sign-off",
+        "input_records": "Dealer marks, clearing reports, position records",
+        "task": "Mark credit positions and reconcile to clearing",
+        "terminal_state": "End-of-day marks reconciled across risk and clearing systems"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:239ff5097bf231969f303233",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "check credit position against exposure limit",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "check credit position against exposure limit",
+        "evidence_record": "limit monitoring system log",
+        "input_records": "position file, limit configuration, counterparty master data",
+        "task": "Check credit position against exposure limits",
+        "terminal_state": "position within approved limits or exception raised"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:246ea5f81423e4c648345b70",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "capture executed credit trade into core trading system",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "capture executed credit trade into core trading system",
+        "evidence_record": "trade capture audit log",
+        "input_records": "executed trade ticket, counterparty master data",
+        "task": "Capture executed credit trade into core trading system",
+        "terminal_state": "trade record posted with correct reference, notional, and spread"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:427d18ec0f40baee6d133e70",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "submit transaction swap report",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "submit transaction swap report",
+        "evidence_record": "MiFIR/CFTC repository acknowledgment",
+        "input_records": "Trade records, LEI/UPI reference data",
+        "task": "Submit transaction and swap reports",
+        "terminal_state": "Accepted regulatory report"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:529be2498553e17b03bc22f7",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "execute corporate bond or credit default swap trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute corporate bond or credit default swap trade",
+        "evidence_record": "Trade confirmation and allocation memo",
+        "input_records": "Client order, inventory, credit-limit check, trade blotter",
+        "task": "Execute corporate bond or credit default swap trade",
+        "terminal_state": "Trade booked and allocated to client and house accounts"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:595266b2cdd12e35d184f637",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "mark credit book to market",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "mark credit book to market",
+        "evidence_record": "valuation report and GL journal entry",
+        "input_records": "positions, CDS index, credit spreads",
+        "task": "Mark credit book to market",
+        "terminal_state": "mark-to-market posted to general ledger"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:678f9a088d332d4a4669748d",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "confirm bond cds trade economic",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "confirm bond cds trade economic",
+        "evidence_record": "Trade confirmation ID and blotter match",
+        "input_records": "Execution reports, clearing confirmations, legal confirmations",
+        "task": "Confirm bond and CDS trade economics",
+        "terminal_state": "Affirmed trade in books and records"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:77d4f2aafbfc6cc39399c53f",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "mark cash credit cds position to market",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "mark cash credit cds position to market",
+        "evidence_record": "valuation control sign-off and P&L report",
+        "input_records": "position ledger, credit spreads, recovery assumptions",
+        "task": "Mark cash credit and CDS positions to market",
+        "terminal_state": "official end-of-day marks and P&L"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:7903fe8f4940984f8bc04bf8",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "reconcile cds position to ccp",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile cds position to ccp",
+        "evidence_record": "reconciliation report",
+        "input_records": "internal positions, CCP statement",
+        "task": "Reconcile CDS positions to CCP",
+        "terminal_state": "positions match or exception resolved"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:831a34b5a05bb71eb6254953",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "resolve trade confirmation exception",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "resolve trade confirmation exception",
+        "evidence_record": "confirmation matching log",
+        "input_records": "trade ticket, counterparty confirmation, matching queue",
+        "task": "Resolve trade confirmation exceptions",
+        "terminal_state": "confirmed or disputed trade with reason code"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:8d2bd0e83fdfdb3864ffbce3",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "price execute a cds",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "price execute a cds",
+        "evidence_record": "trade blotter and confirmation",
+        "input_records": "client order, CDS index curve, credit limit",
+        "task": "Price and execute a CDS",
+        "terminal_state": "trade booked with protection buyer/seller, notional, and spread"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:95d96f5a55ff166b86a704cf",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "calculate a cds margin call",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate a cds margin call",
+        "evidence_record": "margin call notice",
+        "input_records": "positions, ISDA CSA, collateral balances",
+        "task": "Calculate a CDS margin call",
+        "terminal_state": "margin call amount sent"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:a586ec7dfb5b3675c0ee2162",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "report credit derivative to trade repository",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "report credit derivative to trade repository",
+        "evidence_record": "trade repository acknowledgment",
+        "input_records": "trade ticket, counterparty data",
+        "task": "Report credit derivative to trade repository",
+        "terminal_state": "trade reported with correct repository fields"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:b72dc0c92361e51fef76bdb6",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "monitor issuer counterparty limit",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "monitor issuer counterparty limit",
+        "evidence_record": "risk system exception log",
+        "input_records": "limit hierarchy, issuer exposures, exception queue",
+        "task": "Monitor issuer and counterparty limits",
+        "terminal_state": "limit status resolved or escalated with timestamp"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:c019cde36aaadf3e0fcc15ec",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "run counterparty credit limit check",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "run counterparty credit limit check",
+        "evidence_record": "Limit-check log with approval or rejection code",
+        "input_records": "Counterparty exposure, approved limits, collateral balances",
+        "task": "Run counterparty credit limit check",
+        "terminal_state": "Trade approved or blocked according to limit"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:c07af48bc0970925c51bf821",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "mark credit book to official bond cds curf",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "mark credit book to official bond cds curf",
+        "evidence_record": "EOD P&L sign-off and mark-source snapshot",
+        "input_records": "Position file, bond prices, CDS curves, collateral balances",
+        "task": "Mark credit book to official bond and CDS curves",
+        "terminal_state": "Official EOD P&L and risk positions signed off"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:c266d6199c965b26bc34eecc",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "execute credit derivative trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute credit derivative trade",
+        "evidence_record": "trade confirmation",
+        "input_records": "client order, CDS quote, ISDA master",
+        "task": "Execute credit derivative trade",
+        "terminal_state": "trade booked with correct reference entity, notional, and spread"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:e25068dc79a810f64dd1050c",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "execute credit default swap order",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute credit default swap order",
+        "evidence_record": "trade ticket and confirmation in order management system",
+        "input_records": "client order ticket, credit market data, counterparty limit file",
+        "task": "Execute credit default swap order",
+        "terminal_state": "trade executed at agreed notional, tenor, and spread"
+      }
+    },
+    {
+      "reference_id": "task:credit_trading:fa6fc0c2a846dd7c1c308704",
+      "kind": "task",
+      "division_key": "credit_trading",
+      "label": "execute client credit default swap order",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute client credit default swap order",
+        "evidence_record": "trade blotter and electronic confirmation",
+        "input_records": "order ticket, pre-trade limit check, market data snapshot",
+        "task": "Execute client credit default swap order",
+        "terminal_state": "booked CDS trade with spread, notional, counterparty and trade date"
+      }
+    },
+    {
+      "reference_id": "task:dcm_origination:27e6decaa190700203b1a02d",
+      "kind": "task",
+      "division_key": "dcm_origination",
+      "label": "prepare file prospectus",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "prepare file prospectus",
+        "evidence_record": "SEC EDGAR or equivalent filing receipt",
+        "input_records": "Issuer data, legal review, disclosure checklist",
+        "task": "Prepare and file prospectus",
+        "terminal_state": "Prospectus filed with regulator"
+      }
+    },
+    {
+      "reference_id": "task:dcm_origination:78c3446b46b962636ccbd9fb",
+      "kind": "task",
+      "division_key": "dcm_origination",
+      "label": "price allocate new bond issue",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "price allocate new bond issue",
+        "evidence_record": "Pricing term sheet and allocation schedule",
+        "input_records": "Order book, spread guidance, issuer target, allocation policy",
+        "task": "Price and allocate new bond issue",
+        "terminal_state": "Issue priced and allocations finalized"
+      }
+    },
+    {
+      "reference_id": "task:dcm_origination:f7e7cf7ec67faf48066d03a8",
+      "kind": "task",
+      "division_key": "dcm_origination",
+      "label": "settle new issuance",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "settle new issuance",
+        "evidence_record": "Closing certificate and settlement confirmation",
+        "input_records": "Closing documents, settlement instructions, funds flow",
+        "task": "Settle new issuance",
+        "terminal_state": "Securities delivered and funds received"
+      }
+    },
+    {
+      "reference_id": "task:ecm_origination:2aba59ffe7b4d907eb1eacd6",
+      "kind": "task",
+      "division_key": "ecm_origination",
+      "label": "allocate share to investor",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "allocate share to investor",
+        "evidence_record": "Allocation schedule and investor confirmations",
+        "input_records": "Demand book, allocation policy, issuer instructions",
+        "task": "Allocate shares to investors",
+        "terminal_state": "Allocation schedule finalized"
+      }
+    },
+    {
+      "reference_id": "task:ecm_origination:9a9a1b3e1f6f8179921230c0",
+      "kind": "task",
+      "division_key": "ecm_origination",
+      "label": "file registration statement or prospectus",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "file registration statement or prospectus",
+        "evidence_record": "SEC EDGAR or equivalent filing receipt",
+        "input_records": "Issuer data, legal review, disclosure checklist",
+        "task": "File registration statement or prospectus",
+        "terminal_state": "Registration statement or prospectus filed"
+      }
+    },
+    {
+      "reference_id": "task:ecm_origination:db42a21c4c3408fe4187c192",
+      "kind": "task",
+      "division_key": "ecm_origination",
+      "label": "price initial public offering or follow on offering",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "price initial public offering or follow on offering",
+        "evidence_record": "Pricing press release and underwriter allocation record",
+        "input_records": "Order book, valuation analysis, issuer target, market conditions",
+        "task": "Price initial public offering or follow-on offering",
+        "terminal_state": "Offer price set and announced"
+      }
+    },
+    {
+      "reference_id": "task:em_trading:047915308b9696d924237773",
+      "kind": "task",
+      "division_key": "em_trading",
+      "label": "revalue em book with official local curf",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "revalue em book with official local curf",
+        "evidence_record": "P&L sign-off",
+        "input_records": "Position file, local curves, FX fixes",
+        "task": "Revalue EM book with official local curves",
+        "terminal_state": "Official EOD P&L"
+      }
+    },
+    {
+      "reference_id": "task:em_trading:4decc7637e62ddfb3b94341b",
+      "kind": "task",
+      "division_key": "em_trading",
+      "label": "monitor country counterparty limit",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "monitor country counterparty limit",
+        "evidence_record": "limit report",
+        "input_records": "limit matrix, exposures, exception queue",
+        "task": "Monitor country and counterparty limits",
+        "terminal_state": "within-limit or breach status"
+      }
+    },
+    {
+      "reference_id": "task:em_trading:508178adbd5c9e36422cec26",
+      "kind": "task",
+      "division_key": "em_trading",
+      "label": "confirm local market trade with broker or counterparty",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "confirm local market trade with broker or counterparty",
+        "evidence_record": "Local confirmation and blotter match",
+        "input_records": "Execution report, local confirmation, SSI",
+        "task": "Confirm local-market trade with broker or counterparty",
+        "terminal_state": "Affirmed EM trade"
+      }
+    },
+    {
+      "reference_id": "task:em_trading:545abeb370b9c12298717d63",
+      "kind": "task",
+      "division_key": "em_trading",
+      "label": "execute em fx rate or credit order",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute em fx rate or credit order",
+        "evidence_record": "trade confirmation",
+        "input_records": "order ticket, sanctions screening, pre-trade limits, market data",
+        "task": "Execute EM FX, rates or credit order",
+        "terminal_state": "booked trade with price, size and counterparty"
+      }
+    },
+    {
+      "reference_id": "task:em_trading:78bdbc4b9702e7ce944befb8",
+      "kind": "task",
+      "division_key": "em_trading",
+      "label": "mark em position to market",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "mark em position to market",
+        "evidence_record": "valuation report",
+        "input_records": "position ledger, local curves, FX rates, credit spreads",
+        "task": "Mark EM positions to market",
+        "terminal_state": "official end-of-day marks and P&L"
+      }
+    },
+    {
+      "reference_id": "task:em_trading:a540990d819794ca2a2f37a7",
+      "kind": "task",
+      "division_key": "em_trading",
+      "label": "validate local regulatory reporting",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "validate local regulatory reporting",
+        "evidence_record": "Local regulator or repository acknowledgment",
+        "input_records": "Trade records, local reporting templates",
+        "task": "Validate local regulatory reporting",
+        "terminal_state": "Accepted local report"
+      }
+    },
+    {
+      "reference_id": "task:em_trading:a991fed1fa7bd4e0495a8110",
+      "kind": "task",
+      "division_key": "em_trading",
+      "label": "resolve local settlement exception",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "resolve local settlement exception",
+        "evidence_record": "settlement exception log",
+        "input_records": "settlement instruction, local custodian status, trade details",
+        "task": "Resolve local settlement exception",
+        "terminal_state": "settled or failed trade with reason code"
+      }
+    },
+    {
+      "reference_id": "task:em_trading:d2767e171ec9e237205743cf",
+      "kind": "task",
+      "division_key": "em_trading",
+      "label": "reconcile fx settlement local cash",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile fx settlement local cash",
+        "evidence_record": "Cash reconciliation sign-off",
+        "input_records": "Settlement messages, local bank statements",
+        "task": "Reconcile FX settlement and local cash",
+        "terminal_state": "Reconciled cash position"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:1844024492818c67ac90b460",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "execute client cash equity order",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute client cash equity order",
+        "evidence_record": "OMS execution report",
+        "input_records": "order instructions, market data, order management system state",
+        "task": "Execute client cash equity order",
+        "terminal_state": "filled, part-filled or cancelled order with timestamps and venues"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:2f08e92ad6cbc16632c1a777",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "reconcile equity position",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile equity position",
+        "evidence_record": "Position reconciliation sign-off",
+        "input_records": "Trade blotter, clearing reports, position ledger",
+        "task": "Reconcile equity position",
+        "terminal_state": "Position matches clearing and ledger records"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:33c548276a9b05d875447a89",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "document a short sale locate under regulation sho",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "document a short sale locate under regulation sho",
+        "evidence_record": "locate log",
+        "input_records": "short order, locate records",
+        "task": "Document a short sale locate under Regulation SHO",
+        "terminal_state": "locate documented or order rejected"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:4855df3559faef598ca5f1fa",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "execute a client equity order",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute a client equity order",
+        "evidence_record": "trade capture record and confirmation",
+        "input_records": "order ticket, best execution policy, market data",
+        "task": "Execute a client equity order",
+        "terminal_state": "trade captured with price, quantity, and venue"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:51009e3b5b27b0e491b7eaa6",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "reconcile trade affirmation",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile trade affirmation",
+        "evidence_record": "affirmation log",
+        "input_records": "trade ticket, counterparty affirmation, matching queue",
+        "task": "Reconcile trade affirmations",
+        "terminal_state": "affirmed or disputed trade with reason code"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:8591d1059921618034e10943",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "allocate executed equity trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "allocate executed equity trade",
+        "evidence_record": "Allocation notice and clearing-broker confirmation",
+        "input_records": "Average price, client allocation instructions, trade blotter",
+        "task": "Allocate executed equity trade",
+        "terminal_state": "Allocations confirmed to clients and clearing"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:868395658aded43af2037f0b",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "perform short sale locate before execution",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "perform short sale locate before execution",
+        "evidence_record": "Locate log with timestamp and borrow reference",
+        "input_records": "Order, inventory, borrow availability",
+        "task": "Perform short-sale locate before execution",
+        "terminal_state": "Locate approved or order rejected"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:a018a63ab39c41d212eb2200",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "execute client equity trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute client equity trade",
+        "evidence_record": "trade confirmation and settlement record",
+        "input_records": "order ticket, market data, trade blotter",
+        "task": "Execute client equity trade",
+        "terminal_state": "trade booked with correct symbol, quantity, and price"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:a283b1758d7aa9ac70585b7e",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "execute client equity order",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute client equity order",
+        "evidence_record": "Execution report with venue, price, quantity, and timestamp",
+        "input_records": "Client order, limit price, venue routing logs, trade blotter",
+        "task": "Execute client equity order",
+        "terminal_state": "Order filled, partially filled, or cancelled according to instructions"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:a9d246c154c1422892bb7d35",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "allocate executed share across client account",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "allocate executed share across client account",
+        "evidence_record": "allocation report and client confirmation",
+        "input_records": "execution fills, average price, account allocation instructions",
+        "task": "Allocate executed shares across client accounts",
+        "terminal_state": "allocations booked to accounts"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:b2b374c5c80f807d00403178",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "produce best execution venue report",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "produce best execution venue report",
+        "evidence_record": "MiFID II RTS 27/28 report and exception log",
+        "input_records": "Order/execution records, venue data",
+        "task": "Produce best-execution venue report",
+        "terminal_state": "Best-execution report filed"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:bf8ed29fdd4d84281afe46cb",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "generate settlement instruction",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "generate settlement instruction",
+        "evidence_record": "Settlement message acknowledgment",
+        "input_records": "Affirmed trade, SSI, custody account",
+        "task": "Generate settlement instruction",
+        "terminal_state": "Settlement instruction released"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:c501bcf21216ad26795530d2",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "document short sale locate",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "document short sale locate",
+        "evidence_record": "locate log and Regulation SHO report",
+        "input_records": "short sale order, locate request",
+        "task": "Document short sale locate",
+        "terminal_state": "locate documented before execution"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:ccd4258343973a619b484e8d",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "reconcile equity position to custodian",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile equity position to custodian",
+        "evidence_record": "reconciliation report",
+        "input_records": "internal positions, custodian statement",
+        "task": "Reconcile equity positions to custodian",
+        "terminal_state": "positions match or exception resolved"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:d3d8c1321a9672507881cb08",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "calculate daily p l for equity book",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate daily p l for equity book",
+        "evidence_record": "daily P&L report and GL journal entry",
+        "input_records": "positions, market data, valuation model",
+        "task": "Calculate daily P&L for equities book",
+        "terminal_state": "daily P&L posted to general ledger"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:dbdc76d539185542957eee27",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "confirm affirm execution",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "confirm affirm execution",
+        "evidence_record": "CTM/affirmation ID and blotter match",
+        "input_records": "Execution report, allocation, counterparty SSI",
+        "task": "Confirm and affirm execution",
+        "terminal_state": "Affirmed trade"
+      }
+    },
+    {
+      "reference_id": "task:equities_trading:ee81fac6744d4d0912b20f4e",
+      "kind": "task",
+      "division_key": "equities_trading",
+      "label": "produce best execution review",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "produce best execution review",
+        "evidence_record": "best-execution committee report",
+        "input_records": "execution venue data, order details, best-execution policy",
+        "task": "Produce best-execution review",
+        "terminal_state": "exception or no-exception determination"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:008f48328f4b752400a646b0",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "price structured equity note",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "price structured equity note",
+        "evidence_record": "pricing sheet and trade approval",
+        "input_records": "term sheet, volatility surface, funding curve",
+        "task": "Price structured equity note",
+        "terminal_state": "priced note with coupon, barrier and issuance terms"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:024963f5f3b250a0e0b4c75e",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "price structured equity derivative or note",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "price structured equity derivative or note",
+        "evidence_record": "Pricing memo and model output with timestamp",
+        "input_records": "Market data, volatility surface, term sheet, model parameters",
+        "task": "Price structured equity derivative or note",
+        "terminal_state": "Price and Greeks produced and approved for client quote"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:05de2fac2df3fb09ff5c9eea",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "confirm legal term structured transaction",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "confirm legal term structured transaction",
+        "evidence_record": "signed confirmation",
+        "input_records": "term sheet, draft confirmation, legal approvals",
+        "task": "Confirm legal terms of structured transaction",
+        "terminal_state": "executed confirmation"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:15e2939b2add1fccf494cd0b",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "submit otc derivative report",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "submit otc derivative report",
+        "evidence_record": "Trade repository acknowledgment",
+        "input_records": "Trade records, UPI/LEI",
+        "task": "Submit OTC derivative report",
+        "terminal_state": "Accepted EMIR/MiFIR report"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:37a7e5e7434b797dfe3b9ebc",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "price confirm structured note term",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "price confirm structured note term",
+        "evidence_record": "Signed term sheet and booking system confirmation",
+        "input_records": "Term sheet, vol surface, funding curve",
+        "task": "Price and confirm structured note terms",
+        "terminal_state": "Executed note with confirmed economics"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:536576a7bdf949d6b2311527",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "confirm legal term derivative",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "confirm legal term derivative",
+        "evidence_record": "Signed confirmation and legal review record",
+        "input_records": "Term sheet, ISDA master agreement, confirmation draft",
+        "task": "Confirm legal terms of derivative",
+        "terminal_state": "Executed confirmation matches approved term sheet"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:6b9fa2effa2821b47bc99c84",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "mark dividend volatility input",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "mark dividend volatility input",
+        "evidence_record": "Mark sign-off and input snapshot",
+        "input_records": "Dividend forecasts, vol surface, consensus data",
+        "task": "Mark dividend and volatility inputs",
+        "terminal_state": "Official EOD marks"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:6ec5b5e779b66a564b6a1003",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "execute delta hedge",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute delta hedge",
+        "evidence_record": "Hedge trade confirmation and risk-system position report",
+        "input_records": "Position Greeks, market data, hedge instructions, trade blotter",
+        "task": "Execute delta hedge",
+        "terminal_state": "Hedge trade booked and position Greeks updated"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:70260143deeff4fa00dc3c71",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "daily mark risk calculation",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "daily mark risk calculation",
+        "evidence_record": "valuation control sign-off",
+        "input_records": "positions, volatility surfaces, correlation inputs",
+        "task": "Daily mark and risk calculation",
+        "terminal_state": "official marks and Greeks"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:a010c5383f105b10fbaffdf8",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "execute equity order",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute equity order",
+        "evidence_record": "trade ticket and confirmation in order management system",
+        "input_records": "client order ticket, equity market data, client account data",
+        "task": "Execute equity order",
+        "terminal_state": "trade executed at agreed security, quantity, and price"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:a7ac76d805630e16648fb17d",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "allocate executed equity trade to client account",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "allocate executed equity trade to client account",
+        "evidence_record": "allocation report",
+        "input_records": "executed trade ticket, allocation instructions, client account master data",
+        "task": "Allocate executed equity trade to client accounts",
+        "terminal_state": "allocations sum to executed quantity and are posted to correct accounts"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:ae8ad3ea7d370981a882c60e",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "capture executed equity trade into core trading system",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "capture executed equity trade into core trading system",
+        "evidence_record": "trade capture audit log",
+        "input_records": "executed trade ticket, security master data",
+        "task": "Capture executed equity trade into core trading system",
+        "terminal_state": "trade record posted with correct ISIN, quantity, and price"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:b94594ae1c74802c30e2d370",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "calculate post hedge rebalance",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate post hedge rebalance",
+        "evidence_record": "Order audit trail and risk report",
+        "input_records": "Greeks, position file, hedge limits",
+        "task": "Calculate and post hedge rebalance",
+        "terminal_state": "Hedge orders executed"
+      }
+    },
+    {
+      "reference_id": "task:equity_derivatives_structured:f0b9fdf8536aa1d4c76bddda",
+      "kind": "task",
+      "division_key": "equity_derivatives_structured",
+      "label": "execute delta hedge for equity derivative",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute delta hedge for equity derivative",
+        "evidence_record": "trade blotter and risk report",
+        "input_records": "hedge instruction, position ledger, market data",
+        "task": "Execute delta hedge for equity derivative",
+        "terminal_state": "hedge trade booked and Greeks updated"
+      }
+    },
+    {
+      "reference_id": "task:fx_cross_asset_combined:5661407d7bd2c4974adca32f",
+      "kind": "task",
+      "division_key": "fx_cross_asset_combined",
+      "label": "check fx position against netting limit rule",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "check fx position against netting limit rule",
+        "evidence_record": "limit monitoring system log",
+        "input_records": "position file, limit configuration, market data",
+        "task": "Check FX position against netting and limit rules",
+        "terminal_state": "position within approved limits or exception raised"
+      }
+    },
+    {
+      "reference_id": "task:fx_cross_asset_combined:701c5ba5ab026015d12f7960",
+      "kind": "task",
+      "division_key": "fx_cross_asset_combined",
+      "label": "report trade to trade repository",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "report trade to trade repository",
+        "evidence_record": "trade repository acknowledgment",
+        "input_records": "executed trade ticket, counterparty master data",
+        "task": "Report trade to trade repository",
+        "terminal_state": "trade report accepted by trade repository"
+      }
+    },
+    {
+      "reference_id": "task:fx_cross_asset_combined:a8587897d7356ceb11169397",
+      "kind": "task",
+      "division_key": "fx_cross_asset_combined",
+      "label": "execute fx spot or forward order",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute fx spot or forward order",
+        "evidence_record": "trade ticket and confirmation in order management system",
+        "input_records": "client order ticket, FX market data, counterparty limit file",
+        "task": "Execute FX spot or forward order",
+        "terminal_state": "trade executed at agreed currency pair, notional, and price"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:00b1e3ed566d190466c6ff44",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "execute an otc fx forward",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute an otc fx forward",
+        "evidence_record": "trade blotter and confirmation",
+        "input_records": "client order, spot/forward curve, credit limit",
+        "task": "Execute an OTC FX forward",
+        "terminal_state": "trade booked with currency pair, notional, rate, and value date"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:01ae8a0ceb01e81be5d47733",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "confirm fx spot forward trade with counterparty",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "confirm fx spot forward trade with counterparty",
+        "evidence_record": "MT300 confirmation and trade blotter match",
+        "input_records": "Execution record, settlement instructions, SSI database",
+        "task": "Confirm FX spot/forward trade with counterparty",
+        "terminal_state": "Affirmed FX trade"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:142829fdcfd6a0cc316f4aa4",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "calculate fx margin for an uncleared swap",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate fx margin for an uncleared swap",
+        "evidence_record": "margin call notice",
+        "input_records": "positions, CSA, collateral balances",
+        "task": "Calculate FX margin for an uncleared swap",
+        "terminal_state": "margin call amount sent"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:23bc403fb5cffa304176d31a",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "submit transaction report",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "submit transaction report",
+        "evidence_record": "Regulatory report acknowledgment",
+        "input_records": "Trade records, LEI/reference data",
+        "task": "Submit transaction reports",
+        "terminal_state": "Accepted MiFIR/EMIR report"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:62a64fe473acece699b9501d",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "check settlement instruction confirm trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "check settlement instruction confirm trade",
+        "evidence_record": "Confirmed SWIFT MT300 or equivalent confirmation",
+        "input_records": "SSI database, trade confirmation, settlement-date calendar",
+        "task": "Check settlement instructions and confirm trade",
+        "terminal_state": "Trade confirmed with matching settlement instructions"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:653a1bb5e0639d503c25d9d7",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "mark fx position to market at close",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "mark fx position to market at close",
+        "evidence_record": "valuation control sign-off and P&L report",
+        "input_records": "position ledger, FX rates, valuation inputs",
+        "task": "Mark FX positions to market at close",
+        "terminal_state": "official end-of-day marks and P&L"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:690f88a17a92bb91dd769748",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "revalue fx position against official fix",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "revalue fx position against official fix",
+        "evidence_record": "P&L sign-off and fix-rate snapshot",
+        "input_records": "Position file, fix rates, counterparty rates",
+        "task": "Revalue FX positions against official fixes",
+        "terminal_state": "Official EOD FX P&L"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:6d2425f8b20177bf74a86dfa",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "execute client fx spot or swap order",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute client fx spot or swap order",
+        "evidence_record": "trade blotter and electronic confirmation",
+        "input_records": "order ticket, pre-trade limit check, market data snapshot",
+        "task": "Execute client FX spot or swap order",
+        "terminal_state": "booked FX trade with rate, amount, value date and counterparty"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:72fcacacdb8534a0cb64590b",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "reconcile fx position to clearing house",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile fx position to clearing house",
+        "evidence_record": "reconciliation report",
+        "input_records": "internal positions, CCP statement",
+        "task": "Reconcile FX positions to clearing house",
+        "terminal_state": "positions match or exception resolved"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:7f1a04f3f6e62c664f87b20b",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "quote execute spot or forward fx trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "quote execute spot or forward fx trade",
+        "evidence_record": "Execution report and trade confirmation",
+        "input_records": "Client order, streaming quote, limit-check log, trade blotter",
+        "task": "Quote and execute spot or forward FX trade",
+        "terminal_state": "Trade executed at quoted price and booked"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:922e0a9c8eea34360de068f6",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "reconcile fx position profit loss",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile fx position profit loss",
+        "evidence_record": "EOD reconciliation sign-off",
+        "input_records": "Position records, market rates, ledger entries",
+        "task": "Reconcile FX position and profit and loss",
+        "terminal_state": "End-of-day position and P&L match risk and finance records"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:a0d7310564663bbe9ac80092",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "resolve settlement instruction exception",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "resolve settlement instruction exception",
+        "evidence_record": "settlement exception log",
+        "input_records": "trade details, settlement instruction, correspondent status",
+        "task": "Resolve settlement instruction exception",
+        "terminal_state": "settled or failed trade with reason code"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:e8cb0e537c88e60470b67450",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "hedge residual fx position",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "hedge residual fx position",
+        "evidence_record": "hedge allocation record and trade blotter",
+        "input_records": "position ledger, hedge instruction, market data",
+        "task": "Hedge residual FX position",
+        "terminal_state": "hedge trade booked and position reduced"
+      }
+    },
+    {
+      "reference_id": "task:fx_trading:f257f3a76c8aa9c3b417db32",
+      "kind": "task",
+      "division_key": "fx_trading",
+      "label": "validate settlement instruction cut off",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "validate settlement instruction cut off",
+        "evidence_record": "SWIFT message acknowledgment",
+        "input_records": "SSI, payment message, cut-off calendar",
+        "task": "Validate settlement instructions and cut-off",
+        "terminal_state": "Released payment instruction"
+      }
+    },
+    {
+      "reference_id": "task:global_banking_financing:385bed36274570c7115c3978",
+      "kind": "task",
+      "division_key": "global_banking_financing",
+      "label": "process loan drawdown",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "process loan drawdown",
+        "evidence_record": "disbursement record",
+        "input_records": "drawdown request, conditions precedent",
+        "task": "Process loan drawdown",
+        "terminal_state": "funds disbursed"
+      }
+    },
+    {
+      "reference_id": "task:global_banking_financing:5ac09000c6fd9fb57e9f2252",
+      "kind": "task",
+      "division_key": "global_banking_financing",
+      "label": "allocate loan syndication",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "allocate loan syndication",
+        "evidence_record": "allocation report",
+        "input_records": "term sheet, investor orders",
+        "task": "Allocate loan syndication",
+        "terminal_state": "allocation record created"
+      }
+    },
+    {
+      "reference_id": "task:global_banking_financing:95e1b468db2ab0f9b298252a",
+      "kind": "task",
+      "division_key": "global_banking_financing",
+      "label": "commit a syndicated loan",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "commit a syndicated loan",
+        "evidence_record": "commitment letter",
+        "input_records": "credit approval, term sheet",
+        "task": "Commit a syndicated loan",
+        "terminal_state": "commitment letter issued"
+      }
+    },
+    {
+      "reference_id": "task:global_financing_capital_markets:46e2f96be86ce66a4ed23026",
+      "kind": "task",
+      "division_key": "global_financing_capital_markets",
+      "label": "capture financing transaction into core system",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "capture financing transaction into core system",
+        "evidence_record": "trade capture audit log",
+        "input_records": "executed financing ticket, counterparty master data",
+        "task": "Capture financing transaction into core system",
+        "terminal_state": "financing record posted with correct amount, tenor, and pricing"
+      }
+    },
+    {
+      "reference_id": "task:global_financing_capital_markets:821eb9fcc6a2c8aef6c4201f",
+      "kind": "task",
+      "division_key": "global_financing_capital_markets",
+      "label": "prepare loan commitment",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "prepare loan commitment",
+        "evidence_record": "commitment letter and deal file",
+        "input_records": "client request, credit approval, legal documentation",
+        "task": "Prepare loan commitment",
+        "terminal_state": "commitment issued with agreed amount, tenor, and pricing"
+      }
+    },
+    {
+      "reference_id": "task:global_financing_capital_markets:9b3ea460f2b803edf8fa7ed4",
+      "kind": "task",
+      "division_key": "global_financing_capital_markets",
+      "label": "allocate syndicated loan",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "allocate syndicated loan",
+        "evidence_record": "allocation report",
+        "input_records": "syndication book, investor instructions, allocation rules",
+        "task": "Allocate syndicated loan",
+        "terminal_state": "loan allocated to investors and recorded"
+      }
+    },
+    {
+      "reference_id": "task:leveraged_finance_loan_capital_markets:a867b6efcd4d9143ec7f7c3d",
+      "kind": "task",
+      "division_key": "leveraged_finance_loan_capital_markets",
+      "label": "run leveraged lending underwriting test",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "run leveraged lending underwriting test",
+        "evidence_record": "Credit approval memo and test calculation",
+        "input_records": "Borrower financials, pro forma EBITDA, debt levels, policy limits",
+        "task": "Run leveraged lending underwriting test",
+        "terminal_state": "Underwriting approved or rejected"
+      }
+    },
+    {
+      "reference_id": "task:leveraged_finance_loan_capital_markets:ae3e8104f20cb771a4d83f26",
+      "kind": "task",
+      "division_key": "leveraged_finance_loan_capital_markets",
+      "label": "price allocate syndicated leveraged loan",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "price allocate syndicated leveraged loan",
+        "evidence_record": "Pricing term sheet and allocation schedule",
+        "input_records": "Commitment book, pricing grid, borrower data, allocation policy",
+        "task": "Price and allocate syndicated leveraged loan",
+        "terminal_state": "Loan priced and allocations finalized"
+      }
+    },
+    {
+      "reference_id": "task:leveraged_finance_loan_capital_markets:bb5fa3f595ffc0cb22283fda",
+      "kind": "task",
+      "division_key": "leveraged_finance_loan_capital_markets",
+      "label": "settle loan closing",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "settle loan closing",
+        "evidence_record": "Closing certificate and funding confirmation",
+        "input_records": "Credit agreement, closing conditions, funds flow",
+        "task": "Settle loan closing",
+        "terminal_state": "Loan funded and recorded"
+      }
+    },
+    {
+      "reference_id": "task:listed_derivatives_client_clearing:0255632e8e772188a531c7bd",
+      "kind": "task",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "calculate initial margin requirement",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate initial margin requirement",
+        "evidence_record": "Margin calculation report and call record",
+        "input_records": "Client positions, clearinghouse margin model, collateral",
+        "task": "Calculate initial margin requirement",
+        "terminal_state": "Margin requirement issued"
+      }
+    },
+    {
+      "reference_id": "task:listed_derivatives_client_clearing:3a2bcb8cacc83a2c2970068c",
+      "kind": "task",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "calculate initial variation margin",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate initial variation margin",
+        "evidence_record": "margin report",
+        "input_records": "positions, SPAN parameters, collateral",
+        "task": "Calculate initial and variation margin",
+        "terminal_state": "margin call amount"
+      }
+    },
+    {
+      "reference_id": "task:listed_derivatives_client_clearing:4a0ebe0f098743ce11646ecf",
+      "kind": "task",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "process option exercise or assignment",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "process option exercise or assignment",
+        "evidence_record": "clearing notice",
+        "input_records": "exercise instructions, expiry records, clearinghouse notices",
+        "task": "Process option exercise or assignment",
+        "terminal_state": "exercise or assignment booked"
+      }
+    },
+    {
+      "reference_id": "task:listed_derivatives_client_clearing:4a6826ad0ad337515ac95729",
+      "kind": "task",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "allocate executed trade to client account",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "allocate executed trade to client account",
+        "evidence_record": "Clearinghouse allocation acknowledgment",
+        "input_records": "Execution reports, allocation instructions, account map",
+        "task": "Allocate executed trades to client accounts",
+        "terminal_state": "Allocated cleared trades"
+      }
+    },
+    {
+      "reference_id": "task:listed_derivatives_client_clearing:68e12da78e60de2f123129a1",
+      "kind": "task",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "clear exchange traded future trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "clear exchange traded future trade",
+        "evidence_record": "clearing report",
+        "input_records": "trade capture, clearinghouse rules, account mapping",
+        "task": "Clear exchange-traded futures trade",
+        "terminal_state": "accepted and cleared trade"
+      }
+    },
+    {
+      "reference_id": "task:listed_derivatives_client_clearing:838d52dc2add7d536a9ea1da",
+      "kind": "task",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "submit regulatory clearing report",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "submit regulatory clearing report",
+        "evidence_record": "Repository acknowledgment",
+        "input_records": "Trade records, clearing status",
+        "task": "Submit regulatory clearing report",
+        "terminal_state": "Accepted EMIR/CFTC report"
+      }
+    },
+    {
+      "reference_id": "task:listed_derivatives_client_clearing:b4e0384f912b838171da284b",
+      "kind": "task",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "determine client clearing eligibility",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "determine client clearing eligibility",
+        "evidence_record": "Eligibility checklist and approval record",
+        "input_records": "Client onboarding file, clearinghouse rules, account documents",
+        "task": "Determine client clearing eligibility",
+        "terminal_state": "Eligibility approved or rejected"
+      }
+    },
+    {
+      "reference_id": "task:listed_derivatives_client_clearing:da37f6f52c8b13c9f5b9fc0b",
+      "kind": "task",
+      "division_key": "listed_derivatives_client_clearing",
+      "label": "reconcile position with clearinghouse",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile position with clearinghouse",
+        "evidence_record": "reconciliation file",
+        "input_records": "broker records, clearinghouse statement",
+        "task": "Reconcile positions with clearinghouse",
+        "terminal_state": "break resolved or escalated"
+      }
+    },
+    {
+      "reference_id": "task:market_risk_management:58e91190cde07cac48e81df8",
+      "kind": "task",
+      "division_key": "market_risk_management",
+      "label": "monitor limit breach",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "monitor limit breach",
+        "evidence_record": "limit breach report",
+        "input_records": "positions, limit set",
+        "task": "Monitor limit breaches",
+        "terminal_state": "breach reported if present"
+      }
+    },
+    {
+      "reference_id": "task:market_risk_management:a2e24d4f4ff09ec2e1e85981",
+      "kind": "task",
+      "division_key": "market_risk_management",
+      "label": "check limit breach",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "check limit breach",
+        "evidence_record": "limit report",
+        "input_records": "positions, limit policy",
+        "task": "Check limit breach",
+        "terminal_state": "breach alert generated"
+      }
+    },
+    {
+      "reference_id": "task:market_risk_management:b25e61494ee082e4d88e9a2b",
+      "kind": "task",
+      "division_key": "market_risk_management",
+      "label": "calculate var",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate var",
+        "evidence_record": "risk system output and model run log",
+        "input_records": "position file, market data, risk model parameters",
+        "task": "Calculate VaR",
+        "terminal_state": "VaR output produced for correct portfolio and confidence level"
+      }
+    },
+    {
+      "reference_id": "task:market_risk_management:c1d073cc3f6c18644d1dde1b",
+      "kind": "task",
+      "division_key": "market_risk_management",
+      "label": "run stress test",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "run stress test",
+        "evidence_record": "stress test report",
+        "input_records": "scenarios, positions",
+        "task": "Run stress test",
+        "terminal_state": "stress P&L calculated"
+      }
+    },
+    {
+      "reference_id": "task:market_risk_management:ced492ea97dc2d5d545d3bfe",
+      "kind": "task",
+      "division_key": "market_risk_management",
+      "label": "reconcile risk position to trading",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile risk position to trading",
+        "evidence_record": "reconciliation report",
+        "input_records": "risk positions, trade blotter",
+        "task": "Reconcile risk positions to trading",
+        "terminal_state": "positions match or exception resolved"
+      }
+    },
+    {
+      "reference_id": "task:market_risk_management:e9966056cdba9ac4f5047203",
+      "kind": "task",
+      "division_key": "market_risk_management",
+      "label": "calculate daily var",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate daily var",
+        "evidence_record": "VaR report and model validation record",
+        "input_records": "positions, risk factors, model",
+        "task": "Calculate daily VaR",
+        "terminal_state": "VaR posted"
+      }
+    },
+    {
+      "reference_id": "task:market_risk_management:ea3978263f9fe3f9907cf00c",
+      "kind": "task",
+      "division_key": "market_risk_management",
+      "label": "validate risk model output",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "validate risk model output",
+        "evidence_record": "model validation report",
+        "input_records": "model output, backtest data, validation criteria",
+        "task": "Validate risk model output",
+        "terminal_state": "model output accepted or rejected against validation criteria"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:2216682e6bc8272cbc4a7c8a",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "capture prime trade into core trading system",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "capture prime trade into core trading system",
+        "evidence_record": "trade capture audit log",
+        "input_records": "executed trade ticket, client account master data",
+        "task": "Capture prime trade into core trading system",
+        "terminal_state": "trade record posted with correct security, quantity, and price"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:251acee1d27109299b6b15da",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "locate share for short sale",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "locate share for short sale",
+        "evidence_record": "Locate reference and borrow confirmation",
+        "input_records": "Short-sale order, inventory, borrow desk records",
+        "task": "Locate shares for short sale",
+        "terminal_state": "Locate confirmed or order rejected"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:36753c525823380d105faedf",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "extend margin loan",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "extend margin loan",
+        "evidence_record": "loan record and margin call",
+        "input_records": "client account, collateral, credit limit",
+        "task": "Extend margin loan",
+        "terminal_state": "loan booked with correct amount and rate"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:3c3cb6aa056091f95bd3c8a5",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "issue a margin call to a hedge fund",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "issue a margin call to a hedge fund",
+        "evidence_record": "margin call notice",
+        "input_records": "positions, valuation, credit agreement",
+        "task": "Issue a margin call to a hedge fund",
+        "terminal_state": "call amount sent"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:43156c9533ee63177a63a6d8",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "calculate client margin requirement",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate client margin requirement",
+        "evidence_record": "margin statement",
+        "input_records": "client positions, margin methodology, collateral balances",
+        "task": "Calculate client margin requirement",
+        "terminal_state": "margin requirement and call amount"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:4ffd88409e6f1d21132dd440",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "validate collateral eligibility",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "validate collateral eligibility",
+        "evidence_record": "Collateral eligibility log",
+        "input_records": "Collateral inventory, eligibility rules, haircut schedule",
+        "task": "Validate collateral eligibility",
+        "terminal_state": "Eligible/ineligible collateral decision"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:572eb04619173203a35384a6",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "process security loan recall",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "process security loan recall",
+        "evidence_record": "Recall confirmation and loan ledger update",
+        "input_records": "Loan ledger, recall notice, settlement date",
+        "task": "Process securities loan recall",
+        "terminal_state": "Recall matched or failed"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:620142634412171b325d393d",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "issue margin call",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "issue margin call",
+        "evidence_record": "margin call notice and client account record",
+        "input_records": "client position, margin requirements, market data",
+        "task": "Issue margin call",
+        "terminal_state": "margin call issued for correct amount"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:62278fed78bc618df7d158df",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "reconcile client account break",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile client account break",
+        "evidence_record": "reconciliation sign-off",
+        "input_records": "trade, cash and position records; client statement",
+        "task": "Reconcile client account breaks",
+        "terminal_state": "break resolved or escalated with reason"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:6650dd1ed1703c1ad78cb1ae",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "allocate block trade to client account",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "allocate block trade to client account",
+        "evidence_record": "allocation report",
+        "input_records": "execution details, client instructions, allocation policy",
+        "task": "Allocate block trade to client accounts",
+        "terminal_state": "allocations booked to accounts"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:7e1e5d1465edcb52839e68eb",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "allocate security lending to a hedge fund",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "allocate security lending to a hedge fund",
+        "evidence_record": "securities lending record",
+        "input_records": "client request, available securities, loan agreement",
+        "task": "Allocate securities lending to a hedge fund",
+        "terminal_state": "loan booked"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:9071cc422a0ab07fcd3e606e",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "recall or release security loan",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "recall or release security loan",
+        "evidence_record": "Settlement instruction and loan report update",
+        "input_records": "Loan book, recall notice, settlement instructions",
+        "task": "Recall or release securities loan",
+        "terminal_state": "Securities returned and loan closed or amended"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:9f90df53a2895a29d80ebfef",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "calculate client margin call",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate client margin call",
+        "evidence_record": "Margin-call record and calculation snapshot",
+        "input_records": "Client positions, collateral, margin schedule",
+        "task": "Calculate client margin call",
+        "terminal_state": "Margin call issued or no-call determination"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:ba81181e41c0b6e0d0779a26",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "process stock loan locate",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "process stock loan locate",
+        "evidence_record": "locate log",
+        "input_records": "borrow request, inventory, locate availability",
+        "task": "Process stock loan locate",
+        "terminal_state": "locate approved or rejected with reason"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:bc58af9ceaa6e86b16f0cb60",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "mark collateral",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "mark collateral",
+        "evidence_record": "collateral valuation report",
+        "input_records": "collateral holdings, market data",
+        "task": "Mark collateral",
+        "terminal_state": "collateral value posted"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:d8a0d9753d9f7aef70a5764d",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "report customer asset",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "report customer asset",
+        "evidence_record": "Rule 15c3-3 report",
+        "input_records": "customer account data, Rule 15c3-3 formula",
+        "task": "Report customer assets",
+        "terminal_state": "reserve calculation filed"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:d9cde3d88b7686e6f17062b2",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "process security lending",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "process security lending",
+        "evidence_record": "securities lending system record",
+        "input_records": "client request, securities inventory, lending agreement",
+        "task": "Process securities lending",
+        "terminal_state": "securities lent and loan recorded"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:e86c48b4dc20c9bfeda085a9",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "settle a prime brokerage trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "settle a prime brokerage trade",
+        "evidence_record": "settlement report",
+        "input_records": "trade ticket, settlement instructions",
+        "task": "Settle a prime brokerage trade",
+        "terminal_state": "settlement completed"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:e9567abc83eeeaf5c8323a35",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "reset client financing rate",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reset client financing rate",
+        "evidence_record": "Rate-reset confirmation and billing record",
+        "input_records": "Contract terms, rate reset notice, benchmark",
+        "task": "Reset client financing rate",
+        "terminal_state": "Updated financing rate applied"
+      }
+    },
+    {
+      "reference_id": "task:prime_brokerage_financing:f75642b7a1769cdcfadc6505",
+      "kind": "task",
+      "division_key": "prime_brokerage_financing",
+      "label": "calculate issue margin call",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate issue margin call",
+        "evidence_record": "Margin statement and call notice",
+        "input_records": "Client positions, collateral balances, margin schedule, prices",
+        "task": "Calculate and issue margin call",
+        "terminal_state": "Margin call amount calculated and issued"
+      }
+    },
+    {
+      "reference_id": "task:rates_fx_combined:1b46e81b8749c67f2bc6b14e",
+      "kind": "task",
+      "division_key": "rates_fx_combined",
+      "label": "report otc derivative trade to trade repository",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "report otc derivative trade to trade repository",
+        "evidence_record": "trade repository acknowledgment",
+        "input_records": "trade ticket, ISDA master, counterparty data",
+        "task": "Report OTC derivative trade to trade repository",
+        "terminal_state": "trade reported with correct EMIR/ISDA fields"
+      }
+    },
+    {
+      "reference_id": "task:rates_fx_combined:1c4ec15ac80ab8f665e70939",
+      "kind": "task",
+      "division_key": "rates_fx_combined",
+      "label": "execute client fx spot trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute client fx spot trade",
+        "evidence_record": "trade confirmation and settlement instruction in order management system",
+        "input_records": "client order ticket, FX rate screen, trade blotter",
+        "task": "Execute client FX spot trade",
+        "terminal_state": "trade booked with correct currency pair, amount, rate, and settlement date"
+      }
+    },
+    {
+      "reference_id": "task:rates_fx_combined:b6401e2b58efaa2bece92dd4",
+      "kind": "task",
+      "division_key": "rates_fx_combined",
+      "label": "calculate daily p l for rate book",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate daily p l for rate book",
+        "evidence_record": "daily P&L report and GL journal entry",
+        "input_records": "trade positions, market data, valuation model",
+        "task": "Calculate daily P&L for rates book",
+        "terminal_state": "daily P&L posted to general ledger"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:0f051f15539182a31c96d2b3",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "mark curve reconcile profit loss",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "mark curve reconcile profit loss",
+        "evidence_record": "End-of-day P&L attribution and reconciliation sign-off",
+        "input_records": "Market data snapshots, trade blotter, risk-system positions",
+        "task": "Mark curve and reconcile profit and loss",
+        "terminal_state": "End-of-day profit and loss and risk reports reconcile to clearing and ledger"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:2209199c8e4da26df328c416",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "check position against var notional limit",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "check position against var notional limit",
+        "evidence_record": "limit monitoring system log",
+        "input_records": "position file, limit configuration, market data",
+        "task": "Check position against VaR and notional limits",
+        "terminal_state": "position within approved limits or exception raised"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:2fd675f637b69216b3c640ce",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "allocate hedge trade to strategy",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "allocate hedge trade to strategy",
+        "evidence_record": "trade allocation record and desk P&L attribution",
+        "input_records": "hedge instruction, strategy code, executed trade details",
+        "task": "Allocate hedge trades to desk strategy",
+        "terminal_state": "hedge allocation recorded"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:30b4ec4e1003b4ab63cdf6e2",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "calculate daily mark to market p l for rate book",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate daily mark to market p l for rate book",
+        "evidence_record": "daily P&L report and ledger entry",
+        "input_records": "positions, market curves, model parameters",
+        "task": "Calculate daily mark-to-market P&L for rates book",
+        "terminal_state": "P&L posted to general ledger"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:36d0ef19067f7d23d6c7e00a",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "confirm swap economic against execution clearing record",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "confirm swap economic against execution clearing record",
+        "evidence_record": "Trade repository affirmation ID and internal blotter match",
+        "input_records": "Execution reports, clearing confirmations, legal confirmations",
+        "task": "Confirm swap economics against execution and clearing records",
+        "terminal_state": "Affirmed trade in books and records"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:557d15f17f9ad3235d200a12",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "validate central clearing eligibility for an otc derivative",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "validate central clearing eligibility for an otc derivative",
+        "evidence_record": "clearing decision log and CCP confirmation",
+        "input_records": "ISDA master, clearing obligation, counterparty data",
+        "task": "Validate central clearing eligibility for an OTC derivative",
+        "terminal_state": "trade routed to CCP or uncleared with margin"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:570d46b306e89231ab1d8a59",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "execute client interest rate swap order",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute client interest rate swap order",
+        "evidence_record": "trade blotter and electronic confirmation",
+        "input_records": "order ticket, pre-trade limit check, market data snapshot",
+        "task": "Execute client interest-rate swap order",
+        "terminal_state": "booked trade with price, size, counterparty and trade date"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:71197b1fe47667675c246834",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "price execute a client interest rate swap",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "price execute a client interest rate swap",
+        "evidence_record": "trade blotter entry and client confirmation",
+        "input_records": "client order ticket, market data, credit limit, pricing model",
+        "task": "Price and execute a client interest rate swap",
+        "terminal_state": "trade booked with notional, fixed/floating rates, and settlement date"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:8e8e17a09907c868692e4e48",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "submit trade for clearing",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "submit trade for clearing",
+        "evidence_record": "Central counterparty trade acceptance message and clearing report",
+        "input_records": "Executed trade records, clearing-member eligibility, UPI/UTI identifiers",
+        "task": "Submit trade for clearing",
+        "terminal_state": "Trade accepted by central counterparty"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:a9e11acdb151882af72b82c1",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "calculate hedge ratio rebalance hedge",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate hedge ratio rebalance hedge",
+        "evidence_record": "Order audit trail and post-trade risk-limit report",
+        "input_records": "Position file, curve sensitivities, limit report",
+        "task": "Calculate hedge ratios and rebalance hedges",
+        "terminal_state": "Hedge orders executed and risk report updated"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:b07c01bd64f8eb1b8b3c31bc",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "price execute client hedge in interest rate swap",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "price execute client hedge in interest rate swap",
+        "evidence_record": "Executed trade confirmation and trade blotter with timestamp and trader ID",
+        "input_records": "Client RFQ, pre-trade mid/mark, limit-check logs, trade blotter",
+        "task": "Price and execute client hedge in interest rate swap",
+        "terminal_state": "Trade booked and confirmed at agreed price within limit"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:b0c583add9e0c5064080bca8",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "mark rate position to market at close",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "mark rate position to market at close",
+        "evidence_record": "valuation control sign-off and P&L report",
+        "input_records": "position ledger, yield curves, valuation inputs",
+        "task": "Mark rates positions to market at close",
+        "terminal_state": "official end-of-day marks and P&L"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:b592f41363005226aae555b1",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "capture executed trade into core trading system",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "capture executed trade into core trading system",
+        "evidence_record": "trade capture audit log",
+        "input_records": "executed trade ticket, counterparty master data",
+        "task": "Capture executed trade into core trading system",
+        "terminal_state": "trade record posted with correct reference, notional, and price"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:becbb9e3b875b12494473bea",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "monitor clear limit exception",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "monitor clear limit exception",
+        "evidence_record": "risk system exception log",
+        "input_records": "risk limit hierarchy, intraday positions, exception queue",
+        "task": "Monitor and clear limit exceptions",
+        "terminal_state": "limit status resolved or escalated with timestamp"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:dc1259fff9e9c62c3766d2da",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "submit reportable swap data",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "submit reportable swap data",
+        "evidence_record": "CFTC/EMIR trade repository acknowledgment",
+        "input_records": "Trade records, UPI/LEI reference data",
+        "task": "Submit reportable swap data",
+        "terminal_state": "Accepted regulatory report"
+      }
+    },
+    {
+      "reference_id": "task:rates_trading:fa90e0991e1d382047f41502",
+      "kind": "task",
+      "division_key": "rates_trading",
+      "label": "revalue end day rate book against official curf",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "revalue end day rate book against official curf",
+        "evidence_record": "EOD P&L sign-off with trader and product-control approval IDs",
+        "input_records": "Trade blotter, official mark curves, collateral balances",
+        "task": "Revalue end-of-day rates book against official curves",
+        "terminal_state": "Official EOD P&L and risk positions signed off"
+      }
+    },
+    {
+      "reference_id": "task:regulatory_reporting_conduct_compliance:7719054ca75f325ae4a60e66",
+      "kind": "task",
+      "division_key": "regulatory_reporting_conduct_compliance",
+      "label": "retain book record",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "retain book record",
+        "evidence_record": "records management system audit log",
+        "input_records": "trade records, communications, confirmations",
+        "task": "Retain books and records",
+        "terminal_state": "records retained in required format and for required period"
+      }
+    },
+    {
+      "reference_id": "task:regulatory_reporting_conduct_compliance:a26017e32a6cb808c09eda6e",
+      "kind": "task",
+      "division_key": "regulatory_reporting_conduct_compliance",
+      "label": "prepare emir trade report",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "prepare emir trade report",
+        "evidence_record": "trade repository acknowledgment",
+        "input_records": "executed trade ticket, counterparty master data, reporting rules",
+        "task": "Prepare EMIR trade report",
+        "terminal_state": "trade report submitted and accepted by trade repository"
+      }
+    },
+    {
+      "reference_id": "task:regulatory_reporting_conduct_compliance:f25cb063715835d26ae7f478",
+      "kind": "task",
+      "division_key": "regulatory_reporting_conduct_compliance",
+      "label": "prepare mifir transaction report",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "prepare mifir transaction report",
+        "evidence_record": "reporting system acknowledgment",
+        "input_records": "executed trade ticket, venue data, reporting rules",
+        "task": "Prepare MiFIR transaction report",
+        "terminal_state": "transaction report submitted and accepted by regulator or reporting venue"
+      }
+    },
+    {
+      "reference_id": "task:repo_secfin_collateral:2197871441dd055cd459433c",
+      "kind": "task",
+      "division_key": "repo_secfin_collateral",
+      "label": "process a security lending recall",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "process a security lending recall",
+        "evidence_record": "recall log and settlement",
+        "input_records": "recall request, loan agreement, available securities",
+        "task": "Process a securities lending recall",
+        "terminal_state": "securities returned or exception logged"
+      }
+    },
+    {
+      "reference_id": "task:repo_secfin_collateral:2a28afae8e1d3ef1c04e8da0",
+      "kind": "task",
+      "division_key": "repo_secfin_collateral",
+      "label": "calculate daily financing p l",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "calculate daily financing p l",
+        "evidence_record": "P&L report",
+        "input_records": "repo positions, rates, accruals",
+        "task": "Calculate daily financing P&L",
+        "terminal_state": "official financing P&L"
+      }
+    },
+    {
+      "reference_id": "task:repo_secfin_collateral:35b43659d737e24171eb0587",
+      "kind": "task",
+      "division_key": "repo_secfin_collateral",
+      "label": "execute repo trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute repo trade",
+        "evidence_record": "repo confirmation",
+        "input_records": "collateral details, haircut, rate, counterparty, limits",
+        "task": "Execute repo trade",
+        "terminal_state": "booked repo trade with start and end dates"
+      }
+    },
+    {
+      "reference_id": "task:repo_secfin_collateral:626b058376ef83552dec5bbd",
+      "kind": "task",
+      "division_key": "repo_secfin_collateral",
+      "label": "revalue repo book",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "revalue repo book",
+        "evidence_record": "P&L sign-off",
+        "input_records": "Position file, repo curves, collateral prices",
+        "task": "Revalue repo book",
+        "terminal_state": "Official EOD P&L"
+      }
+    },
+    {
+      "reference_id": "task:repo_secfin_collateral:690a0edd19b48574e1c6d282",
+      "kind": "task",
+      "division_key": "repo_secfin_collateral",
+      "label": "settle a repo trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "settle a repo trade",
+        "evidence_record": "settlement report",
+        "input_records": "repo ticket, collateral, settlement instructions",
+        "task": "Settle a repo trade",
+        "terminal_state": "cash and securities exchanged"
+      }
+    },
+    {
+      "reference_id": "task:repo_secfin_collateral:693f634facefab3e4f8e3d76",
+      "kind": "task",
+      "division_key": "repo_secfin_collateral",
+      "label": "confirm repo trade collateral schedule",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "confirm repo trade collateral schedule",
+        "evidence_record": "Confirmation ID and blotter match",
+        "input_records": "Execution report, collateral schedule, legal confirmation",
+        "task": "Confirm repo trade and collateral schedule",
+        "terminal_state": "Affirmed repo trade"
+      }
+    },
+    {
+      "reference_id": "task:repo_secfin_collateral:7ecc15581e6f19200b45f5f7",
+      "kind": "task",
+      "division_key": "repo_secfin_collateral",
+      "label": "allocate collateral to financing transaction",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "allocate collateral to financing transaction",
+        "evidence_record": "collateral schedule",
+        "input_records": "inventory, eligibility criteria, concentration limits",
+        "task": "Allocate collateral to financing transactions",
+        "terminal_state": "collateral assigned to specific trades"
+      }
+    },
+    {
+      "reference_id": "task:repo_secfin_collateral:9180558b239c3bbc8e1325bc",
+      "kind": "task",
+      "division_key": "repo_secfin_collateral",
+      "label": "meet or dispute margin call",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "meet or dispute margin call",
+        "evidence_record": "margin call log",
+        "input_records": "margin statement, eligible collateral, valuation",
+        "task": "Meet or dispute margin call",
+        "terminal_state": "margin call satisfied or disputed with reason"
+      }
+    },
+    {
+      "reference_id": "task:repo_secfin_collateral:96d8128148ca09510e98a020",
+      "kind": "task",
+      "division_key": "repo_secfin_collateral",
+      "label": "value collateral daily",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "value collateral daily",
+        "evidence_record": "collateral valuation report",
+        "input_records": "collateral list, market prices",
+        "task": "Value collateral daily",
+        "terminal_state": "collateral valuation posted"
+      }
+    },
+    {
+      "reference_id": "task:repo_secfin_collateral:c10b7324f1516634d766edd7",
+      "kind": "task",
+      "division_key": "repo_secfin_collateral",
+      "label": "process repo settlement",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "process repo settlement",
+        "evidence_record": "DVP settlement confirmation",
+        "input_records": "Payment messages, collateral transfer instructions",
+        "task": "Process repo settlement",
+        "terminal_state": "Settled repo"
+      }
+    },
+    {
+      "reference_id": "task:repo_secfin_collateral:f112295b1140405389cbb322",
+      "kind": "task",
+      "division_key": "repo_secfin_collateral",
+      "label": "validate collateral margin haircut",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "validate collateral margin haircut",
+        "evidence_record": "Margin calculation sign-off",
+        "input_records": "Collateral inventory, margin schedule, prices",
+        "task": "Validate collateral margin and haircuts",
+        "terminal_state": "Margin call or collateral substitution approved"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:0379a4acce842e3224e2b8b9",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "run eligibility compliance test",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "run eligibility compliance test",
+        "evidence_record": "Compliance test report",
+        "input_records": "Loan-level data, eligibility criteria, concentration limits",
+        "task": "Run eligibility and compliance tests",
+        "terminal_state": "Pool passes or fails eligibility tests"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:2ce1f0eb8666153d8973fa8e",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "settle securitisation issuance",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "settle securitisation issuance",
+        "evidence_record": "Closing certificate and settlement confirmation",
+        "input_records": "Closing documents, settlement instructions, funds flow",
+        "task": "Settle securitisation issuance",
+        "terminal_state": "Securities delivered and funds received"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:3300632204ef944f8c7fd540",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "execute securitised product trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "execute securitised product trade",
+        "evidence_record": "trade blotter",
+        "input_records": "order ticket, limits, allocation instructions",
+        "task": "Execute securitised product trade",
+        "terminal_state": "booked trade with price, size and counterparty"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:3b176374ead16318f7a94b7f",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "perform securitisation due diligence risk retention check",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "perform securitisation due diligence risk retention check",
+        "evidence_record": "Due-diligence checklist and retention compliance memo",
+        "input_records": "Offering documents, loan tapes, retention certificates",
+        "task": "Perform securitisation due diligence and risk-retention check",
+        "terminal_state": "Eligible securitised position approved"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:3c99bbbe37d33de724452d9d",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "reconcile collateral pool",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile collateral pool",
+        "evidence_record": "collateral reconciliation report",
+        "input_records": "pool data, servicer report",
+        "task": "Reconcile collateral pool",
+        "terminal_state": "collateral balance reconciled"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:414d6cab9577e3eec96d3457",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "check collateral eligibility",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "check collateral eligibility",
+        "evidence_record": "collateral eligibility report",
+        "input_records": "collateral list, eligibility criteria, legal documentation",
+        "task": "Check collateral eligibility",
+        "terminal_state": "collateral accepted or rejected against criteria"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:4f7e3e4fce6bb69d176bccd5",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "run prepayment loss model",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "run prepayment loss model",
+        "evidence_record": "model run output",
+        "input_records": "loan-level data, model parameters, assumptions",
+        "task": "Run prepayment and loss model",
+        "terminal_state": "projected cashflows and valuation output"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:60c320c3225c8726322467cb",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "settle an abs trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "settle an abs trade",
+        "evidence_record": "settlement report",
+        "input_records": "trade ticket, settlement instructions",
+        "task": "Settle an ABS trade",
+        "terminal_state": "securities and cash exchanged"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:6246dfd9dd5e457e6be3e25f",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "model tranche cashflow",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "model tranche cashflow",
+        "evidence_record": "model output and deal documentation",
+        "input_records": "collateral pool data, waterfall",
+        "task": "Model tranche cashflows",
+        "terminal_state": "cashflow schedule produced"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:7980249316309a81b17ae6ea",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "confirm abs mbs trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "confirm abs mbs trade",
+        "evidence_record": "Trade confirmation and blotter match",
+        "input_records": "Execution report, allocation, SSI",
+        "task": "Confirm ABS/MBS trade",
+        "terminal_state": "Affirmed trade"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:92959f1c43d3d7e3954b8115",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "report collateral pool performance",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "report collateral pool performance",
+        "evidence_record": "report and filing",
+        "input_records": "pool data, servicer reports",
+        "task": "Report collateral pool performance",
+        "terminal_state": "report filed"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:94de1185cf70c667c0215727",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "submit regulatory transaction report",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "submit regulatory transaction report",
+        "evidence_record": "Repository acknowledgment",
+        "input_records": "Trade records, reference data",
+        "task": "Submit regulatory transaction report",
+        "terminal_state": "Accepted MiFIR/EMIR report"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:9eb49d258019ab34774d0af6",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "price securitised tranche",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "price securitised tranche",
+        "evidence_record": "pricing model output and deal file",
+        "input_records": "collateral pool data, tranche structure, market pricing data",
+        "task": "Price securitised tranche",
+        "terminal_state": "tranche price and expected loss output recorded"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:c246f6fa7730836c839188b0",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "capture securitised trade into core trading system",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "capture securitised trade into core trading system",
+        "evidence_record": "trade capture audit log",
+        "input_records": "executed trade ticket, security master data",
+        "task": "Capture securitised trade into core trading system",
+        "terminal_state": "trade record posted with correct tranche, notional, and price"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:c79d78ef1ec14f948d6f98e6",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "validate waterfall cashflow allocation",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "validate waterfall cashflow allocation",
+        "evidence_record": "Waterfall validation sign-off",
+        "input_records": "Waterfall model, trustee report, payment dates",
+        "task": "Validate waterfall cashflow allocation",
+        "terminal_state": "Reconciled cashflow distribution"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:ccab3081f682ac981c650e74",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "report abs transaction",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "report abs transaction",
+        "evidence_record": "SEC EDGAR filing or Regulation AB report",
+        "input_records": "prospectus, Regulation AB data",
+        "task": "Report ABS transaction",
+        "terminal_state": "filing or report submitted"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:d41e1ebc6a148b2d02e662ba",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "price abs or mbs bid",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "price abs or mbs bid",
+        "evidence_record": "pricing sheet",
+        "input_records": "collateral tape, prepayment model, market colour",
+        "task": "Price ABS or MBS bid",
+        "terminal_state": "bid price and size published or submitted"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:f3dcbe21db5f29326ca12ea0",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "price structured note",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "price structured note",
+        "evidence_record": "pricing ticket and trade confirmation",
+        "input_records": "client request, underlying index, pricing model",
+        "task": "Price structured note",
+        "terminal_state": "quote issued with correct terms"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:f5eda7766b7bf6ebf778d936",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "price securitisation tranche",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "price securitisation tranche",
+        "evidence_record": "Pricing memo and model output",
+        "input_records": "Collateral pool, prepayment model, spread curve, term sheet",
+        "task": "Price securitisation tranche",
+        "terminal_state": "Tranche price and yield produced and approved"
+      }
+    },
+    {
+      "reference_id": "task:securitised_products:fb679851b12630943a48755f",
+      "kind": "task",
+      "division_key": "securitised_products",
+      "label": "confirm settlement securitised trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "confirm settlement securitised trade",
+        "evidence_record": "settlement confirmation",
+        "input_records": "trade details, custodian instructions, settlement date",
+        "task": "Confirm settlement of securitised trade",
+        "terminal_state": "settled trade"
+      }
+    },
+    {
+      "reference_id": "task:sellside_research:2e8357259d075f32e1a5f76a",
+      "kind": "task",
+      "division_key": "sellside_research",
+      "label": "publish rating target price",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "publish rating target price",
+        "evidence_record": "Publication record and compliance approval log",
+        "input_records": "Financial model, current price, compliance disclosure review",
+        "task": "Publish rating and target price",
+        "terminal_state": "Research report published with rating and target price"
+      }
+    },
+    {
+      "reference_id": "task:sellside_research:7a8c4a3f05ab3d13be6c809d",
+      "kind": "task",
+      "division_key": "sellside_research",
+      "label": "update earning model",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "update earning model",
+        "evidence_record": "Model version control record and review sign-off",
+        "input_records": "Company filings, consensus data, analyst assumptions",
+        "task": "Update earnings model",
+        "terminal_state": "Model version updated and approved"
+      }
+    },
+    {
+      "reference_id": "task:sellside_research:a6614b8bd7055d916df44585",
+      "kind": "task",
+      "division_key": "sellside_research",
+      "label": "clear research report through compliance",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "clear research report through compliance",
+        "evidence_record": "Compliance approval or rejection record",
+        "input_records": "Draft report, disclosure checklist, restricted-list check",
+        "task": "Clear research report through compliance",
+        "terminal_state": "Report cleared or blocked by compliance"
+      }
+    },
+    {
+      "reference_id": "task:trade_lifecycle_operations:3287de2d80abdebe4438ad0c",
+      "kind": "task",
+      "division_key": "trade_lifecycle_operations",
+      "label": "settle trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "settle trade",
+        "evidence_record": "settlement report",
+        "input_records": "trade record, settlement instructions, counterparty account data",
+        "task": "Settle trade",
+        "terminal_state": "securities or cash settled on correct date"
+      }
+    },
+    {
+      "reference_id": "task:trade_lifecycle_operations:5ba6a130dcec651a8bb91533",
+      "kind": "task",
+      "division_key": "trade_lifecycle_operations",
+      "label": "capture trade",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "capture trade",
+        "evidence_record": "trade capture audit log",
+        "input_records": "executed trade ticket, counterparty master data",
+        "task": "Capture trade",
+        "terminal_state": "trade record posted with correct reference, notional, and price"
+      }
+    },
+    {
+      "reference_id": "task:trade_lifecycle_operations:f8b81e642bedae403f4e0099",
+      "kind": "task",
+      "division_key": "trade_lifecycle_operations",
+      "label": "reconcile position",
+      "basis": "model_consensus_prior",
+      "task": {
+        "canon": "reconcile position",
+        "evidence_record": "reconciliation file",
+        "input_records": "bank position file, counterparty position file, reconciliation rules",
+        "task": "Reconcile positions",
+        "terminal_state": "positions matched or discrepancy raised"
+      }
+    }
+  ],
+  "catalogue_sha256": "c01a323a4abf77f6df7562335367d31a29f5d3e7a6584f49cdefbf499463a94b"
+}

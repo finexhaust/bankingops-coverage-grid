@@ -60,6 +60,36 @@
         "reference/operating-catalogue.v1.json",
         "reference/task-concepts.v1.json"
       ]
+    },
+    {
+      "tag": "v0.7.0",
+      "manifest_sha256": "a301e598be8c7c9e53198bc2ae740057411ea7a1515658dfa3f2f99e43cba4a6",
+      "manifest_file_sha256": "b5b3a8c356422b7f8ab6c709a65c6274af09bbb9cbba7e70a6268fc854f4b712",
+      "commit_sha": "06284f09f6367ca15df51d6463164a2120baa4ae",
+      "snapshot_dir": "reference/release-snapshots/v0.7.0",
+      "source_url": "https://github.com/thefazzer/bankingops-coverage-grid/releases/download/v0.7.0/bocg-release-manifest.json",
+      "retained_artifacts": [
+        "cells/cp_aana_umr_scope.json",
+        "cells/cp_cftc_part43_realtime.json",
+        "cells/cp_credit_event_determination_committee_application.json",
+        "cells/cp_csa_vm_call_timeline.json",
+        "cells/cp_dc_outcome_application.json",
+        "cells/cp_derivatives_documentation_execution.json",
+        "cells/cp_derivatives_transaction_reporting_uti_upi.json",
+        "cells/cp_emir_refit_uti_pairing.json",
+        "cells/cp_mifir_art26_t1_submission.json",
+        "cells/cp_otc_confirmation_timeliness.json",
+        "cells/cp_otc_derivatives_confirmation_reconciliation.json",
+        "cells/cp_portfolio_reconciliation.json",
+        "cells/cp_reporting_error_remediation.json",
+        "cells/cp_settled_instruction_amendment.json",
+        "cells/cp_simm_im_dispute.json",
+        "cells/cp_simm_initial_margin_reconciliation.json",
+        "cells/cp_umr_im_segregation.json",
+        "live-run-20261019/matrix.json",
+        "reference/operating-catalogue.v1.json",
+        "reference/task-concepts.v1.json"
+      ]
     }
   ]
 }
