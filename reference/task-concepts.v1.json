@@ -11,6 +11,10 @@
     {
       "path": "reference/task-concept-rulings.yaml",
       "sha256": "937be301f5750aa161ce5d5dde7a33ccd27f380e2a45b57904192f8bf80e309a"
+    },
+    {
+      "path": "reference/history/task-concept-rulings-v0.6.3.yaml",
+      "sha256": "c0b544ab55112cbd98092e7d5af50d5ddccda0c10178dc99c314afe6880e4cf5"
     }
   ],
   "method": {
@@ -34,6 +38,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 4,
         "function_concepts": 2,
@@ -47,6 +52,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 1,
         "function_concepts": 1,
@@ -60,6 +66,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 1,
         "function_concepts": 1,
@@ -73,6 +80,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 6,
         "function_concepts": 3,
@@ -86,6 +94,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 6,
         "function_concepts": 3,
@@ -99,6 +108,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 1,
         "function_concepts": 1,
@@ -112,6 +122,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 1,
         "function_concepts": 1,
@@ -125,6 +136,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 2,
         "function_concepts": 2,
@@ -138,6 +150,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 5,
         "function_concepts": 3,
@@ -151,6 +164,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 4,
         "function_concepts": 2,
@@ -164,6 +178,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 1,
         "function_concepts": 1,
@@ -177,6 +192,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 4,
         "function_concepts": 3,
@@ -190,6 +206,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 1,
         "function_concepts": 1,
@@ -203,6 +220,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 1,
         "function_concepts": 1,
@@ -216,6 +234,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 1,
         "function_concepts": 1,
@@ -229,6 +248,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 2,
         "function_concepts": 2,
@@ -242,6 +262,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 3,
         "function_concepts": 3,
@@ -255,6 +276,12 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": {
+        "path": "reference/history/task-concept-rulings-v0.6.3.yaml",
+        "ruled_at": "2026-09-24",
+        "member_count": 25,
+        "surviving_member_count": 0
+      },
       "counts": {
         "functions": 6,
         "function_concepts": 4,
@@ -268,6 +295,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 1,
         "function_concepts": 1,
@@ -281,6 +309,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 5,
         "function_concepts": 3,
@@ -294,6 +323,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 1,
         "function_concepts": 1,
@@ -307,6 +337,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 3,
         "function_concepts": 2,
@@ -320,6 +351,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 6,
         "function_concepts": 4,
@@ -333,6 +365,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 1,
         "function_concepts": 1,
@@ -346,6 +379,7 @@
       "review_status": "AUTO",
       "basis": "machine_clustered",
       "ruling": null,
+      "archived_ruling": null,
       "counts": {
         "functions": 1,
         "function_concepts": 1,
@@ -4950,5 +4984,5 @@
     "aliases": 62,
     "reviewed_aliases": 0
   },
-  "task_concepts_sha256": "3618185e198fa868cd0c3a326e5a4c64e25890767db88ba14bc8354ae32f6855"
+  "task_concepts_sha256": "a410b82fa8b10d5867e93dcf4ba64d81785ed3e972516d18e1768b96d64140c5"
 }

@@ -38,6 +38,7 @@ from bocg.canon import canon_name  # noqa: E402
 
 CATALOGUE_PATH = 'reference/operating-catalogue.v1.json'
 RULINGS_PATH = 'reference/task-concept-rulings.yaml'
+ARCHIVED_RULINGS_PATH = 'reference/history/task-concept-rulings-v0.6.3.yaml'
 OUTPUT_PATH = 'reference/task-concepts.v1.json'
 CONTRACT_VERSION = '1.0.0'
 SCHEMA_ID = 'bocg.task-concepts/v1'
@@ -145,8 +146,8 @@ def _definition(entry: dict, members: list[dict], aliases: list[dict]) -> dict:
     return value
 
 
-def load_rulings(root: Path) -> dict:
-    raw = yaml.safe_load((root / RULINGS_PATH).read_text(encoding='utf-8'))
+def load_rulings(root: Path, path: str = RULINGS_PATH) -> dict:
+    raw = yaml.safe_load((root / path).read_text(encoding='utf-8'))
     if not isinstance(raw, dict) or raw.get('schema') != RULINGS_SCHEMA_ID:
         raise ValueError('task-concept rulings file has the wrong schema')
     seen = set()
@@ -167,7 +168,12 @@ def build_task_concepts(root: Path = ROOT) -> dict:
     catalogue = json.loads(catalogue_raw)
     rulings_raw = (root / RULINGS_PATH).read_bytes()
     rulings = load_rulings(root)
+    archived_rulings_raw = (root / ARCHIVED_RULINGS_PATH).read_bytes()
+    archived_rulings = load_rulings(root, ARCHIVED_RULINGS_PATH)
     ruling_by_division = {r['division_key']: r for r in rulings.get('rulings') or []}
+    archived_ruling_by_division = {
+        r['division_key']: r for r in archived_rulings.get('rulings') or []
+    }
 
     definitions = catalogue['definitions']
     division_keys = sorted(d['division_key'] for d in definitions if d['kind'] == 'division')
@@ -185,6 +191,7 @@ def build_task_concepts(root: Path = ROOT) -> dict:
     division_rows: list[dict] = []
     for division in division_keys:
         ruling = ruling_by_division.get(division)
+        archived_ruling = archived_ruling_by_division.get(division)
         counts = {'functions': len(by_division[division]['function']), 'tasks': len(by_division[division]['task']),
                   'function_concepts': 0, 'task_concepts': 0, 'aliases': 0, 'argued_merges': 0}
         if ruling is None:
@@ -251,12 +258,31 @@ def build_task_concepts(root: Path = ROOT) -> dict:
                         'review_status': review_status, 'basis': BASIS_STANDALONE, 'rationale': None,
                     }, [entry], []))
                     counts[concept_kind + 's'] += 1
+        archived_ruling_summary = None
+        if archived_ruling is not None:
+            archived_members = {
+                ({'function_concept': 'function', 'task_concept': 'task'}[concept['kind']], member)
+                for concept in archived_ruling['concepts']
+                for member in concept['members']
+            }
+            current_members = {
+                (kind, label)
+                for kind, pool in by_division[division].items()
+                for label in pool
+            }
+            archived_ruling_summary = {
+                'path': ARCHIVED_RULINGS_PATH,
+                'ruled_at': str(archived_ruling['ruled_at']),
+                'member_count': len(archived_members),
+                'surviving_member_count': len(archived_members & current_members),
+            }
         division_rows.append({
             'division_key': division, 'review_status': review_status, 'basis': basis,
             'ruling': None if ruling is None else {
                 'ruled_by': ruling['ruled_by'], 'ruled_at': str(ruling['ruled_at']), 'basis': ruling['basis'],
                 'argued_merges': counts['argued_merges'], 'aliases': counts['aliases'],
             },
+            'archived_ruling': archived_ruling_summary,
             'counts': {k: counts[k] for k in ('functions', 'function_concepts', 'tasks', 'task_concepts', 'aliases')},
         })
 
@@ -278,6 +304,7 @@ def build_task_concepts(root: Path = ROOT) -> dict:
         'sources': [
             {'path': CATALOGUE_PATH, 'sha256': sha256_bytes(catalogue_raw)},
             {'path': RULINGS_PATH, 'sha256': sha256_bytes(rulings_raw)},
+            {'path': ARCHIVED_RULINGS_PATH, 'sha256': sha256_bytes(archived_rulings_raw)},
         ],
         'method': {
             'machine': {
