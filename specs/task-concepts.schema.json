@@ -54,7 +54,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["division_key", "review_status", "basis", "ruling", "counts"],
+        "required": ["division_key", "review_status", "basis", "ruling", "archived_ruling", "counts"],
         "properties": {
           "division_key": {"$ref": "#/$defs/division_key"},
           "review_status": {"$ref": "#/$defs/review_status"},
@@ -72,6 +72,21 @@
                   "basis": {"type": "string", "minLength": 1},
                   "argued_merges": {"type": "integer", "minimum": 1},
                   "aliases": {"type": "integer", "minimum": 1}
+                }
+              }
+            ]
+          },
+          "archived_ruling": {
+            "oneOf": [
+              {"type": "null"},
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["path", "member_count", "surviving_member_count"],
+                "properties": {
+                  "path": {"type": "string", "minLength": 1},
+                  "member_count": {"type": "integer", "minimum": 0},
+                  "surviving_member_count": {"type": "integer", "minimum": 0}
                 }
               }
             ]

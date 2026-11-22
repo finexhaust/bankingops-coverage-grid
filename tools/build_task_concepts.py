@@ -38,6 +38,7 @@ from bocg.canon import canon_name  # noqa: E402
 
 CATALOGUE_PATH = 'reference/operating-catalogue.v1.json'
 RULINGS_PATH = 'reference/task-concept-rulings.yaml'
+ARCHIVED_RULINGS_PATH = 'reference/history/task-concept-rulings-v0.6.3.yaml'
 OUTPUT_PATH = 'reference/task-concepts.v1.json'
 CONTRACT_VERSION = '1.0.0'
 SCHEMA_ID = 'bocg.task-concepts/v1'
@@ -166,14 +167,27 @@ def build_task_concepts(root: Path = ROOT) -> dict:
     catalogue_raw = (root / CATALOGUE_PATH).read_bytes()
     catalogue = json.loads(catalogue_raw)
     rulings_raw = (root / RULINGS_PATH).read_bytes()
+    archived_path = root / ARCHIVED_RULINGS_PATH
+    archived_rulings_raw = archived_path.read_bytes() if archived_path.is_file() else None
     rulings = load_rulings(root)
+    archived_rulings = yaml.safe_load(archived_rulings_raw) if archived_rulings_raw else {}
+    if not isinstance(archived_rulings, dict):
+        raise ValueError('archived task-concept rulings file must be a mapping')
     ruling_by_division = {r['division_key']: r for r in rulings.get('rulings') or []}
+    archived_by_division = {
+        r['division_key']: r
+        for r in archived_rulings.get('rulings', [])
+        if isinstance(r, dict) and isinstance(r.get('division_key'), str)
+    }
 
     definitions = catalogue['definitions']
     division_keys = sorted(d['division_key'] for d in definitions if d['kind'] == 'division')
     for key in ruling_by_division:
         if key not in division_keys:
             raise ValueError(f'ruling names an unknown division: {key}')
+    for key in archived_by_division:
+        if key not in division_keys:
+            raise ValueError(f'archived ruling names an unknown division: {key}')
     by_division: dict[str, dict[str, dict[str, dict]]] = {k: {'function': {}, 'task': {}} for k in division_keys}
     for d in definitions:
         if d['kind'] in KINDS:
@@ -251,12 +265,33 @@ def build_task_concepts(root: Path = ROOT) -> dict:
                         'review_status': review_status, 'basis': BASIS_STANDALONE, 'rationale': None,
                     }, [entry], []))
                     counts[concept_kind + 's'] += 1
+        archived = archived_by_division.get(division)
+        archived_summary = None
+        if archived is not None:
+            archived_members = {
+                (member_kind, label)
+                for ruled in archived.get('concepts', [])
+                for member_kind, labels in (
+                    ({'function_concept': 'function', 'task_concept': 'task'}[ruled['kind']], ruled.get('members', [])),
+                )
+                for label in labels
+            }
+            survivors = sum(
+                label in by_division[division][member_kind]
+                for member_kind, label in archived_members
+            )
+            archived_summary = {
+                'path': ARCHIVED_RULINGS_PATH,
+                'member_count': len(archived_members),
+                'surviving_member_count': survivors,
+            }
         division_rows.append({
             'division_key': division, 'review_status': review_status, 'basis': basis,
             'ruling': None if ruling is None else {
                 'ruled_by': ruling['ruled_by'], 'ruled_at': str(ruling['ruled_at']), 'basis': ruling['basis'],
                 'argued_merges': counts['argued_merges'], 'aliases': counts['aliases'],
             },
+            'archived_ruling': archived_summary,
             'counts': {k: counts[k] for k in ('functions', 'function_concepts', 'tasks', 'task_concepts', 'aliases')},
         })
 
@@ -306,6 +341,11 @@ def build_task_concepts(root: Path = ROOT) -> dict:
             'reviewed_aliases': sum(len(c['aliases']) for c in concepts if c['review_status'] == 'REVIEWED'),
         },
     }
+    if archived_rulings_raw is not None:
+        result['sources'].append({
+            'path': ARCHIVED_RULINGS_PATH,
+            'sha256': sha256_bytes(archived_rulings_raw),
+        })
     result['task_concepts_sha256'] = sha256_bytes(canonical_bytes(result))
     return result
 

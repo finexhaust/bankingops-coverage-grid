@@ -100,6 +100,10 @@ def _rebuild_public_eval(artifact_root: Path) -> dict:
             "release_status": "github_release_published",
             "bocg_companion_tag": "v0.8.5",
             "url": "https://github.com/finexhaust/cleanroom-eval",
+            "archive_sha256": "02184bb6fb3227f890488e16865aa6d994b0025583f613093d67363651a427d5",
+            "audit_sha256": "234db03f6b4516706e762ade9ef2bd6b04c10d79ca6aa2130e96d897e77b31bc",
+            "audit_gate_counts": {"PASS": 10, "NOT_RUN": 3},
+            "audit_terminal_state": "RELEASE_AUDIT_PASS_WITH_LIMITATIONS",
             "notes": "fallback pin embedded in Meridian generator",
         }
     )
@@ -262,12 +266,16 @@ def main() -> int:
         },
         "cleanroom_eval": {
             "repository": cleanroom.get("repository", "finexhaust/cleanroom-eval"),
-            "version": cleanroom.get("version", "1.2.0"),
+            "version": cleanroom.get("version", "2.1.3"),
             "commit_sha": cleanroom.get("commit_sha"),
             "release_tag": cleanroom.get("release_tag"),
             "release_status": cleanroom.get("release_status"),
             "bocg_companion_tag": cleanroom.get("bocg_companion_tag"),
             "url": cleanroom.get("url", "https://github.com/finexhaust/cleanroom-eval"),
+            "archive_sha256": cleanroom.get("archive_sha256"),
+            "audit_sha256": cleanroom.get("audit_sha256"),
+            "audit_gate_counts": cleanroom.get("audit_gate_counts"),
+            "audit_terminal_state": cleanroom.get("audit_terminal_state"),
             "notes": cleanroom.get("notes"),
         },
         "public_eval": public_eval,
