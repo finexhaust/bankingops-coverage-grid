@@ -1,6 +1,6 @@
 # SPEC-06 — Operating units and versioned reference data
 
-Contract version: 1.0.0. Introduced in BOCG release v0.4.0.
+Contract version: 1.1.0. Introduced in BOCG release v0.4.0.
 
 BOCG owns reusable definitions of divisions, functions, terminal tasks and control
 points. Institutions own the particular units that perform that work, their
@@ -27,15 +27,28 @@ task hierarchy or institution workflow is inferred.
 `specs/operating-unit-register.schema.json` defines a consumer-owned register.
 Units have issuer-scoped identities, legal entities, optional parents, evidence,
 validity and review state. Functional assignments are many-to-many and link to
-released reference identifiers. Typed relationships connect units to people,
-books, systems, owner roles, locations, calendars and reference datasets.
-Settings carry explicit value types, context, owner and evidence.
+released reference identifiers. Typed relationships connect units to people, books, systems, owner roles, locations,
+calendars and reference datasets. Separate role-holding records bind a person,
+organisation, optional unit and role over a period, retaining nullable dates,
+title, grade and seniority. Person-to-person reporting relations retain distinct
+`observed`, `proposed` and `corrected` statuses; corrections identify the prior
+relation rather than overwriting it. Settings carry explicit value types,
+context, owner and evidence.
 
-Every assertion retains source references and review status. Reviewed/rejected
+Every assertion retains source references, an assertion basis
+(`source_observed`, `inferred`, `corrected` or `attested`) and review status.
+Sources may be canonical records, governed references, authored fixtures, owner
+attestations or SME attestations. Source observation times and validity bounds
+may be unknown (`null`); unknown dates are never inferred from one another.
+Corrected role holdings and reporting relations identify the prior assertion.
+An optional regulated-function correspondence keeps functional confidence,
+legal applicability and registration status separate.
+Reviewed/rejected
 assertions require a named reviewer, time and reason; that records a disposition
 and does not certify independent review. Synthetic fixtures cannot establish
 record-plane facts. A legal entity, unit and function are distinct objects.
-Regulatory applicability cannot be inferred solely from a division assignment.
+Regulatory applicability cannot be inferred solely from a division or function
+assignment.
 
 Validity intervals are half open. A missing bound is unknown; it must not become
 unlimited validity or be substituted with observation time. Effective-at queries

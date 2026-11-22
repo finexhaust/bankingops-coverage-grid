@@ -30,6 +30,44 @@ def fail(msg: str) -> None:
     FAILURES.append(msg)
 
 
+def financial_context_version_problems(root: Path = ROOT) -> list[str]:
+    """Keep context version declarations aligned with the proposal source."""
+    spec_paths = {
+        "proposal": "reference/financial-work-context-proposals.v1.json",
+        "catalogue": "reference/financial-work-context.v1.json",
+        "contract": "specs/operating-reference-contract.json",
+        "profile": "specs/common-semantic-profile.yaml",
+        "specification": "specs/SPEC-10-financial-work-context.md",
+    }
+    try:
+        versions = {
+            "proposal": json.loads((root / spec_paths["proposal"]).read_text(encoding="utf-8"))["version"],
+            "catalogue": json.loads((root / spec_paths["catalogue"]).read_text(encoding="utf-8"))["version"],
+            "contract": json.loads((root / spec_paths["contract"]).read_text(encoding="utf-8"))["optional_context"]["version"],
+            "profile": yaml.safe_load((root / spec_paths["profile"]).read_text(encoding="utf-8"))["financial_work_context"]["version"],
+        }
+        specification = (root / spec_paths["specification"]).read_text(encoding="utf-8")
+    except (OSError, UnicodeError, ValueError, KeyError, TypeError, yaml.YAMLError) as exc:
+        return [f"cannot read context version declarations ({exc})"]
+
+    match = re.search(r"^Version\s+([0-9]+\.[0-9]+\.[0-9]+)\.", specification, re.M)
+    if not match:
+        return ["SPEC-10 does not declare a readable context version"]
+    versions["specification"] = match.group(1)
+    canonical = versions["proposal"]
+    return [
+        f"{spec_paths[name]} declares {version!r}, but {spec_paths['proposal']} declares {canonical!r}"
+        for name, version in versions.items()
+        if version != canonical
+    ]
+
+
+def gate_financial_context_version() -> None:
+    """Ensure every released context-version declaration matches its source."""
+    for problem in financial_context_version_problems():
+        fail(f"S10-G1 financial-work context version: {problem}")
+
+
 def _rejected_after_corroboration(run: Path, keys: set[str], *, required: bool) -> set[str]:
     """SPEC-01 section 6: keys whose tier in the run's grid.json is REJECTED_POST_CORROBORATION.
 
@@ -807,6 +845,7 @@ def gate_public_eval_overlay() -> None:
 
 
 def main() -> int:
+    gate_financial_context_version()
     gate_cells()
     gate_run_summary()
     deny_scanned = gate_deny()

@@ -1,6 +1,6 @@
 {
   "schema": "bocg.operating-catalogue/v1",
-  "contract_version": "1.0.0",
+  "contract_version": "1.1.0",
   "identity_rule": "division key; otherwise SHA-256 of exact kind, division key and source canonical label, first 24 hex characters; control points retain cell_id",
   "institution_instances": false,
   "sources": [
@@ -3884,5 +3884,5 @@
       }
     }
   ],
-  "catalogue_sha256": "c01a323a4abf77f6df7562335367d31a29f5d3e7a6584f49cdefbf499463a94b"
+  "catalogue_sha256": "dd4be966b800b5b5729d257351fb8dc146c8eb06e786af9053c3b52dfd544eb7"
 }

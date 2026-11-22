@@ -1,9 +1,10 @@
 {
   "schema": "bocg.operating-reference-contract/v1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "optional_context": {
     "catalogue_path": "reference/financial-work-context.v1.json",
-    "version": "0.1.0",
+    "version": "0.1.1",
+    "version_source": "reference/financial-work-context-proposals.v1.json",
     "status": "PROPOSED",
     "placement_schema_path": "specs/financial-work-placement.schema.json",
     "changes_reference_kinds": false,
@@ -48,7 +49,31 @@
   "source_policy": {
     "every_assertion_requires_source": true,
     "record_plane_fixture_sources_permitted": false,
+    "attestation_source_kinds": [
+      "owner_attestation",
+      "sme_attestation"
+    ],
+    "assertion_basis": [
+      "source_observed",
+      "inferred",
+      "corrected",
+      "attested"
+    ],
     "review_status_requires_named_reviewer": true,
     "review_is_independent_approval": false
+  },
+  "role_holding_policy": {
+    "unknown_validity_bounds": "null; do not infer from observation time",
+    "correction_requires_prior_role_holding_reference": true
+  },
+  "reporting_relation_statuses": [
+    "observed",
+    "proposed",
+    "corrected"
+  ],
+  "regulated_function_correspondence": {
+    "functional_confidence_is_separate_from_legal_applicability": true,
+    "registration_is_separate_from_legal_applicability": true,
+    "assignment_implies_regulatory_applicability": false
   }
 }

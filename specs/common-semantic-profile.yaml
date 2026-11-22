@@ -27,7 +27,7 @@ profile:
 financial_work_context:
   specification: specs/SPEC-10-financial-work-context.md
   catalogue: reference/financial-work-context.v1.json
-  version: 0.1.0
+  version: 0.1.1
   status: PROPOSED
   root: domain:institutional_finance
   concept_type: "http://www.w3.org/2004/02/skos/core#Concept"

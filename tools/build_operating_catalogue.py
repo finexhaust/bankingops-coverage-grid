@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOGUE_PATH = 'reference/operating-catalogue.v1.json'
-CONTRACT_VERSION = '1.0.0'
+CONTRACT_VERSION = '1.1.0'
 REJECTED_TIER = 'REJECTED_POST_CORROBORATION'
 
 def canonical_bytes(value):

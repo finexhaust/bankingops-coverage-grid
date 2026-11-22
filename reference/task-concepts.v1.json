@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "reference/operating-catalogue.v1.json",
-      "sha256": "0acb2492f97f80c18f62f47b45427ba7d6912305104d6335f86531c88299e007"
+      "sha256": "d4531d8eb50f71c0f5a2a9b06d1929536b675ccd3afb3971ca6c92f17c52a03b"
     },
     {
       "path": "reference/task-concept-rulings.yaml",
@@ -4950,5 +4950,5 @@
     "aliases": 62,
     "reviewed_aliases": 0
   },
-  "task_concepts_sha256": "3618185e198fa868cd0c3a326e5a4c64e25890767db88ba14bc8354ae32f6855"
+  "task_concepts_sha256": "5bb1d26df69c28a226bf29c435cc8a095d24c9c59128e8c279185197eee398d3"
 }
