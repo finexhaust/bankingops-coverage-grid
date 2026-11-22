@@ -39,12 +39,18 @@
     "candidate_depth": {
       "description": "Deepest touchpoint whose mapping status is PROPOSED or PENDING. Displayed, never counted as evidence.",
       "$ref": "#/$defs/depth"
+    },
+    "reviewed_evidence_depth": {
+      "description": "Optional. Deepest level a ratified touchpoint supports with a target that is itself reviewed in the release: a CURATED control point, a REVIEWED concept, or a released division or terminal task, which carry no review status of their own. Never deeper than evidence_depth.",
+      "$ref": "#/$defs/depth"
     }
   },
   "$defs": {
     "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "depth": {"enum": ["none", "division", "function_concept", "task_concept", "terminal_task", "control_point"]},
     "mapping_status": {"enum": ["PROPOSED", "PENDING", "RATIFIED_MAPPING", "QUALIFIED_MAPPING", "REJECTED_MAPPING", "DEFERRED_MAPPING"]},
+    "cell_status": {"enum": ["PROPOSED", "CURATED", "RETIRED"]},
+    "review_status": {"enum": ["AUTO", "REVIEWED"]},
     "touchpoint": {
       "type": "object",
       "additionalProperties": false,
@@ -57,6 +63,18 @@
         "task_concept_id": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^task_concept:[a-z0-9_]+:[0-9a-f]{24}$"}]},
         "task_reference_id": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^task:[a-z0-9_]+:[0-9a-f]{24}$"}]},
         "control_point_id": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^cp_[a-z0-9_]+$"}]},
+        "function_concept_review_status": {
+          "description": "Optional. Review status of function_concept_id in the bound release. It is the status of the concept, never of the mapping.",
+          "$ref": "#/$defs/review_status"
+        },
+        "task_concept_review_status": {
+          "description": "Optional. Review status of task_concept_id in the bound release. It is the status of the concept, never of the mapping.",
+          "$ref": "#/$defs/review_status"
+        },
+        "control_point_status": {
+          "description": "Optional. Status of the cell control_point_id names in the bound release. Only a CURATED cell is a released control point.",
+          "$ref": "#/$defs/cell_status"
+        },
         "ruling": {
           "oneOf": [
             {"type": "null"},
@@ -78,6 +96,9 @@
         {"if": {"properties": {"depth": {"const": "task_concept"}}}, "then": {"properties": {"task_concept_id": {"type": "string"}}}},
         {"if": {"properties": {"depth": {"const": "terminal_task"}}}, "then": {"properties": {"task_reference_id": {"type": "string"}}}},
         {"if": {"properties": {"depth": {"const": "control_point"}}}, "then": {"properties": {"control_point_id": {"type": "string"}}}},
+        {"if": {"required": ["function_concept_review_status"]}, "then": {"properties": {"function_concept_id": {"type": "string"}}}},
+        {"if": {"required": ["task_concept_review_status"]}, "then": {"properties": {"task_concept_id": {"type": "string"}}}},
+        {"if": {"required": ["control_point_status"]}, "then": {"properties": {"control_point_id": {"type": "string"}}}},
         {"if": {"properties": {"mapping_status": {"enum": ["RATIFIED_MAPPING", "QUALIFIED_MAPPING", "REJECTED_MAPPING", "DEFERRED_MAPPING"]}}}, "then": {"properties": {"ruling": {"type": "object"}}}}
       ]
     }
