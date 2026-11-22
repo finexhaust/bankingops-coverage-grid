@@ -541,8 +541,12 @@ def gate_insight_construction() -> None:
         fail("S5-G5 Five Families vocabulary drifted")
 
 
-def gate_compliance_scenarios() -> None:
-    """S7: replayable compliance scenarios are schema-valid, pinned and lifecycle-safe."""
+def gate_compliance_scenarios() -> str | None:
+    """S7: replayable compliance scenarios are schema-valid, pinned and lifecycle-safe.
+
+    Returns the pinned cell and its status in the pinned release, for the
+    success line. The status is reported, not gated.
+    """
     try:
         import jsonschema
         from release_snapshots import (
@@ -605,6 +609,7 @@ def gate_compliance_scenarios() -> None:
     controls = set((fixture.get("controls") or {}).get("five_families_checks") or [])
     if not {"NEGATIVE_CONTROL", "EVIDENCE_ABLATION"} <= controls:
         fail("S7-G4 controls must include NEGATIVE_CONTROL and EVIDENCE_ABLATION")
+    return f"{cell_id} at status {cell.get('status')}"
 
 
 def gate_scenario_run_ledger() -> None:
@@ -807,7 +812,7 @@ def main() -> int:
     gate_common_semantics()
     gate_release_manifest()
     gate_insight_construction()
-    gate_compliance_scenarios()
+    pinned_cell = gate_compliance_scenarios()
     gate_scenario_run_ledger()
     gate_task_concepts()
     gate_public_eval_overlay()
@@ -820,7 +825,8 @@ def main() -> int:
     scenarios = len(list((ROOT / "specs/fixtures").glob("compliance-scenario-*.json")))
     print(
         f"all SPEC-03/SPEC-04/SPEC-05/SPEC-07/SPEC-08/SPEC-09 gates pass "
-        f"({cells} cells, {scenarios} scenario fixture(s), deny scan covered {deny_scanned} files, "
+        f"({cells} cells, {scenarios} scenario fixture(s) pinning cell {pinned_cell}, "
+        f"deny scan covered {deny_scanned} files, "
         f"CONFORMANCE.md intact at {CONFORMANCE_ROW_BASELINE} rows)"
     )
     return 0
