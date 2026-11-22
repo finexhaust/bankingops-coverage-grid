@@ -93,13 +93,13 @@ def _rebuild_public_eval(artifact_root: Path) -> dict:
         _load_json(pin_path)
         if pin_path.is_file()
         else {
-            "repository": "thefazzer/cleanroom-eval",
+            "repository": "finexhaust/cleanroom-eval",
             "version": "2.1.3",
             "commit_sha": "3e27d5909e782d530d67f9bcdfa4e1a55891629d",
             "release_tag": "v2.1.3",
             "release_status": "github_release_published",
             "bocg_companion_tag": "v0.8.5",
-            "url": "https://github.com/thefazzer/cleanroom-eval",
+            "url": "https://github.com/finexhaust/cleanroom-eval",
             "notes": "fallback pin embedded in Meridian generator",
         }
     )
@@ -261,13 +261,13 @@ def main() -> int:
             "verification": "all_manifest_artifact_bytes_verified_at_build",
         },
         "cleanroom_eval": {
-            "repository": cleanroom.get("repository", "thefazzer/cleanroom-eval"),
+            "repository": cleanroom.get("repository", "finexhaust/cleanroom-eval"),
             "version": cleanroom.get("version", "1.2.0"),
             "commit_sha": cleanroom.get("commit_sha"),
             "release_tag": cleanroom.get("release_tag"),
             "release_status": cleanroom.get("release_status"),
             "bocg_companion_tag": cleanroom.get("bocg_companion_tag"),
-            "url": cleanroom.get("url", "https://github.com/thefazzer/cleanroom-eval"),
+            "url": cleanroom.get("url", "https://github.com/finexhaust/cleanroom-eval"),
             "notes": cleanroom.get("notes"),
         },
         "public_eval": public_eval,

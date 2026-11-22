@@ -109,8 +109,8 @@ export default function PublicEvalObservatory() {
 
       <p className="section-note">
         Harness:{' '}
-        <a href={cleanroom.url || 'https://github.com/thefazzer/cleanroom-eval'}>
-          {cleanroom.repository || 'thefazzer/cleanroom-eval'}
+        <a href={cleanroom.url || 'https://github.com/finexhaust/cleanroom-eval'}>
+          {cleanroom.repository || 'finexhaust/cleanroom-eval'}
         </a>{' '}
         · {cleanroom.version}. Companion BOCG tag {cleanroom.bocg_companion_tag}. Inspect{' '}
         <a href="/manifests/latest.json">latest.json → cleanroom_eval / public_eval</a>.

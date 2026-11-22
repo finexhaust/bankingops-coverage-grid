@@ -47,12 +47,12 @@ anchor = "      <ReferenceExplorer />\n"
 if anchor in text and "<PublicEvalObservatory />" not in text:
     text = text.replace(anchor, anchor + "\n      <PublicEvalObservatory />\n", 1)
 old = "harness: thefazzer/cleanroom-eval · 2026-09"
-new = "harness: thefazzer/cleanroom-eval · {CLEANROOM_EVAL_PIN.version} · {RELEASE_OBSERVATORY.built_at.slice(0, 7)}"
+new = "harness: finexhaust/cleanroom-eval · {CLEANROOM_EVAL_PIN.version} · {RELEASE_OBSERVATORY.built_at.slice(0, 7)}"
 # footer is JSX text — replace month-only clause when present
 if "CLEANROOM_EVAL_PIN.version" not in text:
     text = text.replace(
         "· harness: thefazzer/cleanroom-eval · 2026-09</footer>",
-        "· harness: thefazzer/cleanroom-eval · {CLEANROOM_EVAL_PIN.version} · {RELEASE_OBSERVATORY.built_at.slice(0, 7)}</footer>",
+        "· harness: finexhaust/cleanroom-eval · {CLEANROOM_EVAL_PIN.version} · {RELEASE_OBSERVATORY.built_at.slice(0, 7)}</footer>",
         1,
     )
 path.write_text(text, encoding="utf-8")

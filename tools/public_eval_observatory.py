@@ -191,7 +191,7 @@ def build_observatory() -> dict:
             "division_rollup_summary": (overlay.get("division_rollup") or {}).get("summary"),
         },
         "meridian": {
-            "footer_harness": f"thefazzer/cleanroom-eval · {cleanroom['version']}",
+            "footer_harness": f"finexhaust/cleanroom-eval · {cleanroom['version']}",
             "latest_json_fields": ["cleanroom_eval", "public_eval"],
             "ui_obligatory_cases": [
                 "public.mercor_apex1_ib",

@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-REPOSITORY = "thefazzer/bankingops-coverage-grid"
+REPOSITORY = "finexhaust/bankingops-coverage-grid"
 SCHEMA_ID = "bankingops-coverage-grid.release-manifest.v1"
 SEMANTIC_PROFILE = Path("specs/common-semantic-profile.yaml")
 STATIC_ARTIFACTS = {
