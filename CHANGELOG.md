@@ -1,10 +1,64 @@
 # Release changes
 
-## Unreleased
+## v0.8.6 - 2026-11-22
 
-- Publish worked-sample revision R3 only after S5-G6 checks its dated settlement
-  and cutoff events against sourced, year-bounded business calendars. Retain the
-  withdrawn R2 holiday error as a regression fixture.
+- Worked-sample revision R3 is published. `WORKED-SAMPLE.md` records the
+  withdrawal of R2 (which marked DTC open on 25 May 2026, a market holiday)
+  and points at `reference/worked-samples/fm-pb-0417-r3.json`. S5-G6 checks
+  the dated settlement and cutoff events of every published worked sample
+  against the sourced, year-bound business calendars in
+  `reference/business-calendars.v1.json`; the withdrawn R2 date stays in
+  `specs/fixtures/worked-sample-r2-withdrawn.json` as a regression fixture.
+  The insight-construction schema also supports partial temporal values and
+  their ordering.
+- The operating-unit-register contract moves to 1.1.0 and the operating
+  references are regenerated. The register schema adds `role_holdings`,
+  `reporting_relations` and `regulated_function_correspondences`; the
+  synthetic fixture aligns with the new required collections and contract
+  version.
+- Episode surfaces validate against pinned taxonomy releases.
+  `tools/episode_surface.py` resolves the exact tag and manifest digest
+  through `tools/release_snapshots.py`, derives the taxonomy run from the
+  pinned catalogue, and validates identifiers, membership, cell status and
+  depth against verified artifacts of that release only. New surfaces name
+  `taxonomy_run`; legacy v1 pins are preserved; `--current` is the explicit
+  checkout-only mode. The v0.7.0 release joins the offline snapshot archive:
+  its manifest is the published asset, all 150 manifest artifacts verified
+  against release commit `06284f0`, with the validator-used subset retained.
+  In pinned mode the concept-digest comparison applies to v2 release
+  bindings (surfaces declaring `taxonomy_run`); the synthetic fixture's
+  digest tracks the checkout and its manifest pin is illustrative.
+- The release manifest states cell and concept review status: a CURATED cell
+  keeps `control-point-cell`, PROPOSED becomes `proposed-control-point-cell`
+  and RETIRED becomes `retired-control-point-cell`. All 18 cells currently
+  record PROPOSED.
+- Insight-construction and SPEC-07 contracts are aligned: the
+  assertion-status vocabulary is enforced on ObservationAtoms, verdict and
+  atom schema validation move together, and the SPEC-07 scenario and ledger
+  schemas gate their fixtures.
+- Task-concept rulings expose archived ruling survival: the concept builder
+  reports archived rulings whose kind and label match a current concept, and
+  the rulings history is pinned in the manifest.
+- The public-eval observatory pins companion release-audit evidence (the
+  cleanroom-eval companion stays at 2.1.3) and the Ficta Meridian observatory
+  data syncs atomically through the common Meridian seed renderer.
+- The November live run is recorded as unprocessed pending approval
+  (`live-run-20261110/processing-status.json`).
+- Gate and release hardening: the taxonomy-source run summary is gated
+  against its gate report and ledger (#72), admission reads the
+  post-corroboration tier in `grid.json` (#76), S3-G4 fails in both
+  directions at the committed row count and S3-G3 scans the pinned set
+  (#75), the gate success line states the pinned cell's status (#71), the
+  pack generator relies on the consumer's release guard alone (#85), and the
+  release workflow runs the conformance gates on the target commit before
+  publishing under the finexhaust organisation identity.
+- Gate conformance is restored after the R056-R068 decruft series deleted
+  documents still pinned by the release manifest: the stale pin is removed,
+  the synthetic fixtures follow the current schemas, and the v0.7.0 snapshot
+  and digest-check scoping land as above.
+- Against v0.8.5 the manifest grows from 349 to 374 artifacts; the snapshot
+  archive contributes the v0.7.0 retained set as historical release
+  evidence.
 
 ## v0.8.5 - 2026-11-19
 
