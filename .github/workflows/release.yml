@@ -119,13 +119,25 @@ jobs:
           done
 
       - uses: actions/setup-python@v5
-        if: inputs.build_manifest
         with:
           python-version: "3.12"
 
-      - name: Install manifest dependencies
-        if: inputs.build_manifest
+      - name: Install gate and manifest dependencies
         run: pip install 'jsonschema[format-nongpl]' PyYAML
+
+      - name: Check out target tree
+        run: |
+          set -euo pipefail
+          git worktree add --detach "$RUNNER_TEMP/target" "$TARGET"
+
+      # The gates run in the target commit's own tree, whether or not a
+      # manifest is built. A failing gate stops the job before anything is
+      # published.
+      - name: Run conformance gates on target
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/target"
+          python3 tools/gate_conformance.py
 
       - name: Build release manifest
         if: inputs.build_manifest
@@ -133,7 +145,6 @@ jobs:
           set -euo pipefail
           out="$RUNNER_TEMP/dist/bocg-release-manifest.json"
           [[ ! -e "$out" ]] || { echo "::error::an asset is already named bocg-release-manifest.json"; exit 1; }
-          git worktree add --detach "$RUNNER_TEMP/target" "$TARGET"
           cd "$RUNNER_TEMP/target"
           python3 tools/build_release_manifest.py --tag "$TAG" --commit "$TARGET" --output "$out"
 
