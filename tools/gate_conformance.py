@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -806,6 +807,23 @@ def gate_public_eval_overlay() -> None:
         fail(f"S9-G6 public-eval observatory unreadable: {exc}")
 
 
+def gate_meridian_seed() -> None:
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "integrations/ficta-meridian/scripts/sync-observatory.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode:
+        detail = (result.stdout + result.stderr).strip()
+        fail(f"S9-G7 Meridian seed drift: {detail}")
+
+
 def main() -> int:
     gate_cells()
     gate_run_summary()
@@ -818,6 +836,7 @@ def main() -> int:
     gate_scenario_run_ledger()
     gate_task_concepts()
     gate_public_eval_overlay()
+    gate_meridian_seed()
     if FAILURES:
         print("GATE FAILURES:")
         for f in FAILURES:
