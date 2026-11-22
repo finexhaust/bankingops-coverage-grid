@@ -14,16 +14,67 @@ from build_release_manifest import build_manifest, canonical_json, sha256_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 FAILURES: list[str] = []
+# S3-G4: statused rows committed in CONFORMANCE.md. The gate fails on fewer
+# rows (a row was dropped) and on more (raise this in the change that adds one).
+CONFORMANCE_ROW_BASELINE = 19
+# S3-G3: pinned paths the deny scan leaves alone. Run directories hold raw and
+# derived model output published as recorded (I4); snapshots are historical bytes.
+DENY_SCAN_EXEMPT_PREFIXES = ("live-run-", "reference/release-snapshots/")
+# S3-G5: the tier bocg/bocg/grid.py writes to grid.json for a division that
+# dropped below admission once refuted anchors were removed (SPEC-01 section 6).
+REJECTED_TIER = "REJECTED_POST_CORROBORATION"
+REJECTED_BY_RUN: dict[str, set[str]] = {}   # run directory -> keys rejected in its grid.json
 
 
 def fail(msg: str) -> None:
     FAILURES.append(msg)
 
 
+def _rejected_after_corroboration(run: Path, keys: set[str], *, required: bool) -> set[str]:
+    """SPEC-01 section 6: keys whose tier in the run's grid.json is REJECTED_POST_CORROBORATION.
+
+    A rejection exists only once a ledger has been corroborated. The
+    taxonomy-source run must carry a readable grid.json covering every matrix
+    key as soon as it has a corroboration ledger; a run with no ledger, and a
+    historical run recorded without a grid file, fall back to matrix.csv alone.
+    A grid file that is present is always read.
+    """
+    if not (run / "grid.json").exists():
+        if required and (run / "corroboration.csv").exists():
+            raise ValueError("corroboration.csv exists but grid.json is missing, so admission after corroboration cannot be read")
+        return set()
+    grid_path = (run / "grid.json").resolve(strict=True)
+    if not grid_path.is_relative_to(run):
+        raise ValueError("grid.json resolves outside its taxonomy run")
+    grid = json.loads(grid_path.read_text(encoding="utf-8"))
+    cells = grid.get("cells") if isinstance(grid, dict) else None
+    if not isinstance(cells, list):
+        raise ValueError("grid.json has no cells list")
+    tiers: dict[str, str] = {}
+    for index, cell in enumerate(cells):
+        key = cell.get("division_key") if isinstance(cell, dict) else None
+        if not isinstance(key, str) or not isinstance(cell.get("tier"), str) or key in tiers:
+            raise ValueError(f"grid.json cell {index} has an invalid or duplicate division_key or tier")
+        tiers[key] = cell["tier"]
+    if keys - set(tiers):
+        raise ValueError(f"grid.json does not cover matrix.csv keys {sorted(keys - set(tiers))}")
+    return {key for key, tier in tiers.items() if tier == REJECTED_TIER}
+
+
+def _rejection_note(key: object, run_dir: str) -> str:
+    rejected = isinstance(key, str) and key in REJECTED_BY_RUN.get(run_dir, set())
+    return f" ({REJECTED_TIER} in grid.json)" if rejected else ""
+
+
 def _admitted_division_keys(
     run_dir: str | None = None, *, context: str = "taxonomy source"
 ) -> tuple[set[str] | None, str]:
-    """S3-G5: read admitted keys from the named, repository-local taxonomy run."""
+    """S3-G5: read admitted keys from the named, repository-local taxonomy run.
+
+    A key is admitted when matrix.csv lists it and grid.json does not record
+    it as rejected after corroboration.
+    """
+    is_source_run = run_dir is None
     if run_dir is None:
         try:
             source = json.loads((ROOT / "reference/taxonomy-source.json").read_text(encoding="utf-8"))
@@ -64,13 +115,15 @@ def _admitted_division_keys(
                 keys.add(key)
         if not keys:
             raise ValueError("matrix.csv contains no admitted division keys")
+        rejected = _rejected_after_corroboration(run, keys, required=is_source_run)
     except FileNotFoundError as exc:
         fail(f"S3-G5 {context}: unknown taxonomy run or missing matrix.csv ({exc})")
         return None, ""
     except (OSError, ValueError, csv.Error, RuntimeError) as exc:
-        fail(f"S3-G5 {context}: taxonomy run or matrix.csv is invalid ({exc})")
+        fail(f"S3-G5 {context}: taxonomy run, matrix.csv or grid.json is invalid ({exc})")
         return None, ""
-    return keys, run_dir
+    REJECTED_BY_RUN[run_dir] = rejected
+    return keys - rejected, run_dir
 
 
 def gate_cells() -> None:
@@ -113,7 +166,10 @@ def gate_cells() -> None:
         if cell.get("status") != "RETIRED":
             key = cell.get("division_key")
             if admitted is not None and key not in admitted:
-                fail(f"S3-G5 {path.name}: division_key {key!r} is not admitted in {run_dir}")
+                fail(
+                    f"S3-G5 {path.name}: division_key {key!r} is not admitted in {run_dir}"
+                    f"{_rejection_note(key, run_dir)}"
+                )
         for i, hist in enumerate(cell.get("division_key_history") or []):
             if hist.get("division_key") == cell.get("division_key"):
                 fail(f"S3-G5 {path.name}: history {i} repeats the current division_key")
@@ -127,6 +183,7 @@ def gate_cells() -> None:
                     fail(
                         f"S3-G5 {path.name}: history {i} division_key {hist['division_key']!r} "
                         f"is not admitted in {history_run}"
+                        f"{_rejection_note(hist['division_key'], history_run)}"
                     )
                 elif not claimed_admitted and was_admitted:
                     fail(
@@ -135,8 +192,98 @@ def gate_cells() -> None:
                     )
 
 
-def gate_deny() -> None:
-    """S3-G3: forbidden tokens in cells and SPEC-03."""
+def _taxonomy_source_run(label: str) -> tuple[Path | None, str]:
+    """Resolve the repository-local run named by reference/taxonomy-source.json."""
+    try:
+        source = json.loads((ROOT / "reference/taxonomy-source.json").read_text(encoding="utf-8"))
+        run_dir = source.get("run_dir") if isinstance(source, dict) else None
+        if not isinstance(run_dir, str) or not re.fullmatch(r"live-run-[0-9]{8}", run_dir):
+            raise ValueError("run_dir must name a repository-local live-run-YYYYMMDD directory")
+        run = (ROOT / run_dir).resolve(strict=True)
+        if not run.is_relative_to(ROOT.resolve(strict=True)) or not run.is_dir():
+            raise ValueError("run directory resolves outside the repository or is not a directory")
+    except (OSError, ValueError, RuntimeError) as exc:
+        fail(f"{label}: taxonomy source run is missing or unreadable ({exc})")
+        return None, ""
+    return run, run_dir
+
+
+def gate_run_summary() -> None:
+    """RUN_SUMMARY.json of the taxonomy-source run agrees with its gate report and ledger.
+
+    Only the run named by reference/taxonomy-source.json is checked. The
+    summary of a historical run stays as it was written.
+    """
+    run, run_dir = _taxonomy_source_run("RUN-SUMMARY")
+    if run is None:
+        return
+    label = f"RUN-SUMMARY {run_dir}"
+    try:
+        summary = json.loads((run / "RUN_SUMMARY.json").read_text(encoding="utf-8"))
+        report = json.loads((run / "gates_report.json").read_text(encoding="utf-8"))
+        if not isinstance(summary, dict) or not isinstance(report, dict):
+            raise ValueError("RUN_SUMMARY.json and gates_report.json must be JSON objects")
+        executed: dict[str, str] = {}
+        for gate in report["gates"]:
+            if gate["id"] in executed:
+                raise ValueError(f"gates_report.json repeats gate {gate['id']!r}")
+            executed[gate["id"]] = gate["status"]
+        with (run / "corroboration.csv").open(encoding="utf-8", newline="") as handle:
+            rows = csv.DictReader(handle, strict=True)
+            if "status" not in (rows.fieldnames or []):
+                raise ValueError("corroboration.csv has no status column")
+            ledger: list[str] = []
+            for index, row in enumerate(rows, 2):
+                if None in row or any(value is None for value in row.values()):
+                    raise ValueError(f"corroboration.csv row {index} has the wrong number of fields")
+                ledger.append(row["status"])
+    except (OSError, ValueError, csv.Error, KeyError, TypeError) as exc:
+        fail(f"{label}: run summary, gate report or ledger is missing or unreadable ({exc!r})")
+        return
+    claimed = summary.get("gates")
+    if not isinstance(claimed, dict):
+        fail(f"{label}: RUN_SUMMARY.json has no gates object")
+    else:
+        for gate_id in [*executed, *(g for g in claimed if g not in executed)]:
+            if claimed.get(gate_id) != executed.get(gate_id):
+                fail(
+                    f"{label}: gate {gate_id} is {claimed.get(gate_id)!r} in RUN_SUMMARY.json "
+                    f"but {executed.get(gate_id)!r} in gates_report.json"
+                )
+    stamp = summary.get("gates_executed_at")
+    if stamp is not None and stamp != report.get("ts_utc"):
+        fail(f"{label}: gates_executed_at {stamp!r} is not the gate report's ts_utc {report.get('ts_utc')!r}")
+    counted: dict[str, int] = {}
+    for status in ledger:
+        counted[status] = counted.get(status, 0) + 1
+    held = ", ".join(f"{count} {status}" for status, count in sorted(counted.items()))
+    totals = summary.get("corroboration")
+    by_status = totals.get("by_status") if isinstance(totals, dict) else None
+    if not isinstance(by_status, dict):
+        fail(
+            f"{label}: RUN_SUMMARY.json has no corroboration totals block "
+            f"(corroboration.csv holds {held} of {len(ledger)} rows)"
+        )
+        return
+    rows_claimed = totals.get("ledger_rows")
+    if type(rows_claimed) is not int or rows_claimed != len(ledger):
+        fail(f"{label}: corroboration.ledger_rows is {rows_claimed!r} but corroboration.csv holds {len(ledger)} rows")
+    for status in sorted(set(by_status) | set(counted)):
+        count = by_status.get(status, 0)
+        if type(count) is not int or count != counted.get(status, 0):
+            fail(
+                f"{label}: corroboration.by_status.{status} is {by_status.get(status)!r} "
+                f"but corroboration.csv holds {counted.get(status, 0)} such rows"
+            )
+
+
+def gate_deny() -> int:
+    """S3-G3: forbidden tokens in every artifact a release would pin.
+
+    Run directories are not scanned: raw and derived model output is published
+    as recorded under I4. Retained release snapshots are historical bytes.
+    Returns the number of files scanned.
+    """
     literals, patterns = [], []
     sources = [ROOT / "tools/forbidden_cells.txt"]
     local = ROOT / "tools/forbidden_cells.local.txt"   # untracked seller list
@@ -173,23 +320,47 @@ def gate_deny() -> None:
         ROOT / "specs/prompts/public-eval-llmaj-judge.v1.txt",
         ROOT / "specs/fixtures/public-eval-llmaj-synthetic.json",
     ]
-    for path in targets:
+    # The hand list above stays as a floor. The pinned set is what ships, so
+    # an artifact added to a release is scanned without being listed here.
+    try:
+        pinned = build_manifest(
+            tag="v0.0.0-gate", commit_sha="0" * 40, generated_at="2000-01-01T00:00:00Z", root=ROOT
+        )["artifacts"]
+    except (OSError, ValueError) as exc:
+        fail(f"S3-G3 pinned artifacts cannot be listed for the deny scan: {exc}")
+        pinned = []
+    scanned = {path.relative_to(ROOT).as_posix(): path for path in targets}
+    for row in pinned:
+        relative = row["path"]
+        if not relative.startswith(DENY_SCAN_EXEMPT_PREFIXES):
+            scanned.setdefault(relative, ROOT / relative)
+    for relative, path in scanned.items():
         text = path.read_text(encoding="utf-8", errors="replace")
         lowered = text.lower()
         for token in literals:
             if token in lowered:
-                fail(f"S3-G3 {path.name}: forbidden token (from deny list)")
+                fail(f"S3-G3 {relative}: forbidden token (from deny list)")
         for pattern in patterns:
             if pattern.search(text):
-                fail(f"S3-G3 {path.name}: forbidden pattern {pattern.pattern!r}")
+                fail(f"S3-G3 {relative}: forbidden pattern {pattern.pattern!r}")
+    return len(scanned)
 
 
 def gate_conformance_doc() -> None:
     """S3-G4: CONFORMANCE.md rows intact and statused."""
     doc = (ROOT / "CONFORMANCE.md").read_text(encoding="utf-8")
     rows = re.findall(r"^\| (\d+) \| .+ \| (EVIDENCED|PARTIAL|NOT MET) \|", doc, re.M)
-    if len(rows) < 16:
-        fail(f"S3-G4 CONFORMANCE.md: {len(rows)} statused rows found, baseline is 16")
+    if len(rows) < CONFORMANCE_ROW_BASELINE:
+        fail(
+            f"S3-G4 CONFORMANCE.md: {len(rows)} statused rows found, baseline is "
+            f"{CONFORMANCE_ROW_BASELINE} (a row was dropped)"
+        )
+    elif len(rows) > CONFORMANCE_ROW_BASELINE:
+        fail(
+            f"S3-G4 CONFORMANCE.md: {len(rows)} statused rows found, baseline is "
+            f"{CONFORMANCE_ROW_BASELINE} (a row was added without raising "
+            f"CONFORMANCE_ROW_BASELINE in the same change)"
+        )
     numbers = [int(r[0]) for r in rows]
     if numbers != list(range(1, len(numbers) + 1)):
         fail("S3-G4 CONFORMANCE.md: row numbering broken (row removed or reordered)")
@@ -372,8 +543,12 @@ def gate_insight_construction() -> None:
         fail("S5-G5 Five Families vocabulary drifted")
 
 
-def gate_compliance_scenarios() -> None:
-    """S7: replayable compliance scenarios are schema-valid, pinned and lifecycle-safe."""
+def gate_compliance_scenarios() -> str | None:
+    """S7: replayable compliance scenarios are schema-valid, pinned and lifecycle-safe.
+
+    Returns the pinned cell and its status in the pinned release, for the
+    success line. The status is reported, not gated.
+    """
     try:
         import jsonschema
         from release_snapshots import (
@@ -436,6 +611,7 @@ def gate_compliance_scenarios() -> None:
     controls = set((fixture.get("controls") or {}).get("five_families_checks") or [])
     if not {"NEGATIVE_CONTROL", "EVIDENCE_ABLATION"} <= controls:
         fail("S7-G4 controls must include NEGATIVE_CONTROL and EVIDENCE_ABLATION")
+    return f"{cell_id} at status {cell.get('status')}"
 
 
 def gate_scenario_run_ledger() -> None:
@@ -632,12 +808,13 @@ def gate_public_eval_overlay() -> None:
 
 def main() -> int:
     gate_cells()
-    gate_deny()
+    gate_run_summary()
+    deny_scanned = gate_deny()
     gate_conformance_doc()
     gate_common_semantics()
     gate_release_manifest()
     gate_insight_construction()
-    gate_compliance_scenarios()
+    pinned_cell = gate_compliance_scenarios()
     gate_scenario_run_ledger()
     gate_task_concepts()
     gate_public_eval_overlay()
@@ -650,7 +827,9 @@ def main() -> int:
     scenarios = len(list((ROOT / "specs/fixtures").glob("compliance-scenario-*.json")))
     print(
         f"all SPEC-03/SPEC-04/SPEC-05/SPEC-07/SPEC-08/SPEC-09 gates pass "
-        f"({cells} cells, {scenarios} scenario fixture(s), CONFORMANCE.md intact)"
+        f"({cells} cells, {scenarios} scenario fixture(s) pinning cell {pinned_cell}, "
+        f"deny scan covered {deny_scanned} files, "
+        f"CONFORMANCE.md intact at {CONFORMANCE_ROW_BASELINE} rows)"
     )
     return 0
 

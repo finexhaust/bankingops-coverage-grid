@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CATALOGUE_PATH = 'reference/operating-catalogue.v1.json'
 CONTRACT_VERSION = '1.0.0'
+REJECTED_TIER = 'REJECTED_POST_CORROBORATION'
 
 def canonical_bytes(value):
     return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False, allow_nan=False).encode()
@@ -23,6 +24,24 @@ def current_run(root=ROOT):
     pointer = root / 'reference/taxonomy-source.json'
     return json.loads(pointer.read_text())['run_dir'] if pointer.exists() else 'live-run-20260826'
 
+def rejected_after_corroboration(root, matrix_path):
+    """SPEC-01 section 6: division keys whose tier in the grid.json beside the matrix is REJECTED_POST_CORROBORATION.
+
+    The taxonomy-source run must carry grid.json once it has a corroboration
+    ledger. A run with no ledger, or another run recorded without a grid file,
+    has no post-corroboration tier to read.
+    """
+    run = Path(matrix_path).parent
+    grid_path = root / run / 'grid.json'
+    if not grid_path.exists():
+        if run.as_posix() == current_run(root) and (root / run / 'corroboration.csv').exists():
+            raise ValueError('corroboration.csv exists but grid.json is missing beside ' + str(matrix_path) + '; admission after corroboration cannot be read')
+        return []
+    try:
+        return sorted(cell['division_key'] for cell in json.loads(grid_path.read_text())['cells'] if cell['tier'] == REJECTED_TIER)
+    except (KeyError, TypeError) as exc:
+        raise ValueError('grid.json beside ' + str(matrix_path) + ' is malformed: ' + repr(exc)) from exc
+
 def build_catalogue(root=ROOT, matrix_path=None):
     matrix_path = matrix_path or current_run(root) + '/matrix.json'
     raw = (root / matrix_path).read_bytes()
@@ -31,6 +50,12 @@ def build_catalogue(root=ROOT, matrix_path=None):
     keys = matrix['division_keys']
     if len(set(keys)) != len(keys) or set(keys) != {r['division_key'] for r in matrix['rows']}:
         raise ValueError('matrix division keys are inconsistent')
+    rejected = rejected_after_corroboration(root, matrix_path)
+    if rejected:
+        # The matrix predates corroboration. Emitting these would carry a rejected
+        # division into the catalogue, the task concepts and the context; dropping
+        # them would remove released references. Either needs a review first.
+        raise ValueError('division rejected after corroboration (' + REJECTED_TIER + ' in grid.json) cannot be catalogued without review: ' + ', '.join(rejected))
     for row in sorted(matrix['rows'], key=lambda r: r['division_key']):
         division = row['division_key']
         definitions.append({'reference_id': reference_id('division', division), 'kind': 'division', 'division_key': division, 'label': division, 'aliases': sorted(set(row['names'])), 'basis': 'model_consensus_prior'})
