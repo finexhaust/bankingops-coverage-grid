@@ -328,3 +328,6 @@ candidate_vocabulary_gaps:
     # once corroboration shows it is named independently by multiple models.
     - derivatives_documentation_control (ISDA Master, credit support and securities financing documentation execution, protocol adherence and repapering); no admitted key in live-run-20261019 (client_lifecycle_kyc was retired); cell cp_derivatives_documentation_execution is re-bound to trade_lifecycle_operations as the nearest admitted key for legal-agreement term capture
     - derivatives trading documentation control (ISDA Master / CSA / GMRA / GMSLA execution and term capture; protocol adherence; netting-opinion coverage); no admitted key in live-run-20261019; name left open
+    # Recorded for #77. Observed downstream as application-support and risk-engine
+    # operation material that no admitted key names. A vocabulary observation only.
+    - front-office and risk technology controls (application support runbooks, batch scheduling and recovery, release migration and change gating, reconciliation of results between environments); nearest admitted keys trade_lifecycle_operations and market_risk_management (market_risk_valuation_control is not admitted in live-run-20261019); no proposed domain of the financial-work context places technology operation; name left open
