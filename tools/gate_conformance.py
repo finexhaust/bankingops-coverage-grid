@@ -14,6 +14,12 @@ from build_release_manifest import build_manifest, canonical_json, sha256_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 FAILURES: list[str] = []
+# S3-G4: statused rows committed in CONFORMANCE.md. The gate fails on fewer
+# rows (a row was dropped) and on more (raise this in the change that adds one).
+CONFORMANCE_ROW_BASELINE = 19
+# S3-G3: pinned paths the deny scan leaves alone. Run directories hold raw and
+# derived model output published as recorded (I4); snapshots are historical bytes.
+DENY_SCAN_EXEMPT_PREFIXES = ("live-run-", "reference/release-snapshots/")
 
 
 def fail(msg: str) -> None:
@@ -220,8 +226,13 @@ def gate_run_summary() -> None:
             )
 
 
-def gate_deny() -> None:
-    """S3-G3: forbidden tokens in cells and SPEC-03."""
+def gate_deny() -> int:
+    """S3-G3: forbidden tokens in every artifact a release would pin.
+
+    Run directories are not scanned: raw and derived model output is published
+    as recorded under I4. Retained release snapshots are historical bytes.
+    Returns the number of files scanned.
+    """
     literals, patterns = [], []
     sources = [ROOT / "tools/forbidden_cells.txt"]
     local = ROOT / "tools/forbidden_cells.local.txt"   # untracked seller list
@@ -258,23 +269,47 @@ def gate_deny() -> None:
         ROOT / "specs/prompts/public-eval-llmaj-judge.v1.txt",
         ROOT / "specs/fixtures/public-eval-llmaj-synthetic.json",
     ]
-    for path in targets:
+    # The hand list above stays as a floor. The pinned set is what ships, so
+    # an artifact added to a release is scanned without being listed here.
+    try:
+        pinned = build_manifest(
+            tag="v0.0.0-gate", commit_sha="0" * 40, generated_at="2000-01-01T00:00:00Z", root=ROOT
+        )["artifacts"]
+    except (OSError, ValueError) as exc:
+        fail(f"S3-G3 pinned artifacts cannot be listed for the deny scan: {exc}")
+        pinned = []
+    scanned = {path.relative_to(ROOT).as_posix(): path for path in targets}
+    for row in pinned:
+        relative = row["path"]
+        if not relative.startswith(DENY_SCAN_EXEMPT_PREFIXES):
+            scanned.setdefault(relative, ROOT / relative)
+    for relative, path in scanned.items():
         text = path.read_text(encoding="utf-8", errors="replace")
         lowered = text.lower()
         for token in literals:
             if token in lowered:
-                fail(f"S3-G3 {path.name}: forbidden token (from deny list)")
+                fail(f"S3-G3 {relative}: forbidden token (from deny list)")
         for pattern in patterns:
             if pattern.search(text):
-                fail(f"S3-G3 {path.name}: forbidden pattern {pattern.pattern!r}")
+                fail(f"S3-G3 {relative}: forbidden pattern {pattern.pattern!r}")
+    return len(scanned)
 
 
 def gate_conformance_doc() -> None:
     """S3-G4: CONFORMANCE.md rows intact and statused."""
     doc = (ROOT / "CONFORMANCE.md").read_text(encoding="utf-8")
     rows = re.findall(r"^\| (\d+) \| .+ \| (EVIDENCED|PARTIAL|NOT MET) \|", doc, re.M)
-    if len(rows) < 16:
-        fail(f"S3-G4 CONFORMANCE.md: {len(rows)} statused rows found, baseline is 16")
+    if len(rows) < CONFORMANCE_ROW_BASELINE:
+        fail(
+            f"S3-G4 CONFORMANCE.md: {len(rows)} statused rows found, baseline is "
+            f"{CONFORMANCE_ROW_BASELINE} (a row was dropped)"
+        )
+    elif len(rows) > CONFORMANCE_ROW_BASELINE:
+        fail(
+            f"S3-G4 CONFORMANCE.md: {len(rows)} statused rows found, baseline is "
+            f"{CONFORMANCE_ROW_BASELINE} (a row was added without raising "
+            f"CONFORMANCE_ROW_BASELINE in the same change)"
+        )
     numbers = [int(r[0]) for r in rows]
     if numbers != list(range(1, len(numbers) + 1)):
         fail("S3-G4 CONFORMANCE.md: row numbering broken (row removed or reordered)")
@@ -718,7 +753,7 @@ def gate_public_eval_overlay() -> None:
 def main() -> int:
     gate_cells()
     gate_run_summary()
-    gate_deny()
+    deny_scanned = gate_deny()
     gate_conformance_doc()
     gate_common_semantics()
     gate_release_manifest()
@@ -736,7 +771,8 @@ def main() -> int:
     scenarios = len(list((ROOT / "specs/fixtures").glob("compliance-scenario-*.json")))
     print(
         f"all SPEC-03/SPEC-04/SPEC-05/SPEC-07/SPEC-08/SPEC-09 gates pass "
-        f"({cells} cells, {scenarios} scenario fixture(s), CONFORMANCE.md intact)"
+        f"({cells} cells, {scenarios} scenario fixture(s), deny scan covered {deny_scanned} files, "
+        f"CONFORMANCE.md intact at {CONFORMANCE_ROW_BASELINE} rows)"
     )
     return 0
 
