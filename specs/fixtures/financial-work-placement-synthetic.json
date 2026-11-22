@@ -1,0 +1,11 @@
+{
+  "schema": "bocg.financial-work-placement/v1",
+  "context_binding": {
+    "version": "0.1.1",
+    "context_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "subject_kind": "task",
+  "subject_ref": "subject-0123456789ab",
+  "area_touchpoints": [],
+  "capability_touchpoints": []
+}

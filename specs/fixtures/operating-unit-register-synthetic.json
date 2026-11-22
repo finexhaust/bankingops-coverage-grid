@@ -1,0 +1,22 @@
+{
+  "schema": "bocg.operating-unit-register/v1",
+  "contract_version": "1.0.0",
+  "dataset_id": "synthetic-register-v1",
+  "revision": 1,
+  "previous_sha256": null,
+  "tenant_id": "synthetic-tenant",
+  "plane": "synthetic",
+  "owner_ref": "synthetic fixture",
+  "recorded_at": "2026-09-20T12:00:00Z",
+  "bocg": {
+    "release_tag": "v0.6.3",
+    "manifest_sha256": "a157ff3e9bff43dee9857c889c57f5ce87917e530999fbd6d365f47dfaf352ec",
+    "catalogue_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "contract_version": "1.0.0"
+  },
+  "sources": [],
+  "units": [],
+  "assignments": [],
+  "relationships": [],
+  "settings": []
+}

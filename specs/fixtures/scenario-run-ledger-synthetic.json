@@ -1,0 +1,24 @@
+{
+  "schema": "bocg.scenario-run-ledger-run.v1",
+  "ledger_id": "ledger_synthetic_run",
+  "model_release": {
+    "model_id": "synthetic-model",
+    "model_version": "0.1.0",
+    "release_timestamp": "2026-09-20T12:00:00Z"
+  },
+  "bocg_release": {
+    "release_tag": "v0.6.3",
+    "manifest_sha256": "a157ff3e9bff43dee9857c889c57f5ce87917e530999fbd6d365f47dfaf352ec"
+  },
+  "run_timestamp": "2026-09-20T12:00:00Z",
+  "replay_parameters_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "entries": [
+    {
+      "scenario_id": "scenario_settled_instruction_amendment_synthetic",
+      "scenario_hash": "d3595ab1ed21aeeab6124e80e1610a98dc3afa7b4ba4faf80d1266a167feffcd",
+      "actual_verdict": "indeterminate",
+      "ran_at": "2026-09-20T12:01:00Z",
+      "rationale_required": true
+    }
+  ]
+}

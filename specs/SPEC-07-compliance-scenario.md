@@ -1,15 +1,15 @@
 # SPEC-07 — Replayable compliance scenario contract
 
 ```
-ARTIFACT : static contract and schema for replayable compliance scenarios
-STATUS   : v0.1 normative spec + schema
+ARTIFACT : legacy static compliance-scenario contract
+STATUS   : superseded by SPEC-07-replayable-compliance-scenario.md
 SOURCE   : specs/compliance-scenario.schema.json
 BOUNDARY : definitions, schema and one synthetic fixture only; no institution scenarios or private data
 ```
 
 ## Purpose
 
-A compliance scenario composes a control-point cell, a terminality task, an
+A historical compliance scenario composes a control-point cell, a terminality task, an
 input state, an oracle and an expected verdict into one content-addressed,
 replayable object. It is pinned to a BOCG release manifest and, optionally, to
 a released model checkpoint. Consumers fail closed when the pinned manifest
@@ -17,12 +17,13 @@ hash does not match the manifest they are consuming.
 
 ## Contract
 
-A scenario MUST be valid JSON and conform to `specs/compliance-scenario.schema.json`.
+A historical scenario MUST be valid JSON and conform to `specs/compliance-scenario.schema.json`.
+New scenarios MUST use `specs/replayable-compliance-scenario.schema.json`.
 It MUST contain:
 
 | Field | Semantics |
 |---|---|
-| `manifest_sha256` | SHA-256 of the BOCG release manifest the scenario is pinned to. |
+| `manifest_sha256` | Canonical manifest digest: SHA-256 of canonical JSON with `manifest_sha256` omitted; not the raw manifest-file digest. |
 | `cell_id` | Identifier of the control-point cell under test. |
 | `task_ref` | Reference to a released terminality task from `reference/operating-catalogue.v1.json`. |
 | `input_state` | Reference to a CDM event, FpML document or synthetic fixture, addressed by hash. |
@@ -42,7 +43,7 @@ proprietary oracles are consumer-owned and MUST NOT be published here.
 ## Conformance
 
 Run `python3 tools/gate_conformance.py`; the S7 gate validates that the
-synthetic fixture parses, matches the schema, pins a known manifest hash, and
+historical synthetic fixture parses, matches the schema, pins a known manifest hash, and
 honours the lifecycle non-interference rules from SPEC-05.
 
 Historical manifest pins resolve through the verified offline archive at
