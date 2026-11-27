@@ -4,7 +4,7 @@
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 4,
         "A3": 0,
         "A4": false
       },
@@ -20,8 +20,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 4,
-          "VERIFIED": 0
+          "UNVERIFIED": 0,
+          "VERIFIED": 4
         },
         "A3": {
           "MISSING": 0,
@@ -36,8 +36,8 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 17,
-      "verified_types": 0
+      "unverified_count": 13,
+      "verified_types": 1
     },
     "buyside_trading_execution": {
       "a4_status": "UNVERIFIED",
@@ -57,9 +57,9 @@
         },
         "A2": {
           "MISSING": 0,
-          "PARTIAL": 0,
+          "PARTIAL": 1,
           "REFUTED": 0,
-          "UNVERIFIED": 1,
+          "UNVERIFIED": 0,
           "VERIFIED": 0
         },
         "A3": {
@@ -77,14 +77,14 @@
         "MiFID II best execution | European Union | Regulation (EU) No 600/2014, Article 27"
       ],
       "rejected_post_corroboration": false,
-      "unverified_count": 3,
+      "unverified_count": 2,
       "verified_types": 0
     },
     "clearing_settlement_custody": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 1,
-        "A2": 0,
+        "A2": 1,
         "A3": 0,
         "A4": false
       },
@@ -100,8 +100,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 1,
-          "VERIFIED": 0
+          "UNVERIFIED": 0,
+          "VERIFIED": 1
         },
         "A3": {
           "MISSING": 0,
@@ -116,14 +116,14 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 2,
-      "verified_types": 1
+      "unverified_count": 1,
+      "verified_types": 2
     },
     "commodities_trading": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 5,
         "A3": 0,
         "A4": false
       },
@@ -139,8 +139,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 6,
-          "VERIFIED": 0
+          "UNVERIFIED": 1,
+          "VERIFIED": 5
         },
         "A3": {
           "MISSING": 0,
@@ -158,14 +158,14 @@
         "CFTC Swap Dealer Registration | US | 17 CFR 1.33"
       ],
       "rejected_post_corroboration": false,
-      "unverified_count": 22,
-      "verified_types": 0
+      "unverified_count": 17,
+      "verified_types": 1
     },
     "credit_trading": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 9,
-        "A2": 0,
+        "A2": 5,
         "A3": 0,
         "A4": false
       },
@@ -181,8 +181,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 8,
-          "VERIFIED": 0
+          "UNVERIFIED": 3,
+          "VERIFIED": 5
         },
         "A3": {
           "MISSING": 0,
@@ -201,8 +201,8 @@
         "MiFID II best execution | European Union | Regulation (EU) No 600/2014, Article 27"
       ],
       "rejected_post_corroboration": false,
-      "unverified_count": 14,
-      "verified_types": 1
+      "unverified_count": 9,
+      "verified_types": 2
     },
     "dcm_origination": {
       "a4_status": "UNVERIFIED",
@@ -222,9 +222,9 @@
         },
         "A2": {
           "MISSING": 0,
-          "PARTIAL": 0,
+          "PARTIAL": 1,
           "REFUTED": 0,
-          "UNVERIFIED": 2,
+          "UNVERIFIED": 1,
           "VERIFIED": 0
         },
         "A3": {
@@ -240,7 +240,7 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 7,
+      "unverified_count": 6,
       "verified_types": 0
     },
     "ecm_origination": {
@@ -261,10 +261,49 @@
         },
         "A2": {
           "MISSING": 0,
+          "PARTIAL": 1,
+          "REFUTED": 0,
+          "UNVERIFIED": 1,
+          "VERIFIED": 0
+        },
+        "A3": {
+          "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 2,
+          "UNVERIFIED": 0,
           "VERIFIED": 0
+        }
+      },
+      "missing_rows": [],
+      "non_refuted_types": 2,
+      "publishable": false,
+      "refuted": [],
+      "rejected_post_corroboration": false,
+      "unverified_count": 5,
+      "verified_types": 0
+    },
+    "em_trading": {
+      "a4_status": "UNVERIFIED",
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 3,
+        "A3": 0,
+        "A4": false
+      },
+      "counts": {
+        "A1": {
+          "MISSING": 0,
+          "PARTIAL": 0,
+          "REFUTED": 0,
+          "UNVERIFIED": 4,
+          "VERIFIED": 0
+        },
+        "A2": {
+          "MISSING": 0,
+          "PARTIAL": 0,
+          "REFUTED": 0,
+          "UNVERIFIED": 1,
+          "VERIFIED": 3
         },
         "A3": {
           "MISSING": 0,
@@ -280,52 +319,13 @@
       "refuted": [],
       "rejected_post_corroboration": false,
       "unverified_count": 6,
-      "verified_types": 0
-    },
-    "em_trading": {
-      "a4_status": "UNVERIFIED",
-      "anchors_verified": {
-        "A1": 0,
-        "A2": 0,
-        "A3": 0,
-        "A4": false
-      },
-      "counts": {
-        "A1": {
-          "MISSING": 0,
-          "PARTIAL": 0,
-          "REFUTED": 0,
-          "UNVERIFIED": 4,
-          "VERIFIED": 0
-        },
-        "A2": {
-          "MISSING": 0,
-          "PARTIAL": 0,
-          "REFUTED": 0,
-          "UNVERIFIED": 4,
-          "VERIFIED": 0
-        },
-        "A3": {
-          "MISSING": 0,
-          "PARTIAL": 0,
-          "REFUTED": 0,
-          "UNVERIFIED": 0,
-          "VERIFIED": 0
-        }
-      },
-      "missing_rows": [],
-      "non_refuted_types": 2,
-      "publishable": false,
-      "refuted": [],
-      "rejected_post_corroboration": false,
-      "unverified_count": 9,
-      "verified_types": 0
+      "verified_types": 1
     },
     "equities_trading": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 4,
         "A3": 0,
         "A4": false
       },
@@ -341,8 +341,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 7,
-          "VERIFIED": 0
+          "UNVERIFIED": 3,
+          "VERIFIED": 4
         },
         "A3": {
           "MISSING": 0,
@@ -359,14 +359,14 @@
         "MiFID II best execution | European Union | Regulation (EU) No 600/2014, Article 27"
       ],
       "rejected_post_corroboration": false,
-      "unverified_count": 20,
-      "verified_types": 0
+      "unverified_count": 16,
+      "verified_types": 1
     },
     "equity_derivatives_structured": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 4,
         "A3": 0,
         "A4": false
       },
@@ -382,8 +382,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 6,
-          "VERIFIED": 0
+          "UNVERIFIED": 2,
+          "VERIFIED": 4
         },
         "A3": {
           "MISSING": 0,
@@ -398,14 +398,14 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 18,
-      "verified_types": 0
+      "unverified_count": 14,
+      "verified_types": 1
     },
     "fx_cross_asset_combined": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 1,
         "A3": 0,
         "A4": false
       },
@@ -421,8 +421,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 1,
-          "VERIFIED": 0
+          "UNVERIFIED": 0,
+          "VERIFIED": 1
         },
         "A3": {
           "MISSING": 0,
@@ -439,14 +439,14 @@
         "CFTC Swap Clearing Rules | US | 17 CFR 23.494"
       ],
       "rejected_post_corroboration": false,
-      "unverified_count": 5,
-      "verified_types": 0
+      "unverified_count": 4,
+      "verified_types": 1
     },
     "fx_trading": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 6,
         "A3": 0,
         "A4": false
       },
@@ -462,8 +462,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 6,
-          "VERIFIED": 0
+          "UNVERIFIED": 0,
+          "VERIFIED": 6
         },
         "A3": {
           "MISSING": 0,
@@ -480,8 +480,8 @@
         "MiFID II best execution | European Union | Regulation (EU) No 600/2014, Article 27"
       ],
       "rejected_post_corroboration": false,
-      "unverified_count": 19,
-      "verified_types": 0
+      "unverified_count": 13,
+      "verified_types": 1
     },
     "global_banking_financing": {
       "a4_status": "UNVERIFIED",
@@ -501,10 +501,49 @@
         },
         "A2": {
           "MISSING": 0,
+          "PARTIAL": 1,
+          "REFUTED": 0,
+          "UNVERIFIED": 0,
+          "VERIFIED": 0
+        },
+        "A3": {
+          "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 1,
+          "UNVERIFIED": 0,
           "VERIFIED": 0
+        }
+      },
+      "missing_rows": [],
+      "non_refuted_types": 2,
+      "publishable": false,
+      "refuted": [],
+      "rejected_post_corroboration": false,
+      "unverified_count": 2,
+      "verified_types": 0
+    },
+    "global_financing_capital_markets": {
+      "a4_status": "UNVERIFIED",
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 1,
+        "A3": 0,
+        "A4": false
+      },
+      "counts": {
+        "A1": {
+          "MISSING": 0,
+          "PARTIAL": 0,
+          "REFUTED": 0,
+          "UNVERIFIED": 2,
+          "VERIFIED": 0
+        },
+        "A2": {
+          "MISSING": 0,
+          "PARTIAL": 0,
+          "REFUTED": 0,
+          "UNVERIFIED": 0,
+          "VERIFIED": 1
         },
         "A3": {
           "MISSING": 0,
@@ -520,52 +559,13 @@
       "refuted": [],
       "rejected_post_corroboration": false,
       "unverified_count": 3,
-      "verified_types": 0
-    },
-    "global_financing_capital_markets": {
-      "a4_status": "UNVERIFIED",
-      "anchors_verified": {
-        "A1": 0,
-        "A2": 0,
-        "A3": 0,
-        "A4": false
-      },
-      "counts": {
-        "A1": {
-          "MISSING": 0,
-          "PARTIAL": 0,
-          "REFUTED": 0,
-          "UNVERIFIED": 2,
-          "VERIFIED": 0
-        },
-        "A2": {
-          "MISSING": 0,
-          "PARTIAL": 0,
-          "REFUTED": 0,
-          "UNVERIFIED": 1,
-          "VERIFIED": 0
-        },
-        "A3": {
-          "MISSING": 0,
-          "PARTIAL": 0,
-          "REFUTED": 0,
-          "UNVERIFIED": 0,
-          "VERIFIED": 0
-        }
-      },
-      "missing_rows": [],
-      "non_refuted_types": 2,
-      "publishable": false,
-      "refuted": [],
-      "rejected_post_corroboration": false,
-      "unverified_count": 4,
-      "verified_types": 0
+      "verified_types": 1
     },
     "leveraged_finance_loan_capital_markets": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 1,
         "A3": 0,
         "A4": false
       },
@@ -581,8 +581,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 2,
-          "VERIFIED": 0
+          "UNVERIFIED": 1,
+          "VERIFIED": 1
         },
         "A3": {
           "MISSING": 0,
@@ -597,14 +597,14 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 7,
-      "verified_types": 0
+      "unverified_count": 6,
+      "verified_types": 1
     },
     "listed_derivatives_client_clearing": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 4,
-        "A2": 0,
+        "A2": 2,
         "A3": 0,
         "A4": false
       },
@@ -620,8 +620,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 3,
-          "VERIFIED": 0
+          "UNVERIFIED": 1,
+          "VERIFIED": 2
         },
         "A3": {
           "MISSING": 0,
@@ -636,14 +636,14 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 4,
-      "verified_types": 1
+      "unverified_count": 2,
+      "verified_types": 2
     },
     "market_risk_management": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 1,
         "A3": 0,
         "A4": false
       },
@@ -657,10 +657,10 @@
         },
         "A2": {
           "MISSING": 0,
-          "PARTIAL": 0,
+          "PARTIAL": 1,
           "REFUTED": 0,
-          "UNVERIFIED": 3,
-          "VERIFIED": 0
+          "UNVERIFIED": 1,
+          "VERIFIED": 1
         },
         "A3": {
           "MISSING": 0,
@@ -675,14 +675,14 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 9,
-      "verified_types": 0
+      "unverified_count": 7,
+      "verified_types": 1
     },
     "prime_brokerage_financing": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 5,
         "A3": 0,
         "A4": false
       },
@@ -698,8 +698,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 9,
-          "VERIFIED": 0
+          "UNVERIFIED": 4,
+          "VERIFIED": 5
         },
         "A3": {
           "MISSING": 0,
@@ -714,8 +714,8 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 21,
-      "verified_types": 0
+      "unverified_count": 16,
+      "verified_types": 1
     },
     "rates_fx_combined": {
       "a4_status": "UNVERIFIED",
@@ -762,7 +762,7 @@
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 5,
         "A3": 0,
         "A4": false
       },
@@ -778,8 +778,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 5,
-          "VERIFIED": 0
+          "UNVERIFIED": 0,
+          "VERIFIED": 5
         },
         "A3": {
           "MISSING": 0,
@@ -797,8 +797,8 @@
         "MiFID II best execution | European Union | Regulation (EU) No 600/2014, Article 27"
       ],
       "rejected_post_corroboration": false,
-      "unverified_count": 22,
-      "verified_types": 0
+      "unverified_count": 17,
+      "verified_types": 1
     },
     "regulatory_reporting_conduct_compliance": {
       "a4_status": "UNVERIFIED",
@@ -843,7 +843,7 @@
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 6,
-        "A2": 0,
+        "A2": 4,
         "A3": 0,
         "A4": false
       },
@@ -859,8 +859,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 4,
-          "VERIFIED": 0
+          "UNVERIFIED": 0,
+          "VERIFIED": 4
         },
         "A3": {
           "MISSING": 0,
@@ -875,14 +875,14 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 5,
-      "verified_types": 1
+      "unverified_count": 1,
+      "verified_types": 2
     },
     "securitised_products": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 6,
         "A3": 0,
         "A4": false
       },
@@ -898,8 +898,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 8,
-          "VERIFIED": 0
+          "UNVERIFIED": 2,
+          "VERIFIED": 6
         },
         "A3": {
           "MISSING": 0,
@@ -914,14 +914,14 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 20,
-      "verified_types": 0
+      "unverified_count": 14,
+      "verified_types": 1
     },
     "sellside_research": {
       "a4_status": "UNVERIFIED",
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 1,
         "A3": 0,
         "A4": false
       },
@@ -937,8 +937,8 @@
           "MISSING": 0,
           "PARTIAL": 0,
           "REFUTED": 0,
-          "UNVERIFIED": 2,
-          "VERIFIED": 0
+          "UNVERIFIED": 1,
+          "VERIFIED": 1
         },
         "A3": {
           "MISSING": 0,
@@ -953,8 +953,8 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 5,
-      "verified_types": 0
+      "unverified_count": 4,
+      "verified_types": 1
     },
     "trade_lifecycle_operations": {
       "a4_status": "UNVERIFIED",
@@ -999,5 +999,5 @@
   "ledger_rows": 291,
   "ledger_source": "live-run-20261019/corroboration.csv",
   "problems": [],
-  "ts_utc": "2026-11-04T16:57:18.725720Z"
+  "ts_utc": "2026-11-27T03:44:01.894919Z"
 }

@@ -1,0 +1,1657 @@
+{
+  "aliases_sha256": "c1c03b1758680ac4a77cdc11f745d815e36dba8ed43057155468cda71f670113",
+  "axes": {
+    "business_line": [
+      "Asset Management",
+      "Buy-side counterpart — asset-management dealing and implementation",
+      "Capital Markets",
+      "Capital Markets — debt underwriting and distribution; relationship-only coverage assessed separately",
+      "Commodities",
+      "Credit",
+      "Financing",
+      "Global Markets",
+      "Global Markets — FICC and equities financing",
+      "Global Markets — FICC intermediation",
+      "Global Markets — agency and principal cash-equity execution",
+      "Global Markets — cash credit and credit derivatives, including emerging-market external debt",
+      "Global Markets — centralized derivatives risk intermediation",
+      "Global Markets — commodities",
+      "Global Markets — commodity derivatives and permitted associated physical activities",
+      "Global Markets — credit",
+      "Global Markets — cross-product quantitative operating-function overlay; not additive to product-line revenues",
+      "Global Markets — currencies, including G10 and emerging-market FX",
+      "Global Markets — equities intermediation",
+      "Global Markets — equity derivatives and structured-equity market-making",
+      "Global Markets — foreign exchange",
+      "Global Markets — mortgages, ABS, structured credit and associated warehouse financing",
+      "Global Markets — prime finance, securities lending and repo; excludes underlying derivative market-making",
+      "Global Markets — prime financing",
+      "Global Markets — rates",
+      "Global Markets — rates trading and market-making; includes developed-market and emerging-market local rates",
+      "Global Markets — secured financing",
+      "Global Markets — securitised products",
+      "Institutional Sales",
+      "Investment Banking",
+      "Investment Banking — debt underwriting",
+      "Investment Banking — equity underwriting",
+      "Prime Brokerage",
+      "Prime Services",
+      "Rates",
+      "Research",
+      "Securities Financing",
+      "Structured Products",
+      "multi"
+    ],
+    "office": [
+      "front",
+      "multi"
+    ],
+    "product": [
+      "commodities",
+      "credit",
+      "em",
+      "equities",
+      "financing",
+      "fx",
+      "multi",
+      "rates",
+      "securitised"
+    ],
+    "region": [
+      "AMER",
+      "APAC",
+      "EMEA",
+      "GLOBAL"
+    ],
+    "side": [
+      "buy",
+      "sell"
+    ]
+  },
+  "cells": [
+    {
+      "addressable_seat_cost_median": 204750.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Asset Management",
+        "office": "front",
+        "product": [
+          "multi"
+        ],
+        "region": [
+          "GLOBAL"
+        ],
+        "side": "buy"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "buy_side_execution",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 275125.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "multi",
+        "office": "front",
+        "product": [
+          "multi"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "buy"
+      },
+      "consensus_tier": "MODERATE",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "buy_side_institutional_dealing_portfolio_implementation",
+      "model_support": 1,
+      "terminality_count": 6,
+      "tier": "MODERATE"
+    },
+    {
+      "addressable_seat_cost_median": 309375.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Buy-side counterpart — asset-management dealing and implementation",
+        "office": "front",
+        "product": [
+          "multi"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "buy"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "buy_side_institutional_execution_portfolio_implementation",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 212500.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Capital Markets",
+        "office": "front",
+        "product": [
+          "multi"
+        ],
+        "region": [
+          "GLOBAL"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "capital_market_origination_ecm_dcm",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 300000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — agency and principal cash-equity execution",
+        "office": "front",
+        "product": [
+          "equities"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "cash_equity_electronic_execution",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 330000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — commodity derivatives and permitted associated physical activities",
+        "office": "front",
+        "product": [
+          "commodities"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "commodity_market",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 254375.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets",
+        "office": "front",
+        "product": [
+          "commodities"
+        ],
+        "region": [
+          "GLOBAL"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "MODERATE",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "commodity_sale_trading",
+      "model_support": 1,
+      "terminality_count": 6,
+      "tier": "MODERATE"
+    },
+    {
+      "addressable_seat_cost_median": 275000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Commodities",
+        "office": "front",
+        "product": [
+          "commodities"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "commodity_trading",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 300000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — commodities",
+        "office": "front",
+        "product": [
+          "commodities"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "commodity_trading_derivatif",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 390000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — FICC intermediation",
+        "office": "front",
+        "product": [
+          "commodities"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "commodity_trading_structuring",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 393750.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — centralized derivatives risk intermediation",
+        "office": "front",
+        "product": [
+          "multi"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "counterparty_risk_trading_valuation_adjustment",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 302500.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — cash credit and credit derivatives, including emerging-market external debt",
+        "office": "front",
+        "product": [
+          "credit",
+          "em"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "credit_market",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 254375.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets",
+        "office": "front",
+        "product": [
+          "credit"
+        ],
+        "region": [
+          "GLOBAL"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "MODERATE",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "credit_sale_trading",
+      "model_support": 1,
+      "terminality_count": 6,
+      "tier": "MODERATE"
+    },
+    {
+      "addressable_seat_cost_median": 288750.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Credit",
+        "office": "front",
+        "product": [
+          "credit"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "credit_trading",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 300000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — credit",
+        "office": "front",
+        "product": [
+          "credit",
+          "em"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "credit_trading_market_making",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 373750.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — FICC intermediation",
+        "office": "front",
+        "product": [
+          "credit",
+          "em"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "credit_trading_structuring",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 237500.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "multi",
+        "office": "front",
+        "product": [
+          "credit",
+          "rates"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "MODERATE",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "debt_capital_market",
+      "model_support": 1,
+      "terminality_count": 6,
+      "tier": "MODERATE"
+    },
+    {
+      "addressable_seat_cost_median": 261250.00000000003,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Investment Banking — debt underwriting",
+        "office": "front",
+        "product": [
+          "credit",
+          "financing"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "debt_capital_market_leveraged_finance_execution",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 240000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Capital Markets — debt underwriting and distribution; relationship-only coverage assessed separately",
+        "office": "front",
+        "product": [
+          "credit",
+          "em",
+          "financing"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "debt_capital_market_leveraged_finance_syndication",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 223125.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets",
+        "office": "front",
+        "product": [
+          "em"
+        ],
+        "region": [
+          "GLOBAL"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "MODERATE",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "emerging_market_sale_trading",
+      "model_support": 1,
+      "terminality_count": 6,
+      "tier": "MODERATE"
+    },
+    {
+      "addressable_seat_cost_median": 237500.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "multi",
+        "office": "front",
+        "product": [
+          "equities"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "MODERATE",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "equity_capital_market",
+      "model_support": 1,
+      "terminality_count": 6,
+      "tier": "MODERATE"
+    },
+    {
+      "addressable_seat_cost_median": 261250.00000000003,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Investment Banking — equity underwriting",
+        "office": "front",
+        "product": [
+          "equities"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "equity_capital_market_equity_linked_issuance",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 373750.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — equity derivatives and structured-equity market-making",
+        "office": "front",
+        "product": [
+          "equities"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "equity_derivatif_structured_equity",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 363750.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — equities intermediation",
+        "office": "front",
+        "product": [
+          "equities"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "MODERATE",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "equity_execution_trading_derivatif",
+      "model_support": 1,
+      "terminality_count": 6,
+      "tier": "MODERATE"
+    },
+    {
+      "addressable_seat_cost_median": 210000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Research",
+        "office": "front",
+        "product": [
+          "multi"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "equity_fixed_income_research",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 233750.00000000003,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets",
+        "office": "front",
+        "product": [
+          "equities"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "MODERATE",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "equity_sale_trading",
+      "model_support": 1,
+      "terminality_count": 9,
+      "tier": "MODERATE"
+    },
+    {
+      "addressable_seat_cost_median": 211250.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets",
+        "office": "front",
+        "product": [
+          "financing"
+        ],
+        "region": [
+          "GLOBAL"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "financing_repo_security_lending",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 276250.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — secured financing",
+        "office": "front",
+        "product": [
+          "credit",
+          "financing",
+          "rates"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "fixed_income_secured_financing_repo",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 332500.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — currencies, including G10 and emerging-market FX",
+        "office": "front",
+        "product": [
+          "em",
+          "fx"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "foreign_exchange_market",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 315000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — foreign exchange",
+        "office": "front",
+        "product": [
+          "em",
+          "fx"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "foreign_exchange_trading_market_making",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 412500.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — FICC intermediation",
+        "office": "front",
+        "product": [
+          "em",
+          "fx"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "foreign_exchange_trading_structuring",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 233750.00000000003,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets",
+        "office": "front",
+        "product": [
+          "fx"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "MODERATE",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "fx_sale_trading",
+      "model_support": 1,
+      "terminality_count": 9,
+      "tier": "MODERATE"
+    },
+    {
+      "addressable_seat_cost_median": 213750.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Institutional Sales",
+        "office": "front",
+        "product": [
+          "multi"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "institutional_sale",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 225000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Investment Banking",
+        "office": "front",
+        "product": [
+          "credit",
+          "financing"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "leveraged_finance",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 220000.00000000003,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Prime Services",
+        "office": "multi",
+        "product": [
+          "equities",
+          "financing"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "prime_brokerage",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 211250.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets",
+        "office": "multi",
+        "product": [
+          "equities",
+          "financing"
+        ],
+        "region": [
+          "GLOBAL"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "prime_brokerage_equity_financing",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 255000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — prime financing",
+        "office": "front",
+        "product": [
+          "equities",
+          "financing"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "prime_brokerage_financing_equity_security_lending",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 210000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Prime Brokerage",
+        "office": "multi",
+        "product": [
+          "equities",
+          "financing"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "prime_brokerage_prime_service",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 308750.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — prime finance, securities lending and repo; excludes underlying derivative market-making",
+        "office": "front",
+        "product": [
+          "credit",
+          "equities",
+          "financing",
+          "rates"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "prime_brokerage_security_financing",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 375000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — FICC and equities financing",
+        "office": "front",
+        "product": [
+          "credit",
+          "equities",
+          "financing",
+          "rates"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "prime_service_security_financing",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 325000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Asset Management",
+        "office": "front",
+        "product": [
+          "multi"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "buy"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "public_market_asset_management",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 380000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — cross-product quantitative operating-function overlay; not additive to product-line revenues",
+        "office": "front",
+        "product": [
+          "multi"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "quantitative_analytic_electronic_trading_engineering",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 357500.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — rates trading and market-making; includes developed-market and emerging-market local rates",
+        "office": "front",
+        "product": [
+          "em",
+          "rates"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "rate_market",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 254375.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets",
+        "office": "front",
+        "product": [
+          "rates"
+        ],
+        "region": [
+          "GLOBAL"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "MODERATE",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "rate_sale_trading",
+      "model_support": 1,
+      "terminality_count": 6,
+      "tier": "MODERATE"
+    },
+    {
+      "addressable_seat_cost_median": 288750.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Rates",
+        "office": "front",
+        "product": [
+          "rates"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "rate_trading",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 325000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — rates",
+        "office": "front",
+        "product": [
+          "em",
+          "rates"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "rate_trading_market_making",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 385000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — FICC intermediation",
+        "office": "front",
+        "product": [
+          "rates"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "rate_trading_structuring",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 225000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Financing",
+        "office": "front",
+        "product": [
+          "credit",
+          "financing",
+          "rates"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "repo_financing",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 325000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — securitised products",
+        "office": "front",
+        "product": [
+          "financing",
+          "securitised"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "securitised_product_asset_backed_structuring",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 247500.00000000003,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets",
+        "office": "front",
+        "product": [
+          "credit",
+          "securitised"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "securitised_product_trading",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 353125.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "multi",
+        "office": "front",
+        "product": [
+          "securitised"
+        ],
+        "region": [
+          "GLOBAL"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "securitised_product_trading_structuring",
+      "model_support": 0,
+      "terminality_count": 6,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 325000.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Global Markets — mortgages, ABS, structured credit and associated warehouse financing",
+        "office": "front",
+        "product": [
+          "credit",
+          "financing",
+          "securitised"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "securitized_product_asset_backed_financing",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 211250.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Securities Financing",
+        "office": "front",
+        "product": [
+          "credit",
+          "financing",
+          "rates"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "security_financing_repo_stock_loan",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    },
+    {
+      "addressable_seat_cost_median": 288750.0,
+      "anchors_verified": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": false
+      },
+      "axis": {
+        "business_line": "Structured Products",
+        "office": "front",
+        "product": [
+          "multi"
+        ],
+        "region": [
+          "AMER",
+          "APAC",
+          "EMEA"
+        ],
+        "side": "sell"
+      },
+      "consensus_tier": "WEAK",
+      "corpus_coverage": null,
+      "corroborated": false,
+      "division_key": "structured_product_structuring",
+      "model_support": 0,
+      "terminality_count": 3,
+      "tier": "WEAK"
+    }
+  ],
+  "n_models": 2,
+  "prompt_sha8": "efd90b74",
+  "schema_version": "bocg.grid.v1"
+}
