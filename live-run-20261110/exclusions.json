@@ -1,0 +1,49 @@
+{
+  "prompt_sha8": "efd90b74",
+  "consensus_policy": "eligible-models/v1",
+  "note": "Processed on 2026-11-27 with owner approval. All attempts are retained. Excluded models contribute neither votes nor role/seat pools. Only two independent families are eligible (deepseek via deepseek-v4.1-flash, openai via gpt-6-astra): the four-vendor requirement is not met.",
+  "excluded": [
+    {
+      "model_id": "deepseek-flash",
+      "vendor": "deepseek",
+      "valid": 0,
+      "of": 3,
+      "reason": "All three slots failed with HTTP 402 insufficient_balance_error. No response content was available. The deepseek family is represented by deepseek-v4.1-flash, retained in the neuralwatt increment."
+    },
+    {
+      "model_id": "gemma-4-31b",
+      "vendor": "google",
+      "valid": 0,
+      "of": 3,
+      "reason": "All three responses put the division name before its anchors (I5 ORDER_VIOLATION). No content retry or repaired field ordering was applied."
+    },
+    {
+      "model_id": "glm-5.3",
+      "vendor": "zhipu",
+      "valid": 0,
+      "of": 3,
+      "reason": "Two slots stopped at the 64000-token ceiling (finish_reason length) and failed to parse (PARSE_ERROR); the third produced no content deltas. No response was valid."
+    },
+    {
+      "model_id": "kimi-k3",
+      "vendor": "moonshot",
+      "valid": 2,
+      "of": 3,
+      "reason": "One of three responses puts the division name before its anchors (I5 ORDER_VIOLATION). Two valid samples do not meet the three-valid-sample eligibility rule. No content retry or repaired field ordering was applied."
+    },
+    {
+      "model_id": "mimo-v2.6-pro",
+      "vendor": "xiaomi",
+      "valid": 0,
+      "of": 3,
+      "reason": "All three responses put the division name before its anchors (I5 ORDER_VIOLATION). No content retry or repaired field ordering was applied."
+    },
+    {
+      "model_id": "qwen-3.8-27b",
+      "vendor": "qwen",
+      "valid": 2,
+      "of": 3,
+      "reason": "One slot produced no content deltas after a transport retry. Two valid samples do not meet the three-valid-sample eligibility rule."
+    }
+  ]
+}

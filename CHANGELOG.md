@@ -10,6 +10,12 @@
   187 UNVERIFIED. Summary, grid and run summary are rebuilt from the ledger;
   the 4 Nov gate report is unchanged and G6 still fails. Record:
   `docs/corroboration-a2-filings-2026-11-27.md`.
+- The 10 Nov live run is processed with owner approval
+  (`live-run-20261110/processing-status.json`). Eligibility leaves two
+  families (deepseek-v4.1-flash and gpt-6-astra); G1-G5 and G7-G9 pass, G6 and
+  G10 fail. Aliases remain an unreviewed identity draft, so its 54 division
+  keys are not comparable with the 25 areas of the taxonomy source, which stays
+  `live-run-20261019`.
 
 ## v0.8.6 - 2026-11-22
 

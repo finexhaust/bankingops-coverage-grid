@@ -1,11 +1,16 @@
 {
   "schema": "bocg.processing-status/v1",
-  "status": "UNPROCESSED",
-  "decision": "NOT_PROCESSED_PENDING_OWNER_APPROVAL",
-  "reason": "Post-processing would apply panel eligibility to the committed normalised results and rewrite normalised.json and canon_names.json. Owner approval for those rewrites has not been recorded.",
+  "status": "PROCESSED",
+  "decision": "PROCESSED_WITH_OWNER_APPROVAL",
+  "approved_on": "2026-11-27",
+  "reason": "The owner approved applying panel eligibility to this run and rewriting normalised.json and canon_names.json. This run does not replace the taxonomy source.",
   "eligibility": {
     "spec": "SPEC-01",
     "validity_includes_order_rule": true,
+    "eligible_models": [
+      "deepseek-v4.1-flash",
+      "gpt-6-astra"
+    ],
     "eligible_vendors": 2,
     "g10": "FAIL"
   },
@@ -15,18 +20,47 @@
     "canonical_names": 106,
     "distinct_keys": 106
   },
-  "inputs_rewritten": false,
+  "matrix": {
+    "division_keys": 54,
+    "tiers": {
+      "MODERATE": 10,
+      "WEAK": 44
+    }
+  },
+  "gates": {
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS",
+    "G5": "PASS",
+    "G6": "FAIL",
+    "G7": "PASS",
+    "G8": "PASS",
+    "G9": "PASS",
+    "G10": "FAIL"
+  },
+  "gates_executed_at": "2026-11-27T03:47:08.070754Z",
+  "inputs_rewritten": true,
   "taxonomy_source_updated": false,
   "taxonomy_source_run_dir": "live-run-20261019",
-  "outputs_not_created": [
-    "exclusions.json",
-    "matrix.csv",
-    "matrix.json",
-    "corroboration.csv",
-    "corroboration_summary.json",
-    "grid.json",
-    "gates_report.json",
-    "RUN_SUMMARY.json",
-    "postprocessing-receipt.json"
-  ]
+  "production_operations": [
+    "normalise",
+    "matrix",
+    "corroborate --init",
+    "grid",
+    "gate all"
+  ],
+  "outputs_sha256": {
+    "exclusions.json": "ab6282f74b68b5a3567e44876610ed356a697fcec35685b089f86608e3a054a5",
+    "normalised.json": "78c24e8b951c564fa5c013db46c935d5057ff026704056410368e6b7720ee860",
+    "canon_names.json": "f92b8647800653efb9e26a4c7cb0b933634af829fb107823bb474d6d734287e7",
+    "matrix.csv": "438c56d18b61960add3e35b3e9cac1f0bbab23c6fe6da4591f39734871411b1c",
+    "matrix.json": "4a98fbbf9a856c92ceb1405c921c965b294d809f8445e3e478880c05a9f2e13c",
+    "corroboration.csv": "fdc9f1509f9faab363bee4436cd1f2b8646da6437cca9a22d6130fc312e7b944",
+    "corroboration_summary.json": "564d5f3085abfe171f722d9657cd79b97255782c66e040c3fa3b9956d4b0b30b",
+    "grid.json": "54b02e7e572df4c54dcdbd8641dcab64d499f6739fa5de433fbd54db3918f3a5",
+    "gates_report.json": "62e21895797053edf983d08c910670c3ccb373d453024764f4a348b369bc3b99"
+  },
+  "limits": "Aliases are an unreviewed identity draft, so the 54 division keys are not merged and are not comparable one-to-one with the 25 areas of live-run-20261019. All 302 corroboration rows are UNVERIFIED. G6 and G10 fail.",
+  "test_suites_run": false
 }

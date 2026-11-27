@@ -1,5 +1,13 @@
 {
   "aliases_sha256": "c1c03b1758680ac4a77cdc11f745d815e36dba8ed43057155468cda71f670113",
+  "excluded_models": [
+    "deepseek-flash",
+    "gemma-4-31b",
+    "glm-5.3",
+    "kimi-k3",
+    "mimo-v2.6-pro",
+    "qwen-3.8-27b"
+  ],
   "prompt_sha256": "efd90b74d2fcab8c65ae39a245d93ef837376b8b7f3b7fc8a51ad3f5f48b149f",
   "prompt_sha8": "efd90b74",
   "samples": [
