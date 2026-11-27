@@ -48,7 +48,7 @@
       "addressable_seat_cost_median": 226875.00000000003,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 4,
         "A3": 0,
         "A4": false
       },
@@ -105,7 +105,7 @@
       "addressable_seat_cost_median": 202500.0,
       "anchors_verified": {
         "A1": 1,
-        "A2": 0,
+        "A2": 1,
         "A3": 0,
         "A4": false
       },
@@ -134,7 +134,7 @@
       "addressable_seat_cost_median": 260625.0,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 5,
         "A3": 0,
         "A4": false
       },
@@ -163,7 +163,7 @@
       "addressable_seat_cost_median": 232500.0,
       "anchors_verified": {
         "A1": 9,
-        "A2": 0,
+        "A2": 5,
         "A3": 0,
         "A4": false
       },
@@ -251,7 +251,7 @@
       "addressable_seat_cost_median": 226875.00000000003,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 3,
         "A3": 0,
         "A4": false
       },
@@ -280,7 +280,7 @@
       "addressable_seat_cost_median": 234499.99999999997,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 4,
         "A3": 0,
         "A4": false
       },
@@ -309,7 +309,7 @@
       "addressable_seat_cost_median": 255000.0,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 4,
         "A3": 0,
         "A4": false
       },
@@ -338,7 +338,7 @@
       "addressable_seat_cost_median": 292500.0,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 1,
         "A3": 0,
         "A4": false
       },
@@ -368,7 +368,7 @@
       "addressable_seat_cost_median": 247500.0,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 6,
         "A3": 0,
         "A4": false
       },
@@ -426,7 +426,7 @@
       "addressable_seat_cost_median": 247500.0,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 1,
         "A3": 0,
         "A4": false
       },
@@ -456,7 +456,7 @@
       "addressable_seat_cost_median": 225000.0,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 1,
         "A3": 0,
         "A4": false
       },
@@ -486,7 +486,7 @@
       "addressable_seat_cost_median": 218500.0,
       "anchors_verified": {
         "A1": 4,
-        "A2": 0,
+        "A2": 2,
         "A3": 0,
         "A4": false
       },
@@ -515,7 +515,7 @@
       "addressable_seat_cost_median": 244999.99999999997,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 1,
         "A3": 0,
         "A4": false
       },
@@ -545,7 +545,7 @@
       "addressable_seat_cost_median": 232500.0,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 5,
         "A3": 0,
         "A4": false
       },
@@ -605,7 +605,7 @@
       "addressable_seat_cost_median": 260000.0,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 5,
         "A3": 0,
         "A4": false
       },
@@ -664,7 +664,7 @@
       "addressable_seat_cost_median": 270000.0,
       "anchors_verified": {
         "A1": 6,
-        "A2": 0,
+        "A2": 4,
         "A3": 0,
         "A4": false
       },
@@ -693,7 +693,7 @@
       "addressable_seat_cost_median": 259375.0,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 6,
         "A3": 0,
         "A4": false
       },
@@ -722,7 +722,7 @@
       "addressable_seat_cost_median": 210000.0,
       "anchors_verified": {
         "A1": 0,
-        "A2": 0,
+        "A2": 1,
         "A3": 0,
         "A4": false
       },

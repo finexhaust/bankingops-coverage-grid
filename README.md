@@ -5,7 +5,7 @@ consensus (rather than from one person's assertion), and a toolkit that makes pr
 derived corpus machine-verifiable by a party who never sees the source material.
 
 `live-run-20261019/` is the current regeneration: 25 business areas from two eligible model families, with every attempt retained. The four-vendor requirement is not met; this release is provisional. The earlier five-vendor run remains in `live-run-20260826/`.
-It is **provisional** — the anchor-corroboration gate has not been satisfied. On 2026-11-04, `claude-fable-5-1` (agent) checked 31 regulatory (A1) anchors for the six ISDA-adjacent areas: 24 VERIFIED, 4 PARTIAL, 3 REFUTED. A subsequent OpenAI GPT-6 Astra Pro agent source check refuted nine further occurrences of the same incorrect citations. The ledger now contains 24 VERIFIED, 4 PARTIAL, 12 REFUTED and 251 UNVERIFIED rows; no division is fully corroborated. See the [corroboration follow-up](docs/corroboration-follow-up-2026-11-04.md).
+It is **provisional** — the anchor-corroboration gate has not been satisfied. On 2026-11-04, `claude-fable-5-1` (agent) checked 31 regulatory (A1) anchors for the six ISDA-adjacent areas: 24 VERIFIED, 4 PARTIAL, 3 REFUTED. A subsequent OpenAI GPT-6 Astra Pro agent source check refuted nine further occurrences of the same incorrect citations. On 2026-11-27 an agent check of the six named 10-K filings resolved the A2 segment anchors: 59 VERIFIED, 5 PARTIAL and 25 still UNVERIFIED where the filing tables could not be reached. The ledger now contains 83 VERIFIED, 9 PARTIAL, 12 REFUTED and 187 UNVERIFIED rows; no division is fully corroborated, and two areas lack only their practitioner-reviewed A4 row. See the [A2 filing check](docs/corroboration-a2-filings-2026-11-27.md).
 
 The grid is a model-consensus prior, not a validated map. `docs/downstream-evidence.md` records how its division keys
 have been exercised by a preregistered downstream evaluation lane; those results are calibration evidence from a private
@@ -50,8 +50,9 @@ The [19 October run](live-run-20261019/README.md) uses current provider models,
 retains transport and quota failures, and links the frozen prompts, model lists,
 roles and seat-cost claims. Only two families meet the three-valid-sample rule;
 G10 is not met. G6 is not met: the current ledger has 24 A1 anchors VERIFIED,
-4 PARTIAL and 12 REFUTED. The other 101 A1 anchors, all 89 A2 filings, all 36 A3
-market-size claims and all 25 A4 seat claims remain UNVERIFIED.
+4 PARTIAL and 12 REFUTED, and 59 A2 filing anchors VERIFIED and 5 PARTIAL. The
+other 101 A1 anchors, 25 A2 filings, all 36 A3 market-size claims and all 25 A4
+seat claims remain UNVERIFIED.
 Aliases and task concepts have no human review. Public-eval overlays retain
 historical catalogue bindings and do not describe this new release's coverage.
 The generation gates were executed on 2026-11-04: G1–G5 and G7–G9 passed;
