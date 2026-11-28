@@ -81,12 +81,12 @@
       "verified_types": 0
     },
     "clearing_settlement_custody": {
-      "a4_status": "UNVERIFIED",
+      "a4_status": "VERIFIED",
       "anchors_verified": {
         "A1": 1,
         "A2": 1,
         "A3": 0,
-        "A4": false
+        "A4": true
       },
       "counts": {
         "A1": {
@@ -113,10 +113,10 @@
       },
       "missing_rows": [],
       "non_refuted_types": 2,
-      "publishable": false,
+      "publishable": true,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 1,
+      "unverified_count": 0,
       "verified_types": 2
     },
     "commodities_trading": {
@@ -484,7 +484,7 @@
       "verified_types": 1
     },
     "global_banking_financing": {
-      "a4_status": "UNVERIFIED",
+      "a4_status": "PARTIAL",
       "anchors_verified": {
         "A1": 0,
         "A2": 0,
@@ -519,7 +519,7 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 2,
+      "unverified_count": 1,
       "verified_types": 0
     },
     "global_financing_capital_markets": {
@@ -601,7 +601,7 @@
       "verified_types": 1
     },
     "listed_derivatives_client_clearing": {
-      "a4_status": "UNVERIFIED",
+      "a4_status": "PARTIAL",
       "anchors_verified": {
         "A1": 4,
         "A2": 2,
@@ -636,7 +636,7 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 2,
+      "unverified_count": 1,
       "verified_types": 2
     },
     "market_risk_management": {
@@ -801,7 +801,7 @@
       "verified_types": 1
     },
     "regulatory_reporting_conduct_compliance": {
-      "a4_status": "UNVERIFIED",
+      "a4_status": "PARTIAL",
       "anchors_verified": {
         "A1": 2,
         "A2": 0,
@@ -836,16 +836,16 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 3,
+      "unverified_count": 2,
       "verified_types": 1
     },
     "repo_secfin_collateral": {
-      "a4_status": "UNVERIFIED",
+      "a4_status": "VERIFIED",
       "anchors_verified": {
         "A1": 6,
         "A2": 4,
         "A3": 0,
-        "A4": false
+        "A4": true
       },
       "counts": {
         "A1": {
@@ -872,10 +872,10 @@
       },
       "missing_rows": [],
       "non_refuted_types": 2,
-      "publishable": false,
+      "publishable": true,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 1,
+      "unverified_count": 0,
       "verified_types": 2
     },
     "securitised_products": {
@@ -957,12 +957,12 @@
       "verified_types": 1
     },
     "trade_lifecycle_operations": {
-      "a4_status": "UNVERIFIED",
+      "a4_status": "VERIFIED",
       "anchors_verified": {
         "A1": 2,
         "A2": 0,
         "A3": 0,
-        "A4": false
+        "A4": true
       },
       "counts": {
         "A1": {
@@ -992,12 +992,12 @@
       "publishable": false,
       "refuted": [],
       "rejected_post_corroboration": false,
-      "unverified_count": 2,
+      "unverified_count": 1,
       "verified_types": 1
     }
   },
   "ledger_rows": 291,
   "ledger_source": "live-run-20261019/corroboration.csv",
   "problems": [],
-  "ts_utc": "2026-11-27T03:44:01.894919Z"
+  "ts_utc": "2026-11-28T01:29:22.856613Z"
 }

@@ -4,7 +4,7 @@
   "prompt_sha256": "efd90b74d2fcab8c65ae39a245d93ef837376b8b7f3b7fc8a51ad3f5f48b149f",
   "prompt_sha8": "efd90b74",
   "aliases_sha256": "442985978ad8d1b76c1a69c241e6797ec81ccba463e7ff6b753535aeeb408398",
-  "status": "PROVISIONAL: panel requirement not met (2 of 4 independent vendors); corroboration incomplete (83 VERIFIED, 9 PARTIAL, 12 REFUTED, 187 UNVERIFIED of 291 ledger rows); aliases and task concepts have no human review.",
+  "status": "PROVISIONAL: panel requirement not met (2 of 4 independent vendors); corroboration incomplete (86 VERIFIED, 12 PARTIAL, 12 REFUTED, 181 UNVERIFIED of 291 ledger rows; 2 of 25 areas fully corroborated); aliases and task concepts have no human review.",
   "gates": {
     "G1": "PASS",
     "G2": "PASS",
@@ -22,10 +22,10 @@
     "ledger": "corroboration.csv",
     "ledger_rows": 291,
     "by_status": {
-      "VERIFIED": 83,
-      "PARTIAL": 9,
+      "VERIFIED": 86,
+      "PARTIAL": 12,
       "REFUTED": 12,
-      "UNVERIFIED": 187
+      "UNVERIFIED": 181
     }
   },
   "samples_by_model": {
