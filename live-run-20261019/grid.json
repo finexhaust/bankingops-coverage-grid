@@ -107,7 +107,7 @@
         "A1": 1,
         "A2": 1,
         "A3": 0,
-        "A4": false
+        "A4": true
       },
       "axis": {
         "business_line": "Markets",
@@ -124,7 +124,7 @@
       },
       "consensus_tier": "WEAK",
       "corpus_coverage": null,
-      "corroborated": false,
+      "corroborated": true,
       "division_key": "clearing_settlement_custody",
       "model_support": 0,
       "terminality_count": 3,
@@ -666,7 +666,7 @@
         "A1": 6,
         "A2": 4,
         "A3": 0,
-        "A4": false
+        "A4": true
       },
       "axis": {
         "business_line": "multi",
@@ -683,7 +683,7 @@
       },
       "consensus_tier": "MODERATE",
       "corpus_coverage": null,
-      "corroborated": false,
+      "corroborated": true,
       "division_key": "repo_secfin_collateral",
       "model_support": 1,
       "terminality_count": 11,
@@ -753,7 +753,7 @@
         "A1": 2,
         "A2": 0,
         "A3": 0,
-        "A4": false
+        "A4": true
       },
       "axis": {
         "business_line": "Capital Markets",

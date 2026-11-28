@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- A4 practitioner review of the `live-run-20261019` ledger (28 Nov). The owner
+  judged the terminality tasks of seven areas as the named practitioner
+  reviewer; an agent checked each claimed cost range against the filing it
+  names. Three A4 rows are VERIFIED, three PARTIAL and one stays UNVERIFIED.
+  `clearing_settlement_custody` and `repo_secfin_collateral` are the first
+  fully corroborated areas. Ledger totals: 86 VERIFIED, 12 PARTIAL, 12
+  REFUTED, 181 UNVERIFIED. G6 still fails for the other 23 areas. Record:
+  `docs/corroboration-a4-review-2026-11-28.md`.
 - A2 filing check of the `live-run-20261019` ledger (27 Nov). The 89 A2 segment
   rows cite six 10-K filings; an agent matched each printed line-item label.
   59 rows are VERIFIED, 5 PARTIAL (different printed form) and 25 remain
